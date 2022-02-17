@@ -1,0 +1,7 @@
+{
+  "name": "Funerária Aliança",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
