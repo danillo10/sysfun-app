@@ -1,0 +1,116 @@
+// .container{
+//     width: 100%;
+//     display: flex;
+//     justify-content: center;
+// }
+*{
+
+    font-family: 'Montserrat';
+}
+
+.main{
+    background-color: #186E9D;
+    width: 400px;
+    height: 600px;
+    border-end-end-radius: 30px;
+}
+
+.logo{
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    height: 20%;
+    width: 100%;
+}
+
+.alianca{
+    image-rendering: -webkit-optimize-contrast;
+    object-fit:contain;
+    width: 276px;
+    height: 76px;
+}
+
+input{
+    width: 336px;
+    height: 44px;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #707070;
+    padding-left: 3rem;
+    background: transparent;
+    background-color: #ffffff;
+}
+
+input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+.name{
+    margin-top: 3rem;
+    font-size: 23px;
+    color: #FFFFFF;
+}
+.form-login{
+    display: grid;
+    justify-content: center;
+}
+
+.check{
+    width: 23px;
+    height: 23px;
+    margin-right: 5px;
+}
+.recuperar{
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-left: 3rem;
+    color: #FFFFFF;
+}
+
+.button-entrar{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+a{
+    text-decoration: none;
+    color: #043F59;
+}
+
+.btn {
+    background-color: #FFFFFF;
+    color: #043F59;
+    border-radius: 5px;
+    border: 1px solid #186E9D;
+    width: 336px;
+    height: 40px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 18px;
+}
+.recuperar-senha{
+    display: grid;
+    justify-content: center;
+    margin-top: 3rem;
+    font-weight: bold;
+}
+
+.name-recuperar{
+    margin-bottom: 7px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.btn-senha{
+    width: 336px;
+    height: 44px;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    border: 1px solid #015581;
+    background-color: #015581;
+    cursor: pointer;
+}
