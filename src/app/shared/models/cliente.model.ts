@@ -1,4 +1,4 @@
-export interface IClientes {
+export class ClienteModel {
     id: number;
     cliente: string;
     tipoDePessoa: string;
@@ -26,6 +26,18 @@ export interface IClientes {
     receberTorpedo: string;
     nomeDaMae: string;
     nomeDoPai: string;
+    created_at: Date;
+    updated_at: Date;
+
+    /**
+     * Constructor
+     *
+     * @param data
+    */
+    constructor(data?) {
+        data = data || {};
+        this.id = data.id || '';
+    }
 }
 
 export interface IEnderecos {
