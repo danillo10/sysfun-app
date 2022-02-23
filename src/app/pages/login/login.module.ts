@@ -1,11 +1,9 @@
+import { ButtonsModule } from './../../components/buttons/buttons.module';
 import { LoginComponent } from './login.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginPageRoutingModule } from './login-routing.module';
-import { InputModule } from 'src/app/components/input/input.module';
-
-
-
+import { InputsModule } from '../../components/index';
 @NgModule({
   declarations: [
     LoginComponent
@@ -13,7 +11,8 @@ import { InputModule } from 'src/app/components/input/input.module';
   imports: [
     CommonModule,
     LoginPageRoutingModule,
-    InputModule
+    InputsModule,
+    ButtonsModule
   ],
   exports: [LoginComponent]
 })

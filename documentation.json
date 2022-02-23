@@ -3,19 +3,19 @@
     "interfaces": [
         {
             "name": "IContasReceber",
-            "id": "interface-IContasReceber-79d2bf608ffdcc0a1ddfea975b91211237b72480cf9d88ef2d3d2129f0c466cd817459ceaf6a79fd50c25b722f352d1f40f5998640a64010ea9e251dfd0dcb24",
+            "id": "interface-IContasReceber-ccff703993f9e33b36ecc3ff8ade08c34a3d5fc99dcc8017ca63ba649e8065282c6a845214396ba0ca453f32fe9cdf7ea62d2abd73bedfc6dafc58905cf5340c",
             "file": "src/app/shared/models/contas-receber.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface IContasReceber {\n    nome: string;\n    cobranca: number;\n    vencimento: number;\n}\n",
+            "sourceCode": "export interface IContasReceber {\r\n    nome?: string;\r\n    cobranca?: number;\r\n    vencimento?: number;\r\n}\r\n",
             "properties": [
                 {
                     "name": "cobranca",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 3
                 },
@@ -24,7 +24,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 2
                 },
@@ -33,7 +33,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 4
                 }
@@ -44,30 +44,30 @@
         },
         {
             "name": "IDadosAdicionais",
-            "id": "interface-IDadosAdicionais-e6c0c586de1a341e8e5a3b632e97f220738f834b97b41c29239059aeec5fbd12c148d06fe41a62c0051011a4e1d8306f09fc6d68030ede2484b61a0b07f64ec0",
+            "id": "interface-IDadosAdicionais-ae3af84ed0e58a0fba055a5ee4ca9a2906d3a15761218c877f6b0fa7d439c6c220ce17371e7efd663b36b832d7946068f27a433fb53c9c14d8e6b693c6683df1",
             "file": "src/app/shared/models/cliente.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export class ClienteModel {\n    id: number;\n    cliente: string;\n    tipoDePessoa: string;\n    cpf: number;\n    rg: number;\n    emissor: string;\n    nome: string;\n    dataNascimento: number;\n    naturalidade: string;\n    cep: number;\n    endereço: string;\n    numero: number;\n    complemento: string;\n    bairro: string;\n    cidade: string;\n    estado: string;\n    celular: number;\n    telefone: number;\n    tipoDeCadastro: string;\n    sexo: string;\n    estadoCivil: string;\n    profissao: string;\n    email: string;\n    receberSms: string;\n    receberTorpedo: string;\n    nomeDaMae: string;\n    nomeDoPai: string;\n    created_at: Date;\n    updated_at: Date;\n\n    /**\n     * Constructor\n     *\n     * @param data\n    */\n    constructor(data?) {\n        data = data || {};\n        this.id = data.id || '';\n    }\n}\n\nexport interface IEnderecos {\n    tipoDeEndereco: string;\n    tipoDePessoa: string;\n    cpf: number;\n    endereco: number;\n    numero: number;\n    complemento: string;\n    bairro: string;\n    cidade: string;\n    estado: string;\n    religiao: string;\n}\n\nexport interface IDadosAdicionais{\n    categoriaClassificacao: string;\n    situacao: string;\n}\n\nexport interface IDependentes {\n    nomeDependente: string;\n    grauParentesco: string;\n    telefonePrincipal: number;\n    cpf: number;\n    dataNascimento: number;\n}\n",
+            "sourceCode": "export class ClienteModel {\r\n    id?: number;\r\n    cliente?: string;\r\n    tipoDePessoa?: string;\r\n    cpf?: number;\r\n    rg?: number;\r\n    emissor?: string;\r\n    nome?: string;\r\n    dataNascimento?: number;\r\n    naturalidade?: string;\r\n    cep?: number;\r\n    endereco?: string;\r\n    numero?: number;\r\n    complemento?: string;\r\n    bairro?: string;\r\n    cidade?: string;\r\n    estado?: string;\r\n    celular?: number;\r\n    telefone?: number;\r\n    tipoDeCadastro?: string;\r\n    sexo?: string;\r\n    estadoCivil?: string;\r\n    profissao?: string;\r\n    email?: string;\r\n    receberSms?: string;\r\n    receberTorpedo?: string;\r\n    nomeDaMae?: string;\r\n    nomeDoPai?: string;\r\n    createdAt: Date;\r\n    updatedAt: Date;\r\n\r\n    /**\r\n     * Constructor\r\n     *\r\n     * @param data\r\n     *     */\r\n    constructor(data?) {\r\n        data = data || {};\r\n        this.id = data.id || '';\r\n        this.cliente = data.cliente || '';\r\n        this.tipoDePessoa = data.tipoDePessoa || '';\r\n        this.cpf = data.cpf || '';\r\n        this.rg = data.rg || '';\r\n        this.emissor = data.emissor || '';\r\n        this.nome = data.nome || '';\r\n        this.dataNascimento = data.dataNascimento ||'';\r\n        this.naturalidade = data.naturalidade || '';\r\n        this.cep = data.cep || '';\r\n        this.endereco = data.endereco || '';\r\n        this.numero = data.numero || '';\r\n        this.complemento = data.complemento || '';\r\n        this.bairro = data.bairro || '';\r\n        this.cidade = data.cidade || '';\r\n        this.estado = data.estado || '';\r\n        this.celular = data.celular || '';\r\n        this.tipoDeCadastro = data.tipoDeCadastro || '';\r\n        this.sexo = data.sexo || '';\r\n        this.estadoCivil = data. estadoCivil || '';\r\n        this.profissao = data. profissao || '';\r\n        this.email = data.email || '';\r\n        this.receberSms = data.receberSms || '';\r\n        this.receberTorpedo = data.receberTorpedo || '';\r\n        this.nomeDaMae = data.nomeDaMae || '';\r\n        this.nomeDoPai = data.nomeDoPai || '';\r\n     }\r\n}\r\n\r\nexport interface IEnderecos {\r\n    tipoDeEndereco?: string;\r\n    tipoDePessoa?: string;\r\n    cpf?: number;\r\n    endereco?: number;\r\n    numero?: number;\r\n    complemento?: string;\r\n    bairro?: string;\r\n    cidade?: string;\r\n    estado?: string;\r\n    religiao?: string;\r\n}\r\n\r\nexport interface IDadosAdicionais{\r\n    categoriaClassificacao?: string;\r\n    situacao?: string;\r\n}\r\n\r\nexport interface IDependentes {\r\n    nomeDependente?: string;\r\n    grauParentesco?: string;\r\n    telefonePrincipal?: number;\r\n    cpf?: number;\r\n    dataNascimento?: number;\r\n}\r\n",
             "properties": [
                 {
                     "name": "categoriaClassificacao",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 57
+                    "line": 82
                 },
                 {
                     "name": "situacao",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 58
+                    "line": 83
                 }
             ],
             "indexSignatures": [],
@@ -76,19 +76,19 @@
         },
         {
             "name": "IDashboard",
-            "id": "interface-IDashboard-94b0dff7ce5aa178a667ffd141010bd1dc9758b7ae9ac1cbb84d33f10871019dff659390b0ee3b3f1df70270fae031f8295f1545e43f57f15fe50de5c2e09fe3",
+            "id": "interface-IDashboard-ac50de60aa101064c0c533e7ab07b5dec9edea3e836bb6d5057141c4b4a774eec61ee7a38415525b085c89e9f3c1c916f2d4ae1ae3feacf3b86eef906ef0b9da",
             "file": "src/app/shared/models/dashboard.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface IDashboard {\n    dash: string;\n}\n",
+            "sourceCode": "export interface IDashboard {\r\n    dash?: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "dash",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 2
                 }
@@ -99,57 +99,57 @@
         },
         {
             "name": "IDependentes",
-            "id": "interface-IDependentes-e6c0c586de1a341e8e5a3b632e97f220738f834b97b41c29239059aeec5fbd12c148d06fe41a62c0051011a4e1d8306f09fc6d68030ede2484b61a0b07f64ec0",
+            "id": "interface-IDependentes-ae3af84ed0e58a0fba055a5ee4ca9a2906d3a15761218c877f6b0fa7d439c6c220ce17371e7efd663b36b832d7946068f27a433fb53c9c14d8e6b693c6683df1",
             "file": "src/app/shared/models/cliente.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export class ClienteModel {\n    id: number;\n    cliente: string;\n    tipoDePessoa: string;\n    cpf: number;\n    rg: number;\n    emissor: string;\n    nome: string;\n    dataNascimento: number;\n    naturalidade: string;\n    cep: number;\n    endereço: string;\n    numero: number;\n    complemento: string;\n    bairro: string;\n    cidade: string;\n    estado: string;\n    celular: number;\n    telefone: number;\n    tipoDeCadastro: string;\n    sexo: string;\n    estadoCivil: string;\n    profissao: string;\n    email: string;\n    receberSms: string;\n    receberTorpedo: string;\n    nomeDaMae: string;\n    nomeDoPai: string;\n    created_at: Date;\n    updated_at: Date;\n\n    /**\n     * Constructor\n     *\n     * @param data\n    */\n    constructor(data?) {\n        data = data || {};\n        this.id = data.id || '';\n    }\n}\n\nexport interface IEnderecos {\n    tipoDeEndereco: string;\n    tipoDePessoa: string;\n    cpf: number;\n    endereco: number;\n    numero: number;\n    complemento: string;\n    bairro: string;\n    cidade: string;\n    estado: string;\n    religiao: string;\n}\n\nexport interface IDadosAdicionais{\n    categoriaClassificacao: string;\n    situacao: string;\n}\n\nexport interface IDependentes {\n    nomeDependente: string;\n    grauParentesco: string;\n    telefonePrincipal: number;\n    cpf: number;\n    dataNascimento: number;\n}\n",
+            "sourceCode": "export class ClienteModel {\r\n    id?: number;\r\n    cliente?: string;\r\n    tipoDePessoa?: string;\r\n    cpf?: number;\r\n    rg?: number;\r\n    emissor?: string;\r\n    nome?: string;\r\n    dataNascimento?: number;\r\n    naturalidade?: string;\r\n    cep?: number;\r\n    endereco?: string;\r\n    numero?: number;\r\n    complemento?: string;\r\n    bairro?: string;\r\n    cidade?: string;\r\n    estado?: string;\r\n    celular?: number;\r\n    telefone?: number;\r\n    tipoDeCadastro?: string;\r\n    sexo?: string;\r\n    estadoCivil?: string;\r\n    profissao?: string;\r\n    email?: string;\r\n    receberSms?: string;\r\n    receberTorpedo?: string;\r\n    nomeDaMae?: string;\r\n    nomeDoPai?: string;\r\n    createdAt: Date;\r\n    updatedAt: Date;\r\n\r\n    /**\r\n     * Constructor\r\n     *\r\n     * @param data\r\n     *     */\r\n    constructor(data?) {\r\n        data = data || {};\r\n        this.id = data.id || '';\r\n        this.cliente = data.cliente || '';\r\n        this.tipoDePessoa = data.tipoDePessoa || '';\r\n        this.cpf = data.cpf || '';\r\n        this.rg = data.rg || '';\r\n        this.emissor = data.emissor || '';\r\n        this.nome = data.nome || '';\r\n        this.dataNascimento = data.dataNascimento ||'';\r\n        this.naturalidade = data.naturalidade || '';\r\n        this.cep = data.cep || '';\r\n        this.endereco = data.endereco || '';\r\n        this.numero = data.numero || '';\r\n        this.complemento = data.complemento || '';\r\n        this.bairro = data.bairro || '';\r\n        this.cidade = data.cidade || '';\r\n        this.estado = data.estado || '';\r\n        this.celular = data.celular || '';\r\n        this.tipoDeCadastro = data.tipoDeCadastro || '';\r\n        this.sexo = data.sexo || '';\r\n        this.estadoCivil = data. estadoCivil || '';\r\n        this.profissao = data. profissao || '';\r\n        this.email = data.email || '';\r\n        this.receberSms = data.receberSms || '';\r\n        this.receberTorpedo = data.receberTorpedo || '';\r\n        this.nomeDaMae = data.nomeDaMae || '';\r\n        this.nomeDoPai = data.nomeDoPai || '';\r\n     }\r\n}\r\n\r\nexport interface IEnderecos {\r\n    tipoDeEndereco?: string;\r\n    tipoDePessoa?: string;\r\n    cpf?: number;\r\n    endereco?: number;\r\n    numero?: number;\r\n    complemento?: string;\r\n    bairro?: string;\r\n    cidade?: string;\r\n    estado?: string;\r\n    religiao?: string;\r\n}\r\n\r\nexport interface IDadosAdicionais{\r\n    categoriaClassificacao?: string;\r\n    situacao?: string;\r\n}\r\n\r\nexport interface IDependentes {\r\n    nomeDependente?: string;\r\n    grauParentesco?: string;\r\n    telefonePrincipal?: number;\r\n    cpf?: number;\r\n    dataNascimento?: number;\r\n}\r\n",
             "properties": [
                 {
                     "name": "cpf",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 65
+                    "line": 90
                 },
                 {
                     "name": "dataNascimento",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 66
+                    "line": 91
                 },
                 {
                     "name": "grauParentesco",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 63
+                    "line": 88
                 },
                 {
                     "name": "nomeDependente",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 62
+                    "line": 87
                 },
                 {
                     "name": "telefonePrincipal",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 64
+                    "line": 89
                 }
             ],
             "indexSignatures": [],
@@ -158,102 +158,102 @@
         },
         {
             "name": "IEnderecos",
-            "id": "interface-IEnderecos-e6c0c586de1a341e8e5a3b632e97f220738f834b97b41c29239059aeec5fbd12c148d06fe41a62c0051011a4e1d8306f09fc6d68030ede2484b61a0b07f64ec0",
+            "id": "interface-IEnderecos-ae3af84ed0e58a0fba055a5ee4ca9a2906d3a15761218c877f6b0fa7d439c6c220ce17371e7efd663b36b832d7946068f27a433fb53c9c14d8e6b693c6683df1",
             "file": "src/app/shared/models/cliente.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export class ClienteModel {\n    id: number;\n    cliente: string;\n    tipoDePessoa: string;\n    cpf: number;\n    rg: number;\n    emissor: string;\n    nome: string;\n    dataNascimento: number;\n    naturalidade: string;\n    cep: number;\n    endereço: string;\n    numero: number;\n    complemento: string;\n    bairro: string;\n    cidade: string;\n    estado: string;\n    celular: number;\n    telefone: number;\n    tipoDeCadastro: string;\n    sexo: string;\n    estadoCivil: string;\n    profissao: string;\n    email: string;\n    receberSms: string;\n    receberTorpedo: string;\n    nomeDaMae: string;\n    nomeDoPai: string;\n    created_at: Date;\n    updated_at: Date;\n\n    /**\n     * Constructor\n     *\n     * @param data\n    */\n    constructor(data?) {\n        data = data || {};\n        this.id = data.id || '';\n    }\n}\n\nexport interface IEnderecos {\n    tipoDeEndereco: string;\n    tipoDePessoa: string;\n    cpf: number;\n    endereco: number;\n    numero: number;\n    complemento: string;\n    bairro: string;\n    cidade: string;\n    estado: string;\n    religiao: string;\n}\n\nexport interface IDadosAdicionais{\n    categoriaClassificacao: string;\n    situacao: string;\n}\n\nexport interface IDependentes {\n    nomeDependente: string;\n    grauParentesco: string;\n    telefonePrincipal: number;\n    cpf: number;\n    dataNascimento: number;\n}\n",
+            "sourceCode": "export class ClienteModel {\r\n    id?: number;\r\n    cliente?: string;\r\n    tipoDePessoa?: string;\r\n    cpf?: number;\r\n    rg?: number;\r\n    emissor?: string;\r\n    nome?: string;\r\n    dataNascimento?: number;\r\n    naturalidade?: string;\r\n    cep?: number;\r\n    endereco?: string;\r\n    numero?: number;\r\n    complemento?: string;\r\n    bairro?: string;\r\n    cidade?: string;\r\n    estado?: string;\r\n    celular?: number;\r\n    telefone?: number;\r\n    tipoDeCadastro?: string;\r\n    sexo?: string;\r\n    estadoCivil?: string;\r\n    profissao?: string;\r\n    email?: string;\r\n    receberSms?: string;\r\n    receberTorpedo?: string;\r\n    nomeDaMae?: string;\r\n    nomeDoPai?: string;\r\n    createdAt: Date;\r\n    updatedAt: Date;\r\n\r\n    /**\r\n     * Constructor\r\n     *\r\n     * @param data\r\n     *     */\r\n    constructor(data?) {\r\n        data = data || {};\r\n        this.id = data.id || '';\r\n        this.cliente = data.cliente || '';\r\n        this.tipoDePessoa = data.tipoDePessoa || '';\r\n        this.cpf = data.cpf || '';\r\n        this.rg = data.rg || '';\r\n        this.emissor = data.emissor || '';\r\n        this.nome = data.nome || '';\r\n        this.dataNascimento = data.dataNascimento ||'';\r\n        this.naturalidade = data.naturalidade || '';\r\n        this.cep = data.cep || '';\r\n        this.endereco = data.endereco || '';\r\n        this.numero = data.numero || '';\r\n        this.complemento = data.complemento || '';\r\n        this.bairro = data.bairro || '';\r\n        this.cidade = data.cidade || '';\r\n        this.estado = data.estado || '';\r\n        this.celular = data.celular || '';\r\n        this.tipoDeCadastro = data.tipoDeCadastro || '';\r\n        this.sexo = data.sexo || '';\r\n        this.estadoCivil = data. estadoCivil || '';\r\n        this.profissao = data. profissao || '';\r\n        this.email = data.email || '';\r\n        this.receberSms = data.receberSms || '';\r\n        this.receberTorpedo = data.receberTorpedo || '';\r\n        this.nomeDaMae = data.nomeDaMae || '';\r\n        this.nomeDoPai = data.nomeDoPai || '';\r\n     }\r\n}\r\n\r\nexport interface IEnderecos {\r\n    tipoDeEndereco?: string;\r\n    tipoDePessoa?: string;\r\n    cpf?: number;\r\n    endereco?: number;\r\n    numero?: number;\r\n    complemento?: string;\r\n    bairro?: string;\r\n    cidade?: string;\r\n    estado?: string;\r\n    religiao?: string;\r\n}\r\n\r\nexport interface IDadosAdicionais{\r\n    categoriaClassificacao?: string;\r\n    situacao?: string;\r\n}\r\n\r\nexport interface IDependentes {\r\n    nomeDependente?: string;\r\n    grauParentesco?: string;\r\n    telefonePrincipal?: number;\r\n    cpf?: number;\r\n    dataNascimento?: number;\r\n}\r\n",
             "properties": [
                 {
                     "name": "bairro",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 50
+                    "line": 75
                 },
                 {
                     "name": "cidade",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 51
+                    "line": 76
                 },
                 {
                     "name": "complemento",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 49
+                    "line": 74
                 },
                 {
                     "name": "cpf",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 46
+                    "line": 71
                 },
                 {
                     "name": "endereco",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 47
+                    "line": 72
                 },
                 {
                     "name": "estado",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 52
+                    "line": 77
                 },
                 {
                     "name": "numero",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 48
+                    "line": 73
                 },
                 {
                     "name": "religiao",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 53
+                    "line": 78
                 },
                 {
                     "name": "tipoDeEndereco",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 44
+                    "line": 69
                 },
                 {
                     "name": "tipoDePessoa",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 45
+                    "line": 70
                 }
             ],
             "indexSignatures": [],
@@ -262,19 +262,19 @@
         },
         {
             "name": "ILogin",
-            "id": "interface-ILogin-8e060259414e300b68f125ff9f4369a40da0220a81a43a7e41ba19166968f127ad107840cae70bc379e4efb2ce7e9fe52ca797731f41c074cc143ce1697f3589",
+            "id": "interface-ILogin-c135423eccc94c19c28984a57ae17b0240239a4b70d11d939bd147333cffed1991d4f457862d3d3b0c29b1041b380f59011884f402ada9ee42ef26bb3a34a699",
             "file": "src/app/shared/models/login.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface ILogin {\n    usuario: string;\n    senha: number;\n}\n",
+            "sourceCode": "export interface ILogin {\r\n    usuario?: string;\r\n    senha?: number;\r\n}\r\n",
             "properties": [
                 {
                     "name": "senha",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 3
                 },
@@ -283,7 +283,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 2
                 }
@@ -294,19 +294,19 @@
         },
         {
             "name": "IPlanoFunerario",
-            "id": "interface-IPlanoFunerario-bfc7da870886d78cbf177b798817f3af332f8e67956f158168ba66712c80435aaef684fba4f8fc2c3dd3195aab37ab83f40ca3790471a8cb9ca07224594469c4",
+            "id": "interface-IPlanoFunerario-35d3b2b8be3d380514a9617cb16ece8c67073990a093bca008715e41eef45d81809b8d6711b0951f11c31f4526b5eec043f5aba1cfe52210d6f73c245e576997",
             "file": "src/app/shared/models/plano-funerario.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface IPlanoFunerario {\n    id: number;\n    data: number;\n    nome: string;\n    plano: string;\n}\n",
+            "sourceCode": "export interface IPlanoFunerario {\r\n    id?: number;\r\n    data?: number;\r\n    nome?: string;\r\n    plano?: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "data",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 3
                 },
@@ -315,7 +315,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 2
                 },
@@ -324,7 +324,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 4
                 },
@@ -333,7 +333,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 5
                 }
@@ -356,6 +356,48 @@
         }
     ],
     "injectables": [
+        {
+            "name": "ButtonsService",
+            "id": "injectable-ButtonsService-eb9365b2e899861a296d9fa93b8e9aeafc2a46c728a6775dac246990219557534719d197ec7df673475978a280fa1d6c01463aee13452ad83d560107df21dca7",
+            "file": "src/app/components/buttons/buttons.component.service.ts",
+            "properties": [],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class ButtonsService {\n\n  constructor() { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "CheckboxService",
+            "id": "injectable-CheckboxService-fd9e256a3886fa293d1c48672d049ee2086f75ad61724a0dc1834dfa961bdff87bb96e3573260b56dcee4fa4db533bda7042571ece1de952d5d528919c88cfa4",
+            "file": "src/app/components/checkbox/checkbox.service.ts",
+            "properties": [],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class CheckboxService {\r\n\r\n  constructor() { }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
+        },
         {
             "name": "ClienteService",
             "id": "injectable-ClienteService-4305222806b22b76fbceaf5d7e078b3b8c4789652066d9353a9c58c3ca9b9582d3f554dc74532a146bf069b15f417182b74448279ccb4a077366166ac7adaa8f",
@@ -420,6 +462,27 @@
             "type": "injectable"
         },
         {
+            "name": "InputsService",
+            "id": "injectable-InputsService-cef834814e76b0a85d726baad96839a307e2857af4faaa4a2f2fd3d648ac953f5abde5145472b3042a17306c974f0cc345cd66ea0b4da4df88d0e10be587d44a",
+            "file": "src/app/components/inputs/inputs.component.service.ts",
+            "properties": [],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class InputsService {\r\n\r\n  constructor() { }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
+        },
+        {
             "name": "LoginService",
             "id": "injectable-LoginService-5e520b61d4ccc327c464e0e1218bde18f7c9513377ff7504a89e8ab1f0e4c9df7a895373e33b58be4b345d8e1e0947aae8c68655961d643485300deae44e6ebd",
             "file": "src/app/pages/login/login.service.ts",
@@ -430,6 +493,27 @@
             "description": "",
             "rawdescription": "\n",
             "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class LoginService {\n\n  constructor() { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "PaginationService",
+            "id": "injectable-PaginationService-f1517059fec829b543a025446078d619dad8531d41fe2bd53272e583707af3df8afc29d28538006dc10cf34f3990a917c46ab7f22219bee1bc0394b9ef9accf2",
+            "file": "src/app/components/pagination/pagination.component.service.ts",
+            "properties": [],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class PaginationService {\r\n\r\n  constructor() { }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -460,6 +544,27 @@
                 "line": 6
             },
             "type": "injectable"
+        },
+        {
+            "name": "TablesService",
+            "id": "injectable-TablesService-70a3f76a008ee04ab64dcec5bed1bc660b966cd3d92a349838428bacddcb4abcbfd9bd211ff7c2c590a1c89fa9d3706b979e5f0e5c70a9f0fe0a1ef85a376ec0",
+            "file": "src/app/components/tables/tables.service.ts",
+            "properties": [],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class TablesService {\n\n  constructor() { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
         }
     ],
     "guards": [],
@@ -467,12 +572,12 @@
     "classes": [
         {
             "name": "AppPage",
-            "id": "class-AppPage-543e2928e5938807259f4c72d225430f971fbd2f9a18650249c60272f1274c86e00e86254e990d9a9327f7ccf5f5f7069bf7ce2c954d5faacd7e3f595b480407",
+            "id": "class-AppPage-2af923dafa5325d608b567d7df5c17635298b8f070ab25b5aae0fcfe53867e8a08e59ec51e6a8e3681d9a13d3b05fc932a16777a85f17fed35f5d231626ade9c",
             "file": "e2e/src/app.po.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { browser, by, element } from 'protractor';\n\nexport class AppPage {\n  navigateTo(destination) {\n    return browser.get(destination);\n  }\n\n  getParagraphText() {\n    return element(by.deepCss('app-root ion-content')).getText();\n  }\n}\n",
+            "sourceCode": "import { browser, by, element } from 'protractor';\r\n\r\nexport class AppPage {\r\n  navigateTo(destination) {\r\n    return browser.get(destination);\r\n  }\r\n\r\n  getParagraphText() {\r\n    return element(by.deepCss('app-root ion-content')).getText();\r\n  }\r\n}\r\n",
             "properties": [],
             "methods": [
                 {
@@ -522,12 +627,12 @@
         },
         {
             "name": "ClienteModel",
-            "id": "class-ClienteModel-e6c0c586de1a341e8e5a3b632e97f220738f834b97b41c29239059aeec5fbd12c148d06fe41a62c0051011a4e1d8306f09fc6d68030ede2484b61a0b07f64ec0",
+            "id": "class-ClienteModel-ae3af84ed0e58a0fba055a5ee4ca9a2906d3a15761218c877f6b0fa7d439c6c220ce17371e7efd663b36b832d7946068f27a433fb53c9c14d8e6b693c6683df1",
             "file": "src/app/shared/models/cliente.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "export class ClienteModel {\n    id: number;\n    cliente: string;\n    tipoDePessoa: string;\n    cpf: number;\n    rg: number;\n    emissor: string;\n    nome: string;\n    dataNascimento: number;\n    naturalidade: string;\n    cep: number;\n    endereço: string;\n    numero: number;\n    complemento: string;\n    bairro: string;\n    cidade: string;\n    estado: string;\n    celular: number;\n    telefone: number;\n    tipoDeCadastro: string;\n    sexo: string;\n    estadoCivil: string;\n    profissao: string;\n    email: string;\n    receberSms: string;\n    receberTorpedo: string;\n    nomeDaMae: string;\n    nomeDoPai: string;\n    created_at: Date;\n    updated_at: Date;\n\n    /**\n     * Constructor\n     *\n     * @param data\n    */\n    constructor(data?) {\n        data = data || {};\n        this.id = data.id || '';\n    }\n}\n\nexport interface IEnderecos {\n    tipoDeEndereco: string;\n    tipoDePessoa: string;\n    cpf: number;\n    endereco: number;\n    numero: number;\n    complemento: string;\n    bairro: string;\n    cidade: string;\n    estado: string;\n    religiao: string;\n}\n\nexport interface IDadosAdicionais{\n    categoriaClassificacao: string;\n    situacao: string;\n}\n\nexport interface IDependentes {\n    nomeDependente: string;\n    grauParentesco: string;\n    telefonePrincipal: number;\n    cpf: number;\n    dataNascimento: number;\n}\n",
+            "sourceCode": "export class ClienteModel {\r\n    id?: number;\r\n    cliente?: string;\r\n    tipoDePessoa?: string;\r\n    cpf?: number;\r\n    rg?: number;\r\n    emissor?: string;\r\n    nome?: string;\r\n    dataNascimento?: number;\r\n    naturalidade?: string;\r\n    cep?: number;\r\n    endereco?: string;\r\n    numero?: number;\r\n    complemento?: string;\r\n    bairro?: string;\r\n    cidade?: string;\r\n    estado?: string;\r\n    celular?: number;\r\n    telefone?: number;\r\n    tipoDeCadastro?: string;\r\n    sexo?: string;\r\n    estadoCivil?: string;\r\n    profissao?: string;\r\n    email?: string;\r\n    receberSms?: string;\r\n    receberTorpedo?: string;\r\n    nomeDaMae?: string;\r\n    nomeDoPai?: string;\r\n    createdAt: Date;\r\n    updatedAt: Date;\r\n\r\n    /**\r\n     * Constructor\r\n     *\r\n     * @param data\r\n     *     */\r\n    constructor(data?) {\r\n        data = data || {};\r\n        this.id = data.id || '';\r\n        this.cliente = data.cliente || '';\r\n        this.tipoDePessoa = data.tipoDePessoa || '';\r\n        this.cpf = data.cpf || '';\r\n        this.rg = data.rg || '';\r\n        this.emissor = data.emissor || '';\r\n        this.nome = data.nome || '';\r\n        this.dataNascimento = data.dataNascimento ||'';\r\n        this.naturalidade = data.naturalidade || '';\r\n        this.cep = data.cep || '';\r\n        this.endereco = data.endereco || '';\r\n        this.numero = data.numero || '';\r\n        this.complemento = data.complemento || '';\r\n        this.bairro = data.bairro || '';\r\n        this.cidade = data.cidade || '';\r\n        this.estado = data.estado || '';\r\n        this.celular = data.celular || '';\r\n        this.tipoDeCadastro = data.tipoDeCadastro || '';\r\n        this.sexo = data.sexo || '';\r\n        this.estadoCivil = data. estadoCivil || '';\r\n        this.profissao = data. profissao || '';\r\n        this.email = data.email || '';\r\n        this.receberSms = data.receberSms || '';\r\n        this.receberTorpedo = data.receberTorpedo || '';\r\n        this.nomeDaMae = data.nomeDaMae || '';\r\n        this.nomeDoPai = data.nomeDoPai || '';\r\n     }\r\n}\r\n\r\nexport interface IEnderecos {\r\n    tipoDeEndereco?: string;\r\n    tipoDePessoa?: string;\r\n    cpf?: number;\r\n    endereco?: number;\r\n    numero?: number;\r\n    complemento?: string;\r\n    bairro?: string;\r\n    cidade?: string;\r\n    estado?: string;\r\n    religiao?: string;\r\n}\r\n\r\nexport interface IDadosAdicionais{\r\n    categoriaClassificacao?: string;\r\n    situacao?: string;\r\n}\r\n\r\nexport interface IDependentes {\r\n    nomeDependente?: string;\r\n    grauParentesco?: string;\r\n    telefonePrincipal?: number;\r\n    cpf?: number;\r\n    dataNascimento?: number;\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "<p>Constructor</p>\n",
@@ -547,8 +652,8 @@
                 "jsdoctags": [
                     {
                         "name": {
-                            "pos": 708,
-                            "end": 712,
+                            "pos": 767,
+                            "end": 771,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
@@ -560,8 +665,8 @@
                         "deprecationMessage": "",
                         "optional": true,
                         "tagName": {
-                            "pos": 702,
-                            "end": 707,
+                            "pos": 761,
+                            "end": 766,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
@@ -578,7 +683,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 15
                 },
@@ -587,7 +692,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 18
                 },
@@ -596,7 +701,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 11
                 },
@@ -605,7 +710,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 16
                 },
@@ -614,7 +719,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 3
                 },
@@ -623,7 +728,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 14
                 },
@@ -632,12 +737,12 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 5
                 },
                 {
-                    "name": "created_at",
+                    "name": "createdAt",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Date",
@@ -650,7 +755,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 9
                 },
@@ -659,7 +764,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 24
                 },
@@ -668,16 +773,16 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 7
                 },
                 {
-                    "name": "endereço",
+                    "name": "endereco",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 12
                 },
@@ -686,7 +791,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 17
                 },
@@ -695,7 +800,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 22
                 },
@@ -704,7 +809,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 2
                 },
@@ -713,7 +818,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 10
                 },
@@ -722,7 +827,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 8
                 },
@@ -731,7 +836,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 27
                 },
@@ -740,7 +845,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 28
                 },
@@ -749,7 +854,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 13
                 },
@@ -758,7 +863,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 23
                 },
@@ -767,7 +872,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 25
                 },
@@ -776,7 +881,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 26
                 },
@@ -785,7 +890,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 6
                 },
@@ -794,7 +899,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 21
                 },
@@ -803,7 +908,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 19
                 },
@@ -812,7 +917,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 20
                 },
@@ -821,12 +926,12 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 4
                 },
                 {
-                    "name": "updated_at",
+                    "name": "updatedAt",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Date",
@@ -847,7 +952,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-5d37a71e72b4a60698e638576a6446e550d4045e4f586971e9719e92f34cf71940c791c7514c608660e20170e39804a1b79288ec37eb77b5cc9fcd4bf394dab0",
+            "id": "component-AppComponent-5f1cb6e5c6acd86c9eb76697ccd3ec456f2d39614e1f971de66562b85e372375ee3bd80ac1659f95bc5b457fdc528ae0c06041dbdc4f1a4d2a6d037e5b38e295",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -868,7 +973,7 @@
             "propertiesClass": [
                 {
                     "name": "appPages",
-                    "defaultValue": "[\n    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },\n    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },\n    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },\n    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },\n    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },\n    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },\n  ]",
+                    "defaultValue": "[\r\n    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },\r\n    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },\r\n    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },\r\n    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },\r\n    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },\r\n    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },\r\n  ]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
@@ -901,11 +1006,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n@Component({\n  selector: 'app-root',\n  templateUrl: 'app.component.html',\n  styleUrls: ['app.component.scss'],\n})\nexport class AppComponent {\n  public appPages = [\n    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },\n    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },\n    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },\n    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },\n    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },\n    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },\n  ];\n  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];\n  constructor() {}\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: 'app.component.html',\r\n  styleUrls: ['app.component.scss'],\r\n})\r\nexport class AppComponent {\r\n  public appPages = [\r\n    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },\r\n    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },\r\n    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },\r\n    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },\r\n    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },\r\n    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },\r\n  ];\r\n  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];\r\n  constructor() {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "ion-menu ion-content {\n  --background: var(--ion-item-background, var(--ion-background-color, #fff));\n}\n\nion-menu.md ion-content {\n  --padding-start: 8px;\n  --padding-end: 8px;\n  --padding-top: 20px;\n  --padding-bottom: 20px;\n}\n\nion-menu.md ion-list {\n  padding: 20px 0;\n}\n\nion-menu.md ion-note {\n  margin-bottom: 30px;\n}\n\nion-menu.md ion-list-header,\nion-menu.md ion-note {\n  padding-left: 10px;\n}\n\nion-menu.md ion-list#inbox-list {\n  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);\n}\n\nion-menu.md ion-list#inbox-list ion-list-header {\n  font-size: 22px;\n  font-weight: 600;\n\n  min-height: 20px;\n}\n\nion-menu.md ion-list#labels-list ion-list-header {\n  font-size: 16px;\n\n  margin-bottom: 18px;\n\n  color: #757575;\n\n  min-height: 26px;\n}\n\nion-menu.md ion-item {\n  --padding-start: 10px;\n  --padding-end: 10px;\n  border-radius: 4px;\n}\n\nion-menu.md ion-item.selected {\n  --background: rgba(var(--ion-color-primary-rgb), 0.14);\n}\n\nion-menu.md ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.md ion-item ion-icon {\n  color: #616e7e;\n}\n\nion-menu.md ion-item ion-label {\n  font-weight: 500;\n}\n\nion-menu.ios ion-content {\n  --padding-bottom: 20px;\n}\n\nion-menu.ios ion-list {\n  padding: 20px 0 0 0;\n}\n\nion-menu.ios ion-note {\n  line-height: 24px;\n  margin-bottom: 20px;\n}\n\nion-menu.ios ion-item {\n  --padding-start: 16px;\n  --padding-end: 16px;\n  --min-height: 50px;\n}\n\nion-menu.ios ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.ios ion-item ion-icon {\n  font-size: 24px;\n  color: #73849a;\n}\n\nion-menu.ios ion-list#labels-list ion-list-header {\n  margin-bottom: 8px;\n}\n\nion-menu.ios ion-list-header,\nion-menu.ios ion-note {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n\nion-menu.ios ion-note {\n  margin-bottom: 8px;\n}\n\nion-note {\n  display: inline-block;\n  font-size: 16px;\n\n  color: var(--ion-color-medium-shade);\n}\n\nion-item.selected {\n  --color: var(--ion-color-primary);\n}",
+                    "data": "ion-menu ion-content {\r\n  --background: var(--ion-item-background, var(--ion-background-color, #fff));\r\n}\r\n\r\nion-menu.md ion-content {\r\n  --padding-start: 8px;\r\n  --padding-end: 8px;\r\n  --padding-top: 20px;\r\n  --padding-bottom: 20px;\r\n}\r\n\r\nion-menu.md ion-list {\r\n  padding: 20px 0;\r\n}\r\n\r\nion-menu.md ion-note {\r\n  margin-bottom: 30px;\r\n}\r\n\r\nion-menu.md ion-list-header,\r\nion-menu.md ion-note {\r\n  padding-left: 10px;\r\n}\r\n\r\nion-menu.md ion-list#inbox-list {\r\n  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);\r\n}\r\n\r\nion-menu.md ion-list#inbox-list ion-list-header {\r\n  font-size: 22px;\r\n  font-weight: 600;\r\n\r\n  min-height: 20px;\r\n}\r\n\r\nion-menu.md ion-list#labels-list ion-list-header {\r\n  font-size: 16px;\r\n\r\n  margin-bottom: 18px;\r\n\r\n  color: #757575;\r\n\r\n  min-height: 26px;\r\n}\r\n\r\nion-menu.md ion-item {\r\n  --padding-start: 10px;\r\n  --padding-end: 10px;\r\n  border-radius: 4px;\r\n}\r\n\r\nion-menu.md ion-item.selected {\r\n  --background: rgba(var(--ion-color-primary-rgb), 0.14);\r\n}\r\n\r\nion-menu.md ion-item.selected ion-icon {\r\n  color: var(--ion-color-primary);\r\n}\r\n\r\nion-menu.md ion-item ion-icon {\r\n  color: #616e7e;\r\n}\r\n\r\nion-menu.md ion-item ion-label {\r\n  font-weight: 500;\r\n}\r\n\r\nion-menu.ios ion-content {\r\n  --padding-bottom: 20px;\r\n}\r\n\r\nion-menu.ios ion-list {\r\n  padding: 20px 0 0 0;\r\n}\r\n\r\nion-menu.ios ion-note {\r\n  line-height: 24px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\nion-menu.ios ion-item {\r\n  --padding-start: 16px;\r\n  --padding-end: 16px;\r\n  --min-height: 50px;\r\n}\r\n\r\nion-menu.ios ion-item.selected ion-icon {\r\n  color: var(--ion-color-primary);\r\n}\r\n\r\nion-menu.ios ion-item ion-icon {\r\n  font-size: 24px;\r\n  color: #73849a;\r\n}\r\n\r\nion-menu.ios ion-list#labels-list ion-list-header {\r\n  margin-bottom: 8px;\r\n}\r\n\r\nion-menu.ios ion-list-header,\r\nion-menu.ios ion-note {\r\n  padding-left: 16px;\r\n  padding-right: 16px;\r\n}\r\n\r\nion-menu.ios ion-note {\r\n  margin-bottom: 8px;\r\n}\r\n\r\nion-note {\r\n  display: inline-block;\r\n  font-size: 16px;\r\n\r\n  color: var(--ion-color-medium-shade);\r\n}\r\n\r\nion-item.selected {\r\n  --color: var(--ion-color-primary);\r\n}",
                     "styleUrl": "app.component.scss"
                 }
             ],
@@ -918,7 +1023,7 @@
                 "args": [],
                 "line": 16
             },
-            "templateData": "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n"
+            "templateData": "<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n"
         },
         {
             "name": "ButtonComponent",
@@ -1045,24 +1150,49 @@
             }
         },
         {
-            "name": "ButtonComponent",
-            "id": "component-ButtonComponent-1b11bab0cb3c76ffdd93ef03f962fcebb9d6ed285dad31f4b236a475ee85a2de2e58623200aaab740d39ff6dbb3098c3bf7c030af23e4c813cb64caac3859c3a-1",
-            "file": "src/app/components/button/button.component.ts",
+            "name": "ButtonsComponent",
+            "id": "component-ButtonsComponent-8277378233196f1a2b21729d6e11a2b154b7a0c447b8a448b9a6de308b3bab00f321fa60621515eea10f477913d6cb0448fb6206f350917fd51484c32d7c89b4",
+            "file": "src/app/components/buttons/buttons.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-button",
+            "selector": "app-butons",
             "styleUrls": [
-                "./button.component.scss"
+                "./buttons.component.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./button.component.html"
+                "./buttons.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "\"primary\" | \"secondary\"",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [
@@ -1072,7 +1202,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 12,
+                    "line": 15,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1084,12 +1214,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-butons',\n  templateUrl: './buttons.component.html',\n  styleUrls: ['./buttons.component.scss'],\n})\nexport class ButtonsComponent implements OnInit {\n  @Input() type: 'primary' | 'secondary';\n  @Input() color: string;\n  @Input() label: string;\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
-                    "styleUrl": "./button.component.scss"
+                    "data": ".btn{\r\n  width: 336px;\r\n  height: 44px;\r\n  font-size: 15px;\r\n  border-radius: 5px;\r\n  color: #FFFFFF;\r\n  margin: 7px 0 0 0;\r\n  border: 1px solid #015581;\r\n  background-color: #015581;\r\n  cursor: pointer;\r\n}\r\n",
+                    "styleUrl": "./buttons.component.scss"
                 }
             ],
             "stylesData": "",
@@ -1099,19 +1229,16 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8
+                "line": 11
             },
             "implements": [
                 "OnInit"
             ],
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "ButtonComponent-1",
-            "templateData": "<p>\n  button works!\n</p>\n"
+            "templateData": "<ion-content>\n  <button class=\"btn btn-recuperar-senha\">{{name}}</button>\n</ion-content>\n"
         },
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-760767e8578d9d47abd389372abd9ecd7dbd9f00596010dd6164d0d1f113213570827e2908ab81ea68fe8ae9cff682e79c7295e545886a2a001644e785299862",
+            "id": "component-CheckboxComponent-55d8ed61844925833ca01bb64bd553a2b7b22d7fff92d90b2e6d6cfc1e911a574b69975efcadf9998f247025114c01dc972cf46b172cc2a2559115d250dba8ef",
             "file": "src/app/components/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1127,7 +1254,16 @@
                 "./checkbox.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "\"password\" | \"checkAccount\"",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [
@@ -1137,7 +1273,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 12,
+                    "line": 14,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1149,11 +1285,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-checkbox',\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.scss'],\n})\nexport class CheckboxComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-checkbox',\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.scss'],\n})\nexport class CheckboxComponent implements OnInit {\n  @Input () type: 'password' | 'checkAccount';\n\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "\r\n.remember-password{\r\n    display: inline-flex;\r\n}\r\n\r\ninput{\r\n    height: 24px;\r\n    width: 24px;\r\n    border: 1px solid  #186E9D;\r\n    border-radius: 5px;\r\n}\r\n\r\n.user{\r\n    font-family: \"Montserrat\";\r\n    font-size: 14px;\r\n    padding: 3px 0 0 4px;\r\n}",
                     "styleUrl": "./checkbox.component.scss"
                 }
             ],
@@ -1164,12 +1300,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8
+                "line": 9
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<p>\n  checkbox works!\n</p>\n"
+            "templateData": "<div class=\"remember-password\">\r\n    <input type=\"checkbox\" name=\"remenber-password\" id=\"password\" class=\"check checkbox--{{type}}\">\r\n    <label for=\"checkbox\" class=\"user\">{{name}}</label>\r\n</div>\r\n"
         },
         {
             "name": "ClienteComponent",
@@ -1231,7 +1367,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ion-content></ion-content>\n"
+            "templateData": "<ion-content></ion-content>\r\n"
         },
         {
             "name": "ContasReceberComponent",
@@ -1293,7 +1429,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ion-content></ion-content>\n"
+            "templateData": "<ion-content></ion-content>\r\n"
         },
         {
             "name": "DashboardComponent",
@@ -1339,7 +1475,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "*{\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: 'Montserrat';\r\n}\r\n\r\n.container{\r\n  width: 100vw;\r\n  height: 100vh;\r\n  border-radius: 20px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.menu{\r\n  width: 100vw;\r\n  height: 100px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.main{\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0 auto;\r\n  display: flexbox;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.icon{\r\n  height: 210px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.icon-caderno{\r\n  width: 62px;\r\n}\r\n\r\np{\r\n  width: 184px;\r\n  margin-top: 1rem;\r\n  text-align: center;\r\n  font-weight: 600;\r\n  color: #5A5A5A;\r\n}\r\n.botoes{\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  margin-top: 2rem;\r\n}\r\n.btn{\r\n  width: 336px;\r\n  height: 44px;\r\n  font-size: 15px;\r\n  border-radius: 5px;\r\n  color: #FFFFFF;\r\n  margin: 7px 0 0 0;\r\n  border: 1px solid #015581;\r\n  background-color: #015581;\r\n  cursor: pointer;\r\n}\r\n",
                     "styleUrl": "./dashboard.page.scss"
                 }
             ],
@@ -1355,7 +1491,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ion-content>\n  \n</ion-content>\n"
+            "templateData": "<ion-content>\r\n  <div class=\"container\">\r\n    <div class=\"menu\">\r\n      <img src=\"../../../assets/icon/logo.png\" alt=\"Logo\">\r\n    </div>\r\n    <div class=\"main\">\r\n      <div class=\"icon-text\">\r\n        <div class=\"icon\">\r\n         <img class=\"icon-caderno\" src=\"../../../assets/icon/caderno-com-lista-e-lapis.png\" alt=\"\">\r\n           <p>Bem vindo ao sistema de controle funerário</p>\r\n        </div>\r\n      </div>\r\n      <div class=\"botoes\">\r\n        <button class=\"btn\"></button>\r\n        <button class=\"btn\"></button>\r\n        <button class=\"btn\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n    <!-- <div class=\"mobile\">\r\n      <div class=\"menu\">\r\n          <img src=\"./logo.png\" alt=\"logo\">\r\n          <button class=\"image\"><img class=\"icone-menu\" src=\"./menu-aberto.png\" alt=\"\"></i></button>\r\n      </div>\r\n      <div class=\"icon-caderno\">\r\n          <img class=\"caderno\" src=\"./Caminho 23.png\" alt=\"\">\r\n          <p class=\"text\">Bem vindo ao sistema de controle funerário</p>\r\n      </div>\r\n      <div class=\"botoes\">\r\n          <button class=\"btn\">CLIENTES E FORNECEDORES</button>\r\n          <button class=\"btn\">CONTAS A RECEBER</button>\r\n          <button class=\"btn\">PLANOS</button>\r\n      </div>\r\n  </div> -->\r\n</ion-content>\r\n"
         },
         {
             "name": "HeaderComponent",
@@ -1431,9 +1567,9 @@
             "stylesData": ""
         },
         {
-            "name": "IconComponent",
-            "id": "component-IconComponent-1c1ac6c3a142590b1a0be2b10162cd5a30843643b11475e82bd8d8e91152f7204c0f7de16d077772d81f0aaabe2a9cd9d3e79403a2d17e9471a2195c66122435",
-            "file": "src/app/components/icon/icon.component.ts",
+            "name": "IconsComponent",
+            "id": "component-IconsComponent-e90e7e8ec4d3631a43e7c3f029cc9aed1644cc2fcbcdbb1f100b6a3406dee105f956c9766a30f71038e1ac292da704476761b69019f5d1ae2ae82106720781ba",
+            "file": "src/app/components/icons/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -1470,7 +1606,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconsComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1490,27 +1626,44 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<p>\n  icon works!\n</p>\n"
+            "templateData": "\n"
         },
         {
-            "name": "InputComponent",
-            "id": "component-InputComponent-a0c6d6453893818432e71e225cd2cbd8a256db5d72d4deda989d74693e53213b534240b4d86c32db988e2789a638138474e003e4b21b7504c7c20d29d388b8c8",
-            "file": "src/app/components/input/input.component.ts",
+            "name": "InputsComponent",
+            "id": "component-InputsComponent-be123ff8ed355adf3ba822d7d05d2768ceba9b999358e609619fb50d38160598dfeb56a1658e1172770ea2a27f17d8d037c1095b69eaa00252027b2fd71e3197",
+            "file": "src/app/components/inputs/inputs.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-input",
+            "selector": "app-inputs",
             "styleUrls": [
-                "./input.component.scss"
+                "./inputs.component.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./input.component.html"
+                "./inputs.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "\"Email\" | \"Password\"",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [
@@ -1532,12 +1685,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n})\nexport class InputComponent implements OnInit {\n  \n  \n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-inputs',\n  templateUrl: './inputs.component.html',\n  styleUrls: ['./inputs.component.scss'],\n})\nexport class InputsComponent implements OnInit {\n  @Input() type: 'Email' | 'Password';\n  @Input() label: string;\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "input{\n    width: 336px;\n    height: 44px;\n    font-family: 'Montserrat';\n    font-size: 18px;\n    border-radius: 5px;\n    border: 1px solid #707070;\n    padding-left: 3rem;\n    background: transparent;\n    background-color: #ffffff;\n}\n\ninput:focus {\n    box-shadow: 0 0 0 0;\n    outline: 0;\n}",
-                    "styleUrl": "./input.component.scss"
+                    "data": ".form-login{\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\ninput{\r\n    width: 336px;\r\n    height: 44px;\r\n    font-family: 'Montserrat';\r\n    font-size: 16px;\r\n    border-radius: 5px;\r\n    border: 1px solid #707070;\r\n    padding-left: 3rem;\r\n    background: transparent;\r\n    background-color: #ffffff;\r\n}\r\n\r\ninput:focus {\r\n    box-shadow: 0 0 0 0;\r\n    outline: 0;\r\n}\r\n\r\n.icon-login{\r\n    position: relative;\r\n    left: 37px;\r\n    top: 5px;\r\n    width: 23px;\r\n    color: #000000;\r\n}\r\n\r\n.selecao{\r\n    width: 336px;\r\n    height: 44px;\r\n    font-family: 'Montserrat';\r\n    font-size: 16px;\r\n    border-radius: 5px;\r\n    border: 1px solid #707070;\r\n    padding-left: 3rem;\r\n    background-color: #ffffff;\r\n}\r\nselect {\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    text-indent: 1px;\r\n    text-overflow: '';\r\n  }\r\n\r\n  .seta-icon{\r\n      position: relative;\r\n      right: 2rem;\r\n  }\r\n\r\nimg{\r\n    margin-top: 10px;\r\n    width: 23px;\r\n    position: fixed;\r\n}",
+                    "styleUrl": "./inputs.component.scss"
                 }
             ],
             "stylesData": "",
@@ -1547,12 +1700,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8
+                "line": 10
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<input type=\"text\">\n"
+            "templateData": "\n\n        <p>\n            <span>{{icon}}</span>\n            <input type=\"email\" name=\"email\" class=\"{{type}}\" id=\"email\" value=\" \" placeholder=\"{{name}}\"/>\n        </p>\n\n        <div class=\"selecoes\">\n            <select class=\"selecao {{type}}\" placeholder=\"{{name}}\">\n                <option value=\"\"></option>\n            </select>\n            <span class=\"seta-icon\"><img src=\"../../../assets/icon/seta-para-baixo.png\" alt=\"seta\"></span>\n        </div>\n        \n        <!-- <p>\n            <span><img class=\"icon-login\" src=\"../../../assets/icon/cadeado.png\" alt=\"\"></span>\n            <input type=\"password\" name=\"password\" class=\"passoword--{{type}}\" id=\"number\" value=\"\" placeholder=\"Senha\" />\n        </p> -->\n   \n"
         },
         {
             "name": "LoginComponent",
@@ -1598,7 +1751,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "*{\n\n    font-family: 'Montserrat';\n}\n\n.container{\n    width: 100vw;\n    height: 100vh;\n    display: flex;\n    justify-content: center;\n    background: white;\n}\n\n.main{\n    background-color: #186E9D;\n    width: 400px;\n    height: 600px;\n    border-end-end-radius: 30px;\n}\n\n.logo{\n    background-color: #FFFFFF;\n    display: flex;\n    justify-content: center;\n    height: 20%;\n    width: 100%;\n}\n\n.alianca{\n    image-rendering: -webkit-optimize-contrast;\n    object-fit:contain;\n    width: 276px;\n    height: 76px;\n}\n\n.name{\n    margin-top: 3rem;\n    font-size: 23px;\n    color: #FFFFFF;\n}\n.form-login{\n    display: grid;\n    justify-content: center;\n}\n\n.check{\n    width: 23px;\n    height: 23px;\n    margin-right: 5px;\n}\n.recuperar{\n    display: flex;\n    align-items: center;\n    margin-top: 1.5rem;\n    padding-left: 3rem;\n    color: #FFFFFF;\n}\n\n.button-entrar{\n    display: flex;\n    justify-content: center;\n    margin-top: 2rem;\n}\na{\n    text-decoration: none;\n    color: #043F59;\n}\n\n.btn {\n    background-color: #FFFFFF;\n    color: #043F59;\n    border-radius: 5px;\n    border: 1px solid #186E9D;\n    width: 336px;\n    height: 40px;\n    font-weight: 700;\n    cursor: pointer;\n    font-size: 18px;\n}\n.recuperar-senha{\n    display: grid;\n    justify-content: center;\n    margin-top: 3rem;\n    font-weight: bold;\n}\n\n.name-recuperar{\n    margin-bottom: 7px;\n    text-align: center;\n    color: #FFFFFF;\n}\n\n.btn-senha{\n    width: 336px;\n    height: 44px;\n    font-family: 'Montserrat';\n    font-size: 15px;\n    border-radius: 5px;\n    color: #FFFFFF;\n    border: 1px solid #015581;\n    background-color: #015581;\n    cursor: pointer;\n}\n",
+                    "data": "*{\r\n   font-family: 'Montserrat';\r\n}\r\n\r\n#container a {\r\n  text-decoration: none;\r\n}\r\n.container{\r\n    width: 100vw;\r\n    height: 100vh;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n#container-principal{\r\n  width: 100vw;\r\n  height: 100vh;\r\n  box-sizing: border-box;\r\n}\r\n.container-logo{\r\n  width: 100vw;\r\n  height: 15vh;\r\n  background-color: #FFFFFF;\r\n}\r\n.sub-principal{\r\n  background-color: #186E9D;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  box-sizing: border-box;\r\n  border-end-end-radius: 20px;\r\n  border-end-start-radius: 20px;\r\n}\r\n\r\n.main{\r\n  margin: 0 auto;\r\n  width: 400px;\r\n  height: 500px;\r\n}\r\n\r\n.logo{\r\n  background-color: #FFFFFF;\r\n  display: flex;\r\n  margin-top: 2.5rem;\r\n  justify-content: center;\r\n  height: 15%;\r\n  width: 100%;\r\n}\r\n\r\n.alianca{\r\n  image-rendering: -webkit-optimize-contrast;\r\n  object-fit:contain;\r\n  width: 276px;\r\n  height: 76px;\r\n}\r\n\r\ninput{\r\n  width: 336px;\r\n  height: 44px;\r\n  font-family: 'Montserrat';\r\n  font-size: 18px;\r\n  border-radius: 5px;\r\n  border: 1px solid #707070;\r\n  padding-left: 3rem;\r\n  background: transparent;\r\n  background-color: #ffffff;\r\n}\r\n\r\ninput:focus {\r\n  box-shadow: 0 0 0 0;\r\n  outline: 0;\r\n}\r\n.icone{\r\n  width: 23px;\r\n  display: inline;\r\n  position: relative;\r\n  top: 2.3rem;\r\n  left: 1rem;\r\n}\r\n.name{\r\n  margin-top: 3rem;\r\n  font-size: 23px;\r\n  color: #FFFFFF;\r\n}\r\n.form-login{\r\n  display: grid;\r\n  justify-content: center;\r\n}\r\n\r\n.check{\r\n  width: 23px;\r\n  height: 23px;\r\n  margin-right: 5px;\r\n  border-radius: 20%;\r\n}\r\n.recuperar{\r\n  display: flex;\r\n  align-items: center;\r\n  margin-top: 1.5rem;\r\n  padding-left: 2rem;\r\n  color: #FFFFFF;\r\n}\r\n\r\n.button-entrar{\r\n  display: flex;\r\n  justify-content: center;\r\n  margin-top: 2rem;\r\n}\r\na{\r\n  text-decoration: none;\r\n  color: #043F59;\r\n}\r\n\r\n.btn {\r\n  background-color: #FFFFFF;\r\n  color: #043F59;\r\n  border-radius: 5px;\r\n  border: 1px solid #186E9D;\r\n  width: 336px;\r\n  height: 40px;\r\n  font-weight: 700;\r\n  cursor: pointer;\r\n  font-size: 18px;\r\n}\r\n.recuperar-senha{\r\n  display: grid;\r\n  justify-content: center;\r\n  margin-top: 3rem;\r\n  font-weight: bold;\r\n}\r\n\r\n.name-recuperar{\r\n  margin-bottom: 7px;\r\n  text-align: center;\r\n  color: #FFFFFF;\r\n}\r\n\r\n.btn-senha{\r\n  width: 336px;\r\n  height: 44px;\r\n  font-size: 15px;\r\n  border-radius: 5px;\r\n  color: #FFFFFF;\r\n  border: 1px solid #015581;\r\n  background-color: #015581;\r\n  cursor: pointer;\r\n}\r\n",
                     "styleUrl": "./login.page.scss"
                 }
             ],
@@ -1614,24 +1767,24 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ion-content>\n  <div class=\"container\">\n    <div class=\"main\">\n        <div class=\"logo\">\n            <img class=\"alianca\" src=\"../../../assets/icon/logo.png\" alt=\"\">\n        </div>\n        <div class=\"form-login\">\n            <label class=\"name\" for=\"login\">Login</label><br>\n            <app-input></app-input><br>\n            <input type=\"password\"  placeholder=\"Senha\">\n        </div>\n        <div class=\"recuperar\">\n            <input class=\"check\" type=\"checkbox\">\n            <label for=\"\">Lembrar usuário</label>\n        </div>\n        <div class=\"button-entrar\">\n             <button class=\"btn\" ><a href=\"index.page2.html\">ENTRAR</a></button>\n        </div>\n        <div class=\"recuperar-senha\">\n            <span class=\"name-recuperar\">Esqueceu a senha?</span>\n         <button class=\"btn-senha\">RECUPERAR SENHA</button>\n        </div>\n        Tela login\n    </div>\n </div>\n\n</ion-content>\n"
+            "templateData": "<ion-content>\r\n  <div id=\"container-principal\">\r\n    <div class=\"sub-principal\">\r\n      <div class=\"container-logo\">\r\n        <div class=\"logo\">\r\n          <img class=\"alianca\" src=\"../../../assets/icon/logo.png\" alt=\"\">\r\n      </div>\r\n      </div>\r\n      <div class=\"main\">\r\n            <form action=\"\" class=\"form-login\">\r\n              <label class=\"name\" for=\"login\">Login</label><br>\r\n                 <img class=\"icone\" src=\"../../assets/icon/o-email.png\" alt=\"icone-email\">\r\n                  <input class=\"email\" type=\"text\" placeholder=\"E-mail\">\r\n                   <img class=\"icone\" src=\"../../assets/icon/cadeado.png\" alt=\"icone-senha\">\r\n                 <input class=\"senha\" type=\"password\"  placeholder=\"Senha\">\r\n            </form>\r\n          <div class=\"recuperar\">\r\n              <input class=\"check\" type=\"checkbox\">\r\n              <label for=\"\">Lembrar usuário</label>\r\n          </div><br>\r\n          <div class=\"button-entrar\">\r\n               <button class=\"btn\" ><a href=\"index.page2.html\">ENTRAR</a></button>\r\n          </div>\r\n          <div class=\"recuperar-senha\">\r\n              <span class=\"name-recuperar\">Esqueceu a senha?</span>\r\n           <button class=\"btn-senha\">RECUPERAR SENHA</button>\r\n          </div>\r\n      </div>\r\n   </div>\r\n  </div>\r\n\r\n</ion-content>\r\n"
         },
         {
-            "name": "LogoComponent",
-            "id": "component-LogoComponent-2b43a5d75a54667036da0f822af5099083096df62ab154eb2013af321a16d016feb6652a3791d175d611afb23bc1b5e86dfa15b63145418046d2570a8242b1a1",
-            "file": "src/app/components/logo/logo.component.ts",
+            "name": "LogoBrandComponent",
+            "id": "component-LogoBrandComponent-5754f0103dadace12393dfdcbd2a02c80a18ae5f1ea73b687d66e28067f26a29c9e6505efb5d0eada129b8ad93a5b621c69f3ad237aa993c21f9cb2233666c4a",
+            "file": "src/app/components/logobrand/logomarca.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-logo",
+            "selector": "app-logomarca",
             "styleUrls": [
-                "./logo.component.scss"
+                "./logomarca.component.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./logo.component.html"
+                "./logomarca.component.html"
             ],
             "viewProviders": [],
             "inputsClass": [],
@@ -1656,12 +1809,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-logo',\n  templateUrl: './logo.component.html',\n  styleUrls: ['./logo.component.scss'],\n})\nexport class LogoComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-logomarca',\n  templateUrl: './logomarca.component.html',\n  styleUrls: ['./logomarca.component.scss'],\n})\nexport class LogoBrandComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
-                    "styleUrl": "./logo.component.scss"
+                    "data": ".logo{\r\n    width: 100%;\r\n    height: 107px;\r\n}",
+                    "styleUrl": "./logomarca.component.scss"
                 }
             ],
             "stylesData": "",
@@ -1676,7 +1829,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<p>\n  logo works!\n</p>\n"
+            "templateData": "<div class=\"logo\">\n    \n</div>\n"
         },
         {
             "name": "PageComponent",
@@ -1759,21 +1912,21 @@
             "stylesData": ""
         },
         {
-            "name": "PaginacaoComponent",
-            "id": "component-PaginacaoComponent-375d4c44068c86afe8d6c1898004fac9a29f22e1c22cff57a3151332f768ea4aa149c353272db5af64276910e09874d8601439f832e3f2f623527c1fafb81abf",
-            "file": "src/app/components/paginacao/paginacao.component.ts",
+            "name": "PaginationComponent",
+            "id": "component-PaginationComponent-557fa935bf7657c874c07c1b2d2bc987cae331046c2abc8247107f62a9e8eb347d9bc5bfcd9282dd267fc2e573f80766216aea7b0493a35ce0140cd0242aa3b2",
+            "file": "src/app/components/pagination/pagination.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-paginacao",
+            "selector": "app-pagination",
             "styleUrls": [
-                "./paginacao.component.scss"
+                "./pagination.component.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./paginacao.component.html"
+                "./pagination.component.html"
             ],
             "viewProviders": [],
             "inputsClass": [],
@@ -1798,12 +1951,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-paginacao',\n  templateUrl: './paginacao.component.html',\n  styleUrls: ['./paginacao.component.scss'],\n})\nexport class PaginacaoComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-pagination',\n  templateUrl: './pagination.component.html',\n  styleUrls: ['./pagination.component.scss'],\n})\nexport class PaginationComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
                     "data": "",
-                    "styleUrl": "./paginacao.component.scss"
+                    "styleUrl": "./pagination.component.scss"
                 }
             ],
             "stylesData": "",
@@ -1818,11 +1971,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<p>\n  paginacao works!\n</p>\n"
+            "templateData": "<p>\n  pagination works!\n</p>\n"
         },
         {
             "name": "PlanoFunerarioComponent",
-            "id": "component-PlanoFunerarioComponent-79daae6a2af78b4787f83a16ff276e8f0779f4256c6b25422304a8b9bac2ee41ba6aa1c2ad41ee5a7cebc9e52a84f55d1d2e8cccf7b17fd91243c7cd5bb12437",
+            "id": "component-PlanoFunerarioComponent-505d7e01b3c572aa7c1e4717c3dbab0de8418562305f453a9beaad68c36f4384b27661ac76c65235063ea515e5dc582969f155bc62ca5786c295043e64a178ad",
             "file": "src/app/pages/plano-funerario/plano-funerario.page.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1848,7 +2001,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 12,
+                    "line": 11,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1860,7 +2013,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-plano-funerario',\n  templateUrl: './plano-funerario.page.html',\n  styleUrls: ['./plano-funerario.page.scss'],\n})\nexport class PlanoFunerarioComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n@Component({\n  selector: 'app-plano-funerario',\n  templateUrl: './plano-funerario.page.html',\n  styleUrls: ['./plano-funerario.page.scss'],\n})\nexport class PlanoFunerarioComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1875,29 +2028,29 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8
+                "line": 7
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ion-content></ion-content>\n"
+            "templateData": "<ion-content></ion-content>\r\n"
         },
         {
-            "name": "TabelaComponent",
-            "id": "component-TabelaComponent-9e43dd7f6509da91288453c3acd2279cd592c2891f892bc9d414ad0a89b57f0cee5bceaef60bdaeea5b073ac765562edaa75fc14caa5239c45324aaf165fa386",
-            "file": "src/app/components/tabela/tabela.component.ts",
+            "name": "TablesComponent",
+            "id": "component-TablesComponent-9a6d203b731e57cbb020d67d84c4d4a212ea730d9300012c3dbd147e97fce4a9b20840cf46c619972b37403fe270f161a469e65605eb8853a75bcf97180314c1",
+            "file": "src/app/components/tables/tables.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-tabela",
+            "selector": "app-tables",
             "styleUrls": [
-                "./tabela.component.scss"
+                "./tables.component.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./tabela.component.html"
+                "./tables.component.html"
             ],
             "viewProviders": [],
             "inputsClass": [],
@@ -1922,12 +2075,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-tabela',\n  templateUrl: './tabela.component.html',\n  styleUrls: ['./tabela.component.scss'],\n})\nexport class TabelaComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-tables',\n  templateUrl: './tables.component.html',\n  styleUrls: ['./tables.component.scss'],\n})\nexport class TablesComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
                     "data": "",
-                    "styleUrl": "./tabela.component.scss"
+                    "styleUrl": "./tables.component.scss"
                 }
             ],
             "stylesData": "",
@@ -1942,19 +2095,19 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<p>\n  tabela works!\n</p>\n"
+            "templateData": "<p>\n  tables works!\n</p>\n"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-b06a5d8351e06542631aa390b458ca9cd53dad902ed6b781a56d012ccadae797bf9d2a745043e1846ebb540daf117de9b2b532ca983209f02f663bd4e1c4e16b",
+            "id": "module-AppModule-90efd3320cf9d4d4ad1e93805c568ee53fc4ec7e94b601f3b971429507cd43201d833d0bad14f6e1774e1f76324226620b4fbdf5262a418434b09a1b55ba3ffb",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { RouteReuseStrategy } from '@angular/router';\n\nimport { IonicModule, IonicRouteStrategy } from '@ionic/angular';\n\nimport { AppComponent } from './app.component';\nimport { AppRoutingModule } from './app-routing.module';\n\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  entryComponents: [],\n  imports: [\n    BrowserModule,\n    IonicModule.forRoot(),\n    AppRoutingModule\n  ],\n  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { RouteReuseStrategy } from '@angular/router';\r\n\r\nimport { IonicModule, IonicRouteStrategy } from '@ionic/angular';\r\nimport { AppComponent } from './app.component';\r\nimport { AppRoutingModule } from './app-routing.module';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  entryComponents: [],\r\n  imports: [\r\n    BrowserModule,\r\n    IonicModule.forRoot(),\r\n    AppRoutingModule\r\n  ],\r\n  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -1996,13 +2149,93 @@
         },
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-1bd9d5dcac839a2d2d8be6bfe2b155684767c10dd9243bdcb97b35a0c2ba406511ecd02058a6e0832a21049fd912289f99abc2dff2c7f3fe0accf48eed457e5c",
+            "id": "module-AppRoutingModule-a45650a0c846cb86b742cfc6437df6fdf22d9a5407ea5108d38b1703249a008c16ed9c6471e3967435307388c0b1b82d828e0b6d5cfdcb3b118f84db0a45cc9d",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { PreloadAllModules, RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [\n  {\n    path: '',\n    redirectTo: 'login',\n    pathMatch: 'full'\n  },\n  {\n    path: 'login', loadChildren: () => \"import('./pages/login/login.module').then( m => m.LoginModule)\"\n  }\n];\n\n@NgModule({\n  imports: [\n    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })\n  ],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { PreloadAllModules, RouterModule, Routes } from '@angular/router';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: '',\r\n    redirectTo: 'login',\r\n    pathMatch: 'full'\r\n  },\r\n  {\r\n    path: 'login', loadChildren: () => \"import('./pages/login/login.module').then( m => m.LoginModule)\"\r\n  },\r\n  {\r\n    path: '',\r\n    redirectTo: 'sistema',\r\n    pathMatch: 'full'\r\n  },\r\n  {\r\n    path: 'sistema', loadChildren: () => \"import('./pages/dashboard/dashboard.module').then( m => m.DashboardModule)\"\r\n  },\r\n];\r\n@NgModule({\r\n  imports: [\r\n    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })\r\n  ],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule {}\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ButtonsModule",
+            "id": "module-ButtonsModule-1a4c4ff0e2519ae7facc3fc859c8ddbea1660c7e9661ef600277abfcc4e41098bbe0bf43ce8be4b0dbee51e0f3f7ae7001dfc7d026ebd70c4d513c9e7a642c7b",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/components/buttons/buttons.module.ts",
+            "methods": [],
+            "sourceCode": "import { ButtonsComponent } from './buttons.component';\nimport { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@NgModule({\n  declarations: [\n    ButtonsComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n    ButtonsComponent\n  ]\n})\nexport class ButtonsModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ButtonsComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ButtonsComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "CheckboxModule",
+            "id": "module-CheckboxModule-5b704eefe1787c6c7f8da0284917a26d19f961ee3de5f6f0d477b94b32028d3593b8e39285b148a1364a0cd6bc97f1f775fbdca35f41b580b7da6a183d2494ba",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/components/checkbox/checkbox.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class CheckboxModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -2032,13 +2265,13 @@
         },
         {
             "name": "ClienteModule",
-            "id": "module-ClienteModule-f3022024aa958a998e00b351d9554154ff9c958e19ae474cefad0cb633b925558937f52b0a8cb4d51c34afda202c95c37e608ab98d09975b5d07c22b75a4317c",
+            "id": "module-ClienteModule-054390d0eb528ac9afbd4f990ce4afa8279ae30d906049ef96ad938cc99247f0906a11ed77261496e4934b250c0f570f3b21f6539c5254653401d95523903098",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/cliente/cliente.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class ClienteModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class ClienteModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -2068,13 +2301,13 @@
         },
         {
             "name": "ContasReceberModule",
-            "id": "module-ContasReceberModule-beaef0853bae569c8241a50fdd7d555945f9abf0a5094fe9ef37693b61e53ce3e3443b59d6565669953374274e99a3659e0f51940e583d252c7f7c2197270d9c",
+            "id": "module-ContasReceberModule-e97d0deccd82c0b56213137a09c05a9e9f1d77e0e2cf5541efb6da1927267f908532057f2530b613d5d78936c6c1f09485ef906a35396e7c26bb7a8b767835a9",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/contas-receber/contas-receber.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class ContasReceberModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class ContasReceberModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -2104,13 +2337,53 @@
         },
         {
             "name": "DashboardModule",
-            "id": "module-DashboardModule-ac49b2bcccd9426032db7ca337f77707ab1226a09825b75f859c968e17b9a8125f3cd60eeb6ef799773514210262ed00016adc5c51f1e733c49fab3c45792dc0",
+            "id": "module-DashboardModule-90b9d5a24349a3100cfd0d73cd63d60939fde61e5aa8d2e05df1e5b83b312dbd5d615bc29c57482d9d7699be622f85fe1639afb3bbb27c1ce0a9930843d5cb95",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/dashboard/dashboard.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class DashboardModule { }\n",
+            "sourceCode": "import { DashboardPageRoutingModule } from './dashboard-rounting.module';\nimport { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule,\n    DashboardPageRoutingModule\n  ]\n})\nexport class DashboardModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "DashboardPageRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "DashboardPageRoutingModule",
+            "id": "module-DashboardPageRoutingModule-46432394c7cbcb2c79e63bb9dc4e8b2ecd3c4066c9adf471286c14dee129f4565b1d63a1bb81d22fd22566036a7b2ca3368a4f574796c9f11bef0b31fc04c21a",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/pages/dashboard/dashboard-rounting.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { Routes, RouterModule } from '@angular/router';\r\nimport { DashboardComponent} from './dashboard.page';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: '',\r\n    component: DashboardComponent\r\n  }\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule],\r\n})\r\nexport class DashboardPageRoutingModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -2139,14 +2412,14 @@
             ]
         },
         {
-            "name": "InputModule",
-            "id": "module-InputModule-e0b1c7a7ac45fb0adc97cb8cfa2fcb96b388b0bbdf880fffc105ea6a30de1e3f877fd5ddb59f73b68b51e21a2d9a22310147e0f1c4ecab76a53ae75c2b010fb0",
+            "name": "IconsModule",
+            "id": "module-IconsModule-6bb113789fc61f40968d9126be6ba9913fa08109e4cf7e638a9e60c9e1bc6f0d14addd18393d98b1d5cac5ec1fb0b0fdfa11aad9397890fbbd2865e543deb4bc",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "src/app/components/input/input.module.ts",
+            "file": "src/app/components/icons/icons.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input.component';\n\n\n\n@NgModule({\n  declarations: [\n    InputComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n    InputComponent\n  ]\n})\nexport class InputModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class IconsModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -2154,11 +2427,7 @@
                 },
                 {
                     "type": "declarations",
-                    "elements": [
-                        {
-                            "name": "InputComponent"
-                        }
-                    ]
+                    "elements": []
                 },
                 {
                     "type": "imports",
@@ -2166,11 +2435,43 @@
                 },
                 {
                     "type": "exports",
-                    "elements": [
-                        {
-                            "name": "InputComponent"
-                        }
-                    ]
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "InputsModule",
+            "id": "module-InputsModule-d0e21aa5dd0fe904c6e80027f638c2fdf5b2f769d7fb75f0926568350f99bd3d0367d325e7e26a1f97610a511be8fc2dca8f120e7e82c7103714d62f31679419",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/components/inputs/inputs.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class InputsModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
                 },
                 {
                     "type": "bootstrap",
@@ -2184,13 +2485,13 @@
         },
         {
             "name": "LoginModule",
-            "id": "module-LoginModule-953c2947576f58e8e14ff4a01b85ef760c93ffd2f925a20f158fbe4c2f06b9d94176c05890bd44e3e6114b648163f55fd064eb535e0533dbb4c54b2455deac4c",
+            "id": "module-LoginModule-0a7878035c160be27c6671012db792b15f6ce3df8f143f8464e661e1fa7758b12f85447fed2aa2dde3392b4648dc9eedf6192118e961dd677d29af0afae8b82d",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/login/login.module.ts",
             "methods": [],
-            "sourceCode": "import { LoginComponent } from './login.page';\nimport { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { LoginPageRoutingModule } from './login-routing.module';\nimport { InputModule } from 'src/app/components/input/input.module';\n\n\n\n@NgModule({\n  declarations: [\n    LoginComponent\n  ],\n  imports: [\n    CommonModule,\n    LoginPageRoutingModule,\n    InputModule\n  ],\n  exports: [LoginComponent]\n})\nexport class LoginModule { }\n",
+            "sourceCode": "import { LoginComponent } from './login.page';\r\nimport { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { LoginPageRoutingModule } from './login-routing.module';\r\nimport { InputsModule } from '../../components/index';\r\n@NgModule({\r\n  declarations: [\r\n    LoginComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    LoginPageRoutingModule,\r\n    InputsModule\r\n  ],\r\n  exports: [LoginComponent]\r\n})\r\nexport class LoginModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -2208,7 +2509,7 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "InputModule"
+                            "name": "InputsModule"
                         },
                         {
                             "name": "LoginPageRoutingModule"
@@ -2235,13 +2536,85 @@
         },
         {
             "name": "LoginPageRoutingModule",
-            "id": "module-LoginPageRoutingModule-b3843f6d963f2d39eaf11cb7e214d08bb76b8bc916d61fe76109dab7b97640cfe60e88b76992df9c853f314fc9d5930b6056bedf2ffd8e7016d596facd2f7aed",
+            "id": "module-LoginPageRoutingModule-5acf1c0b8c7a3905b1d1bf2d5ea485f113d82aa418f3393c0286b3dd5d90a112dbf624071d13c7a43f902af84f97910d0f328b71f99c6cc6b6e4f0cc9d871bb7",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/login/login-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { Routes, RouterModule } from '@angular/router';\n\nimport { LoginComponent } from './login.page';\n\nconst routes: Routes = [\n  {\n    path: '',\n    component: LoginComponent\n  }\n];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule],\n})\nexport class LoginPageRoutingModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { Routes, RouterModule } from '@angular/router';\r\n\r\nimport { LoginComponent } from './login.page';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: '',\r\n    component: LoginComponent\r\n  }\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule],\r\n})\r\nexport class LoginPageRoutingModule {}\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "LogobrandModule",
+            "id": "module-LogobrandModule-af915d0ea3aff02fd52294247aeb73572d5465107c90a161e271833503680567fd798b4adf84407dc6273bac4577d0beb85f4fa06b6b3a79b0bb152f314e5f64",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/components/logobrand/logobrand.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class LogobrandModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "PaginationModule",
+            "id": "module-PaginationModule-1702fe348a9a39dee92293ab5f940a07e08f778b12556e0692336626ca1e206edd3214a7c6eaf77e2941481d5bdcd336bb4023065876893bd1f41ed8c683c404",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/components/pagination/pagination.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class PaginationModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -2271,13 +2644,49 @@
         },
         {
             "name": "PlanoFunerarioModule",
-            "id": "module-PlanoFunerarioModule-df6ee6eb1b5204424a35f29236ce11ae4feacb7d5d585512aece9e463de08acddbe4959d4128db2b7b17ee042ebc2c5604c65758fbdf39487adf32084b756af3",
+            "id": "module-PlanoFunerarioModule-e594817bf82c4b76f9c51d9d9651f00e54508be07a0e53b0076d71fbd0c10ac66afd1893747d9b432e1a2056cb10001fecb938927a3c83a2c6d29b20c5cfa8e0",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/plano-funerario/plano-funerario.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class PlanoFunerarioModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class PlanoFunerarioModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "TablesModule",
+            "id": "module-TablesModule-faef87708bc966913a985918f4c7921cdff37bdb2ae1e2f6fa9377fb91384274ebafd6f661577075426c53c9978140d3703db5bd4260e3b883e50cb2efd24d59",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/components/tables/tables.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class TablesModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -2309,6 +2718,116 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "AdicionarClienteFornecedor",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AdicionarPlanos",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AdicionarReceita",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "BaixarConta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/checkbox/checkbox.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Cancelar",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "CertidaoCasamento",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/checkbox/checkbox.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "CheckPassword",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/checkbox/checkbox.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "ClientesFornecedores",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "ComprovanteResidencia",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/checkbox/checkbox.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Concluir",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "ContasReceber",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2319,6 +2838,56 @@
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
             },
             {
+                "name": "Cpf",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/checkbox/checkbox.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Cpf",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "DataNascimento",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Emissor",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Entrar",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2326,7 +2895,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  production: true\n}"
+                "defaultValue": "{\r\n  production: true\r\n}"
             },
             {
                 "name": "environment",
@@ -2336,7 +2905,57 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  production: false\n}"
+                "defaultValue": "{\r\n  production: false\r\n}"
+            },
+            {
+                "name": "FiltrarPor",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "FormaPagamento",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Imprimir",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "InputEmail",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "InputSenha",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "Large",
@@ -2349,6 +2968,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "Limpar",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "LoggedIn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2383,6 +3012,46 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/Page.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Naturalidade",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Nome",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Pesquisar",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Planos",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -2399,6 +3068,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "RecuperarSenha",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "require",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2408,10 +3087,50 @@
                 "type": "literal type"
             },
             {
+                "name": "Rg",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/checkbox/checkbox.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Rg",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Salvar",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "Secondary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Situacao",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -2456,12 +3175,266 @@
                 "deprecationMessage": "",
                 "type": "Story<Page>",
                 "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/buttons/buttons.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonsComponent>",
+                "defaultValue": "(args: ButtonsComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/checkbox/checkbox.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<CheckboxComponent>",
+                "defaultValue": "(args: CheckboxComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputsComponent>",
+                "defaultValue": "(args: InputsComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "TipoPessoa",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/inputs/inputs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             }
         ],
         "functions": [],
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "src/app/components/buttons/buttons.stories.ts": [
+                {
+                    "name": "AdicionarClienteFornecedor",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AdicionarPlanos",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AdicionarReceita",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Cancelar",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "ClientesFornecedores",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Concluir",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "ContasReceber",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Entrar",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Imprimir",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Limpar",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Planos",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "RecuperarSenha",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Salvar",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/buttons/buttons.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonsComponent>",
+                    "defaultValue": "(args: ButtonsComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/app/components/checkbox/checkbox.stories.ts": [
+                {
+                    "name": "BaixarConta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/checkbox/checkbox.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "CertidaoCasamento",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/checkbox/checkbox.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "CheckPassword",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/checkbox/checkbox.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "ComprovanteResidencia",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/checkbox/checkbox.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Cpf",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/checkbox/checkbox.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Rg",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/checkbox/checkbox.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/checkbox/checkbox.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<CheckboxComponent>",
+                    "defaultValue": "(args: CheckboxComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
             "src/test.ts": [
                 {
                     "name": "context",
@@ -2483,6 +3456,148 @@
                     "type": "literal type"
                 }
             ],
+            "src/app/components/inputs/inputs.stories.ts": [
+                {
+                    "name": "Cpf",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "DataNascimento",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Emissor",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "FiltrarPor",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "FormaPagamento",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "InputEmail",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "InputSenha",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Naturalidade",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Nome",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Pesquisar",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Rg",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Situacao",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputsComponent>",
+                    "defaultValue": "(args: InputsComponent) => ({\r\n  props: args,\r\n})"
+                },
+                {
+                    "name": "TipoPessoa",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/inputs/inputs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -2492,7 +3607,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
+                    "defaultValue": "{\r\n  production: true\r\n}"
                 }
             ],
             "src/environments/environment.ts": [
@@ -2504,7 +3619,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  production: false\n}"
+                    "defaultValue": "{\r\n  production: false\r\n}"
                 }
             ],
             "src/stories/Button.stories.ts": [
@@ -2666,6 +3781,35 @@
                                 "module": "LoginModule"
                             }
                         ]
+                    },
+                    {
+                        "path": "",
+                        "redirectTo": "sistema",
+                        "pathMatch": "full"
+                    },
+                    {
+                        "path": "sistema",
+                        "loadChildren": "./pages/dashboard/dashboard.module#DashboardModule",
+                        "children": [
+                            {
+                                "kind": "module",
+                                "children": [
+                                    {
+                                        "name": "routes",
+                                        "filename": "src/app/pages/dashboard/dashboard-rounting.module.ts",
+                                        "module": "DashboardPageRoutingModule",
+                                        "children": [
+                                            {
+                                                "path": "",
+                                                "component": "DashboardComponent"
+                                            }
+                                        ],
+                                        "kind": "module"
+                                    }
+                                ],
+                                "module": "DashboardModule"
+                            }
+                        ]
                     }
                 ],
                 "kind": "module"
@@ -2695,12 +3839,161 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/button/button.component.ts",
+                "filePath": "src/app/components/buttons/buttons.component.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ButtonsService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "ButtonComponent",
+                "name": "ButtonsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AdicionarClienteFornecedor",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AdicionarPlanos",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AdicionarReceita",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Cancelar",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ClientesFornecedores",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Concluir",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ContasReceber",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Entrar",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Imprimir",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Limpar",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Planos",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "RecuperarSenha",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Salvar",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/buttons/buttons.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -2709,52 +4002,298 @@
                 "linktype": "component",
                 "name": "CheckboxComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/icon/icon.component.ts",
+                "filePath": "src/app/components/checkbox/checkbox.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "CheckboxService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox/checkbox.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BaixarConta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox/checkbox.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CertidaoCasamento",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox/checkbox.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CheckPassword",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox/checkbox.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ComprovanteResidencia",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox/checkbox.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Cpf",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox/checkbox.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Rg",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox/checkbox.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/icons/icon.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "IconComponent",
+                "name": "IconsComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/input/input.component.ts",
+                "filePath": "src/app/components/inputs/inputs.component.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "InputsService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "InputComponent",
+                "name": "InputsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Cpf",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DataNascimento",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Emissor",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "FiltrarPor",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "FormaPagamento",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "InputEmail",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "InputSenha",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Naturalidade",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Nome",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Pesquisar",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Rg",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Situacao",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/inputs/inputs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TipoPessoa",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/logobrand/logomarca.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LogoBrandComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/logo/logo.component.ts",
+                "filePath": "src/app/components/pagination/pagination.component.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "PaginationService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/pagination/pagination.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "LogoComponent",
+                "name": "PaginationComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/paginacao/paginacao.component.ts",
+                "filePath": "src/app/components/tables/tables.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "PaginacaoComponent",
+                "name": "TablesComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/tabela/tabela.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "TabelaComponent",
+                "filePath": "src/app/components/tables/tables.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "TablesService",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {

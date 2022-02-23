@@ -1,103 +1,146 @@
 *{
-
-    font-family: 'Montserrat';
+   font-family: 'Montserrat';
 }
 
+#container a {
+  text-decoration: none;
+}
 .container{
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
-    background: white;
+}
+
+#container-principal{
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+.container-logo{
+  width: 100vw;
+  height: 15vh;
+  background-color: #FFFFFF;
+}
+.sub-principal{
+  background-color: #186E9D;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  border-end-end-radius: 20px;
+  border-end-start-radius: 20px;
 }
 
 .main{
-    background-color: #186E9D;
-    width: 400px;
-    height: 600px;
-    border-end-end-radius: 30px;
+  margin: 0 auto;
+  width: 400px;
+  height: 500px;
 }
 
 .logo{
-    background-color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    height: 20%;
-    width: 100%;
+  background-color: #FFFFFF;
+  display: flex;
+  margin-top: 2.5rem;
+  justify-content: center;
+  height: 15%;
+  width: 100%;
 }
 
 .alianca{
-    image-rendering: -webkit-optimize-contrast;
-    object-fit:contain;
-    width: 276px;
-    height: 76px;
+  image-rendering: -webkit-optimize-contrast;
+  object-fit:contain;
+  width: 276px;
+  height: 76px;
 }
 
+input{
+  width: 336px;
+  height: 44px;
+  font-family: 'Montserrat';
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid #707070;
+  padding-left: 3rem;
+  background: transparent;
+  background-color: #ffffff;
+}
+
+input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+.icone{
+  width: 23px;
+  display: inline;
+  position: relative;
+  top: 2.3rem;
+  left: 1rem;
+}
 .name{
-    margin-top: 3rem;
-    font-size: 23px;
-    color: #FFFFFF;
+  margin-top: 3rem;
+  font-size: 23px;
+  color: #FFFFFF;
 }
 .form-login{
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 }
 
 .check{
-    width: 23px;
-    height: 23px;
-    margin-right: 5px;
+  width: 23px;
+  height: 23px;
+  margin-right: 5px;
+  border-radius: 20%;
 }
 .recuperar{
-    display: flex;
-    align-items: center;
-    margin-top: 1.5rem;
-    padding-left: 3rem;
-    color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-left: 2rem;
+  color: #FFFFFF;
 }
 
 .button-entrar{
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 a{
-    text-decoration: none;
-    color: #043F59;
+  text-decoration: none;
+  color: #043F59;
 }
 
 .btn {
-    background-color: #FFFFFF;
-    color: #043F59;
-    border-radius: 5px;
-    border: 1px solid #186E9D;
-    width: 336px;
-    height: 40px;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 18px;
+  background-color: #FFFFFF;
+  color: #043F59;
+  border-radius: 5px;
+  border: 1px solid #186E9D;
+  width: 336px;
+  height: 40px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 18px;
 }
 .recuperar-senha{
-    display: grid;
-    justify-content: center;
-    margin-top: 3rem;
-    font-weight: bold;
+  display: grid;
+  justify-content: center;
+  margin-top: 3rem;
+  font-weight: bold;
 }
 
 .name-recuperar{
-    margin-bottom: 7px;
-    text-align: center;
-    color: #FFFFFF;
+  margin-bottom: 7px;
+  text-align: center;
+  color: #FFFFFF;
 }
 
 .btn-senha{
-    width: 336px;
-    height: 44px;
-    font-family: 'Montserrat';
-    font-size: 15px;
-    border-radius: 5px;
-    color: #FFFFFF;
-    border: 1px solid #015581;
-    background-color: #015581;
-    cursor: pointer;
+  width: 336px;
+  height: 44px;
+  font-size: 15px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  border: 1px solid #015581;
+  background-color: #015581;
+  cursor: pointer;
 }

@@ -1,0 +1,115 @@
+*{
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+.container{
+  width: 100vw;
+  height: 100vh;
+}
+.menu{
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.button-seta{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.seta-esquerda{
+  width: 29px;
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1{
+  width: 25%;
+  text-align: left;
+  font-size: 18px;
+  padding-top: 1rem;
+  color: #015581;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+p{
+  font-size: 14px;
+  color: #5A5A5A;
+}
+
+input{
+  width: 330px;
+  height: 38px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.9px solid gray;
+  outline: none;
+}
+
+.icone{
+  width: 24px;
+}
+
+.campo-pesquisa > button{
+  right: 4rem;
+  position: relative;
+  background-color: transparent;
+}
+
+button{
+  background-color: transparent;
+}
+
+table{
+  width:337px;
+  border: none;
+  font-family: 'SemiBold';
+}
+
+.tabela{
+  margin-top: 2rem;
+}
+
+.btn{
+  width: 336px;
+  height: 44px;
+  font-size: 15px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  margin: 7px 0 0 0;
+  border: 1px solid #015581;
+  background-color: #015581;
+  cursor: pointer;
+}
+
+// .segunda-tabela{
+//   background-color: #FFFFFF;
+//   margin-left: 2rem;
+//   width: 400px;
+//   height: 600px;
+// }
+// .conteudo-tabela2{
+//   width: 350px;
+//   margin: 0 auto;
+// }
+// .icones{
+//   width: 23px;
+// }
+
+// .table-2 td{
+//   /* width: max-content; */
+//   text-align: center;
+//   height: 50px;
+// }
+
+// .especificacoes{
+//   width:158px;
+//   font-size: 14px;
+// }

@@ -1,6 +1,6 @@
 export interface IPlanoFunerario {
-    id: number;
-    data: number;
-    nome: string;
-    plano: string;
+    id?: number;
+    data?: number;
+    nome?: string;
+    plano?: string;
 }

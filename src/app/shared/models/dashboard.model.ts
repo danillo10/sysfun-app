@@ -1,3 +1,3 @@
 export interface IDashboard {
-    dash: string;
+    dash?: string;
 }
