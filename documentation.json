@@ -1151,7 +1151,7 @@
         },
         {
             "name": "ButtonsComponent",
-            "id": "component-ButtonsComponent-8277378233196f1a2b21729d6e11a2b154b7a0c447b8a448b9a6de308b3bab00f321fa60621515eea10f477913d6cb0448fb6206f350917fd51484c32d7c89b4",
+            "id": "component-ButtonsComponent-5193da34b911d794f52a5dba49ad81b0fc9189125607f69f3e64b75c5246163d416e8f1f07358e5a0c23b0eb71a2385121d81582f9de741f77659919117ece84",
             "file": "src/app/components/buttons/buttons.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1172,7 +1172,7 @@
                     "name": "color",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "line": 9,
                     "type": "string",
                     "decorators": []
                 },
@@ -1180,16 +1180,8 @@
                     "name": "label",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "line": 10,
                     "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "type",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 9,
-                    "type": "\"primary\" | \"secondary\"",
                     "decorators": []
                 }
             ],
@@ -1202,7 +1194,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 14,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1214,11 +1206,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-butons',\n  templateUrl: './buttons.component.html',\n  styleUrls: ['./buttons.component.scss'],\n})\nexport class ButtonsComponent implements OnInit {\n  @Input() type: 'primary' | 'secondary';\n  @Input() color: string;\n  @Input() label: string;\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-butons',\n  templateUrl: './buttons.component.html',\n  styleUrls: ['./buttons.component.scss'],\n})\nexport class ButtonsComponent implements OnInit {\n  @Input() color: string;\n  @Input() label: string;\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".btn{\r\n  width: 336px;\r\n  height: 44px;\r\n  font-size: 15px;\r\n  border-radius: 5px;\r\n  color: #FFFFFF;\r\n  margin: 7px 0 0 0;\r\n  border: 1px solid #015581;\r\n  background-color: #015581;\r\n  cursor: pointer;\r\n}\r\n",
+                    "data": ".btn{\r\n  width: 336px;\r\n  height: 44px;\r\n  font-size: 15px;\r\n  border-radius: 5px;\r\n  color: #FFFFFF;\r\n  margin: 7px 0 0 0;\r\n  cursor: pointer;\r\n  font-weight: bold;\r\n  text-transform: uppercase;\r\n  font-family: 'Montserrat';\r\n}\r\n\r\n.btn-blue{\r\n  border: 1px solid #015581;\r\n  background-color: #015581;\r\n  height: 59px;\r\n}\r\n.btn-blue-light-md{\r\n  background-color:#186E9D;\r\n  font-size: 13px;\r\n  height: 59px;\r\n}\r\n\r\n.btn-blue-light-lg{\r\n  background-color:#186E9D;\r\n  font-size: 13px;\r\n  height: 74px;\r\n}\r\n\r\n.btn-gray{\r\n  border: 1px solid #999999;\r\n  background-color: #999999;\r\n  height: 59px;\r\n}\r\n\r\n\r\n.btn-white{\r\n  border: 1px solid #FFFFFF;\r\n  background-color: #FFFFFF;\r\n  color: #043F59;\r\n  font-size: 18px;\r\n  height: 59px;\r\n}\r\n",
                     "styleUrl": "./buttons.component.scss"
                 }
             ],
@@ -1229,12 +1221,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 11
+                "line": 10
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ion-content>\n  <button class=\"btn btn-recuperar-senha\">{{name}}</button>\n</ion-content>\n"
+            "templateData": "<button class=\"btn btn-{{color}}\">{{label}}</button>\n\n"
         },
         {
             "name": "CheckboxComponent",
@@ -1305,11 +1297,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"remember-password\">\r\n    <input type=\"checkbox\" name=\"remenber-password\" id=\"password\" class=\"check checkbox--{{type}}\">\r\n    <label for=\"checkbox\" class=\"user\">{{name}}</label>\r\n</div>\r\n"
+            "templateData": "\r\n    <input type=\"checkbox\" name=\"remenber-password\" id=\"password\" class=\"check checkbox--{{type}}\">\r\n    <!-- <label for=\"checkbox\" class=\"user\">{{name}}</label> -->\r\n\r\n"
         },
         {
             "name": "ClienteComponent",
-            "id": "component-ClienteComponent-44a7e8ea1e2b4268c3b923785aa8907a27cd7c7ed1e99e664ab3d506c8f791a0ef5836b3facf9431433d2e00cf95797e0a6ce0a563888ecb732715c4547ced15",
+            "id": "component-ClienteComponent-469c40ab2762773b5cae3cacb3c67e1a5dec7390ed8b63f3d4c8729569f118f86c6697ab7f158eeea8e4d32caac9c98793287354d424b37534a9920187d64662",
             "file": "src/app/pages/cliente/cliente.page.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1327,7 +1319,18 @@
             "viewProviders": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "clientes",
+                    "defaultValue": "[\n    {id:34432, nome: 'yan carlos nobrega'},\n    {id:23455, nome:'Flaviana bezzera de araujo'},\n    {id:4345, nome:'Gael santos bastos'},\n    {id:3542, nome:'Fernando de souza e silva'}\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
             "methodsClass": [
                 {
                     "name": "ngOnInit",
@@ -1335,7 +1338,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 12,
+                    "line": 19,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1347,11 +1350,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-cliente',\n  templateUrl: './cliente.page.html',\n  styleUrls: ['./cliente.page.scss'],\n})\nexport class ClienteComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-cliente',\n  templateUrl: './cliente.page.html',\n  styleUrls: ['./cliente.page.scss'],\n})\nexport class ClienteComponent implements OnInit {\n\n  clientes= [\n    {id:34432, nome: 'yan carlos nobrega'},\n    {id:23455, nome:'Flaviana bezzera de araujo'},\n    {id:4345, nome:'Gael santos bastos'},\n    {id:3542, nome:'Fernando de souza e silva'}\n  ];\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "*{\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: 'Montserrat';\r\n}\r\n.container{\r\n  width: 100vw;\r\n  height: 100vh;\r\n}\r\n.menu{\r\n  width: 100%;\r\n  height: 100px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n.button-seta{\r\n  background-color: transparent;\r\n  border: none;\r\n  cursor: pointer;\r\n}\r\n.seta-esquerda{\r\n  width: 29px;\r\n}\r\n\r\n.main{\r\n  width: 100vw;\r\n  height: 100vh;\r\n}\r\n\r\nh1{\r\n  width:343px;\r\n  text-align: left;\r\n  font-size: 18px;\r\n  padding-top: 1.8rem;\r\n  color: #015581;\r\n  font-weight: 700;\r\n  text-transform: uppercase;\r\n  margin: 0 0 1rem 3rem;;\r\n}\r\n\r\np{\r\n  margin-left: 3rem;\r\n  font-size: 14px;\r\n  color: #5A5A5A;\r\n}\r\n\r\n.campo-pesquisa{\r\n  display: grid;\r\n}\r\n\r\n.pesquisar{\r\n  display: grid;\r\n}\r\n\r\ninput{\r\n  width: 330px;\r\n  height: 38px;\r\n  background-color: transparent;\r\n  border: none;\r\n  border-bottom: 0.9px solid gray;\r\n  outline: none;\r\n  margin-left: 3rem;\r\n}\r\n\r\n.icone{\r\n  width: 24px;\r\n  margin: 5px;\r\n}\r\n.icone-tabela{\r\n  width: 24px;\r\n}\r\n.bt{\r\n  margin: 1rem 0 0 3rem;\r\n}\r\n\r\n.container-pesquisa{\r\n  margin: 0 auto;\r\n  width: 500px;\r\n}\r\n\r\n.tabela{\r\n  width: 100%;\r\n  margin: 0 auto;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.icone-lupa,.icone-filtro{\r\n  position: relative;\r\n  right: 4rem;\r\n  background: transparent;\r\n}\r\n",
                     "styleUrl": "./cliente.page.scss"
                 }
             ],
@@ -1362,12 +1365,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8
+                "line": 15
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ion-content></ion-content>\r\n"
+            "templateData": "<ion-content>\r\n  <div class=\"container\">\r\n    <div class=\"menu\">\r\n        <div class=\"seta\">\r\n          <button class=\"button-seta\">\r\n            <img class=\"seta-esquerda\" src=\"../../../assets/icon/setaesquerda.png\" alt=\"seta-voltar\">\r\n          </button>\r\n        </div>\r\n        <div class=\"logo\">\r\n          <img src=\"../../../assets/icon/logo.png\" alt=\"Logo\">\r\n        </div>\r\n        <div class=\"menu-hamburguer\"></div>\r\n    </div>\r\n    <div class=\"main\">\r\n      <div class=\"container-pesquisa\">\r\n        <div class=\"campo-pesquisa\">\r\n          <h1>Clientes e fornecedores</h1>\r\n          <p>PESQUISAR</p>\r\n          <div class=\"pesquisar\">\r\n            <div class=\"input-icon\">\r\n              <input class=\"input-pesquisar\" type=\"text\">\r\n              <button class=\"icone-lupa\"><img class=\"icone\" src=\"../../../assets/icon/lupa.png\" alt=\"lupa\"></button>\r\n              <button class=\"icone-filtro\"><img class=\"icone\" src=\"../../../assets/icon/simbolo-de-ferramenta-preenchido-com-filtro.png\" alt=\"\"></button>\r\n            </div>\r\n            <app-butons class=\"bt\" color=\"blue\" label=\"Adicionar cliente/fornecedor\"></app-butons>\r\n          </div>\r\n\r\n        </div>\r\n\r\n        <div class=\"tabela\">\r\n          <app-tables></app-tables>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n"
         },
         {
             "name": "ContasReceberComponent",
@@ -1433,7 +1436,7 @@
         },
         {
             "name": "DashboardComponent",
-            "id": "component-DashboardComponent-4e9ff3daa5d33285c7530812c991bde43419c00aba662f649e42702de059114bea336f1313b93d5cb876cb25544b7df3f4a527db415a498a2f6b941597635f50",
+            "id": "component-DashboardComponent-a056fd4606466b3e00e198b7f947941a9a3ee360106bce946c8ec95438db6a576d3057e2c08794f51eb6e45c18c1bda194ab590e85c29bebb6abe33b6297968c",
             "file": "src/app/pages/dashboard/dashboard.page.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1450,7 +1453,29 @@
             ],
             "viewProviders": [],
             "inputsClass": [],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "color",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string"
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string"
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "\"primary\" | \"secondary\""
+                }
+            ],
             "propertiesClass": [],
             "methodsClass": [
                 {
@@ -1459,7 +1484,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 12,
+                    "line": 15,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1471,11 +1496,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-dashboard',\n  templateUrl: './dashboard.page.html',\n  styleUrls: ['./dashboard.page.scss'],\n})\nexport class DashboardComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, OnInit, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-dashboard',\n  templateUrl: './dashboard.page.html',\n  styleUrls: ['./dashboard.page.scss'],\n})\nexport class DashboardComponent implements OnInit {\n  @Output() type: 'primary' | 'secondary';\n  @Output() color: string;\n  @Output() label: string;\n\n  constructor() { }\n\n  ngOnInit() {}\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "*{\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: 'Montserrat';\r\n}\r\n\r\n.container{\r\n  width: 100vw;\r\n  height: 100vh;\r\n  border-radius: 20px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.menu{\r\n  width: 100vw;\r\n  height: 100px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.main{\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0 auto;\r\n  display: flexbox;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.icon{\r\n  height: 210px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.icon-caderno{\r\n  width: 62px;\r\n}\r\n\r\np{\r\n  width: 184px;\r\n  margin-top: 1rem;\r\n  text-align: center;\r\n  font-weight: 600;\r\n  color: #5A5A5A;\r\n}\r\n.botoes{\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  margin-top: 2rem;\r\n}\r\n.btn{\r\n  width: 336px;\r\n  height: 44px;\r\n  font-size: 15px;\r\n  border-radius: 5px;\r\n  color: #FFFFFF;\r\n  margin: 7px 0 0 0;\r\n  border: 1px solid #015581;\r\n  background-color: #015581;\r\n  cursor: pointer;\r\n}\r\n",
+                    "data": "*{\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: 'Montserrat';\r\n}\r\n\r\n.container{\r\n  width: 100vw;\r\n  height: 100vh;\r\n  border-radius: 20px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.menu{\r\n  width: 100vw;\r\n  height: 100px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.main{\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0 auto;\r\n  display: flexbox;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.icon{\r\n  height: 210px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.icon-caderno{\r\n  width: 62px;\r\n}\r\n\r\np{\r\n  width: 184px;\r\n  margin-top: 1rem;\r\n  text-align: center;\r\n  font-weight: 600;\r\n  color: #5A5A5A;\r\n}\r\n.botoes{\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  margin-top: 2rem;\r\n}\r\n\r\n",
                     "styleUrl": "./dashboard.page.scss"
                 }
             ],
@@ -1486,12 +1511,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8
+                "line": 11
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ion-content>\r\n  <div class=\"container\">\r\n    <div class=\"menu\">\r\n      <img src=\"../../../assets/icon/logo.png\" alt=\"Logo\">\r\n    </div>\r\n    <div class=\"main\">\r\n      <div class=\"icon-text\">\r\n        <div class=\"icon\">\r\n         <img class=\"icon-caderno\" src=\"../../../assets/icon/caderno-com-lista-e-lapis.png\" alt=\"\">\r\n           <p>Bem vindo ao sistema de controle funerário</p>\r\n        </div>\r\n      </div>\r\n      <div class=\"botoes\">\r\n        <button class=\"btn\"></button>\r\n        <button class=\"btn\"></button>\r\n        <button class=\"btn\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n    <!-- <div class=\"mobile\">\r\n      <div class=\"menu\">\r\n          <img src=\"./logo.png\" alt=\"logo\">\r\n          <button class=\"image\"><img class=\"icone-menu\" src=\"./menu-aberto.png\" alt=\"\"></i></button>\r\n      </div>\r\n      <div class=\"icon-caderno\">\r\n          <img class=\"caderno\" src=\"./Caminho 23.png\" alt=\"\">\r\n          <p class=\"text\">Bem vindo ao sistema de controle funerário</p>\r\n      </div>\r\n      <div class=\"botoes\">\r\n          <button class=\"btn\">CLIENTES E FORNECEDORES</button>\r\n          <button class=\"btn\">CONTAS A RECEBER</button>\r\n          <button class=\"btn\">PLANOS</button>\r\n      </div>\r\n  </div> -->\r\n</ion-content>\r\n"
+            "templateData": "<ion-content>\r\n  <div class=\"container\">\r\n    <div class=\"menu\">\r\n      <img src=\"../../../assets/icon/logo.png\" alt=\"Logo\">\r\n    </div>\r\n    <div class=\"main\">\r\n      <div class=\"icon-text\">\r\n        <div class=\"icon\">\r\n         <img class=\"icon-caderno\" src=\"../../../assets/icon/caderno-com-lista-e-lapis.png\" alt=\"\">\r\n           <p>Bem vindo ao sistema de controle funerário</p>\r\n        </div>\r\n      </div>\r\n      <div class=\"botoes\">\r\n       <app-butons color=\"blue-light-lg\" label=\"clientes e fornecedores\"></app-butons>\r\n       <app-butons color=\"blue-light-lg\" label=\"contas a receber\"></app-butons>\r\n       <app-butons color=\"blue-light-lg\" label=\"planos\"></app-butons>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n"
         },
         {
             "name": "HeaderComponent",
@@ -1689,7 +1714,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".form-login{\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\ninput{\r\n    width: 336px;\r\n    height: 44px;\r\n    font-family: 'Montserrat';\r\n    font-size: 16px;\r\n    border-radius: 5px;\r\n    border: 1px solid #707070;\r\n    padding-left: 3rem;\r\n    background: transparent;\r\n    background-color: #ffffff;\r\n}\r\n\r\ninput:focus {\r\n    box-shadow: 0 0 0 0;\r\n    outline: 0;\r\n}\r\n\r\n.icon-login{\r\n    position: relative;\r\n    left: 37px;\r\n    top: 5px;\r\n    width: 23px;\r\n    color: #000000;\r\n}\r\n\r\n.selecao{\r\n    width: 336px;\r\n    height: 44px;\r\n    font-family: 'Montserrat';\r\n    font-size: 16px;\r\n    border-radius: 5px;\r\n    border: 1px solid #707070;\r\n    padding-left: 3rem;\r\n    background-color: #ffffff;\r\n}\r\nselect {\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    text-indent: 1px;\r\n    text-overflow: '';\r\n  }\r\n\r\n  .seta-icon{\r\n      position: relative;\r\n      right: 2rem;\r\n  }\r\n\r\nimg{\r\n    margin-top: 10px;\r\n    width: 23px;\r\n    position: fixed;\r\n}",
+                    "data": ".form-login{\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\ninput{\r\n    width: 336px;\r\n    height: 61px;\r\n    font-family: 'Montserrat';\r\n    font-size: 16px;\r\n    border-radius: 5px;\r\n    border: 1px solid #707070;\r\n    padding-left: 3rem;\r\n    background: transparent;\r\n    background-color: #ffffff;\r\n}\r\n\r\ninput:focus {\r\n    box-shadow: 0 0 0 0;\r\n    outline: 0;\r\n}\r\n\r\n.icon-login{\r\n    position: relative;\r\n    left: 37px;\r\n    top: 5px;\r\n    width: 23px;\r\n    color: #000000;\r\n}\r\n\r\n.selecao{\r\n    width: 336px;\r\n    height: 44px;\r\n    font-family: 'Montserrat';\r\n    font-size: 16px;\r\n    border-radius: 5px;\r\n    border: 1px solid #707070;\r\n    padding-left: 3rem;\r\n    background-color: #ffffff;\r\n}\r\nselect {\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    text-indent: 1px;\r\n    text-overflow: '';\r\n  }\r\n\r\n  .seta-icon{\r\n      position: relative;\r\n      right: 2rem;\r\n  }\r\n\r\nimg{\r\n    margin-top: 10px;\r\n    width: 23px;\r\n    position: fixed;\r\n}\r\n",
                     "styleUrl": "./inputs.component.scss"
                 }
             ],
@@ -1705,7 +1730,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "\n\n        <p>\n            <span>{{icon}}</span>\n            <input type=\"email\" name=\"email\" class=\"{{type}}\" id=\"email\" value=\" \" placeholder=\"{{name}}\"/>\n        </p>\n\n        <div class=\"selecoes\">\n            <select class=\"selecao {{type}}\" placeholder=\"{{name}}\">\n                <option value=\"\"></option>\n            </select>\n            <span class=\"seta-icon\"><img src=\"../../../assets/icon/seta-para-baixo.png\" alt=\"seta\"></span>\n        </div>\n        \n        <!-- <p>\n            <span><img class=\"icon-login\" src=\"../../../assets/icon/cadeado.png\" alt=\"\"></span>\n            <input type=\"password\" name=\"password\" class=\"passoword--{{type}}\" id=\"number\" value=\"\" placeholder=\"Senha\" />\n        </p> -->\n   \n"
+            "templateData": "<input type=\"text\">\n<!--\n        <p>\n            <span>{{icon}}</span>\n            <input type=\"email\" name=\"email\" class=\"{{type}}\" id=\"email\" value=\" \" placeholder=\"{{name}}\"/>\n        </p>\n\n        <div class=\"selecoes\">\n            <select class=\"selecao {{type}}\" placeholder=\"{{name}}\">\n                <option value=\"\"></option>\n            </select>\n            <span class=\"seta-icon\"><img src=\"../../../assets/icon/seta-para-baixo.png\" alt=\"seta\"></span>\n        </div>\n         -->\n        <!-- <p>\n            <span><img class=\"icon-login\" src=\"../../../assets/icon/cadeado.png\" alt=\"\"></span>\n            <input type=\"password\" name=\"password\" class=\"passoword--{{type}}\" id=\"number\" value=\"\" placeholder=\"Senha\" />\n        </p> -->\n\n"
         },
         {
             "name": "LoginComponent",
@@ -1751,7 +1776,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "*{\r\n   font-family: 'Montserrat';\r\n}\r\n\r\n#container a {\r\n  text-decoration: none;\r\n}\r\n.container{\r\n    width: 100vw;\r\n    height: 100vh;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n#container-principal{\r\n  width: 100vw;\r\n  height: 100vh;\r\n  box-sizing: border-box;\r\n}\r\n.container-logo{\r\n  width: 100vw;\r\n  height: 15vh;\r\n  background-color: #FFFFFF;\r\n}\r\n.sub-principal{\r\n  background-color: #186E9D;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  box-sizing: border-box;\r\n  border-end-end-radius: 20px;\r\n  border-end-start-radius: 20px;\r\n}\r\n\r\n.main{\r\n  margin: 0 auto;\r\n  width: 400px;\r\n  height: 500px;\r\n}\r\n\r\n.logo{\r\n  background-color: #FFFFFF;\r\n  display: flex;\r\n  margin-top: 2.5rem;\r\n  justify-content: center;\r\n  height: 15%;\r\n  width: 100%;\r\n}\r\n\r\n.alianca{\r\n  image-rendering: -webkit-optimize-contrast;\r\n  object-fit:contain;\r\n  width: 276px;\r\n  height: 76px;\r\n}\r\n\r\ninput{\r\n  width: 336px;\r\n  height: 44px;\r\n  font-family: 'Montserrat';\r\n  font-size: 18px;\r\n  border-radius: 5px;\r\n  border: 1px solid #707070;\r\n  padding-left: 3rem;\r\n  background: transparent;\r\n  background-color: #ffffff;\r\n}\r\n\r\ninput:focus {\r\n  box-shadow: 0 0 0 0;\r\n  outline: 0;\r\n}\r\n.icone{\r\n  width: 23px;\r\n  display: inline;\r\n  position: relative;\r\n  top: 2.3rem;\r\n  left: 1rem;\r\n}\r\n.name{\r\n  margin-top: 3rem;\r\n  font-size: 23px;\r\n  color: #FFFFFF;\r\n}\r\n.form-login{\r\n  display: grid;\r\n  justify-content: center;\r\n}\r\n\r\n.check{\r\n  width: 23px;\r\n  height: 23px;\r\n  margin-right: 5px;\r\n  border-radius: 20%;\r\n}\r\n.recuperar{\r\n  display: flex;\r\n  align-items: center;\r\n  margin-top: 1.5rem;\r\n  padding-left: 2rem;\r\n  color: #FFFFFF;\r\n}\r\n\r\n.button-entrar{\r\n  display: flex;\r\n  justify-content: center;\r\n  margin-top: 2rem;\r\n}\r\na{\r\n  text-decoration: none;\r\n  color: #043F59;\r\n}\r\n\r\n.btn {\r\n  background-color: #FFFFFF;\r\n  color: #043F59;\r\n  border-radius: 5px;\r\n  border: 1px solid #186E9D;\r\n  width: 336px;\r\n  height: 40px;\r\n  font-weight: 700;\r\n  cursor: pointer;\r\n  font-size: 18px;\r\n}\r\n.recuperar-senha{\r\n  display: grid;\r\n  justify-content: center;\r\n  margin-top: 3rem;\r\n  font-weight: bold;\r\n}\r\n\r\n.name-recuperar{\r\n  margin-bottom: 7px;\r\n  text-align: center;\r\n  color: #FFFFFF;\r\n}\r\n\r\n.btn-senha{\r\n  width: 336px;\r\n  height: 44px;\r\n  font-size: 15px;\r\n  border-radius: 5px;\r\n  color: #FFFFFF;\r\n  border: 1px solid #015581;\r\n  background-color: #015581;\r\n  cursor: pointer;\r\n}\r\n",
+                    "data": "*{\r\n   font-family: 'Montserrat';\r\n}\r\n\r\n#container a {\r\n  text-decoration: none;\r\n}\r\n.container{\r\n    width: 100vw;\r\n    height: 100vh;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n#container-principal{\r\n  width: 100vw;\r\n  height: 100vh;\r\n  box-sizing: border-box;\r\n}\r\n.container-logo{\r\n  width: 100vw;\r\n  height: 15vh;\r\n  background-color: #FFFFFF;\r\n}\r\n.sub-principal{\r\n  background-color: #186E9D;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.main{\r\n  margin: 0 auto;\r\n  width: 100%;\r\n}\r\n\r\n.logo{\r\n  background-color: #FFFFFF;\r\n  display: flex;\r\n  justify-content: center;\r\n  height: 15%;\r\n  width: 100%;\r\n}\r\n\r\n.alianca{\r\n  image-rendering: -webkit-optimize-contrast;\r\n  object-fit:contain;\r\n  width: 276px;\r\n  height: 76px;\r\n}\r\n\r\n.icone{\r\n  width: 23px;\r\n  display: inline;\r\n  position: relative;\r\n  top: 2.3rem;\r\n  left: 1rem;\r\n}\r\n.name{\r\n  margin-top: 3rem;\r\n  font-size: 23px;\r\n  color: #FFFFFF;\r\n}\r\n.form-login{\r\n  display: grid;\r\n  justify-content: center;\r\n}\r\n\r\n.check{\r\n  width: 23px;\r\n  height: 23px;\r\n  margin-right: 5px;\r\n  border-radius: 20%;\r\n}\r\n.recuperar{\r\n  display: flex;\r\n  align-items: center;\r\n  margin-top: 1.5rem;\r\n  color: #FFFFFF;\r\n}\r\n\r\n.button-entrar{\r\n  display: flex;\r\n  justify-content: center;\r\n  margin-top: 2rem;\r\n}\r\na{\r\n  text-decoration: none;\r\n  color: #043F59;\r\n}\r\n\r\n.btn {\r\n  background-color: #FFFFFF;\r\n  color: #043F59;\r\n  border-radius: 5px;\r\n  border: 1px solid #186E9D;\r\n  width: 336px;\r\n  height: 40px;\r\n  font-weight: 700;\r\n  cursor: pointer;\r\n  font-size: 18px;\r\n}\r\n.recuperar-senha{\r\n  display: grid;\r\n  justify-content: center;\r\n  margin-top: 3rem;\r\n  font-weight: bold;\r\n}\r\n\r\n.name-recuperar{\r\n  margin-bottom: 7px;\r\n  text-align: center;\r\n  color: #FFFFFF;\r\n}\r\n\r\n.btn-senha{\r\n  width: 336px;\r\n  height: 44px;\r\n  font-size: 15px;\r\n  border-radius: 5px;\r\n  color: #FFFFFF;\r\n  border: 1px solid #015581;\r\n  background-color: #015581;\r\n  cursor: pointer;\r\n}\r\n",
                     "styleUrl": "./login.page.scss"
                 }
             ],
@@ -1767,7 +1792,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ion-content>\r\n  <div id=\"container-principal\">\r\n    <div class=\"sub-principal\">\r\n      <div class=\"container-logo\">\r\n        <div class=\"logo\">\r\n          <img class=\"alianca\" src=\"../../../assets/icon/logo.png\" alt=\"\">\r\n      </div>\r\n      </div>\r\n      <div class=\"main\">\r\n            <form action=\"\" class=\"form-login\">\r\n              <label class=\"name\" for=\"login\">Login</label><br>\r\n                 <img class=\"icone\" src=\"../../assets/icon/o-email.png\" alt=\"icone-email\">\r\n                  <input class=\"email\" type=\"text\" placeholder=\"E-mail\">\r\n                   <img class=\"icone\" src=\"../../assets/icon/cadeado.png\" alt=\"icone-senha\">\r\n                 <input class=\"senha\" type=\"password\"  placeholder=\"Senha\">\r\n            </form>\r\n          <div class=\"recuperar\">\r\n              <input class=\"check\" type=\"checkbox\">\r\n              <label for=\"\">Lembrar usuário</label>\r\n          </div><br>\r\n          <div class=\"button-entrar\">\r\n               <button class=\"btn\" ><a href=\"index.page2.html\">ENTRAR</a></button>\r\n          </div>\r\n          <div class=\"recuperar-senha\">\r\n              <span class=\"name-recuperar\">Esqueceu a senha?</span>\r\n           <button class=\"btn-senha\">RECUPERAR SENHA</button>\r\n          </div>\r\n      </div>\r\n   </div>\r\n  </div>\r\n\r\n</ion-content>\r\n"
+            "templateData": "<ion-content>\r\n  <div id=\"container-principal\">\r\n    <div class=\"sub-principal\">\r\n      <div class=\"container-logo\">\r\n        <div class=\"logo\">\r\n          <img class=\"alianca\" src=\"../../../assets/icon/logo.png\" alt=\"\">\r\n        </div>\r\n      </div>\r\n      <div class=\"main\">\r\n        <form action=\"\" class=\"form-login\">\r\n          <label class=\"name\" for=\"login\">Login</label>\r\n          <img class=\"icone\" src=\"../../assets/icon/o-email.png\" alt=\"icone-email\">\r\n          <app-inputs></app-inputs>\r\n          <img class=\"icone\" src=\"../../assets/icon/cadeado.png\" alt=\"icone-senha\">\r\n          <app-inputs></app-inputs>\r\n          <div class=\"recuperar\">\r\n            <input class=\"check\" type=\"checkbox\">\r\n            <label for=\"\">Lembrar usuário</label>\r\n          </div>\r\n          <div class=\"button-entrar\">\r\n            <app-butons color=\"white\" label=\"Entrar\"></app-butons>\r\n          </div>\r\n        </form>\r\n       <div class=\"recuperar-senha\">\r\n          <span class=\"name-recuperar\">Esqueceu a senha?</span>\r\n          <app-butons color=\"blue\" label=\"recuperar senha\"></app-butons>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n"
         },
         {
             "name": "LogoBrandComponent",
@@ -2079,7 +2104,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "\r\n.tabela{\r\n  width: 100%;\r\n  margin: 0 auto;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\ntd{\r\n  height: 68px;\r\n}\r\n\r\ntable{\r\n  width: 400px;\r\n  height: 300px;\r\n}\r\nbutton{\r\n  background: transparent;\r\n}\r\n",
                     "styleUrl": "./tables.component.scss"
                 }
             ],
@@ -2095,7 +2120,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<p>\n  tables works!\n</p>\n"
+            "templateData": "<div class=\"tabela\">\n  <table>\n    <tr *ngFor=\"cliente of clientes\">\n      <td>5856</td>\n      <td style=\"width: 160px;\">Ana paula pereira da silva</td>\n      <td>\n        <button class=\"icone-tabela\">\n          <img  src=\"../../../assets/icon/olho.png\" alt=\"olho\">\n        </button>\n        <button class=\"icone-tabela\">\n          <img  src=\"../../../assets/icon/caixote-de-lixo.png\" alt=\"lixeira\">\n        </button>\n      </td>\n    </tr>\n  </table>\n</div>\n"
         }
     ],
     "modules": [
@@ -2149,13 +2174,13 @@
         },
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-a45650a0c846cb86b742cfc6437df6fdf22d9a5407ea5108d38b1703249a008c16ed9c6471e3967435307388c0b1b82d828e0b6d5cfdcb3b118f84db0a45cc9d",
+            "id": "module-AppRoutingModule-ee4fccd978454a69b6ce3b4b6a99bc8188e8e527b908802af2800e5b4d0bf2bcff9bf91639cbf5c7df563e946e390ffbf63492e3c1f68ee8ae2d6c08bec39873",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { PreloadAllModules, RouterModule, Routes } from '@angular/router';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: '',\r\n    redirectTo: 'login',\r\n    pathMatch: 'full'\r\n  },\r\n  {\r\n    path: 'login', loadChildren: () => \"import('./pages/login/login.module').then( m => m.LoginModule)\"\r\n  },\r\n  {\r\n    path: '',\r\n    redirectTo: 'sistema',\r\n    pathMatch: 'full'\r\n  },\r\n  {\r\n    path: 'sistema', loadChildren: () => \"import('./pages/dashboard/dashboard.module').then( m => m.DashboardModule)\"\r\n  },\r\n];\r\n@NgModule({\r\n  imports: [\r\n    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })\r\n  ],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { PreloadAllModules, RouterModule, Routes } from '@angular/router';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: '',\r\n    redirectTo: 'login',\r\n    pathMatch: 'full'\r\n  },\r\n  {\r\n    path: 'login', loadChildren: () => \"import('./pages/login/login.module').then( m => m.LoginModule)\"\r\n  },\r\n  {\r\n    path: '',\r\n    redirectTo: 'sistema',\r\n    pathMatch: 'full'\r\n  },\r\n  {\r\n    path: 'sistema', loadChildren: () => \"import('./pages/dashboard/dashboard.module').then( m => m.DashboardModule)\"\r\n  },\r\n  {\r\n    path: '',\r\n    redirectTo: 'cliente',\r\n    pathMatch: 'full'\r\n  },\r\n  {\r\n    path: 'cliente', loadChildren: () => \"import('./pages/cliente/cliente.module').then( m => m.ClienteModule)\"\r\n  },\r\n];\r\n@NgModule({\r\n  imports: [\r\n    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })\r\n  ],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -2265,13 +2290,67 @@
         },
         {
             "name": "ClienteModule",
-            "id": "module-ClienteModule-054390d0eb528ac9afbd4f990ce4afa8279ae30d906049ef96ad938cc99247f0906a11ed77261496e4934b250c0f570f3b21f6539c5254653401d95523903098",
+            "id": "module-ClienteModule-90c54410a4e3daf2a68bd79353b22acffbecd10a288621356b6ea95c6b8dee71c5b8eb984cda8c4e15b63f9ed2b3e4b47369c0ad189f0c3697238e6c88746d9b",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/cliente/cliente.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class ClienteModule { }\n",
+            "sourceCode": "import { TablesModule } from './../../components/tables/tables.module';\nimport { ClienteComponent } from './cliente.page';\nimport { ClientePageRoutingModule } from './cliente-routing.module';\nimport { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonsModule } from 'src/app/components';\n@NgModule({\n  declarations: [\n    ClienteComponent\n  ],\n  imports: [\n    CommonModule,\n    ClientePageRoutingModule,\n    ButtonsModule,\n    TablesModule\n  ],\n   exports: [ClienteComponent]\n})\nexport class ClienteModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ClienteComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "ButtonsModule"
+                        },
+                        {
+                            "name": "ClientePageRoutingModule"
+                        },
+                        {
+                            "name": "TablesModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ClienteComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ClientePageRoutingModule",
+            "id": "module-ClientePageRoutingModule-6d093b0e94112c00705d8feea0f196c926fbd7e5ca47fdfa909acd15de13bbc28339e11bc56045515b96f2faa278bc4128ca581cc4ff69677cc7bb61569b9481",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/pages/cliente/cliente-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { ClienteComponent } from './cliente.page';\r\nimport { NgModule } from '@angular/core';\r\nimport { Routes, RouterModule } from '@angular/router';\r\n\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: '',\r\n    component: ClienteComponent\r\n  }\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule],\r\n})\r\nexport class ClientePageRoutingModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -2337,13 +2416,13 @@
         },
         {
             "name": "DashboardModule",
-            "id": "module-DashboardModule-90b9d5a24349a3100cfd0d73cd63d60939fde61e5aa8d2e05df1e5b83b312dbd5d615bc29c57482d9d7699be622f85fe1639afb3bbb27c1ce0a9930843d5cb95",
+            "id": "module-DashboardModule-3d42a7abd124500bccf68322c490f69e76ce33e75a890574ebc7efa67f8b4904f6ef0fcc1d487fa60bb08c2a06c8cecfa947d6e86f44709927c9b4253e2e80ee",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/dashboard/dashboard.module.ts",
             "methods": [],
-            "sourceCode": "import { DashboardPageRoutingModule } from './dashboard-rounting.module';\nimport { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule,\n    DashboardPageRoutingModule\n  ]\n})\nexport class DashboardModule { }\n",
+            "sourceCode": "import { DashboardComponent } from './dashboard.page';\nimport { DashboardPageRoutingModule } from './dashboard-routing.module';\nimport { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonsModule } from 'src/app/components';\n@NgModule({\n  declarations: [\n    DashboardComponent\n  ],\n  imports: [\n    CommonModule,\n    DashboardPageRoutingModule,\n    ButtonsModule\n  ],\n  exports: [DashboardComponent]\n})\nexport class DashboardModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -2351,11 +2430,18 @@
                 },
                 {
                     "type": "declarations",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "DashboardComponent"
+                        }
+                    ]
                 },
                 {
                     "type": "imports",
                     "elements": [
+                        {
+                            "name": "ButtonsModule"
+                        },
                         {
                             "name": "DashboardPageRoutingModule"
                         }
@@ -2363,7 +2449,11 @@
                 },
                 {
                     "type": "exports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "DashboardComponent"
+                        }
+                    ]
                 },
                 {
                     "type": "bootstrap",
@@ -2381,7 +2471,7 @@
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "src/app/pages/dashboard/dashboard-rounting.module.ts",
+            "file": "src/app/pages/dashboard/dashboard-routing.module.ts",
             "methods": [],
             "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { Routes, RouterModule } from '@angular/router';\r\nimport { DashboardComponent} from './dashboard.page';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: '',\r\n    component: DashboardComponent\r\n  }\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule],\r\n})\r\nexport class DashboardPageRoutingModule {}\r\n",
             "children": [
@@ -2449,13 +2539,13 @@
         },
         {
             "name": "InputsModule",
-            "id": "module-InputsModule-d0e21aa5dd0fe904c6e80027f638c2fdf5b2f769d7fb75f0926568350f99bd3d0367d325e7e26a1f97610a511be8fc2dca8f120e7e82c7103714d62f31679419",
+            "id": "module-InputsModule-1bcb2fac542afe34dd2eae7e8f440f385d2142aaadd0769c782194dbc7d147056d1ca8614ef5ea76efadb86d6cdfe926924b27266b712dbab3b8acc8b44e8163",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/components/inputs/inputs.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class InputsModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputsComponent } from './inputs.component';\n\n\n\n@NgModule({\n  declarations: [\n    InputsComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n    InputsComponent\n  ]\n})\nexport class InputsModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -2463,7 +2553,11 @@
                 },
                 {
                     "type": "declarations",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "InputsComponent"
+                        }
+                    ]
                 },
                 {
                     "type": "imports",
@@ -2471,7 +2565,11 @@
                 },
                 {
                     "type": "exports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "InputsComponent"
+                        }
+                    ]
                 },
                 {
                     "type": "bootstrap",
@@ -2485,13 +2583,13 @@
         },
         {
             "name": "LoginModule",
-            "id": "module-LoginModule-0a7878035c160be27c6671012db792b15f6ce3df8f143f8464e661e1fa7758b12f85447fed2aa2dde3392b4648dc9eedf6192118e961dd677d29af0afae8b82d",
+            "id": "module-LoginModule-de7e2759996a234daa9b7bb5f1c8dfd99188d1c2414314b1f76f82c929a2d3d3ede61520c5f42cea661aa58781c81289de08dc9e53a1018d7b01d5a05d18a944",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/login/login.module.ts",
             "methods": [],
-            "sourceCode": "import { LoginComponent } from './login.page';\r\nimport { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { LoginPageRoutingModule } from './login-routing.module';\r\nimport { InputsModule } from '../../components/index';\r\n@NgModule({\r\n  declarations: [\r\n    LoginComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    LoginPageRoutingModule,\r\n    InputsModule\r\n  ],\r\n  exports: [LoginComponent]\r\n})\r\nexport class LoginModule { }\r\n",
+            "sourceCode": "import { ButtonsModule } from './../../components/buttons/buttons.module';\r\nimport { LoginComponent } from './login.page';\r\nimport { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { LoginPageRoutingModule } from './login-routing.module';\r\nimport { CheckboxModule, InputsModule } from '../../components/index';\r\n@NgModule({\r\n  declarations: [\r\n    LoginComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    LoginPageRoutingModule,\r\n    InputsModule,\r\n    ButtonsModule,\r\n    CheckboxModule\r\n  ],\r\n  exports: [LoginComponent]\r\n})\r\nexport class LoginModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -2508,6 +2606,12 @@
                 {
                     "type": "imports",
                     "elements": [
+                        {
+                            "name": "ButtonsModule"
+                        },
+                        {
+                            "name": "CheckboxModule"
+                        },
                         {
                             "name": "InputsModule"
                         },
@@ -3147,6 +3251,26 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "TabelaCliente",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/tables/tables.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "TabelaContasReceber",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/tables/tables.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3205,6 +3329,16 @@
                 "deprecationMessage": "",
                 "type": "Story<InputsComponent>",
                 "defaultValue": "(args: InputsComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/tables/tables.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TablesComponent>",
+                "defaultValue": "(args: TablesComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "TipoPessoa",
@@ -3737,6 +3871,38 @@
                     "type": "Story<Page>",
                     "defaultValue": "(args: Page) => ({\n  props: args,\n})"
                 }
+            ],
+            "src/app/components/tables/tables.component.stories.ts": [
+                {
+                    "name": "TabelaCliente",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/tables/tables.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "TabelaContasReceber",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/tables/tables.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/tables/tables.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TablesComponent>",
+                    "defaultValue": "(args: TablesComponent) => ({\r\n  props: args,\r\n})"
+                }
             ]
         },
         "groupedFunctions": {},
@@ -3796,7 +3962,7 @@
                                 "children": [
                                     {
                                         "name": "routes",
-                                        "filename": "src/app/pages/dashboard/dashboard-rounting.module.ts",
+                                        "filename": "src/app/pages/dashboard/dashboard-routing.module.ts",
                                         "module": "DashboardPageRoutingModule",
                                         "children": [
                                             {
@@ -3810,6 +3976,35 @@
                                 "module": "DashboardModule"
                             }
                         ]
+                    },
+                    {
+                        "path": "",
+                        "redirectTo": "cliente",
+                        "pathMatch": "full"
+                    },
+                    {
+                        "path": "cliente",
+                        "loadChildren": "./pages/cliente/cliente.module#ClienteModule",
+                        "children": [
+                            {
+                                "kind": "module",
+                                "children": [
+                                    {
+                                        "name": "routes",
+                                        "filename": "src/app/pages/cliente/cliente-routing.module.ts",
+                                        "module": "ClientePageRoutingModule",
+                                        "children": [
+                                            {
+                                                "path": "",
+                                                "component": "ClienteComponent"
+                                            }
+                                        ],
+                                        "kind": "module"
+                                    }
+                                ],
+                                "module": "ClienteModule"
+                            }
+                        ]
                     }
                 ],
                 "kind": "module"
@@ -3817,7 +4012,7 @@
         ]
     },
     "coverage": {
-        "count": 1,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -3853,7 +4048,7 @@
                 "linktype": "component",
                 "name": "ButtonsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -4279,6 +4474,36 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/tables/tables.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TabelaCliente",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/tables/tables.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TabelaContasReceber",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/tables/tables.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/tables/tables.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -4302,7 +4527,7 @@
                 "linktype": "component",
                 "name": "ClienteComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -4338,7 +4563,7 @@
                 "linktype": "component",
                 "name": "DashboardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {

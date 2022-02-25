@@ -5,7 +5,40 @@
   border-radius: 5px;
   color: #FFFFFF;
   margin: 7px 0 0 0;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Montserrat';
+}
+
+.btn-blue{
   border: 1px solid #015581;
   background-color: #015581;
-  cursor: pointer;
+  height: 59px;
+}
+.btn-blue-light-md{
+  background-color:#186E9D;
+  font-size: 13px;
+  height: 59px;
+}
+
+.btn-blue-light-lg{
+  background-color:#186E9D;
+  font-size: 13px;
+  height: 74px;
+}
+
+.btn-gray{
+  border: 1px solid #999999;
+  background-color: #999999;
+  height: 59px;
+}
+
+
+.btn-white{
+  border: 1px solid #FFFFFF;
+  background-color: #FFFFFF;
+  color: #043F59;
+  font-size: 18px;
+  height: 59px;
 }

@@ -3,7 +3,7 @@ import { LoginComponent } from './login.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginPageRoutingModule } from './login-routing.module';
-import { InputsModule } from '../../components/index';
+import { CheckboxModule, InputsModule } from '../../components/index';
 @NgModule({
   declarations: [
     LoginComponent
@@ -12,7 +12,8 @@ import { InputsModule } from '../../components/index';
     CommonModule,
     LoginPageRoutingModule,
     InputsModule,
-    ButtonsModule
+    ButtonsModule,
+    CheckboxModule
   ],
   exports: [LoginComponent]
 })

@@ -6,7 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./buttons.component.scss'],
 })
 export class ButtonsComponent implements OnInit {
-  @Input() type: 'primary' | 'secondary';
   @Input() color: string;
   @Input() label: string;
 

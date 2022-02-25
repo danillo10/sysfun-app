@@ -1,44 +1,27 @@
-// import { TablesComponent } from './tables.component';
+import { TablesComponent } from './tables.component';
+/* eslint-disable @typescript-eslint/naming-convention */
+import { Story, Meta } from '@storybook/angular/types-6-0';
 
-// export default {
-//     title: 'Table',
-//     component: TablesComponent
-// };
 
-// export const table = () => ({
-//     component:TablesComponent
-// });
+export default {
+  title: 'Table/Tables',
+  component: TablesComponent,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+} as Meta;
 
-// // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
-// import { Story, Meta } from '@storybook/angular/types-6-0';
-// import { TablesComponent }  from './tables.component';
+const Template: Story<TablesComponent> = (args: TablesComponent) => ({
+  props: args,
+});
 
-// // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
-// export default {
-//   title: 'Buttons/Button',
-//   component: TablesComponent,
-//   // More on argTypes: https://storybook.js.org/docs/angular/api/argtypes
-//   argTypes: {
-//     backgroundColor: { control: 'color' },
-//   },
-// } as Meta;
+export const TabelaCliente = Template.bind({});
+TabelaCliente.args = {
+  id:'',
+  tabelaCliente:'',
+};
 
-// // More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
-// const Template: Story<TablesComponent> = (args: TablesComponent) => ({
-//   props: args,
-// });
-
-// export const Primary = Template.bind({});
-// // More on args: https://storybook.js.org/docs/angular/writing-stories/args
-// Primary.args = {
-//   type:'primary',
-//   label: 'Button',
-//   color:'',
-// };
-
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//   type: 'secondary',
-//   label: 'Button',
-//   color:'',
-// };
+export const TabelaContasReceber = Template.bind({});
+TabelaContasReceber.args = {
+  name:''
+};

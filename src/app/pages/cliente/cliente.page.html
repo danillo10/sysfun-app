@@ -1,44 +1,37 @@
 <ion-content>
   <div class="container">
     <div class="menu">
-      <div class="seta">
-        <button class="button-seta">
-          <img class="seta-esquerda" src="../../../assets/icon/setaesquerda.png" alt="seta-voltar">
-        </button>
-      </div>
-      <div class="logo">
-        <img src="../../../assets/icon/logo.png" alt="Logo">
-      </div>
-          <div class="menu-hamburguer">
-
-          </div>
+        <div class="seta">
+          <button class="button-seta">
+            <img class="seta-esquerda" src="../../../assets/icon/setaesquerda.png" alt="seta-voltar">
+          </button>
+        </div>
+        <div class="logo">
+          <img src="../../../assets/icon/logo.png" alt="Logo">
+        </div>
+        <div class="menu-hamburguer"></div>
     </div>
     <div class="main">
-      <h1>Clientes e fornecedores</h1>
+      <div class="container-pesquisa">
         <div class="campo-pesquisa">
+          <h1>Clientes e fornecedores</h1>
           <p>PESQUISAR</p>
-           <input  class="input-pesquisar" type="text">
-           <button><img  class="icone" src="../../../assets/icon/lupa.png" alt="lupa"></button>
-           <button><img class="icone"  src="../../../assets/icon/simbolo-de-ferramenta-preenchido-com-filtro.png" alt=""></button>
+          <div class="pesquisar">
+            <div class="input-icon">
+              <input class="input-pesquisar" type="text">
+              <button class="icone-lupa"><img class="icone" src="../../../assets/icon/lupa.png" alt="lupa"></button>
+              <button class="icone-filtro"><img class="icone" src="../../../assets/icon/simbolo-de-ferramenta-preenchido-com-filtro.png" alt=""></button>
+            </div>
+            <app-butons class="bt" color="blue" label="Adicionar cliente/fornecedor"></app-butons>
+          </div>
         </div>
-        <button class="btn">clientes fornecedores </button>
         <div class="tabela">
-
-          <table>
-            <tr>
-              <td>5856</td>
-              <td style="width: 160px;">Ana paula pereira da silva</td>
-              <td>
-                  <button>
-                      <img  class="icone" src="../../../assets/icon/olho.png" alt="olho">
-                  </button>
-                  <button>
-                      <img  class="icone" src="../../../assets/icon/caixote-de-lixo.png" alt="lixeira">
-                  </button>
-              </td>
-          </tr>
-          </table>
+          <app-tables></app-tables>
         </div>
+        <div class="paginacao">
+         Campo Paginação
+        </div>
+      </div>
     </div>
   </div>
 </ion-content>
