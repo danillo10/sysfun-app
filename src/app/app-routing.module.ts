@@ -36,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'novocliente/fornecedor',
+    redirectTo: 'novoclientefornecedor',
     pathMatch: 'full'
   },
   {
@@ -60,7 +60,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'planosfunerarios',
+    redirectTo: 'planosfunerario',
     pathMatch: 'full'
   },
   {

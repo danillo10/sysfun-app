@@ -1,3 +1,4 @@
+import { SelectModule } from './../../components/select/select.module';
 import { FiltrosPageRoutingModule } from './filtros-routing.module';
 import { FiltrosComponent } from './filtros.page';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     CommonModule,
+    SelectModule,
     FiltrosPageRoutingModule
   ],
   exports: [

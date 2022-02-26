@@ -1,0 +1,131 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+}
+.container{
+  width: 100vw;
+  height: 100vh;
+}
+.menu{
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.button-seta{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.seta-esquerda{
+  width: 29px;
+}
+
+h1{
+  width:343px;
+  text-align: left;
+  font-size: 18px;
+  padding-top: 1.8rem;
+  color: #015581;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 1rem 3rem;;
+}
+
+p{
+  margin-left: 2rem;
+  font-size: 14px;
+  color: #5A5A5A;
+  font-weight: bold;
+}
+
+.campo-pesquisa{
+  display: grid;
+}
+
+.pesquisar{
+  display: grid;
+}
+
+input{
+  width: 330px;
+  height: 38px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.9px solid #E2E2E2;
+  outline: none;
+  margin-left: 2rem;
+}
+
+.container-pesquisa{
+  margin: 0 auto;
+  width: 500px;
+}
+
+label{
+  font-size: 14px;
+  font-weight: bold;
+  color: #5A5A5A;
+  margin: 19px 0 7px 0;
+}
+
+.selects{
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+}
+.botoes{
+  margin: 2rem 0 0 2rem;
+  display: flex;
+}
+
+.limpar, .concluir{
+  width: 161px;
+  height: 61px;
+  border-radius: 15px;
+}
+
+
+.limpar{
+  margin-right: 26px;
+}
+
+
+/*CSS DO SELECT*/
+
+select {
+  width: 350px;
+  height: 61px;
+  border-radius: 5px;
+  border: 1px solid #CCCCCC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  cursor: pointer;
+}
+
+select:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+  }
+
+.seta-icon{
+    position: relative;
+    right: 2rem;
+}
+
+.seta-baixo{
+  top: 8px;
+  width: 23px;
+  position: relative;
+}
+
+.selecao, label{
+  margin-left: 2rem;
+}
+
