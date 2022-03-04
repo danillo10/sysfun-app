@@ -1,45 +1,16 @@
 *{
-   font-family: 'Montserrat';
+  font-family: "Montserrat";
+  color: #FFFFFF;
 }
-
-#container a {
-  text-decoration: none;
-}
-.container{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-}
-
-#container-principal{
-  width: 100vw;
-  height: 100vh;
-  box-sizing: border-box;
-}
-.container-logo{
-  width: 100vw;
-  height: 15vh;
-  background-color: #FFFFFF;
-}
-.sub-principal{
+.principal{
   background-color: #186E9D;
-  width: 100vw;
   height: 100vh;
-  box-sizing: border-box;
 }
-
-.main{
-  margin: 0 auto;
-  width: 100%;
-}
-
-.logo{
-  background-color: #FFFFFF;
+header{
+  height: 20%;
   display: flex;
   justify-content: center;
-  height: 15%;
-  width: 100%;
+  align-items: center;
 }
 
 .alianca{
@@ -49,77 +20,24 @@
   height: 76px;
 }
 
+h1{
+  font-size: 23px;
+}
+
+.check{
+  display: flex;
+  align-items: center;
+}
+
+label{
+  font-size: 16px;
+  margin-left: 3px;
+}
+
 .icone{
   width: 23px;
   display: inline;
   position: relative;
-  top: 2.3rem;
+  top: 2.5rem;
   left: 1rem;
-}
-.name{
-  margin-top: 3rem;
-  font-size: 23px;
-  color: #FFFFFF;
-}
-.form-login{
-  display: grid;
-  justify-content: center;
-}
-
-.check{
-  width: 23px;
-  height: 23px;
-  margin-right: 5px;
-  border-radius: 20%;
-}
-.recuperar{
-  display: flex;
-  align-items: center;
-  margin-top: 1.5rem;
-  color: #FFFFFF;
-}
-
-.button-entrar{
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-}
-a{
-  text-decoration: none;
-  color: #043F59;
-}
-
-.btn {
-  background-color: #FFFFFF;
-  color: #043F59;
-  border-radius: 5px;
-  border: 1px solid #186E9D;
-  width: 336px;
-  height: 40px;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: 18px;
-}
-.recuperar-senha{
-  display: grid;
-  justify-content: center;
-  margin-top: 3rem;
-  font-weight: bold;
-}
-
-.name-recuperar{
-  margin-bottom: 7px;
-  text-align: center;
-  color: #FFFFFF;
-}
-
-.btn-senha{
-  width: 336px;
-  height: 44px;
-  font-size: 15px;
-  border-radius: 5px;
-  color: #FFFFFF;
-  border: 1px solid #015581;
-  background-color: #015581;
-  cursor: pointer;
 }

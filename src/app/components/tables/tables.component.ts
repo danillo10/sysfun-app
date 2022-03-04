@@ -15,6 +15,8 @@ export class TablesComponent implements OnInit {
     {id:34432, nome: 'yan carlos nobrega'},
     {id:23455, nome:'Flaviana bezzera de araujo'},
     {id:4345, nome:'Gael santos bastos'},
+    {id:3542, nome:'Fernando de souza e silva'},
+    {id:3542, nome:'Fernando de souza e silva'},
     {id:3542, nome:'Fernando de souza e silva'}
   ];
 

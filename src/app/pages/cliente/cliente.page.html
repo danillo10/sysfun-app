@@ -1,37 +1,38 @@
 <ion-content>
   <div class="container">
-    <div class="menu">
-        <div class="seta">
-          <button class="button-seta">
-            <img class="seta-esquerda" src="../../../assets/icon/setaesquerda.png" alt="seta-voltar">
-          </button>
-        </div>
-        <div class="logo">
-          <img src="../../../assets/icon/logo.png" alt="Logo">
-        </div>
-        <div class="menu-hamburguer"></div>
-    </div>
-    <div class="main">
-      <div class="container-pesquisa">
-        <div class="campo-pesquisa">
-          <h1>Clientes e fornecedores</h1>
-          <p>PESQUISAR</p>
-          <div class="pesquisar">
-            <div class="input-icon">
-              <input class="input-pesquisar" type="text">
-              <button class="icone-lupa"><img class="icone" src="../../../assets/icon/lupa.png" alt="lupa"></button>
-              <button class="icone-filtro"><img class="icone" src="../../../assets/icon/simbolo-de-ferramenta-preenchido-com-filtro.png" alt=""></button>
-            </div>
-            <app-butons class="bt" color="blue" label="Adicionar cliente/fornecedor"></app-butons>
-          </div>
-        </div>
-        <div class="tabela">
-          <app-tables></app-tables>
-        </div>
-        <div class="paginacao">
-         Campo Paginação
-        </div>
+    <nav class="navbar navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/home"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
+        <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+        </button>
       </div>
+  </nav>
+     <div class="container main">
+        <h2>Clientes e fornecedores</h2>
+        <div class="campo-pesquisa">
+          <app-inputs type="input-campo"></app-inputs>
+          <button class="icone-lupa"><img class="icone" src="../../../assets/icon/lupa.png" alt="lupa"></button>
+          <button class="icone-filtro"><img class="icone" src="../../../assets/icon/simbolo-de-ferramenta-preenchido-com-filtro.png" alt=""></button>
+        </div>
+        <app-butons class="bt" color="blue" label="Adicionar cliente/fornecedor"></app-butons>
+        <app-tables></app-tables>
+      </div>
+      <div class="paginacao  mt-1">
+        <nav aria-label="Navegação de página">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#"><img class="icon direita" src="../../../assets/icon/setaesquerda.png" alt=""></a>
+            </li>
+          </ul>
+        </nav>
     </div>
   </div>
 </ion-content>

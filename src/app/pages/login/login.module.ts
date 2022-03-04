@@ -6,7 +6,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 import { CheckboxModule, InputsModule } from '../../components/index';
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     CommonModule,

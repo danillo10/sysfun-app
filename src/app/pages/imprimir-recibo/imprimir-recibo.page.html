@@ -1,3 +1,35 @@
-<p>
-  imprimir-recibo works!
-</p>
+<ion-content>
+  <div class="container">
+    <nav class="navbar navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
+        <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+        </button>
+      </div>
+  </nav>
+     <div class="container main">
+        <div class="selecao">
+          <form action="">
+            <fieldset>
+              <legend>Imprimir recibo</legend>
+              <label for="data">data</label>
+              <app-inputs type="input-campo"></app-inputs>
+
+              <label for="valor">valor</label>
+              <app-inputs type="input-campo"></app-inputs>
+
+              <label for="correspondente">correspondente a</label>
+              <app-inputs type="input-campo"></app-inputs>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="botoes">
+        <app-butons color="blue" label="Imprimir"></app-butons>
+        <app-butons color="gray" label="Cancelar"></app-butons>
+      </div>
+  </div>
+</ion-content>
+

@@ -1,3 +1,172 @@
-<p>
-  adicionar-plano works!
-</p>
+<ion-content>
+  <div class="container">
+    <nav class="navbar navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
+        <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+        </button>
+      </div>
+  </nav>
+    <div class="container main">
+        <h2>Dados do plano</h2>
+      <form action="">
+        <fieldset>
+          <label for="cliente">cliente</label>
+          <app-inputs name="receita"></app-inputs>
+
+          <label for="vendedor1">vendedor 1</label>
+          <app-inputs name="vendedor1"></app-inputs>
+
+          <label for="vendedor">vendedor 2</label>
+          <app-inputs name="vendedor"></app-inputs>
+
+          <label for="numerodoplano">numero do plano</label>
+          <app-inputs name="numerodoplano"></app-inputs>
+
+        </fieldset>
+      </form>
+
+      <form action="">
+        <fieldset>
+            <legend>serviços</legend>
+
+            <label for="servico">Serviço</label>
+          <app-inputs name="servico"></app-inputs>
+          <app-select></app-select>
+
+          <label for="quantidade">quantidade</label>
+          <app-inputs  name="quantidade"></app-inputs>
+
+          <label for="valorunitario">valor unitario</label>
+          <app-inputs  name="valorunitario"></app-inputs>
+
+          <label for="valortotal">valor total</label>
+          <app-inputs  name="valortotal"></app-inputs>
+
+        </fieldset>
+        <fieldset>
+          <legend>totais</legend>
+
+          <label for="taxaadesao">taxa de adesão</label>
+          <app-inputs  name="taxaadesao"></app-inputs>
+
+          <label for="valortotal">valor total</label>
+          <app-inputs  name="valortotal"></app-inputs>
+
+          <fieldset>
+            <legend>Pagamento</legend>
+
+            <label for="datainicial">data inicial</label>
+            <app-inputs  name="datainicial"></app-inputs>
+
+            <label for="formadepagamento">forma de pagamento</label>
+            <app-select name="formadepagamento"></app-select>
+
+            <label for="carencia">carencia (dias)</label>
+            <app-inputs  name="carencia"></app-inputs>
+
+            <label for="quantidadeparcelas">quantidade de parcelas</label>
+            <app-inputs  name="quantidadeparcelas"></app-inputs>
+
+            <label for="formadegerar">forma de gerar</label>
+            <app-select name="formadegerar"></app-select>
+
+            <label for="taxaadesao">taxa de adesão</label>
+            <app-inputs  name="taxaadesao"></app-inputs>
+
+            <label for="parcela">parcela</label>
+            <app-inputs  name="parcela"></app-inputs>
+
+            <label for="data">data</label>
+            <app-inputs  name="data"></app-inputs>
+
+            <label for="valor">valor</label>
+            <app-inputs  name="valor"></app-inputs>
+
+            <label for="formapagamento">forma de pagamento</label>
+            <app-select name="formapagamento"></app-select>
+
+            <label for="observacao">observação</label>
+            <app-inputs  name="observacao"></app-inputs>
+          </fieldset>
+        </fieldset>
+      </form>
+      <div class="maisparcelas d-flex justify-content-center">
+        <a href="">ver mais parcelas</a><img class="icon" src="../../../assets/icon/seta-para-baixo.png" alt="">
+      </div>
+       <form action="">
+         <fieldset  class="checkbox">
+           <legend>documentos pendentes</legend>
+            <label class="mt-3 mb-3" for="">Documento do responsável</label>
+
+           <div class="d-flex align-items-center">
+            <app-checkbox name="rg"></app-checkbox>
+            <label  class="mx-2" for="rg">rg</label>
+          </div>
+          <div class="d-flex align-items-center">
+           <app-checkbox name="cpf"></app-checkbox>
+           <label  class="mx-2" for="cpf">cpf</label>
+          </div>
+          <div class="d-flex align-items-center">
+           <app-checkbox name="comprovanteresidencia"></app-checkbox>
+           <label  class="mx-2" for="comprovanteresidencia">comprovante residência</label>
+          </div>
+          <div class="d-flex align-items-center">
+           <app-checkbox name="certidaocasamento"></app-checkbox>
+           <label class="mx-2" for="certidaocasamento">certidão casamento</label>
+          </div>
+         </fieldset>
+         <fieldset>
+           <legend>Dependentes</legend>
+           <label for="nomedodependente">nome do dependente</label>
+           <app-inputs  name="nomedodependente"></app-inputs>
+
+           <label for="graudeparentesco">grau de parentesco</label>
+           <app-select name="graudeparentesco"></app-select>
+
+           <label for="telefoneprincipal">telefone principal</label>
+           <app-inputs  name="telefoneprincipal"></app-inputs>
+
+           <label for="cpf">cpf</label>
+           <app-inputs  name="cpf"></app-inputs>
+
+           <label for="datadenascimento">data de nascimento</label>
+           <app-inputs  name="datadenascimento"></app-inputs>
+         </fieldset>
+       </form>
+       <div class="adicionar d-flex justify-content-center">
+        <a href="#"><img class="icon" src="../../../assets/icon/simbolo-de-adicao-de-espessura.png" alt="adicionar">Adicionar outro dependente</a>
+      </div>
+      <form action="">
+        <fieldset>
+          <legend>detalhes</legend>
+
+           <label for="data">data</label>
+           <app-inputs  name="data"></app-inputs>
+
+           <label for="datadeentrega">data de entrega</label>
+           <app-inputs  name="datadeentrega"></app-inputs>
+
+           <label for="horadarealizacao">hora da realização</label>
+           <app-inputs  name="horadarealizacao"></app-inputs>
+
+           <label for="observacoes">observações</label>
+           <app-inputs  name="observacoes"></app-inputs>
+
+           <label for="observacoesinternas">observções internas</label>
+           <app-inputs  name="observacoesinternas"></app-inputs>
+        </fieldset>
+      </form>
+      <app-butons color="white" label="selecionar arquivo"></app-butons>
+      <p>MÁXIMO 2MB, JPG, JPEG, GIF, PNG, PDF,DOC, XLS, CSV, ZIP.</p>
+
+        <app-butons color="blue" label="Salvar"></app-butons>
+        <app-butons color="gray" label="Cancelar"></app-butons>
+
+    </div>
+    <div class="line"></div>
+  </div>
+</ion-content>
+

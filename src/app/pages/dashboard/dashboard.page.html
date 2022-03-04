@@ -1,20 +1,16 @@
 <ion-content>
+  <header class="d-flex justify-content-center">
+    <img class="alianca " src="../../../assets/icon/logo.png" alt="logo">
+  </header>
   <div class="container">
-    <div class="menu">
-      <img src="../../../assets/icon/logo.png" alt="Logo">
+    <div class="logo-text">
+      <img class="icon-caderno" src="../../../assets/icon/caderno-com-lista-e-lapis.png" alt="">
+      <p>Bem vindo ao sistema de controle funerário</p>
     </div>
-    <div class="main">
-      <div class="icon-text">
-        <div class="icon">
-         <img class="icon-caderno" src="../../../assets/icon/caderno-com-lista-e-lapis.png" alt="">
-           <p>Bem vindo ao sistema de controle funerário</p>
-        </div>
+      <div class="botoes mt-5">
+        <a routerLink="/clientes"><app-butons color="blue-light-lg" label="clientes e fornecedores"></app-butons></a>
+        <a routerLink="/contas"><app-butons color="blue-light-lg" label="contas a receber"></app-butons></a>
+        <a routerLink="/planofunerario"><app-butons color="blue-light-lg" label="planos"></app-butons></a>
       </div>
-      <div class="botoes">
-       <app-butons color="blue-light-lg" label="clientes e fornecedores"></app-butons>
-       <app-butons color="blue-light-lg" label="contas a receber"></app-butons>
-       <app-butons color="blue-light-lg" label="planos"></app-butons>
-      </div>
-    </div>
   </div>
 </ion-content>

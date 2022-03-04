@@ -1,3 +1,4 @@
+import { InputsModule } from './../../components/inputs/inputs.module';
 import { TablesModule } from './../../components/tables/tables.module';
 import { ClienteComponent } from './cliente.page';
 import { ClientePageRoutingModule } from './cliente-routing.module';
@@ -12,7 +13,8 @@ import { ButtonsModule } from 'src/app/components';
     CommonModule,
     ClientePageRoutingModule,
     ButtonsModule,
-    TablesModule
+    TablesModule,
+    InputsModule
   ],
    exports: [
      ClienteComponent

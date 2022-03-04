@@ -1,54 +1,35 @@
 <ion-content>
   <div class="container">
-    <div class="menu">
-        <div class="seta">
-          <button class="button-seta">
-            <img class="seta-esquerda" src="../../../assets/icon/setaesquerda.png" alt="seta-voltar">
-          </button>
-        </div>
-        <div class="logo">
-          <img src="../../../assets/icon/logo.png" alt="Logo">
-        </div>
-        <div class="menu-hamburguer"></div>
-    </div>
-    <div class="main">
-      <div class="container-pesquisa">
+    <nav class="navbar navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
+        <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+        </button>
+      </div>
+  </nav>
+     <div class="container main">
+        <label>PESQUISAR</label>
         <div class="campo-pesquisa">
-          <p>PESQUISAR</p>
-          <div class="pesquisar">
-            <div class="input-icon">
-              <input class="input-pesquisar" type="text">
-            </div>
-          </div>
+          <app-inputs type="input-campo"></app-inputs>
         </div>
-        <div class="selects">
-          <label for="filtrar-por">Filtrar por</label>
-          <div class="selecoes">
-            <select class="selecao">
-                <option value=""></option>
-            </select>
-            <span class="seta-icon"><img class="seta-baixo" src="../../../assets/icon/seta-para-baixo.png" alt="seta"></span>
-          </div>
-          <label for="filtrar-por">situação</label>
-          <div class="selecoes">
-            <select class="selecao">
-                <option value=""></option>
-            </select>
-            <span class="seta-icon"><img class="seta-baixo" src="../../../assets/icon/seta-para-baixo.png" alt="seta"></span>
-          </div>
-          <label for="filtrar-por">forma de pagamento</label>
-          <div class="selecoes">
-            <select class="selecao">
-                <option value=""></option>
-            </select>
-            <span class="seta-icon"><img class="seta-baixo" src="../../../assets/icon/seta-para-baixo.png" alt="seta"></span>
-          </div>
-        </div>
-        <div class="botoes">
-          <button class="limpar">Limpar</button>
-          <button class="concluir">concluir</button>
+        <div class="selecao mt-4 mb-4">
+          <form action="">
+            <label for="filtrar-por">Filtrar por</label>
+            <app-select type="select"></app-select>
+
+            <label for="filtrar-por">Situação</label>
+            <app-select type="select"></app-select>
+
+            <label for="filtrar-por">Forma de pagamento</label>
+            <app-select type="select"></app-select>
+          </form>
         </div>
       </div>
-    </div>
+      <div class="botoes">
+        <app-butons color="gray" label="Limpar"></app-butons>
+        <app-butons color="blue" label="Concluir"></app-butons>
+      </div>
   </div>
 </ion-content>

@@ -1,38 +1,5 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat';
-}
-
-.container{
-  width: 100vw;
-  height: 100vh;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu{
-  width: 100vw;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.main{
-  width: 100vw;
-  height: 100vh;
-  margin: 0 auto;
-  display: flexbox;
-  justify-content: center;
-  align-items: center;
-}
-.icon{
-  height: 210px;
+.logo-text{
+  padding-top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,11 +16,5 @@ p{
   font-weight: 600;
   color: #5A5A5A;
 }
-.botoes{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-}
+
 

@@ -8,7 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CheckboxComponent implements OnInit {
   @Input () type: 'password' | 'checkAccount';
 
-
   constructor() { }
 
   ngOnInit() {}

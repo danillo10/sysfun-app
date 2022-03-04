@@ -1,3 +1,5 @@
+import { ButtonsModule } from './../../components/buttons/buttons.module';
+import { InputsModule } from './../../components/inputs/inputs.module';
 import { SelectModule } from './../../components/select/select.module';
 import { FiltrosPageRoutingModule } from './filtros-routing.module';
 import { FiltrosComponent } from './filtros.page';
@@ -13,7 +15,10 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     SelectModule,
-    FiltrosPageRoutingModule
+    FiltrosPageRoutingModule,
+    InputsModule,
+    SelectModule,
+    ButtonsModule
   ],
   exports: [
     FiltrosComponent

@@ -1,3 +1,4 @@
+import { InputsModule } from './../../components/inputs/inputs.module';
 import { TablesModule } from './../../components/tables/tables.module';
 import { ButtonsModule } from 'src/app/components';
 import { PlanoFunerarioPageRoutingModule } from './plano-funerario-routing.module';
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     ButtonsModule,
     TablesModule,
+    InputsModule,
     PlanoFunerarioPageRoutingModule
   ],
   exports: [
