@@ -1,13 +1,25 @@
-<div class="mb-3">
-  <input class="form-control" placeholder="{{label}}">
+<div class="mb-3" *ngIf="type == 'text'">
+  <label for="" class="form-label">{{ label }}</label>
+  <input class="form-control" type="text">
 </div>
-<!--<p>
-     <span>{{icon}}</span>
-            <input type="email" name="email" class="{{type}}" id="email" value=" " placeholder="{{name}}"/>
 
-          </p>-->
-        <!-- <p>
-            <span><img class="icon-login" src="../../../assets/icon/cadeado.png" alt=""></span>
-            <input type="password" name="password" class="passoword--{{type}}" id="number" value="" placeholder="Senha" />
-        </p> -->
+<div class="mb-3" *ngIf="type == 'passsword'">
+  <label class="form-label">{{ label }}</label>
+  <input type="password" class="form-control">
+</div>
 
+<div class="mb-3 relative" *ngIf="type == 'date'">
+  <label class="form-label">{{ label }}</label>
+  <input type="date" class="form-control">
+  <div class="icon {{iconPosition}}">
+    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  </div>
+</div>
+
+<div class="mb-3 relative" *ngIf="type == 'login'">
+  <label class="form-label">{{ label }}</label>
+  <input type="text" class="form-control login">
+  <div class="icon {{iconPosition}}">
+    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  </div>
+</div>

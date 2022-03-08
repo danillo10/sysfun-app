@@ -5,8 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./inputs.component.scss'],
 })
 export class InputsComponent implements OnInit {
-  @Input() type: string;
+  @Input() type: 'text' | 'password' | 'search';
   @Input() label: string;
+  @Input() icon: string;
+  @Input() iconPosition: 'right' | 'left';
 
   constructor() { }
 

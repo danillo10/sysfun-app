@@ -1,0 +1,160 @@
+<ion-content>
+  <div class="container">
+    <nav class="navbar navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
+        <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+        </button>
+      </div>
+    </nav>
+
+    <div class="container main">
+      <h2>Novo cliente/fornecedor</h2>
+      <form action="" class="mt-4">
+
+        <app-select type="select"></app-select>
+
+        <app-inputs label="Cpf" type="text"></app-inputs>
+
+        <div class="row">
+          <div class="col-8">
+            <app-inputs label="Rg" type="text"></app-inputs>
+          </div>
+          <div class="col-4">
+            <app-inputs label="Emissor" type="text"></app-inputs>
+          </div>
+        </div>
+
+        <app-inputs label="Nome" type="text"></app-inputs>
+
+        <app-inputs label="Data de Nascimento" type="date" icon="cadeado.png" iconPosition="right"></app-inputs>
+
+        <label for="naturalidade">naturalidade</label>
+        <app-inputs></app-inputs>
+
+        <label for="cep">cep</label>
+        <app-inputs name="cep"></app-inputs>
+
+        <label for="endereco">endereço</label>
+        <app-inputs name="endereco"></app-inputs>
+
+        <label for="numero">numero</label>
+        <app-inputs name="numero"></app-inputs>
+
+        <label for="complemento">complemento</label>
+        <app-inputs name="complemento"></app-inputs>
+
+        <label for="bairro">bairro</label>
+        <app-inputs name="bairro"></app-inputs>
+
+        <label for="cidade">cidade</label>
+        <app-inputs name="cidade"></app-inputs>
+
+        <label for="estado">estado</label>
+        <app-select type="select"></app-select>
+
+        <label for="celular">celular</label>
+        <app-inputs name="celular"></app-inputs>
+
+        <label for="telefone">telefone</label>
+        <app-inputs name="telefone"></app-inputs>
+
+        <label for="tipoDeCadastro">tipo De Cadastro</label>
+        <app-select name="tipoDeCadastro" type="select"></app-select>
+
+        <label for="sexo">sexo</label>
+        <app-select name="sexo" type="select"></app-select>
+
+        <label for="estadoCivil">estado Civil</label>
+        <app-select name="estadoCivil" type="select"></app-select>
+
+        <label for="profissao">profissão</label>
+        <app-inputs name="profissao"></app-inputs>
+
+        <label for="E-mail">E-mail</label>
+        <app-inputs name="E-mail"></app-inputs>
+
+        <label for="receberSMS">receber SMS</label>
+        <app-select name="receberSms" type="select"></app-select>
+
+        <label for="receberTorpedoDeVoz">receber torpedo de voz</label>
+        <app-select name="receberTorpedoDeVoz" type="select"></app-select>
+
+        <label for="NomeDaMae">Nome Da Mae</label>
+        <app-inputs name="NomeDaMae"></app-inputs>
+
+        <label for="NomeDoPai">Nome Do Pai</label>
+        <app-inputs name="NomeDoPai"></app-inputs>
+
+        <h2>Endereços</h2>
+
+        <label for="TipoDeEndereco">Tipo de endereço</label>
+        <app-select name="TipoDeEndereco" type="select"></app-select>
+
+        <label for="tipodepessoa">Tipo de pessoa</label>
+        <app-select name="tipodepessoa" type="select"></app-select>
+
+        <label for="cpf">cpf</label>
+        <app-inputs name="cpf"></app-inputs>
+
+        <label for="cep">cep</label>
+        <app-inputs name="cep"></app-inputs>
+
+        <label for="endereco">endereço</label>
+        <app-inputs name="endereco"></app-inputs>
+
+        <label for="numero">numero</label>
+        <app-inputs name="numero"></app-inputs>
+
+        <label for="complemento">complemento</label>
+        <app-inputs name="complemento"></app-inputs>
+
+        <label for="bairro">bairro</label>
+        <app-inputs name="bairro"></app-inputs>
+
+        <label for="cidade">cidade</label>
+        <app-inputs name="cidade"></app-inputs>
+
+        <label for="estado">estado</label>
+        <app-select name="estado" type="select"></app-select>
+
+        <label for="religiao">religião</label>
+        <app-select name="religiao" type="select"></app-select>
+
+        <h2>Dados adicionais</h2>
+
+        <label for="categoria">categoria/classificação</label>
+        <app-select name="categoria" type="select"></app-select>
+
+        <label for="situacao">situção</label>
+        <app-select name="situacao" type="select"></app-select>
+
+        <h2>Dependentes (opcional)</h2>
+
+        <label for="nomeDoDependente">Nome do dependente</label>
+        <app-inputs name="nomeDoDependente"></app-inputs>
+
+        <label for="grauDoParentesco">Grau de parentesco</label>
+        <app-select name="grauDoParentesco" type="select"></app-select>
+
+        <label for="telefonePrincipal">Telefone principal</label>
+        <app-inputs name="telefonePrincipal"></app-inputs>
+
+        <label for="cpf">cpf</label>
+        <app-inputs name="cpf"></app-inputs>
+
+        <label for="dataDeNascimento">Data de nascimento</label>
+        <app-inputs name="dataDeNascimento"></app-inputs>
+        <div class="adicionar d-flex justify-content-center">
+          <a href="#"><img class="icon" src="../../../assets/icon/simbolo-de-adicao-de-espessura.png"
+              alt="adicionar">Adicionar dependente</a>
+        </div>
+        <app-butons color="blue" label="Salvar"></app-butons>
+        <app-butons color="gray" label="Cancelar"></app-butons>
+      </form>
+    </div>
+  </div>
+</ion-content>

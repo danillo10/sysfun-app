@@ -1,3 +1,9 @@
+label{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Montserrat';
+    color: #5A5A5A;
+}
 
 input{
     width: 100%;
@@ -6,7 +12,33 @@ input{
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #CCCCCC;
-    padding-left: 3rem;
+    padding-left: 1rem;
     background: transparent;
     background-color: #ffffff;
+}
+
+input.login{
+    padding-left: 3rem;
+}
+
+.relative {
+    position: relative;
+}
+
+div.icon{
+    position: absolute;
+}
+
+div.right {
+    right: 10px;
+    top: 47px;
+}
+
+div.left{
+    left: 10px;
+    top: 47px;
+}
+
+img.icon{
+    max-width: 23px;
 }

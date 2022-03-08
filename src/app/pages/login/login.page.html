@@ -2,19 +2,24 @@
   <header class="d-flex justify-content-center">
     <img class="alianca " src="../../../assets/icon/logo.png" alt="logo">
   </header>
-  <div class="container principal ">
+  <div class="container">
     <h1 class="pt-4 pb-2">Login</h1>
+
     <form>
       <img class="icone" src="../../assets/icon/o-email.png" alt="icone-email">
       <app-inputs label="E-mail"></app-inputs>
+
       <img class="icone" src="../../assets/icon/cadeado.png" alt="icone-senha">
       <app-inputs label="Senha"></app-inputs>
+      
       <div class="check mb-3">
         <app-checkbox></app-checkbox>
-        <label class="ml-3" for="checkbox">Lembrar senha</label>
+        <label class="pl-3" for="checkbox">Lembrar senha</label>
       </div>
-      <app-butons color="white" label="Entrar"></app-butons>
+      
+      <app-butons color="white" label="Entrar" routerLink="/dashboard"></app-butons>
     </form>
+    
     <div class="recuperar-senha">
       <span class="name-recuperar d-flex justify-content-center mt-5">Esqueceu a senha?</span>
       <app-butons color="blue" label="recuperar senha"></app-butons>
