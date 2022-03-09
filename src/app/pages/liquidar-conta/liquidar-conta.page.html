@@ -12,39 +12,28 @@
     <div class="container main">
       <h2>Liquidar Conta</h2>
       <form action="" class="mt-4">
-          <label for="receita">Nome da receita</label>
-          <!-- <app-select type="select"></app-select> -->
-        <app-inputs name="receita"></app-inputs>
+        <app-select label="Nome da receita" type="select"></app-select>
 
-        <label for="cliente">cliente</label>
-        <app-inputs name="cliente"></app-inputs>
+        <app-inputs label="cliente"></app-inputs>
 
-        <label for="data">data liquidação</label>
-        <app-inputs name="data"></app-inputs>
+        <app-inputs label="data liquidação"></app-inputs>
 
-        <label for="contaBancaria">conta Bancaria</label>
-        <app-select name="contaBancaria"></app-select>
+        <app-select label="conta Bancária"></app-select>
 
-        <label for="formadepagamento">forma de pagamento</label>
-        <app-select name="formadepagamento"></app-select>
+        <app-select label="forma de pagamento"></app-select>
 
-        <label for="valor">valor pago</label>
-        <app-inputs name="valor"></app-inputs>
+        <app-inputs label="valor"></app-inputs>
 
-        <label for="juros">juros</label>
-        <app-inputs name="juros"></app-inputs>
+        <app-inputs label="juros"></app-inputs>
 
-        <label for="desconto">desconto/taxa</label>
-        <app-inputs  name="desconto"></app-inputs>
+        <app-inputs  label="desconto"></app-inputs>
 
-        <label for="acrescimo">acréscimo</label>
-        <app-inputs  name="acrescimo"></app-inputs>
+        <app-inputs  label="acréscimo"></app-inputs>
 
-        <label for="observacoes">observações</label>
-        <app-inputs name="observacoes"></app-inputs>
+        <app-inputs label="observações"></app-inputs>
 
         <div class="campo-checkbox d-flex align-items-center">
-          <app-checkbox name="check"></app-checkbox><label for="check" class="check">Baixar conta</label>
+          <app-checkbox label="check"></app-checkbox><label for="check" class="check">Baixar conta</label>
         </div>
       </form>
         <app-butons color="blue" label="Salvar"></app-butons>

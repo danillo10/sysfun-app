@@ -14,16 +14,16 @@
 
     <div class="container main" *ngIf="!filtro">
       <h2>Clientes e fornecedores</h2>
-      
+
       <div class="campo-pesquisa">
-        <app-inputs type="text" label="Pesquisar"></app-inputs>
+        <app-inputs type="search" label="Pesquisar"></app-inputs>
         <button class="icone-lupa"><img class="icone" src="../../../assets/icon/lupa.png" alt="lupa"></button>
         <button class="icone-filtro" (click)="filtro = !filtro"><img class="icone"
-            src="../../../assets/icon/simbolo-de-ferramenta-preenchido-com-filtro.png" alt=""></button>
+            src="../../../assets/icon/filtro.png" alt=""></button>
       </div>
-      
+
       <app-butons class="bt" color="blue" label="Adicionar cliente/fornecedor" (click)="add()"></app-butons>
-      
+
       <app-tables></app-tables>
 
       <div class="paginacao  mt-1">
@@ -48,5 +48,8 @@
     <div class="container filtro" *ngIf="filtro">
       <app-filtro-cliente filtrado="search($event)"></app-filtro-cliente>
     </div>
+    <!-- <div class="container filtro" *ngIf="formulario">
+      <app-filtro-cliente filtrado="search($event)"></app-filtro-cliente>
+    </div> -->
   </div>
 </ion-content>

@@ -8,10 +8,11 @@ import { ClienteModel } from './model/cliente.model';
   styleUrls: ['./clientes.page.scss'],
 })
 export class ClientesComponent implements OnInit {
-  filtro: boolean = false;
+  filtro = false;
+  // formulario = false;
   data: ClienteModel[];
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
     this.data = [];
   }
 
@@ -21,8 +22,6 @@ export class ClientesComponent implements OnInit {
     this.router.navigate(['clientes/new']);
   }
 
-  search(){
-    
-  }
+  search(){}
 
 }

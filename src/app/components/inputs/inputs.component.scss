@@ -36,9 +36,34 @@ div.right {
 
 div.left{
     left: 10px;
-    top: 47px;
+    top: 44px;
 }
 
 img.icon{
     max-width: 23px;
+}
+
+.input-search > input{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #CCCCCC;
+  border-radius: 0%;
+  height: 50px;
+  outline: none;
+}
+
+.input-search > input:hover{
+  border-bottom: 2px solid #5A5A5A;
+  transition: all 1s;
+}
+
+textarea{
+
+    font-family: 'Montserrat';
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #CCCCCC;
+    padding-left: 1rem;
+    background: transparent;
+    background-color: #ffffff;
 }

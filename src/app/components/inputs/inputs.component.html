@@ -23,3 +23,18 @@
     <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
   </div>
 </div>
+
+
+<div class="input-search" *ngIf="type == 'search'">
+  <label class="form-label">{{ label }}</label>
+  <input type="search" class="search">
+  <div class="icon {{iconPosition}}">
+    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  </div>
+</div>
+
+<div class="input-search row" *ngIf="type == 'textArea'">
+  <label for="textarea1" class="form-label mt-3">{{label}}</label>
+  <textarea class="form-control" id="textarea1" rows="3"></textarea>
+  </div>

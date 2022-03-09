@@ -1,24 +1,23 @@
 <div class="container main">
-  <label>PESQUISAR</label>
-
-  <div class="campo-pesquisa">
-    <app-inputs type="input-campo"></app-inputs>
+  <div class="campo-pesquisa mt-5">
+    <app-inputs type="search" label="pesquisar"></app-inputs>
   </div>
 
   <div class="selecao mt-4 mb-4">
     <form action="">
-      <label for="filtrar-por">Filtrar por</label>
-      <app-select type="select"></app-select>
+      <app-select type="select" label="filtrar por"></app-select>
 
-      <label for="filtrar-por">Situação</label>
-      <app-select type="select"></app-select>
+      <app-select type="select" label="situação"></app-select>
 
-      <label for="filtrar-por">Forma de pagamento</label>
-      <app-select type="select"></app-select>
+      <app-select type="select" label="forma de pagamento"></app-select>
 
-      <div class="botoes">
-        <app-butons color="gray" label="Limpar"></app-butons>
-        <app-butons color="blue" label="Concluir" (click)="search()"></app-butons>
+      <div class="row d-flex justify-content-center">
+        <div class="col-6">
+          <app-butons color="gray" label="Limpar"></app-butons>
+        </div>
+        <div class="col-6">
+          <app-butons color="blue" label="Concluir" (click)="search()"></app-butons>
+        </div>
       </div>
     </form>
   </div>

@@ -6,7 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./checkbox.component.scss'],
 })
 export class CheckboxComponent implements OnInit {
-  @Input () type: 'password' | 'checkAccount';
+  @Input () type: 'remember' | 'checkAccount' | 'checkbox';
+  @Input () label: string;
 
   constructor() { }
 

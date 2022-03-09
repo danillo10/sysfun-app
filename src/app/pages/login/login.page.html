@@ -6,20 +6,17 @@
     <h1 class="pt-4 pb-2">Login</h1>
 
     <form>
-      <img class="icone" src="../../assets/icon/o-email.png" alt="icone-email">
-      <app-inputs label="E-mail"></app-inputs>
+      <app-inputs type="login" icon="o-email.png" iconPosition="left" placeholder="E-mail"></app-inputs>
 
-      <img class="icone" src="../../assets/icon/cadeado.png" alt="icone-senha">
-      <app-inputs label="Senha"></app-inputs>
-      
+      <app-inputs type="login" icon="cadeado.png" iconPosition="left" placeholder="Senha"></app-inputs>
+
       <div class="check mb-3">
-        <app-checkbox></app-checkbox>
-        <label class="pl-3" for="checkbox">Lembrar senha</label>
+        <app-checkbox type="remember" label="Lembrar usuário"></app-checkbox>
       </div>
-      
+
       <app-butons color="white" label="Entrar" routerLink="/dashboard"></app-butons>
     </form>
-    
+
     <div class="recuperar-senha">
       <span class="name-recuperar d-flex justify-content-center mt-5">Esqueceu a senha?</span>
       <app-butons color="blue" label="recuperar senha"></app-butons>

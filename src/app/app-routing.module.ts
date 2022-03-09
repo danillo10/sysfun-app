@@ -21,6 +21,9 @@ const routes: Routes = [
   },
   {
     path: 'planosfunerarios', loadChildren: () => import('./pages/plano-funerario/plano-funerario.module').then(m => m.PlanoFunerarioModule)
+  },
+  {
+    path: 'add', loadChildren: () => import('./pages/adicionar-plano/adicionar-plano.module').then(m => m.AdicionarPlanoModule)
   }
 ];
 @NgModule({

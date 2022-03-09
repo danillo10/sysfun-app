@@ -15,7 +15,7 @@ const routes: Routes = [
     component: ClienteComponent
   },
   {
-    path     : ':id/:handle',
+    path     : ':id/:formulario',
     component: ClienteComponent
   }
 ];
