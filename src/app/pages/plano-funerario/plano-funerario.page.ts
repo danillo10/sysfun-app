@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-plano-funerario',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanoFunerarioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
+
+  adicionar(){
+    this.router.navigate(['clientes/adicionar']);
+  }
 
 }

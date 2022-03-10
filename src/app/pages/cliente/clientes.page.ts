@@ -9,7 +9,7 @@ import { ClienteModel } from './model/cliente.model';
 })
 export class ClientesComponent implements OnInit {
   filtro = false;
-  // formulario = false;
+  formulario = false;
   data: ClienteModel[];
 
   constructor(private router: Router) {

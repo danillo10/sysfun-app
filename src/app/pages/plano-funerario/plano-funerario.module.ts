@@ -1,19 +1,24 @@
 import { InputsModule } from './../../components/inputs/inputs.module';
 import { TablesModule } from './../../components/tables/tables.module';
-import { ButtonsModule } from 'src/app/components';
+import { ButtonsModule, CheckboxModule } from 'src/app/components';
 import { PlanoFunerarioPageRoutingModule } from './plano-funerario-routing.module';
 import { PlanoFunerarioComponent } from './plano-funerario.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SelectModule } from 'src/app/components/select/select.module';
+import { AdicionarPlanoComponent } from './adicionar-plano/adicionar-plano.component';
 @NgModule({
   declarations: [
-    PlanoFunerarioComponent
+    PlanoFunerarioComponent,
+    AdicionarPlanoComponent
   ],
   imports: [
     CommonModule,
     ButtonsModule,
     TablesModule,
     InputsModule,
+    SelectModule,
+    CheckboxModule,
     PlanoFunerarioPageRoutingModule
   ],
   exports: [

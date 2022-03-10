@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class FiltroComponent implements OnInit {
   @Output() filtrado = new EventEmitter();
-  
+
   constructor() { }
 
   ngOnInit() {}
