@@ -18,7 +18,7 @@
 
 <div class="mb-3 relative" *ngIf="type == 'login'">
   <label class="form-label">{{ label }}</label>
-  <input type="text" class="form-control login">
+  <input type="text" placeholder="{{placeholder}}" class="form-control login">
   <div class="icon {{iconPosition}}">
     <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
   </div>
@@ -34,7 +34,7 @@
   </div>
 </div>
 
-<div class="input-search row" *ngIf="type == 'textArea'">
+<div class="input-textArea row" *ngIf="type == 'textArea'">
   <label for="textarea1" class="form-label mt-3">{{label}}</label>
   <textarea class="form-control" id="textarea1" rows="3"></textarea>
   </div>

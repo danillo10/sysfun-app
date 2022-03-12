@@ -11,8 +11,7 @@ export class PlanoFunerarioComponent implements OnInit {
 
   ngOnInit() {}
 
-  adicionar(){
-    this.router.navigate(['clientes/adicionar']);
+  adicionarPlano(){
+    this.router.navigate(['planosfunerarios/new']);
   }
-
 }

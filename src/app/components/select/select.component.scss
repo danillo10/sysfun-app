@@ -6,11 +6,19 @@ select {
   text-indent: 1px;
   text-overflow: '';
   cursor: pointer;
+  position: relative;
 }
 
 label{
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
   font-family: 'Montserrat';
   color: #5A5A5A;
 }
+
+// .icon{
+//   position: relative;
+//   width: 25px;
+//   bottom: 2.5rem;
+//   left: 90%;
+// }

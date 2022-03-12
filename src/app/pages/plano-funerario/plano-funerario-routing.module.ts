@@ -12,11 +12,7 @@ const routes: Routes = [
   {
     path     : ':id',
     component: AdicionarPlanoComponent
-  },
-  // {
-  //   path     : ':id/:formulario',
-  //   component: ClienteComponent
-  // }
+  }
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ export class InputsComponent implements OnInit {
   @Input() type: 'text' | 'password' | 'search'| 'textArea';
   @Input() label: string;
   @Input() icon: string;
+  @Input() placeholder: string;
   @Input() iconPosition: 'right' | 'left';
 
   constructor() { }
