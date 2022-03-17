@@ -1,3 +1,4 @@
+import { PaginationModule } from './../../components/pagination/pagination.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ButtonsModule } from 'src/app/components';
@@ -23,7 +24,8 @@ import { ClienteService } from './service/cliente.service';
     ButtonsModule,
     TablesModule,
     InputsModule,
-    SelectModule
+    SelectModule,
+    PaginationModule
   ],
   providers: [
     ClienteService

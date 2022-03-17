@@ -1,4 +1,3 @@
-import { TabelaContasReceber } from './tables.component.stories';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./tables.component.scss'],
 })
 export class TablesComponent implements OnInit {
+  @Input() tabela: 'tableCliente'|'tabelaContasReceber'| 'tabelaplanosFunerarios';
   @Input() nome: string;
-  @Input() tabelaCliente: 'tableCliente';
-  @Input() tabelaContasReceber: 'tabelaContas';
+  @Input() icon: string;
 
   clientes= [
     {id:34432, nome: 'yan carlos nobrega'},

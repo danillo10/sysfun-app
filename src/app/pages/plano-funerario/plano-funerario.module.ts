@@ -1,3 +1,4 @@
+import { PaginationModule } from './../../components/pagination/pagination.module';
 import { InputsModule } from './../../components/inputs/inputs.module';
 import { TablesModule } from './../../components/tables/tables.module';
 import { ButtonsModule, CheckboxModule } from 'src/app/components';
@@ -19,6 +20,7 @@ import { AdicionarPlanoComponent } from './adicionar-plano/adicionar-plano.compo
     InputsModule,
     SelectModule,
     CheckboxModule,
+    PaginationModule,
     PlanoFunerarioPageRoutingModule
   ],
   exports: [

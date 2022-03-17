@@ -1,6 +1,9 @@
-<div class="mb-3" *ngIf="type == 'text'">
+<div class="mb-3 relative" *ngIf="type == 'text'">
   <label for="" class="form-label">{{ label }}</label>
   <input class="form-control" type="text">
+  <div class="icon {{iconPosition}}">
+    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  </div>
 </div>
 
 <div class="mb-3" *ngIf="type == 'passsword'">
@@ -29,8 +32,8 @@
   <label class="form-label">{{ label }}</label>
   <input type="search" class="search">
   <div class="icon {{iconPosition}}">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+   <button> <img class="icon" src="../../../assets/icon/{{icon}}" alt=""></button>
+    <button><img class="icon" src="../../../assets/icon/{{icon}}" alt=""></button>
   </div>
 </div>
 

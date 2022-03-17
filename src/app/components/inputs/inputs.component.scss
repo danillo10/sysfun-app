@@ -10,9 +10,8 @@ input{
     height: 61px;
     font-family: 'Montserrat';
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid #CCCCCC;
-    padding-left: 1rem;
     background: transparent;
     background-color: #ffffff;
 }
@@ -50,6 +49,10 @@ img.icon{
   border-radius: 0%;
   height: 50px;
   outline: none;
+}
+
+button{
+  background-color: transparent;
 }
 
 .input-search > input:hover{

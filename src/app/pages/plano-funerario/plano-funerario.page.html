@@ -18,23 +18,9 @@
             src="../../../assets/icon/filtro.png" alt="icone-filtro"></button>
       </div>
       <app-butons class="bt" color="blue" label="Adicionar plano funerário" (click)="adicionarPlano()"></app-butons>
-      <app-tables></app-tables>
-      <div class="paginacao  mt-1">
-        <nav aria-label="Navegação de página">
-          <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1"><img class="icon" src="../../../assets/icon/setaesquerda.png"
-                  alt=""></a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#"><img class="icon direita" src="../../../assets/icon/setaesquerda.png"alt=""></a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+
+      <app-tables tabela="tabelaplanosFunerarios"></app-tables>
+      <app-pagination></app-pagination>
     </div>
     <div class="container">
       <app-adicionar-plano></app-adicionar-plano>
