@@ -1,9 +1,13 @@
 *{
   font-family: "Montserrat";
-  text-transform: uppercase;
 }
 .icon{
   width: 23px;
+}
+
+.container{
+  height: 100vh auto;
+  min-height: 100vh;
 }
 
 .main{
@@ -16,6 +20,15 @@ h2{
   color: #015581;
   font-size: 19px;
   font-weight: bold;
+  text-transform: uppercase;
+}
+
+button{
+  background: transparent;
+}
+
+.icon-menu{
+  width: 30px;
 }
 
 .icone{

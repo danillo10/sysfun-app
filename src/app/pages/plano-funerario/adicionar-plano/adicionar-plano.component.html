@@ -4,9 +4,7 @@
       <div class="container-fluid">
         <a class="navbar-brand" routerLink="/planosfunerarios"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
         <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <!-- <span class="navbar-toggler-icon"></span> -->
-        </button>
+        <div class=""></div>
       </div>
   </nav>
     <div class="container main">
@@ -75,7 +73,7 @@
 
           <app-select type="text" label="forma de pagamento"></app-select>
 
-          <app-inputs  type="text" label="observação"></app-inputs>
+          <app-inputs  type="textArea" label="observações"></app-inputs>
         </fieldset>
       </fieldset>
       <div class="maisparcelas d-flex justify-content-center">
@@ -119,9 +117,10 @@
 
          <app-inputs type="textArea" label="observações"></app-inputs>
 
-         <app-inputs  type="textArea" label="observaçõess internas"></app-inputs>
+         <app-inputs  type="textArea" label="observações internas"></app-inputs>
       </fieldset>
       </form>
+      <h6 class="mt-4">CONTRATO/ANEXOS</h6>
       <app-butons color="white" label="selecionar arquivo"></app-butons>
       <p>MÁXIMO 2MB, JPG, JPEG, GIF, PNG, PDF,DOC, XLS, CSV, ZIP.</p>
 

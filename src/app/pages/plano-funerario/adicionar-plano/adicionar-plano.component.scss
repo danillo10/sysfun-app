@@ -3,7 +3,9 @@
   text-transform: uppercase;
 }
 .container{
-  padding: 0 2rem 0 2rem;
+  padding: 0 1.5rem;
+  height: 100vh auto;
+  min-height: 100vh;
 }
 .icon{
   width: 23px;
@@ -32,9 +34,12 @@ label{
   color: #5A5A5A;
   font-size: 12px;
 }
-
+h6{
+  font-size: 12;
+  font-weight: bold;
+  color: #5A5A5A;
+}
 a{
-  text-decoration: none;
   color: #005480;
   font-weight: bold;
   cursor: pointer;

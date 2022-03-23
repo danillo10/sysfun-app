@@ -4,8 +4,8 @@
         <div class="container-fluid">
           <a class="navbar-brand" routerLink="/dashboard"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
           <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
+          <button>
+            <img src="../../../assets/icon/menu-aberto.png" class="icon-menu" alt="">
           </button>
         </div>
     </nav>
@@ -13,9 +13,6 @@
       <h2>Planos funerários</h2>
       <div class="campo-pesquisa">
         <app-inputs type="search" label="Pesquisar"></app-inputs>
-        <button class="icone-lupa"><img class="icone" src="../../../assets/icon/lupa.png" alt="icone-lupa"></button>
-        <button class="icone-filtro"><img class="icone"
-            src="../../../assets/icon/filtro.png" alt="icone-filtro"></button>
       </div>
       <app-butons class="bt" color="blue" label="Adicionar plano funerário" (click)="adicionarPlano()"></app-butons>
 

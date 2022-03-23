@@ -9,26 +9,29 @@
   min-height: 100vh;
 }
 
+.icon-menu{
+  width: 30px;
+}
+
+button{
+  background: transparent;
+}
+
 .icon{
   width: 23px;
 }
 
 .main{
-  padding-top: 2rem;
-  // height: 100vh;
+  padding-top: 1rem;
 }
 
 h2{
-  margin-top: 1rem;
+  margin-top: 7px;
   color: #015581;
   font-size: 19px;
   font-weight: bold;
 }
 
-.icone{
-  width: 35px;
-  margin: 5px;
-}
 .icone-tabela{
   width: 24px;
 }

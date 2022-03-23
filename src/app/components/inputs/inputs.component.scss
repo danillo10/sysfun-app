@@ -20,6 +20,11 @@ input.login{
     padding-left: 2.5rem;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.8) brightness(50%) sepia(100%) saturate(10000%) hue-rotate(240deg);
+}
+
 .relative {
     position: relative;
 }
@@ -42,8 +47,12 @@ img.icon{
     max-width: 23px;
 }
 
+.search-label{
+  font-weight: lighter;
+  text-transform: uppercase;
+}
+
 .input-search > input{
-  width: 100%;
   border: none;
   border-bottom: 1px solid #CCCCCC;
   border-radius: 0%;
@@ -74,4 +83,13 @@ textarea{
 
 .input-textArea{
     margin: 0 auto;
+}
+
+.icon-search{
+  width: 34px;
+  margin-left: .3rem;
+  background: transparent;
+  position: relative;
+  bottom: 3rem;
+  left: 14rem;
 }

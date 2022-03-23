@@ -6,6 +6,7 @@ header {
   background: #fff;
   height: 100vh auto;
   min-height: 100vh;
+  padding: 0 1.7rem;
 }
 
 .logo-text{
@@ -15,15 +16,24 @@ header {
   justify-content: center;
   align-items: center;
 }
+button{
+  background: transparent;
+}
+
+.icon{
+  width: 30px;
+}
+
 .icon-caderno{
   width: 62px;
 }
 
 p{
-  width: 184px;
+  width: 202px;
   margin-top: 1rem;
   text-align: center;
-  font-weight: 600;
+  font-weight: bold;
+  font-size: 19px;
   color: #5A5A5A;
 }
 

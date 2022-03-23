@@ -1,3 +1,4 @@
+import { SelectModule } from './../../components/select/select.module';
 import { CheckboxModule } from './../../components/checkbox/checkbox.module';
 import { TablesModule } from './../../components/tables/tables.module';
 import { InputsModule } from './../../components/inputs/inputs.module';
@@ -19,6 +20,7 @@ import { LiquidarContaComponent } from './liquidar-conta/liquidar-conta.componen
     TablesModule,
     CheckboxModule,
     PaginationModule,
+    SelectModule,
     ContasReceberPageRoutingModule
   ],
   exports: [

@@ -4,14 +4,12 @@
       <div class="container-fluid">
         <a class="navbar-brand" routerLink="/clientes"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
         <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar">
-          <!-- <span class="navbar-toggler-icon"></span> -->
-        </button>
+       <div class=""></div>
       </div>
     </nav>
     <div class="container main">
       <h2>Novo cliente/fornecedor</h2>
+
       <form action="" class="mt-4">
 
         <app-select label="tipo de pessoa"></app-select>
@@ -36,7 +34,7 @@
 
         <app-inputs label="endereço" type="text"></app-inputs>
 
-        <app-inputs label="numero" type="text"></app-inputs>
+        <app-inputs label="número" type="text"></app-inputs>
 
         <app-inputs label="complemento" type="text"></app-inputs>
 
@@ -48,7 +46,7 @@
 
         <app-inputs label="celular" type="text" icon="whatsapp.png" iconPosition="right"></app-inputs>
 
-        <app-inputs label="telefone"></app-inputs>
+        <app-inputs label="telefone" type="text"></app-inputs>
 
         <app-select label="tipo De Cadastro" type="select"></app-select>
 
@@ -56,7 +54,7 @@
 
         <app-select label="estado Civil" type="select"></app-select>
 
-        <app-inputs label="profissao" type="text"></app-inputs>
+        <app-inputs label="profissão" type="text"></app-inputs>
 
         <app-inputs label="E-mail" type="text"></app-inputs>
 
@@ -80,7 +78,7 @@
 
         <app-inputs label="endereço" type="text"></app-inputs>
 
-        <app-inputs label="numero" type="text"></app-inputs>
+        <app-inputs label="número" type="text"></app-inputs>
 
         <app-inputs label="complemento" type="text"></app-inputs>
 
@@ -94,7 +92,7 @@
 
         <h2>Dados adicionais</h2>
 
-        <app-select label="categoria" type="select"></app-select>
+        <app-select label="categoria/classificação" type="select"></app-select>
 
         <app-select label="situação" type="select"></app-select>
 
@@ -110,8 +108,10 @@
 
         <app-inputs label="data De Nascimento" type="text"></app-inputs>
         <div class="adicionar d-flex justify-content-center">
-          <a href="#"><img class="icon" src="../../../assets/icon/simbolo-de-adicao-de-espessura.png"
-              alt="adicionar">Adicionar dependente</a>
+          <a href="#">
+            <img class="icon" src="../../../assets/icon/simbolo-de-adicao-de-espessura.png" alt="adicionar">
+            Adicionar dependente
+          </a>
         </div>
         <app-butons color="blue" label="Salvar"></app-butons>
         <app-butons color="gray" label="Cancelar"></app-butons>

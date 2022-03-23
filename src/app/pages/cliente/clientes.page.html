@@ -5,19 +5,17 @@
         <a class="navbar-brand" routerLink="/dashboard"><img class="icon" src="../../../assets/icon/setaesquerda.png"
             alt=""></a>
         <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
+        <button>
+          <img src="../../../assets/icon/menu-aberto.png" class="icon-menu" alt="">
         </button>
       </div>
     </nav>
     <div class="container main" *ngIf="!filtro">
       <h2>Clientes e fornecedores</h2>
-        <div class="campo-pesquisa">
+        <div class="campo-pesquisa mb-3">
           <app-inputs type="search" label="Pesquisar"></app-inputs>
-          <button class="icone-lupa"><img class="icone" src="../../../assets/icon/lupa.png" alt="lupa"></button>
-          <button class="icone-filtro" (click)="filtro = !filtro"><img class="icone"
-              src="../../../assets/icon/filtro.png" alt=""></button>
+          <!-- <button icon="icone-lupa"></button>
+          <button icon="icone-filtro" (click)="filtro = !filtro" alt=""></button> -->
         </div>
 
       <app-butons class="bt" color="blue" label="Adicionar cliente/fornecedor" (click)="add()"></app-butons>
