@@ -1,9 +1,9 @@
     <div class="tabela" *ngIf="tabela == 'tabelaCliente'">
       <table class="table table-borderless" >
         <tr *ngFor="cliente of clientes">
-          <td colspan="2">5856</td>
-          <td colspan="2" class="name">Lourenço cunha de almeida</td>
-          <td colspan="2" class="d-flex">
+          <td>5856</td>
+          <td class="name">Lourenço cunha de almeida</td>
+          <td class="d-flex">
             <button class="icone-tabela">
               <img  src="../../../assets/icon/olho.png" alt="olho">
             </button>
@@ -14,6 +14,7 @@
         </tr>
       </table>
     </div>
+
   <div class="tabela" *ngIf="tabela == 'tabelaContasReceber'">
      <table>
          <tr>
@@ -35,8 +36,26 @@
          </tr>
      </table>
   </div>
-  <div class="tabela" *ngIf="tabela == 'tabelaplanosFunerarios'">
-    <table class="table-2">
+
+  <div class="tabela-planos-funerarios" *ngIf="tabela == 'tabelaplanosFunerarios'">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>1449</td>
+          <td>10/03/2020</td>
+          <td>Mauro Henrique de araujo</td>
+          <td class="d-flex">
+            <button>
+              <img class="icone" src="../../../assets/icon/circulo.png" alt="">
+            </button>
+            <button>
+            <img class="icone" src="../../../assets/icon/tres-pontos.png" alt="">
+          </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <table class="table-2">
         <tr>
             <td colspan="2" class="p-1">1429</td>
             <td colspan="2">10/03/2020</td>
@@ -50,5 +69,5 @@
             </button>
             </td>
         </tr>
-    </table>
+    </table> -->
   </div>

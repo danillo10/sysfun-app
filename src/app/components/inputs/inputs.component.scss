@@ -20,10 +20,10 @@ input.login{
     padding-left: 2.5rem;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  filter: invert(0.8) brightness(50%) sepia(100%) saturate(10000%) hue-rotate(240deg);
-}
+// input[type="date"]::-webkit-calendar-picker-indicator {
+//   display: none;
+//   -webkit-appearance: none;
+// }
 
 .relative {
     position: relative;
@@ -53,21 +53,31 @@ img.icon{
 }
 
 .input-search > input{
+  // width: 100%;
   border: none;
   border-bottom: 1px solid #CCCCCC;
   border-radius: 0%;
   height: 50px;
-  outline: none;
+  outline: 0;
+}
+
+.icon-search{
+  width: 34px;
+  margin-left: .3rem;
+  background: transparent;
+  position: relative;
+  bottom: 3rem;
+  left: 14rem;
 }
 
 button{
   background-color: transparent;
 }
 
-.input-search > input:hover{
-    border-bottom: 2px solid #5A5A5A;
-    transition: all 1s;
-}
+// .input-search > input:hover{
+//     border-bottom: 2px solid #5A5A5A;
+//     transition: all 1s;
+// }
 
 textarea{
     width: 100%;
@@ -85,11 +95,3 @@ textarea{
     margin: 0 auto;
 }
 
-.icon-search{
-  width: 34px;
-  margin-left: .3rem;
-  background: transparent;
-  position: relative;
-  bottom: 3rem;
-  left: 14rem;
-}

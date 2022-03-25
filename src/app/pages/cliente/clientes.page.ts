@@ -19,7 +19,7 @@ export class ClientesComponent implements OnInit {
   ngOnInit() {}
 
   add(){
-    this.router.navigate(['clientes/new']);
+    this.router.navigate(['clientes/novo-cliente/fornecedor']);
   }
 
   search(){}

@@ -6,14 +6,17 @@
   </div>
 </div>
 
-<div class="mb-3" *ngIf="type == 'passsword'">
-  <label class="form-label">{{ label }}</label>
-  <input type="password" class="form-control">
-</div>
-
 <div class="mb-3 relative" *ngIf="type == 'date'">
   <label class="form-label">{{ label }}</label>
   <input type="date" class="form-control">
+  <div class="icon {{iconPosition}}">
+    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  </div>
+</div>
+
+<div class="mb-3 relative" *ngIf="type == 'passsword'">
+  <label class="form-label">{{ label }}</label>
+  <input type="password" placeholder="{{placeholder}}" class="form-control login">
   <div class="icon {{iconPosition}}">
     <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
   </div>
@@ -27,13 +30,12 @@
   </div>
 </div>
 
-
 <div class="input-search mt-4" *ngIf="type == 'search'">
   <label class="form-label search-label">{{ label }}</label>
-  <input type="search" class="search">
+  <input type="search" class="search" style="width: 20rem;">
   <div class="icon {{iconPosition}}">
-   <button> <img class="icon-search" src="../../../assets/icon/lupa.png" alt=""></button>
-    <button><img class="icon-search" src="../../../assets/icon/filtro.png" alt=""></button>
+    <button> <img class="icon-search" src="../../../assets/icon/lupa.png" alt=""></button>
+    <button routerLink=""><img class="icon-search" src="../../../assets/icon/filtro.png" alt=""></button>
   </div>
 </div>
 

@@ -59,14 +59,12 @@
 
           <app-select type="text" label="forma de gerar"></app-select>
 
-          <app-inputs  type="text" label="taxa de adesão"></app-inputs>
-
           <div class="row">
             <div class="col-3">
               <app-inputs  type="text" label="parcela"></app-inputs>
             </div>
             <div class="col-9">
-              <app-inputs  type="date" label="data"></app-inputs>
+              <app-inputs  type="date" label="data" ></app-inputs>
             </div>
           </div>
           <app-inputs  type="text" label="valor"></app-inputs>
@@ -77,7 +75,7 @@
         </fieldset>
       </fieldset>
       <div class="maisparcelas d-flex justify-content-center">
-        <a href="">ver mais parcelas</a><img class="icon" src="../../../assets/icon/seta-para-baixo.png" alt="">
+        <a href="">ver mais parcelas <img class="icon" src="../../../assets/icon/seta-para-baixo.png" alt=""></a>
       </div>
       <fieldset  class="checkbox">
         <legend>documentos pendentes</legend>
@@ -104,7 +102,7 @@
         <app-inputs  type="text" label="data de nascimento"></app-inputs>
       </fieldset>
       <div class="adicionar d-flex justify-content-center">
-        <a href="#"><img class="icon" src="../../../assets/icon/simbolo-de-adicao-de-espessura.png" alt="adicionar">Adicionar outro dependente</a>
+        <a href="#"><img class="icon " src="../../../assets/icon/simbolo-de-adicao-de-espessura.png" alt="adicionar">Adicionar outro dependente</a>
       </div>
       <fieldset>
         <legend>detalhes</legend>
@@ -127,8 +125,9 @@
         <app-butons color="blue" label="Salvar"></app-butons>
         <app-butons color="gray" label="Cancelar"></app-butons>
 
+        <div class="line w-100 mt-5"></div>
     </div>
-    <div class="line"></div>
+
   </div>
 </ion-content>
 

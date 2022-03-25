@@ -10,7 +10,7 @@ const routes: Routes = [
     component: ContasReceberComponent
   },
   {
-    path     : ':id',
+    path     : ':new',
     component: LiquidarContaComponent
   }
 ];

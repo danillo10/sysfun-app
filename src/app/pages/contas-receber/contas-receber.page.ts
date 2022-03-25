@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contas-receber.page.scss'],
 })
 export class ContasReceberComponent implements OnInit {
+  adicionarConta = false;
 
   constructor(private router: Router) { }
 
   ngOnInit() {}
 
-   add(){
+   addConta(){
     this.router.navigate(['contas-receber/receita']);
   }
 

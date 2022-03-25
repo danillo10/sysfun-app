@@ -12,17 +12,18 @@
     </nav>
     <div class="container main" *ngIf="!filtro">
       <h2>Clientes e fornecedores</h2>
-        <div class="campo-pesquisa mb-3">
+        <div class="mb-3">
           <app-inputs type="search" label="Pesquisar"></app-inputs>
           <!-- <button icon="icone-lupa"></button>
           <button icon="icone-filtro" (click)="filtro = !filtro" alt=""></button> -->
         </div>
-
-      <app-butons class="bt" color="blue" label="Adicionar cliente/fornecedor" (click)="add()"></app-butons>
-
-      <app-tables tabela="tabelaCliente"></app-tables>
-
+        <app-butons class="bt" color="blue" label="Adicionar cliente/fornecedor" (click)="add()"></app-butons>
+      <div class="tabela-clientes">
+        <app-tables tabela="tabelaCliente"></app-tables>
+      <div class="mt-5">
         <app-pagination></app-pagination>
+      </div>
+      </div>
     </div>
     <div class="container filtro" *ngIf="filtro">
       <app-filtro-cliente filtrado="search($event)"></app-filtro-cliente>

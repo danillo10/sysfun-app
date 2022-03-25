@@ -6,12 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plano-funerario.page.scss'],
 })
 export class PlanoFunerarioComponent implements OnInit {
+  addPlano= false;
 
   constructor(private router: Router) { }
 
   ngOnInit() {}
 
   adicionarPlano(){
-    this.router.navigate(['planosfunerarios/new']);
+    this.router.navigate(['planosfunerarios/adicionar-plano']);
   }
 }

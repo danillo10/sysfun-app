@@ -11,19 +11,36 @@ td{
 
 .name{
   padding-left: 20px;
+  width: 220px;
 }
 
 .name-table-contas{
   width: 70%;
   padding-left: 20px;
 }
-.name-table-3{
-  font-size: 15px;
-}
+
 button{
   background: transparent;
 }
 
 .icone-tabela{
   width: 40px;
+}
+
+.tabela-planos-funerarios{
+  margin-top: 1rem;
+  width: 100%;
+  height: 450px;
+}
+
+.tabela-planos-funerarios > tr,td{
+  // height: 88.6px;
+  border: 0;
+  font-size: 15px;
+}
+
+.icone{
+  width: 40px;
+  position: relative;
+  bottom: 1rem
 }

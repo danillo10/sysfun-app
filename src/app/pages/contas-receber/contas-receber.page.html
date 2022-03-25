@@ -9,19 +9,22 @@
         </button>
       </div>
   </nav>
-    <div class="container main">
+    <div class="container main" *ngIf="!adicionarConta">
         <h2>Contas a receber</h2>
-        <div class="campo-pesquisa">
+
           <app-inputs type="search" label="pesquisar"></app-inputs>
+
+        <app-butons class="bt" color="blue" label="Adicionar receita" (click)="addConta()"></app-butons>
+
+        <div class="tabela-planos">
+          <app-tables tabela="tabelaContasReceber"></app-tables>
+        <div class="mt-5">
+          <app-pagination></app-pagination>
         </div>
-        <app-butons class="bt" color="blue" label="Adicionar receita" (click)="add()"></app-butons>
-
-        <app-tables tabela="tabelaContasReceber"></app-tables>
-
-        <app-pagination></app-pagination>
+        </div>
     </div>
-    <!-- <div class="container liquidar" >
+    <div class="container liquidar" *ngIf="adicionarConta">
       <app-liquidar-conta ></app-liquidar-conta>
-    </div> -->
+    </div>
   </div>
 </ion-content>
