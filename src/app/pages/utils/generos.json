@@ -1,0 +1,6 @@
+{
+  "generos": [
+    {"value": "Masculino", "description": "Masculino"},
+    {"value": "Feminino", "description": "Feminino"}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "login": {
+    "credentials": "E-mail/Senha inválidos",
+    "loginsucess": "Usuário logado com sucesso"
+  },
+  "address": {
+    "cep": "Cep inválido"
+  }
+}

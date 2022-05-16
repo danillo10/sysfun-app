@@ -1,20 +1,20 @@
 <ion-content>
-    <header class="d-flex justify-content-center">
-      <img class="alianca " src="../../../assets/icon/logo.png" alt="logo">
-    </header>
+  <header class="d-flex justify-content-center">
+    <img class="alianca " src="../../../assets/icon/logo.png" alt="logo">
+  </header>
   <div class="container main">
     <h1 class="pt-5 pb-2">Login</h1>
-      <form>
-       <app-inputs type="login" icon="o-email.png" iconPosition="left" placeholder="E-mail"></app-inputs>
-        <app-inputs type="passsword" icon="cadeado.png" iconPosition="left" placeholder="Senha"></app-inputs>
-         <div class="check mb-3">
-            <app-checkbox type="remember" label="Lembrar usuário"></app-checkbox>
-          </div>
-        <app-butons color="white" label="Entrar" routerLink="/dashboard"></app-butons>
-      </form>
+    <form [formGroup]="form">
+      <app-input [form]="form" control="email" type="text" icon="o-email.png" iconPosition="left" placeholder="E-mail"></app-input>
+      <app-input [form]="form" control="password" type="password" icon="cadeado.png" iconPosition="left" placeholder="Senha"></app-input>
+      <div class="check mb-3">
+        <app-checkbox [form]="form" control="remember" type="remember" label="Lembrar usuário"></app-checkbox>
+      </div>
+      <app-button color="white" label="Entrar" (click)="login()"></app-button>
+    </form>
     <div class="recuperar-senha">
       <span class="name-recuperar d-flex justify-content-center">Esqueceu a senha?</span>
-      <app-butons color="blue" label="recuperar senha"></app-butons>
+      <app-button color="blue" label="recuperar senha"></app-button>
     </div>
   </div>
 </ion-content>

@@ -1,12 +1,19 @@
+ion-content {
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
 header {
   background: #fff;
 }
 
 .container {
   background: #fff;
-  height: 100vh auto;
-  min-height: 100vh;
-  padding: 0 1.7rem;
+  padding: 4.5rem 1.7rem;
+  height: 100%;
+  max-height: 100%;
 }
 
 .logo-text{
@@ -16,25 +23,20 @@ header {
   justify-content: center;
   align-items: center;
 }
-button{
-  background: transparent;
-}
 
 .icon{
   width: 30px;
 }
 
-.icon-caderno{
-  width: 62px;
-}
-
 p{
-  width: 202px;
+  font-family: 'Montserrat';
+  width: 235px;
   margin-top: 1rem;
   text-align: center;
   font-weight: bold;
   font-size: 19px;
   color: #5A5A5A;
+  line-height: 22px;
 }
 
 

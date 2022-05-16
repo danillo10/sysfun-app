@@ -1,0 +1,6 @@
+{
+  "situacao": [
+    {"value": "Ativo", "description":"Ativo"},
+    {"value": "Inativo", "description":"Inativo"}
+  ]
+}

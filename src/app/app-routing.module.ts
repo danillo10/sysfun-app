@@ -24,6 +24,14 @@ const routes: Routes = [
   },
   {
     path: 'imprimir', loadChildren: () => import('./pages/imprimir-recibo/imprimir-recibo.module').then(m => m.ImprimirReciboModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'sincronizar',
+    loadChildren: () => import('./pages/sincronizar/sincronizar.module').then( m => m.SincronizarPageModule)
   }
 ];
 @NgModule({

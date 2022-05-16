@@ -1,4 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+
+import exportedComponents from './dashboard-buttons.json';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +13,18 @@ export class DashboardComponent implements OnInit {
   @Output() color: string;
   @Output() label: string;
 
-  constructor() { }
+  buttons: any[];
 
-  ngOnInit() {}
+  constructor(
+    private router: Router
+  ) { }
+
+  ngOnInit() {
+    this.buttons = exportedComponents.buttons;
+  }
+
+  goToView(page){
+    this.router.navigate([page]);
+  }
 
 }

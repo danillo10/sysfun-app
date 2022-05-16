@@ -1,0 +1,19 @@
+{
+  "buttons": [
+    {
+      "color": "blue-light-lg",
+      "label": "clientes e fornecedores",
+      "view": "clientes"
+    },
+    {
+      "color": "blue-light-lg",
+      "label": "contas a receber",
+      "view": "contas-receber"
+    },
+    {
+      "color": "blue-light-lg",
+      "label": "planos",
+      "view": "planos-funerarios"
+    }
+  ]
+}

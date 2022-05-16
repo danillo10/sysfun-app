@@ -1,0 +1,9 @@
+{
+  "tipoendereco": [
+    {"value":"Retirada", "description": "Retirada"},
+    {"value":"Entrega", "description":"Entrega"},
+    {"value":"Cobrança", "description":"Cobrança"},
+    {"value":"Dependente", "description":"Dependente"},
+    {"value":"Velorio", "description":"Velório"}
+  ]
+}

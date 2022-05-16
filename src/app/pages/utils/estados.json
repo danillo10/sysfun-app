@@ -1,0 +1,32 @@
+{
+  "estados": [
+    {"value":"AC", "description": "ACRE"},
+    {"value":"AL", "description": "ALAGOAS"},
+    {"value":"AP", "description": "AMAPÁ"},
+    {"value":"AM", "description": "AMAZONAS"},
+    {"value":"BA", "description": "BAHIA"},
+    {"value":"CE", "description": "CEARÁ"},
+    {"value":"DF", "description": "DISTRITO FEDERAL"},
+    {"value":"ES", "description": "ESPIRITO SANTO"},
+    {"value":"EX", "description": "EXTERIOR"},
+    {"value":"GO", "description": "GOIAS"},
+    {"value":"MA", "description": "MARANHÃO"},
+    {"value":"MT", "description": "MATO GROSSO"},
+    {"value":"MS", "description": "MATO GROSSO DO SUL"},
+    {"value":"MG", "description": "MINAS GERAIS"},
+    {"value":"PA", "description": "PARÁ"},
+    {"value":"PB", "description": "PARAÍBA"},
+    {"value":"PR", "description": "PARANÁ"},
+    {"value":"PE", "description": "PERNAMBUCO"},
+    {"value":"PI", "description": "PIAUÍ"},
+    {"value":"RJ", "description": "RIO DE JANEIRO"},
+    {"value":"RN", "description": "RIO GRANDE DO NORTE"},
+    {"value":"RS", "description": "RIO GRANDE DO SUL"},
+    {"value":"RO", "description": "RONDÔNIA"},
+    {"value":"RR", "description": "RORAIMA"},
+    {"value":"SC", "description": "SANTA CATARINA"},
+    {"value":"SP", "description": "SÃO PAULO"},
+    {"value":"SE", "description": "SERGIPE"},
+    {"value":"TO", "description": "TOCANTINS"}
+  ]
+}

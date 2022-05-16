@@ -2,7 +2,9 @@
   <div class="container">
     <nav class="navbar navbar-light">
       <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/clientes"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
+        <a class="navbar-brand" routerLink="/clientes">
+          <img class="icon" src="../../../assets/icon/setaesquerda.png" alt="">
+        </a>
         <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
        <div class=""></div>
       </div>
@@ -10,111 +12,102 @@
     <div class="container main">
       <h2>Novo cliente/fornecedor</h2>
 
-      <form action="" class="mt-4">
+      <form [formGroup]="form" class="mt-4">
 
-        <app-select label="tipo de pessoa"></app-select>
+        <app-select [form]="form" control="pessoa" [options]="pessoas" label="tipo de pessoa" ></app-select>
 
-        <app-inputs label="Cpf" type="text"></app-inputs>
+        <app-input (change)="pesquisaCPF()" *ngIf="form.value.pessoa != 'PJ'" [form]="form" control="cnpjcpf" mask="CPF" label="Cpf" type="text" length="14"></app-input>
+        <app-input *ngIf="form.value.pessoa == 'PJ'" [form]="form" control="cnpjcpf" mask="CNPJ" label="Cnpj" type="text" length="18"></app-input>
 
         <div class="row">
           <div class="col-8">
-            <app-inputs label="Rg" type="text"></app-inputs>
+            <app-input [form]="form" control="rg" label="Rg" type="number" length="30" number="true"></app-input>
           </div>
           <div class="col-4">
-            <app-inputs label="Emissor" type="text"></app-inputs>
+            <app-input [form]="form" control="emissor" label="Emissor" type="text" length="6"></app-input>
           </div>
         </div>
-        <app-inputs label="Nome" type="text"></app-inputs>
 
-        <app-inputs label="Data de Nascimento" type="date"></app-inputs>
+        <app-input [form]="form" control="nome_fantasia" label="Nome" type="text" length="100"></app-input>
 
-        <app-inputs label="Naturalidade" type="text"></app-inputs>
+        <app-input [form]="form" control="data_nascimento" label="Data de Nascimento" type="text" length="10" mask="DATA"></app-input>
 
-        <app-inputs label="cep" type="text" icon="lupa.png" iconPosition="right"></app-inputs>
+        <app-input [form]="form" control="naturalidade" label="Naturalidade" type="text"></app-input>
 
-        <app-inputs label="endereço" type="text"></app-inputs>
+        <app-input [form]="form" control="cep" label="cep" type="text" icon="lupa.png" iconPosition="right" length="9" mask="CEP" (change)="getCep('primario')"></app-input>
 
-        <app-inputs label="número" type="text"></app-inputs>
+        <app-input [form]="form" control="endereco" label="endereço" type="text"></app-input>
 
-        <app-inputs label="complemento" type="text"></app-inputs>
+        <app-input [form]="form" control="numero" label="número" type="text"></app-input>
 
-        <app-inputs label="bairro" type="text"></app-inputs>
+        <app-input [form]="form" control="complemento" label="complemento" type="text"></app-input>
 
-        <app-inputs label="cidade" type="text"></app-inputs>
+        <app-input [form]="form" control="bairro" label="bairro" type="text"></app-input>
 
-        <app-select label="estado" type="text"></app-select>
+        <app-input [form]="form" control="cidade" label="cidade" type="text"></app-input>
 
-        <app-inputs label="celular" type="text" icon="whatsapp.png" iconPosition="right"></app-inputs>
+        <app-select [form]="form" control="estado" [options]="estados" label="estado" type="text"></app-select>
 
-        <app-inputs label="telefone" type="text"></app-inputs>
+        <app-input [form]="form" control="celular" label="celular" type="text" icon="whatsapp.png" iconPosition="right" mask="TEL"></app-input>
 
-        <app-select label="tipo De Cadastro" type="select"></app-select>
+        <app-input [form]="form" control="telefone" label="telefone" type="text" mask="TEL"></app-input>
 
-        <app-select label="sexo" type="select"></app-select>
+        <app-select [form]="form" control="tipo_cadastro" [options]="cadastros" label="tipo De Cadastro" type="select"></app-select>
 
-        <app-select label="estado Civil" type="select"></app-select>
+        <app-select [form]="form" control="sexo" [options]="generos" label="sexo" type="select"></app-select>
 
-        <app-inputs label="profissão" type="text"></app-inputs>
+        <app-select [form]="form" control="estado_civil" [options]="estadocivil" label="estado Civil" type="select"></app-select>
 
-        <app-inputs label="E-mail" type="text"></app-inputs>
+        <app-input [form]="form" control="profissao" label="profissão" type="text" search="true" [options]="profissoes" (searchEmitter)="pesquisaProfissao($event)" (selectEmitter)="selecionaProfissao($event)"></app-input>
 
-        <app-select label="receber Sms" type="select"></app-select>
+        <app-input [form]="form" control="email" label="E-mail" type="text"></app-input>
 
-        <app-select label="receber Torpedo De Voz" type="select"></app-select>
+        <app-select [form]="form" control="deve_receber_sms" [options]="basicas" label="receber Sms" type="select"></app-select>
 
-        <app-inputs label="Nome Da Mae" type="text"></app-inputs>
+        <app-select [form]="form" control="deve_receber_torpedo_voz" [options]="basicas" label="receber Torpedo De Voz" type="select"></app-select>
 
-        <app-inputs label="Nome Do Pai" type="text"></app-inputs>
+        <app-input [form]="form" control="nome_mae" label="Nome Da Mae" type="text"></app-input>
+
+        <app-input [form]="form" control="nome_pai" label="Nome Do Pai" type="text"></app-input>
 
         <h2>Endereços</h2>
 
-        <app-select label="Tipo De Endereço" type="select"></app-select>
+        <app-select [form]="form" control="eTipo_endereco" [options]="tipoendereco" label="Tipo De Endereço" type="select"></app-select>
 
-        <app-select label="tipo de pessoa" type="select"></app-select>
+        <app-select [form]="form" control="eTipo_pessoa" [options]="pessoas" label="tipo de pessoa" type="select"></app-select>
 
-        <app-inputs label="cpf"  type="text"></app-inputs>
+        <app-input [form]="form" control="eCnpjcpf" *ngIf="form.value.eTipo_pessoa != 'PJ'" label="cpf"  type="text" mask="CPF" length="14"></app-input>
 
-        <app-inputs label="cep" type="text" icon="lupa.png" iconPosition="right"></app-inputs>
+        <app-input [form]="form" control="eCnpjcpf" *ngIf="form.value.eTipo_pessoa == 'PJ'" label="CNPJ"  type="text" mask="CNPJ" length="18"></app-input>
 
-        <app-inputs label="endereço" type="text"></app-inputs>
+        <app-input [form]="form" control="eCep" label="cep" type="text" icon="lupa.png" iconPosition="right" length="9" (change)="getCep('secundario')" mask="CEP"></app-input>
 
-        <app-inputs label="número" type="text"></app-inputs>
+        <app-input [form]="form" control="eEndereco" label="endereço" type="text"></app-input>
 
-        <app-inputs label="complemento" type="text"></app-inputs>
+        <app-input [form]="form" control="eNumero" label="número" type="text"></app-input>
 
-        <app-inputs label="bairro" type="text"></app-inputs>
+        <app-input [form]="form" control="eComplemento" label="complemento" type="text"></app-input>
 
-        <app-inputs label="cidade" type="text"></app-inputs>
+        <app-input [form]="form" control="eBairro" label="bairro" type="text"></app-input>
 
-        <app-select label="estado" type="select"></app-select>
+        <app-input [form]="form" control="eCidade" label="cidade" type="text"></app-input>
 
-        <app-select label="religião" type="select"></app-select>
+        <app-select [form]="form" control="eEstado" [options]="estados" label="estado" type="select"></app-select>
+
+        <app-input [form]="form" control="religiao" label="religião" type="text"></app-input>
 
         <h2>Dados adicionais</h2>
 
-        <app-select label="categoria/classificação" type="select"></app-select>
+        <app-select [form]="form" control="categoria" [options]="categorias" label="categoria/classificação" type="select"></app-select>
 
-        <app-select label="situação" type="select"></app-select>
+        <app-select [form]="form" control="situacao" [options]="situacao" label="situação" type="select"></app-select>
 
         <h2>Dependentes (opcional)</h2>
 
-        <app-inputs label="nome Do Dependente" type="text"></app-inputs>
+        <app-dependentes [dependentes]="cliente.dependentes" (dependentesSelecionados)="this.form.patchValue({ dependentes: $event })"></app-dependentes>
 
-        <app-select label="grau Do Parentesco" type="select"></app-select>
-
-        <app-inputs label="telefone Principal" type="text"></app-inputs>
-
-        <app-inputs label="cpf" type="text"></app-inputs>
-
-        <app-inputs label="data De Nascimento" type="text"></app-inputs>
-        <div class="adicionar d-flex justify-content-center">
-          <a href="#">
-            <img class="icon" src="../../../assets/icon/simbolo-de-adicao-de-espessura.png" alt="adicionar">
-            Adicionar dependente
-          </a>
-        </div>
-        <app-butons color="blue" label="Salvar"></app-butons>
-        <app-butons color="gray" label="Cancelar"></app-butons>
+        <app-button (click)="create()" [disabled]="form.invalid" type="normal" color="blue" label="Salvar"></app-button>
+        <app-button color="gray" label="Cancelar"></app-button>
       </form>
       <div class="line w-100 mt-5"></div>
     </div>

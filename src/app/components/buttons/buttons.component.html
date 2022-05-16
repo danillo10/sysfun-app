@@ -1,1 +1,5 @@
-<button class="btn btn-{{color}}">{{label}}</button>
+<button [disabled]="disabled" class="btn btn-{{color}}" *ngIf="type == 'normal'" type="button">{{label}}</button>
+
+<button class="icone-tabela" *ngIf="type == 'delete'" type="button">
+  <img  src="../../../assets/icon/caixote-de-lixo.png" alt="lixeira">
+</button>

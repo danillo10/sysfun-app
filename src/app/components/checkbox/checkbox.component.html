@@ -1,4 +1,10 @@
-<div class="d-flex align-items-center mt-3">
-  <input class="check checkbox--{{type}}" type="checkbox">
+<div [formGroup]="form" class="d-flex align-items-center mt-3">
+  <input
+    [formControlName]="control"
+    [name]="control"
+    class="check checkbox--{{type}}"
+    type="checkbox"
+    (change)="set($event)"
+  >
   <label>{{label}}</label>
 </div>

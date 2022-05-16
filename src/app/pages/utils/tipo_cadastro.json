@@ -1,0 +1,9 @@
+{
+  "tipocadastro": [
+    {"value":"Cliente", "description": "Cliente"},
+    {"value":"Fornecedor", "description":"Fornecedor"},
+    {"value":"Corretor", "description":"Corretor"},
+    {"value":"Dependente", "description":"Dependente"},
+    {"value":"Ambos", "description":"Ambos"}
+  ]
+}

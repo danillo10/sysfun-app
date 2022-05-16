@@ -1,0 +1,6 @@
+{
+  "basicas": [
+    {"value":"Sim", "description":"Sim"},
+    {"value":"Não", "description":"Não"}
+  ]
+}

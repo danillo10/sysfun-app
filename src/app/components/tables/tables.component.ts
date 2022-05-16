@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ClienteModel } from 'src/app/pages/cliente/model/cliente.model';
 
 @Component({
   selector: 'app-tables',
@@ -9,15 +10,7 @@ export class TablesComponent implements OnInit {
   @Input() tabela: 'tableCliente'|'tabelaContasReceber'| 'tabelaplanosFunerarios';
   @Input() nome: string;
   @Input() icon: string;
-
-  clientes= [
-    {id:34432, nome: 'yan carlos nobrega'},
-    {id:23455, nome:'Flaviana bezzera de araujo'},
-    {id:4345, nome:'Gael santos bastos'},
-    {id:3542, nome:'Fernando de souza e silva'},
-    {id:3542, nome:'Fernando de souza e silva'},
-    {id:3542, nome:'Fernando de souza e silva'}
-  ];
+  @Input() clientes: ClienteModel[];
 
   constructor() { }
 

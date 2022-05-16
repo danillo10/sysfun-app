@@ -1,0 +1,19 @@
+{
+  "parentescos": [
+    {"description": "Pai", "value":"pai"},
+    {"description": "Mãe", "value":"mae"},
+    {"description": "Esposo(a)", "value":"esposo"},
+    {"description": "Filho(a)", "value":"filho"},
+    {"description": "Irmão(a)", "value":"irmao"},
+    {"description": "Neto(a)", "value":"neto"},
+    {"description": "Avô(ó)", "value":"avo"},
+    {"description": "Sogro(a)", "value":"sogro"},
+    {"description": "Sobrinho(a)", "value":"sobrinho"},
+    {"description": "União Estável", "value":"uniaoestavel"},
+    {"description": "Genro", "value":"genro"},
+    {"description": "Nora", "value":"nora"},
+    {"description": "Cunhado(a)", "value":"cunhado"},
+    {"description": "Afilhado(a)", "value":"afilhado"},
+    {"description": "Outros", "value":"outros"}
+  ]
+}

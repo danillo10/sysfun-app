@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="col-12" *ngFor="let dependente of dependentes; let i = index">
+    <div class="form-group relative">
+      <label for="">Nome do Dependente</label>
+      <input (input)="pesquisaDependente(dependente, dependente.nome)" [(ngModel)]="dependente.nome" type="text" class="form-control" name="dependente_nome{{i}}">
+      <div class="list">
+        <ul>
+          <li *ngFor="let dep of dependente.pesquisados" (click)="selecionar(dep, dependente)">
+            {{dep.nome_fantasia}} - CPF: {{dep.cnpjcpf}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Grau de parentesco</label>
+      <select [(ngModel)]="dependente.tipo" class="form-select" aria-label="select" name="dependente_tipo{{i}}">
+        <option selected></option>
+        <option *ngFor="let parentesco of parentescos" [value]="parentesco.value">{{ parentesco.description }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="">Telefone principal</label>
+      <input [(ngModel)]="dependente.telefone" type="text" class="form-control" mask="(**) *****-****" placeholder="(00) 00000-0000" maxlength="15" name="dependente_telefone{{i}}">
+    </div>
+    <div class="form-group">
+      <label for="">CPF</label>
+      <input [(ngModel)]="dependente.cpf" type="text" class="form-control" mask="***.***.***-**" placeholder="000.000.000-00" maxlength="14" name="dependente_cpf{{i}}" NumberInput>
+    </div>
+    <div class="form-group">
+      <label for="">Data de nascimento</label>
+      <input [(ngModel)]="dependente.data_nasc" type="text" class="form-control" mask="**/**/****" placeholder="00/00/0000" maxlength="10" name="dependente_nasc{{i}}" NumberInput>
+    </div>
+    <div class="form-group">
+      <app-button type="delete" (click)="delete(dependente)"></app-button>
+    </div>
+  </div>
+
+  <div class="adicionar d-flex justify-content-center">
+    <span (click)="adicionaDependente()">
+      <img class="icon" src="../../../assets/icon/simbolo-de-adicao-de-espessura.png" alt="adicionar">
+      Adicionar dependente
+    </span>
+  </div>
+</div>

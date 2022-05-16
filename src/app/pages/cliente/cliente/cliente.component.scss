@@ -15,7 +15,8 @@
 
 .main{
   padding-top: 2rem;
- margin-bottom: 4rem;
+  margin-bottom: 4rem;
+  background: #fff;
 }
 
 h2{
@@ -25,14 +26,13 @@ h2{
   font-weight: bold;
 }
 
-
 label{
   font-weight: bold;
   color: #5A5A5A;
   font-size: 12px;
 }
 
-a{
+span{
   color: #5A5A5A;
   font-weight: bold;
   cursor: pointer;

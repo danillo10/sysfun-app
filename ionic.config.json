@@ -1,7 +1,10 @@
 {
   "name": "Funerária Aliança",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
   },
   "type": "angular"
 }

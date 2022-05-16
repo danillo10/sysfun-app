@@ -1,0 +1,8 @@
+{
+  "estadocivil": [
+    {"value": "Solteiro(a)", "description": "Solteiro(a)"},
+    {"value": "Casado(a)", "description": "Casado(a)"},
+    {"value": "Divorciado(a)", "description": "Divorciado(a)"},
+    {"value": "Viúvo(a)", "description": "Viúvo(a)"}
+  ]
+}

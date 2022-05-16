@@ -1,22 +1,17 @@
 <ion-content>
-  <nav class="navbar navbar-light">
-    <div class="container-fluid">
-      <div class=""></div>
-      <img class="icon-logo pl-2" src="../../../assets/icon/logo.png" alt="">
-      <button>
-        <img src="../../../assets/icon/menu-aberto.png" class="icon" alt="">
-      </button>
-    </div>
-</nav>
+  <app-navbar></app-navbar>
   <div class="container">
     <div class="logo-text">
-      <img class="icon-caderno" src="../../../assets/icon/caderno-com-lista-e-lapis.png" alt="">
+      <app-icon name="icon-caderno"></app-icon>
       <p>Bem vindo ao sistema de controle funerário</p>
     </div>
-      <div class="botoes mt-5">
-        <a routerLink="/clientes"><app-butons color="blue-light-lg" label="clientes e fornecedores"></app-butons></a>
-        <a routerLink="/contas-receber"><app-butons color="blue-light-lg" label="contas a receber"></app-butons></a>
-        <a routerLink="/planosfunerarios"><app-butons color="blue-light-lg" label="planos"></app-butons></a>
-      </div>
+    <div class="buttons">
+      <app-button *ngFor="let mod of buttons"
+        (click)="goToView(mod.view)"
+        [color]="mod.color"
+        [label]="mod.label"
+        type="normal">
+      </app-button>
+    </div>
   </div>
 </ion-content>

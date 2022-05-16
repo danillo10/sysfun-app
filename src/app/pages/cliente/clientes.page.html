@@ -1,28 +1,19 @@
 <ion-content>
   <div class="container">
-    <nav class="navbar navbar-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/dashboard"><img class="icon" src="../../../assets/icon/setaesquerda.png"
-            alt=""></a>
-        <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
-        <button>
-          <img src="../../../assets/icon/menu-aberto.png" class="icon-menu" alt="">
-        </button>
-      </div>
-    </nav>
+    <app-navbar></app-navbar>
     <div class="container main" *ngIf="!filtro">
       <h2>Clientes e fornecedores</h2>
-        <div class="mb-3">
-          <app-inputs type="search" label="Pesquisar"></app-inputs>
-          <!-- <button icon="icone-lupa"></button>
+      <div class="mb-3">
+        <app-input type="search" label="Pesquisar"></app-input>
+        <!-- <button icon="icone-lupa"></button>
           <button icon="icone-filtro" (click)="filtro = !filtro" alt=""></button> -->
-        </div>
-        <app-butons class="bt" color="blue" label="Adicionar cliente/fornecedor" (click)="add()"></app-butons>
-      <div class="tabela-clientes">
-        <app-tables tabela="tabelaCliente"></app-tables>
-      <div class="mt-5">
-        <app-pagination></app-pagination>
       </div>
+      <app-button class="bt" color="blue" label="Adicionar cliente/fornecedor" type="normal" (click)="add()"></app-button>
+      <div class="tabela-clientes">
+        <app-tables [clientes]="clientes" tabela="tabelaCliente"></app-tables>
+        <div class="mt-5">
+          <app-pagination></app-pagination>
+        </div>
       </div>
     </div>
     <div class="container filtro" *ngIf="filtro">

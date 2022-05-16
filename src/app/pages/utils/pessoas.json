@@ -1,0 +1,7 @@
+{
+  "pessoas" : [
+    {"value":"PF", "description":"Pessoa física"},
+    {"value":"PJ", "description":"Pessoa Jurídica"},
+    {"value":"PO", "description":"Falecido"}
+  ]
+}
