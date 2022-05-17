@@ -1,7 +1,8 @@
-import { PaginationComponent } from './pagination.component';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
+import { PaginationComponent } from './pagination.component';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { CommonModule } from '@angular/common';
     PaginationComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgxPaginationModule
   ],
   exports: [
     PaginationComponent

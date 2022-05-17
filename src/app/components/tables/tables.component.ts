@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClienteModel } from 'src/app/pages/cliente/model/cliente.model';
+import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
 
 @Component({
   selector: 'app-tables',
@@ -11,9 +13,29 @@ export class TablesComponent implements OnInit {
   @Input() nome: string;
   @Input() icon: string;
   @Input() clientes: ClienteModel[];
+  @Input() total: number;
+  @Input() pesquisa: PesquisaModel;
 
-  constructor() { }
+  pagina: number;
 
-  ngOnInit() {}
+  @Output() paginador = new EventEmitter();
+
+  constructor(
+    private _router: Router
+  ) {
+    this.pagina = 1;
+  }
+
+  ngOnInit() {
+
+  }
+
+  navigate(route: string, id: number){
+    this._router.navigate([route + id]);
+  }
+
+  emit(){
+    this.paginador.emit(this.pagina);
+  }
 
 }

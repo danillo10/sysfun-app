@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
 
 @Component({
   selector: 'app-pagination',
@@ -6,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pagination.component.scss'],
 })
 export class PaginationComponent implements OnInit {
+  paginas: number[];
+  pagina: number;
 
-  constructor() { }
+  @Output() paginadorEmitter = new EventEmitter();
 
-  ngOnInit() {}
+  constructor() {
+    this.pagina = 1;
+  }
+
+  ngOnInit() {
+
+  }
 
 }

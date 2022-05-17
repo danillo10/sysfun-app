@@ -1,19 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { CepModel } from 'src/app/shared/models/cep.model';
 import { AdressService } from 'src/app/shared/services/adress.service';
 import { CategoriasClientesService } from 'src/app/shared/services/categorias-clientes.service';
 import { SelectService } from 'src/app/shared/services/select.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
-
-
-import { ClienteModel } from '../model/cliente.model';
-import { ClienteService } from '../service/cliente.service';
 
 import basicas from '../../utils/basicas.json';
 import estadocivil from '../../utils/estado_civil.json';
@@ -24,6 +20,10 @@ import pessoas from '../../utils/pessoas.json';
 import situacao from '../../utils/situacao.json';
 import cadastros from '../../utils/tipo_cadastro.json';
 import tipoendereco from '../../utils/tipo_endereco.json';
+
+import { ClienteModel } from '../model/cliente.model';
+import { ClienteService } from '../service/cliente.service';
+
 
 @Component({
   selector: 'app-cliente',
@@ -49,8 +49,11 @@ export class ClienteComponent implements OnInit {
   profissao$: Observable<any>;
   profissaoPesquisada = new Subject<any>();
 
+  unsubscribeAll = new Subject<any>();
+
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private adressService: AdressService,
     private clienteService: ClienteService,
@@ -70,10 +73,11 @@ export class ClienteComponent implements OnInit {
     this.situacao = situacao.situacao;
     this.profissoes = [];
     this.categorias = [];
+
+    this.get();
   }
 
-  ngOnInit(
-  ) {
+  ngOnInit() {
     this.form = this.formBuilder.group({
       id: [this.cliente.id],
       responsavel: [this.cliente.responsavel],
@@ -166,14 +170,34 @@ export class ClienteComponent implements OnInit {
     this.getCategorias();
   }
 
+  ionViewDidEnter(){
+    this.get();
+  }
+
+  ionViewDidLeave(){
+    this.unsubscribeAll.unsubscribe();
+  }
+
   create() {
+    if(this.form.invalid) return;
+
     this.form.patchValue({dependentes: this.cliente.dependentes});
 
-    this.clienteService.create(this.form.value)
-      .subscribe((data: any) => {
-        if (data.status == 1) return alert(data.mensagem);
-        this.router.navigate(['clientes']);
-      })
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+
+    if(id !== 'novo-cliente')
+      this.clienteService.update(id, this.form.value)
+        .subscribe((data: any) => {
+          if (data.status == 1) return alert(data.mensagem);
+          this.router.navigate(['clientes']);
+        })
+    else
+      this.clienteService.create(this.form.value)
+        .subscribe((data: any) => {
+          if (data.status == 1) return alert(data.mensagem);
+          this.router.navigate(['clientes']);
+        })
+
   }
 
   getCategorias() {
@@ -209,6 +233,23 @@ export class ClienteComponent implements OnInit {
   selecionaProfissao(profissao) {
     this.form.patchValue({ profissao });
     this.profissoes = [];
+  }
+
+  get(){
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+
+    if(id != 'novo-cliente')
+      this.clienteService.show(id)
+        .subscribe((data: any) => {
+          this.cliente = new ClienteModel(data.cliente[0]);
+          this.cliente.dependentes = data.dependentes;
+
+          this.form.patchValue(this.cliente);
+
+          (data.dependentes)
+            this.form.patchValue({dependentes: this.cliente.dependentes});
+
+        });
   }
 
   pesquisaCPF() {
