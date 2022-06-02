@@ -3,6 +3,10 @@
   text-transform: uppercase;
 }
 
+ion-icon{
+  color: #015581;
+}
+
 .container {
   background: #fff;
   height: 100vh auto;
@@ -41,4 +45,21 @@ span{
 .line{
   border: 1px solid #CCCCCC;
   height: 1px;
+}
+
+.lista-dependentes{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+.deg90 {
+  transform: rotate(90deg);
+  margin-top: 5px;
+}
+
+.deg151 {
+  transform: rotate(151deg);
+  margin-top: 5px;
 }

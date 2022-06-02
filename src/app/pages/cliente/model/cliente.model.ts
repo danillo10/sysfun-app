@@ -1,5 +1,7 @@
 export class ClienteModel {
   id?: number;
+  aplicativo?: string;
+  aplicativo_id?: number;
   responsavel?: string;
   situacao?: string;
   categoria?: string;
@@ -94,6 +96,8 @@ export class ClienteModel {
   constructor(data?) {
     data = data || {};
     this.id = data.id || '';
+    this.aplicativo = data.aplicativo || 'S';
+    this.aplicativo_id = data.aplicativo_id || '';
     this.responsavel = data.responsavel  || '';
     this.situacao = data.situacao || 'Ativo';
     this.categoria = data.categoria || '';
@@ -203,6 +207,7 @@ export interface IDadosAdicionais {
 export interface IDependentes {
   numero?: number;
   id?: number;
+  aplicativo?: string;
   cliente?: number;
   cliente_id?: number;
   nome?: string;

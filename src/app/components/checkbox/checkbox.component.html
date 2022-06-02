@@ -5,6 +5,7 @@
     class="check checkbox--{{type}}"
     type="checkbox"
     (change)="set($event)"
+    [checked]="form.value[control]"
   >
   <label>{{label}}</label>
 </div>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { IDependentes } from 'src/app/pages/cliente/model/cliente.model';
 import { environment } from 'src/environments/environment';
 
@@ -17,6 +17,7 @@ export class DependentesService {
     return {
       numero: 1,
       id: null,
+      aplicativo: 'S',
       cliente: null,
       cliente_id: null,
       nome: null,
@@ -42,14 +43,9 @@ export class DependentesService {
     return dependente;
   }
 
-  delete(dependente: IDependentes, dependentes: IDependentes[]): IDependentes[] {
-    if(
-      (dependente.numero == 1 && dependentes.length == 1) ||
-      (dependente.numero > 1 && dependentes.length == 1)
-    )
-      return [this.first()];
-
-    return dependentes.filter(d => d.numero != dependente.numero);
+  delete(dependente: IDependentes): Observable<any> {
+    return this._http.get(`${environment.host}dependentes/remover/${dependente.id}`)
+      .pipe(res => res);
   }
 
   get(data){
@@ -64,10 +60,22 @@ export class DependentesService {
   }
 
   dependenteUsuario(id){
-    return this._http.post(`${environment.host}pesquisar/dependentes/cadastro`,
-      {id}
-    ).pipe(res => res)
+    return this._http.post(`${environment.host}pesquisar/dependentes/cadastro`,{id})
+      .pipe(res => res)
   }
 
+  reorganizar(dependente?: IDependentes, dependentes?: IDependentes[]): IDependentes[]{
+    if(!dependente){
+      return [this.first()];
+    }
+
+    if (
+      (dependente.numero == 1 && dependentes.length == 1) ||
+      (dependente.numero > 1 && dependentes.length == 1)
+    )
+      return [this.first()];
+
+    return dependentes.filter(d => d.numero != dependente.numero);
+  }
 
 }

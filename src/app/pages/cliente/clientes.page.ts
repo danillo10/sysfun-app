@@ -34,47 +34,30 @@ export class ClientesPage implements OnInit {
     this.pesquisa.registros = 10;
     this.pesquisa.tipo_pesquisa = 'nome';
     this.pesquisa.cliente = '';
+    this.pesquisa.pagina = 1;
   }
 
   ngOnInit(){
 
   }
 
-  ionViewWillEnter() {
-    this.get();
+  ionViewDidEnter() {
+    this.pesquisa.pagina = 1;
+    this.pesquisar();
   }
 
   add(){
     this.router.navigate(['clientes/novo-cliente/fornecedor']);
   }
 
-  /**
-   * Observable para os profissões de óbitos
-  */
-  get() {
-    this._clienteService.get(this.pesquisa$)
-      .subscribe((data: any) => {
+  pesquisar(skip: number = 0) {
+    this.pesquisa.skip = skip;
+
+    this._clienteService.get(this.pesquisa)
+      .then((data: any) => {
         this.clientes = data.clientes;
         this.total = data.total;
       });
-
-    this.pesquisa$ = this.clientePesquisado.pipe(
-      debounceTime(500),
-      switchMap((cliente: string) => this._clienteService.get(cliente)),
-      distinctUntilChanged()
-    )
-
-    this.pesquisa$.subscribe((data: any) => {
-      this.clientes = data.clientes;
-      this.total = data.total;
-    })
-
-    this.pesquisar();
-  }
-
-  pesquisar(skip: number = 0) {
-    this.pesquisa.skip = skip;
-    this.clientePesquisado.next(this.pesquisa);
   }
 
 }

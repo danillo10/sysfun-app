@@ -21,9 +21,21 @@ import situacao from '../../utils/situacao.json';
 import cadastros from '../../utils/tipo_cadastro.json';
 import tipoendereco from '../../utils/tipo_endereco.json';
 
-import { ClienteModel } from '../model/cliente.model';
+import { ClienteModel, IDependentes } from '../model/cliente.model';
 import { ClienteService } from '../service/cliente.service';
+import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
+import { DependentesService } from 'src/app/shared/services/dependentes.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 
+interface Clipboard {
+  writeText(newClipText: string): Promise<void>;
+}
+
+interface NavigatorClipboard {
+  readonly clipboard?: Clipboard;
+}
+
+interface Navigator extends NavigatorClipboard { }
 
 @Component({
   selector: 'app-cliente',
@@ -46,6 +58,10 @@ export class ClienteComponent implements OnInit {
   profissoes: SelectModel[];
   categorias: SelectModel[];
 
+  dependentesCopiados: string;
+  enderecos: boolean;
+  criadoEm: string;
+
   profissao$: Observable<any>;
   profissaoPesquisada = new Subject<any>();
 
@@ -57,10 +73,13 @@ export class ClienteComponent implements OnInit {
     private formBuilder: FormBuilder,
     private adressService: AdressService,
     private clienteService: ClienteService,
+    private dependentesService: DependentesService,
     private categoriaClienteService: CategoriasClientesService,
     private selectService: SelectService,
     private socialSharing: SocialSharing,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private localStorageService: LocalstorageService,
+    private loadingService: LoadingService
   ) {
     this.cliente = new ClienteModel();
     this.pessoas = pessoas.pessoas;
@@ -73,6 +92,7 @@ export class ClienteComponent implements OnInit {
     this.situacao = situacao.situacao;
     this.profissoes = [];
     this.categorias = [];
+    this.enderecos = false;
 
     this.get();
   }
@@ -80,6 +100,8 @@ export class ClienteComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       id: [this.cliente.id],
+      aplicativo: [this.cliente.aplicativo],
+      aplicativo_id: [this.cliente.aplicativo],
       responsavel: [this.cliente.responsavel],
       situacao: [this.cliente.situacao],
       categoria: [this.cliente.categoria],
@@ -166,37 +188,68 @@ export class ClienteComponent implements OnInit {
       subDependentes: [this.cliente.subDependentes]
     })
 
+    this.setDependentes([]);
     this.getProfissao();
     this.getCategorias();
+    this.copiarDependentes();
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.get();
   }
 
-  ionViewDidLeave(){
+  ionViewDidLeave() {
     this.unsubscribeAll.unsubscribe();
   }
 
   create() {
-    if(this.form.invalid) return;
 
-    this.form.patchValue({dependentes: this.cliente.dependentes});
+    if (this.form.value.nome_fantasia == "") {
+      return alert("Campo Nome Obrigatório!");
+    }
 
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (this.form.value.pessoa == 'PF' || this.form.value.pessoa == 'PO') {
+      if (this.form.value.nome_mae == "" || this.form.value.nome_mae == null) {
+        return alert("Nome da Mãe Obrigatório!");
+      }
 
-    if(id !== 'novo-cliente')
-      this.clienteService.update(id, this.form.value)
-        .subscribe((data: any) => {
-          if (data.status == 1) return alert(data.mensagem);
-          this.router.navigate(['clientes']);
-        })
-    else
-      this.clienteService.create(this.form.value)
-        .subscribe((data: any) => {
-          if (data.status == 1) return alert(data.mensagem);
-          this.router.navigate(['clientes']);
-        })
+      if (this.form.value.sexo == "" || this.form.value.sexo == null) {
+        return alert("Informar o sexo do cliente");
+      }
+    }
+
+    if (this.form.value.pessoa != 'PO' && this.form.value.celular == "") {
+      return alert("Número de celular Obrigatório!");
+    }
+
+    if (this.form.value.pessoa == 'PF') {
+      if (this.form.value.emissor == "" || this.form.value.emissor == null) {
+        return alert("Orgão emissor Obrigatório!");
+      }
+    }
+
+    this.loadingService.showLoading("Salvando cadastro...")
+      .then(() => {
+        this.form.patchValue({ dependentes: this.cliente.dependentes });
+
+        const id = this.activatedRoute.snapshot.paramMap.get('id');
+
+        if (id !== 'novo-cliente')
+          this.clienteService.update(id, this.form.value, this.criadoEm)
+            .subscribe((data: any) => {
+              this.loadingService.hideLoading();
+              if (data.status == 1) return alert(data.mensagem);
+              this.router.navigate(['clientes']);
+            })
+        else
+          this.clienteService.create(this.form.value)
+            .subscribe((data: any) => {
+              this.loadingService.hideLoading();
+              const clientes = this.localStorageService.getParse('clientes-novos');
+              if (data.status == 1) return alert(data.mensagem);
+              this.router.navigate(['clientes']);
+            })
+      })
 
   }
 
@@ -235,21 +288,35 @@ export class ClienteComponent implements OnInit {
     this.profissoes = [];
   }
 
-  get(){
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
+  get() {
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    if(id != 'novo-cliente')
-      this.clienteService.show(id)
-        .subscribe((data: any) => {
-          this.cliente = new ClienteModel(data.cliente[0]);
-          this.cliente.dependentes = data.dependentes;
+    this.activatedRoute.queryParams.subscribe(data => {
+      this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
-          this.form.patchValue(this.cliente);
+      if (id != 'novo-cliente') {
+        this.loadingService.showLoading("Carregando dados...")
+          .then(() => {
+            this.clienteService.show(id, this.criadoEm)
+              .then((data: any) => {
+                this.cliente = new ClienteModel(data.cliente[0]);
 
-          (data.dependentes)
-            this.form.patchValue({dependentes: this.cliente.dependentes});
+                if (navigator.onLine)
+                  this.cliente.dependentes = data.dependentes;
 
-        });
+                this.form.patchValue(this.cliente);
+
+                this.loadingService.hideLoading();
+
+              });
+          })
+      }
+    });
+
+  }
+
+  setDependentes(dependentes: IDependentes[]) {
+    this.cliente.dependentes = dependentes.length == 0 ? this.dependentesService.reorganizar() : dependentes;
   }
 
   pesquisaCPF() {
@@ -286,6 +353,15 @@ export class ClienteComponent implements OnInit {
             "eEstado": data.uf
           })
       })
+  }
+
+  copiarDependentes() {
+    this.dependentesCopiados = '';
+    this.cliente.dependentes.map((dependente) => {
+      this.dependentesCopiados += (dependente.nome) ? dependente.nome + ' ' : '';
+      this.dependentesCopiados += (dependente.cpf) ? dependente.cpf + ' ' : '';
+      this.dependentesCopiados += (dependente.tipo) ? dependente.tipo + ' | ' : '';
+    })
   }
 
   sendWhatsapp() {

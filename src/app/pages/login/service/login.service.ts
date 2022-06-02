@@ -21,7 +21,6 @@ export class LoginService {
   }
 
   saveUser({email, password, token}){
-    console.log(token);
     this.localStorageService.set('token', token);
     this.localStorageService.set('email', email);
     this.localStorageService.set('password', password);

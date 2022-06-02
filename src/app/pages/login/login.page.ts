@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 
 import messages from '../utils/messages.json';
 import { LoginService } from './service/login.service';
@@ -18,14 +19,15 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalstorageService
   ) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
       email: [null, Validators.required],
       password: [null, Validators.required],
-      remember: [false],
+      remember: [true],
       token: [null]
     });
 
@@ -36,6 +38,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.form.value)
       .subscribe(
         (data: any) => {
+
           const user = {
             email: this.form.value.email,
             password: this.form.value.password,
@@ -45,7 +48,11 @@ export class LoginComponent implements OnInit {
           this.loginService.saveUser(user);
           this.router.navigate(['dashboard']);
         },
-        (err) => alert(messages.login.credentials)
+        (err) => {
+          if(err.message == 'Token has expired')
+            this.localStorageService.destroy('token');
+          alert(messages.login.credentials)
+        }
       )
   }
 

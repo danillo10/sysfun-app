@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { fromEvent, Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 import { SelectModel } from '../select/model/select.model';
 
@@ -9,8 +11,9 @@ import { SelectModel } from '../select/model/select.model';
   styleUrls: ['./inputs.component.scss'],
 })
 export class InputsComponent implements OnInit {
+  @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
   @Input() type: 'text' | 'password' | 'search'| 'textarea';
-  @Input() mask: 'CPF' | 'CNPJ' | 'CEP';
+  @Input() mask: 'CPF' | 'CNPJ' | 'CEP' | 'DATA';
   @Input() length: number;
   @Input() number: number;
   @Input() label: string;
@@ -24,10 +27,24 @@ export class InputsComponent implements OnInit {
 
   @Output() searchEmitter = new EventEmitter();
   @Output() selectEmitter = new EventEmitter();
+  @Output() selectIcon = new EventEmitter();
+
+  searchEvent = new Subject<any>();
+  searchObservable$: Observable<any>;
 
   constructor() { }
 
   ngOnInit() {
+    this.searchObservable$ = this.searchEvent
+    .pipe(
+      map((event: any) => {
+        return event;
+      }),
+      debounceTime(1000),
+      distinctUntilChanged()
+    )
+
+    this.searchObservable$.subscribe(text => this.emit(text))
   }
 
   emit(e){
@@ -36,6 +53,14 @@ export class InputsComponent implements OnInit {
 
   selecionar(e){
     this.selectEmitter.emit(e);
+  }
+
+  iconClicked(){
+    this.selectIcon.emit();
+  }
+
+  searching(e){
+    this.searchEvent.next(e)
   }
 
 }

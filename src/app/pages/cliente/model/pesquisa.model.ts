@@ -9,5 +9,7 @@ export interface PesquisaModel {
   deve_receber_torpedo_voz?: string,
   tipo?:string,
   skip?: number,
-  registros?: number
+  registros?: number,
+  pagina?: number,
+  ultimaAtualizacao?: any
 }

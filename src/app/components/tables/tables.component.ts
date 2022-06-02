@@ -30,8 +30,14 @@ export class TablesComponent implements OnInit {
 
   }
 
-  navigate(route: string, id: number){
-    this._router.navigate([route + id]);
+  navigate(route: string, cliente: ClienteModel){
+    const id = cliente.aplicativo_id ? cliente.aplicativo_id : cliente.id;
+    this._router.navigate([route, id], {
+      queryParams: {
+        sistema: cliente.id,
+        aplicativo: cliente.aplicativo_id
+      }
+    });
   }
 
   emit(){

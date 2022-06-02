@@ -19,6 +19,19 @@ export class LocalstorageService {
     localStorage.removeItem(flag);
   }
 
+  /**
+   * @description Set string to object from localstorage
+   * @param flag
+   * @returns
+   */
+  getParse(flag: string){
+    const data = JSON.parse(localStorage.getItem(flag));
+    return data ? data : [];
+  }
+
+  /**
+    @description Set object data to string on localstorage
+  */
   setParse(flag: string, value: any){
     localStorage.setItem(flag, JSON.stringify(value));
   }

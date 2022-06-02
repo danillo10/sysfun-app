@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Network } from '@awesome-cordova-plugins/network/ngx';
 
-import { CategoriasClientesService } from './shared/services/categorias-clientes.service';
+import { Network } from '@awesome-cordova-plugins/network/ngx';
+import { Platform } from '@ionic/angular';
+import { StatusService } from './shared/services/status.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,9 @@ import { CategoriasClientesService } from './shared/services/categorias-clientes
 export class AppComponent {
 
   constructor(
-    private categoriasService: CategoriasClientesService,
-    private network: Network
+    private network: Network,
+    private statusService: StatusService,
+    private platform: Platform
   ) {}
 
   ngOnInit(){
@@ -20,11 +22,14 @@ export class AppComponent {
   }
 
   intializeApp(){
-    let connected = this.network.onConnect().subscribe(() => alert("Connected"));
-    let disconnected = this.network.onDisconnect().subscribe(() => alert("Disconnected"));
-
-    connected.unsubscribe();
-    disconnected.unsubscribe();
+    this.platform.ready().then(() => {
+      this.network.onConnect().subscribe(() => {
+        this.statusService.onNetworkChanged.next(true);
+      });
+      this.network.onDisconnect().subscribe(() => {
+        this.statusService.onNetworkChanged.next(false);
+      });
+    })
   }
 
 }

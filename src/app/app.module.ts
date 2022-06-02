@@ -2,6 +2,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 import { Network } from '@awesome-cordova-plugins/network/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -25,6 +26,7 @@ import { SharedModule } from './shared/modules/shared/shared.module';
   ],
   providers: [
     Network,
+    NativeStorage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true }
   ],

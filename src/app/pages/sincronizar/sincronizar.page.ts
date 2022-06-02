@@ -27,7 +27,6 @@ export class SincronizarPage implements OnInit {
     this._sincronizarService.clientes({ registros: 100000 })
       .then((data: any) => {
         this._localStorageService.setParse('clientes', data.clientes)
-        alert(JSON.stringify(this._localStorageService.get('clientes')))
       })
   }
 

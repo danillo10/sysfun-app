@@ -15,12 +15,19 @@ import { DateService } from 'src/app/shared/services/date.service';
   styleUrls: ['./dependentes.component.scss'],
 })
 export class DependentesComponent implements OnInit {
-  @Input() dependentes: IDependentes[];
+
+  @Input() set data(dependentes: IDependentes[]){
+    if(dependentes.length > 0){
+      this.dependentes = dependentes;
+    }
+  }
+
   @Output() dependentesSelecionados = new EventEmitter();
 
   dependentes$: Observable<any>;
   dependentePesquisado = new Subject<any>();
   dependente: IDependentes;
+  dependentes: IDependentes[];
 
   parentescos: SelectModel[];
 
@@ -31,13 +38,8 @@ export class DependentesComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    if(this.dependentes.length == 0){
-      this.firstDependente();
-    }
-
+  ngOnInit(): void {
     this.parentescos = parentescos.parentescos;
-
     this.getDependentes();
   }
 
@@ -45,23 +47,31 @@ export class DependentesComponent implements OnInit {
     this.emit();
   }
 
-  adicionaDependente(){
+  adicionaDependente() {
     const dependente = this.dependenteService.add(this.dependentes);
     this.dependentes.push(dependente);
   }
 
-  delete(dependente){
-    this.dependentes = this.dependenteService.delete(dependente, this.dependentes);
-    this.emit();
+  delete(dependente) {
+    if (dependente.id) {
+      if (confirm("Deseja excluir o dependente selecionado ? Esta ação é irreversível.")) {
+        return this.dependenteService.delete(dependente)
+          .subscribe((data: any) => {
+            this.dependentes = this.dependenteService.reorganizar(dependente, this.dependentes);
+            this.emit();
+          });
+      }
+    }
+    this.dependentes = this.dependenteService.reorganizar(dependente, this.dependentes);
   }
 
-  pesquisaDependente(dependente, nome){
+  pesquisaDependente(dependente, nome) {
     this.dependente = dependente;
     const ids = this.dependentes.map(dependente => dependente.id).filter(d => d != null);
-    this.dependentePesquisado.next({nome, ids});
+    this.dependentePesquisado.next({ nome, ids });
   }
 
-  selecionar(dependenteSelecionado, dependente){
+  selecionar(dependenteSelecionado, dependente) {
     dependente.pesquisados = [];
     dependente.cliente_id = dependenteSelecionado.id;
     dependente.id_dependente = dependenteSelecionado.id_dependente;
@@ -75,7 +85,7 @@ export class DependentesComponent implements OnInit {
 
     this.dependenteService.dependenteUsuario(dependente.id)
       .subscribe((data: any) => {
-        if(data.cliente)
+        if (data.cliente)
           alert("O dependente já está cadastrado no cliente " + data.cliente + " com CPF: " + data.cpf)
       })
 
@@ -83,15 +93,10 @@ export class DependentesComponent implements OnInit {
     this.emit();
   }
 
-  firstDependente() {
-    const dependente = this.dependenteService.first();
-    this.dependentes.push(dependente);
-  }
-
   /**
    * Observable para os dependentes
   */
-   getDependentes() {
+  getDependentes() {
     this.dependentes$ = this.dependentePesquisado.pipe(
       debounceTime(500),
       distinctUntilChanged(),
@@ -103,7 +108,7 @@ export class DependentesComponent implements OnInit {
     })
   }
 
-  emit(){
+  emit() {
     this.dependentesSelecionados.emit(this.dependentes);
   }
 

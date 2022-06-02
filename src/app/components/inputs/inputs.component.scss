@@ -12,7 +12,11 @@ input{
   font-size: 16px;
   border-radius: 10px;
   border: 1px solid #CCCCCC;
-  text-transform: uppercase;
+  // text-transform: uppercase;
+}
+
+input.left {
+  padding-left: 40px;
 }
 
 input.login{
@@ -25,6 +29,7 @@ input.login{
 
 div.icon{
     position: absolute;
+    z-index: 1000;
 }
 
 div.right {
@@ -104,8 +109,11 @@ textarea{
   color: #5A5A5A;
 }
 
-input[type=search]{
+input[type="search"]{
   background: #fff;
   color: #5A5A5A;
 }
 
+input[type="checkbox"]{
+  background: #fff !important;
+}

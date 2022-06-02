@@ -48,9 +48,9 @@
 
         <app-select [form]="form" control="estado" [options]="estados" label="estado" type="text"></app-select>
 
-        <app-input [form]="form" control="celular" label="celular" type="text" icon="whatsapp.png" iconPosition="right" mask="TEL"></app-input>
+        <app-input [form]="form" control="celular" label="celular" length="15" type="text" icon="whatsapp.png" iconPosition="right" mask="TEL" (selectIcon)="sendWhatsapp()"></app-input>
 
-        <app-input [form]="form" control="telefone" label="telefone" type="text" mask="TEL"></app-input>
+        <app-input [form]="form" control="telefone" label="telefone" length="15" type="text" mask="TEL"></app-input>
 
         <app-select [form]="form" control="tipo_cadastro" [options]="cadastros" label="tipo De Cadastro" type="select"></app-select>
 
@@ -70,29 +70,31 @@
 
         <app-input [form]="form" control="nome_pai" label="Nome Do Pai" type="text"></app-input>
 
-        <h2>Endereços</h2>
+        <div class="d-flex flex-row align-items-center justify-content-between">
+          <h2>Endereços</h2>
+          <ion-icon name="play" class="deg90" *ngIf="!enderecos" (click)="enderecos = !enderecos"></ion-icon>
+          <ion-icon name="play" class="deg151" *ngIf="enderecos" (click)="enderecos = !enderecos"></ion-icon>
+        </div>
 
-        <app-select [form]="form" control="eTipo_endereco" [options]="tipoendereco" label="Tipo De Endereço" type="select"></app-select>
+        <div *ngIf="enderecos">
+          <app-select [form]="form" control="eTipo_endereco" [options]="tipoendereco" label="Tipo De Endereço" type="select"></app-select>
 
-        <app-select [form]="form" control="eTipo_pessoa" [options]="pessoas" label="tipo de pessoa" type="select"></app-select>
+          <app-select [form]="form" control="eTipo_pessoa" [options]="pessoas" label="tipo de pessoa" type="select"></app-select>
 
-        <app-input [form]="form" control="eCnpjcpf" *ngIf="form.value.eTipo_pessoa != 'PJ'" label="cpf"  type="text" mask="CPF" length="14"></app-input>
+          <app-input [form]="form" control="eCep" label="cep" type="text" icon="lupa.png" iconPosition="right" length="9" (change)="getCep('secundario')" mask="CEP"></app-input>
 
-        <app-input [form]="form" control="eCnpjcpf" *ngIf="form.value.eTipo_pessoa == 'PJ'" label="CNPJ"  type="text" mask="CNPJ" length="18"></app-input>
+          <app-input [form]="form" control="eEndereco" label="endereço" type="text"></app-input>
 
-        <app-input [form]="form" control="eCep" label="cep" type="text" icon="lupa.png" iconPosition="right" length="9" (change)="getCep('secundario')" mask="CEP"></app-input>
+          <app-input [form]="form" control="eNumero" label="número" type="text"></app-input>
 
-        <app-input [form]="form" control="eEndereco" label="endereço" type="text"></app-input>
+          <app-input [form]="form" control="eComplemento" label="complemento" type="text"></app-input>
 
-        <app-input [form]="form" control="eNumero" label="número" type="text"></app-input>
+          <app-input [form]="form" control="eBairro" label="bairro" type="text"></app-input>
 
-        <app-input [form]="form" control="eComplemento" label="complemento" type="text"></app-input>
+          <app-input [form]="form" control="eCidade" label="cidade" type="text"></app-input>
 
-        <app-input [form]="form" control="eBairro" label="bairro" type="text"></app-input>
-
-        <app-input [form]="form" control="eCidade" label="cidade" type="text"></app-input>
-
-        <app-select [form]="form" control="eEstado" [options]="estados" label="estado" type="select"></app-select>
+          <app-select [form]="form" control="eEstado" [options]="estados" label="estado" type="select"></app-select>
+        </div>
 
         <app-input [form]="form" control="religiao" label="religião" type="text"></app-input>
 
@@ -102,14 +104,22 @@
 
         <app-select [form]="form" control="situacao" [options]="situacao" label="situação" type="select"></app-select>
 
-        <h2>Dependentes (opcional)</h2>
+        <h2>
+          Dependentes (opcional)
+          <button type="button" [ngxClipboard]="content"  style="background-color: transparent;color: #015581;">
+            <ion-icon name="copy-outline"></ion-icon>
+          </button>
+        </h2>
 
-        <app-dependentes [dependentes]="cliente.dependentes" (dependentesSelecionados)="this.form.patchValue({ dependentes: $event })"></app-dependentes>
+        <app-dependentes [data]="cliente.dependentes" (dependentesSelecionados)="setDependentes($event)"></app-dependentes>
 
         <app-button (click)="create()" [disabled]="form.invalid" type="normal" color="blue" label="Salvar"></app-button>
         <app-button color="gray" label="Cancelar"></app-button>
       </form>
       <div class="line w-100 mt-5"></div>
+      <div class="lista-dependentes">
+        <input #content [(ngModel)]="dependentesCopiados" name="list-dependentes" id="lista-dependentes"/>
+      </div>
     </div>
   </div>
 </ion-content>

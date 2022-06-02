@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IonicInputMaskModule } from '@thiagoprz/ionic-input-mask';
-import { NumberinputDirective } from 'src/app/shared/directives/numberinput.directive';
 import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
 
 import { InputsComponent } from './inputs.component';
@@ -17,7 +16,7 @@ import { InputsComponent } from './inputs.component';
     IonicInputMaskModule
   ],
   exports: [
-    InputsComponent,
+    InputsComponent
   ],
   providers: [
     {

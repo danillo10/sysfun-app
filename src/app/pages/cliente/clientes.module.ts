@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ButtonsModule } from 'src/app/components';
 import { DependentesModule } from 'src/app/components/dependentes/dependentes.module';
 import { NavbarModule } from 'src/app/components/navbar/navbar.module';
+import { ClipboardModule } from 'ngx-clipboard';
 import { SelectModule } from 'src/app/components/select/select.module';
 import { NoopInterceptor } from 'src/app/shared/interceptors/token.interceptor';
 import { CategoriasClientesService } from 'src/app/shared/services/categorias-clientes.service';
@@ -39,7 +40,8 @@ import { ClienteService } from './service/cliente.service';
     SelectModule,
     PaginationModule,
     NavbarModule,
-    DependentesModule
+    DependentesModule,
+    ClipboardModule
   ],
   providers: [
     ClienteService,

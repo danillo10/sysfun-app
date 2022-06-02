@@ -13,5 +13,14 @@
         type="normal">
       </app-button>
     </div>
+
+    <div class="center">
+      <ion-icon name="cloud-done-outline" *ngIf="status && atualizado" (click)="sincronizar()"></ion-icon>
+      <ion-icon name="cloud-offline-outline" *ngIf="!status"></ion-icon>
+      <ion-icon name="cloud-upload-outline" *ngIf="status && !atualizado" (click)="sincronizar()"></ion-icon>
+      <p class="status" *ngIf="status && atualizado" (click)="sincronizar()">Sincronizado</p>
+      <p class="status" *ngIf="!status">Não é possível sincronizar</p>
+      <p class="status" *ngIf="status && !atualizado" (click)="sincronizar()">Sincronizar</p>
+    </div>
   </div>
 </ion-content>

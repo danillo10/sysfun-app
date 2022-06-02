@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxUpperCaseDirectiveModule } from 'ngx-upper-case-directive';
 
 import { NumberinputDirective } from '../../directives/numberinput.directive';
 
@@ -10,11 +11,13 @@ import { NumberinputDirective } from '../../directives/numberinput.directive';
     NumberinputDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgxUpperCaseDirectiveModule
   ],
   exports : [
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxUpperCaseDirectiveModule,
   ]
 })
 export class SharedModule { }
