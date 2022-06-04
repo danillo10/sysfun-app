@@ -28,21 +28,15 @@ export class NativeStorageService {
    * @param flag
    * @returns
    */
-  getParse(flag: string): Promise<any>{
-    return new Promise((resolve, reject) => {
-      this.nativeStorage.getItem(flag)
-        .then((data) => {
-          alert(JSON.stringify(data))
-          resolve(data);
-        }).catch((err) => alert(JSON.stringify(err)));
-    })
+  async getParse(flag: string): Promise<any>{
+    return this.nativeStorage.getItem(flag);
   }
 
   /**
     @description Set object data to string on localstorage
   */
-  setParse(flag: string, value: any){
-    this.nativeStorage.setItem(flag, JSON.stringify(value));
+  setParse(flag: string, value: any): Promise<any>{
+    return this.nativeStorage.setItem(flag, JSON.stringify(value));
   }
 
   getSuccess(){

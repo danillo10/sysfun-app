@@ -71,10 +71,10 @@ export class ClienteService {
 
       if (criado_em == 'aplicativo') {
         const clientes = await this.nativeStorageService.getParse('clientes-novos');
-        cliente = clientes.find(cliente => cliente.aplicativo_id == id);
+        // cliente = clientes.find(cliente => cliente.aplicativo_id == id);
       } else {
         const data = await this.nativeStorageService.getParse('clientes');
-        cliente = data.clientes.find(cliente => cliente.id == id);
+        // cliente = data.clientes.find(cliente => cliente.id == id);
       }
 
       return of({ cliente: [cliente] })
@@ -107,7 +107,8 @@ export class ClienteService {
   get(pesquisa: PesquisaModel): Promise<any> {
     if (!navigator.onLine) {
       const data = this.getOffline(pesquisa);
-      return data;
+      return of(data)
+        .toPromise();
     }
 
     return this._http.post(`${environment.host}pesquisa/avancada/clientes`, pesquisa)
@@ -126,18 +127,17 @@ export class ClienteService {
     .pipe(res => res);
   }
 
-  async getOffline(pesquisa: PesquisaModel): Promise<any> {
-    const clientes = this.nativeStorageService.getParse('clientes');
-    // alert(JSON.stringify(clientes));
-    const response = this.getSucessClientes(clientes, pesquisa);
-    return of(response)
-      .pipe(res => res)
-      .toPromise();
+  async getOffline(pesquisa: PesquisaModel) {
+    const data = await this.nativeStorageService.getParse('clientes');
+    const clientes = JSON.parse(data);
+    return this.getFilteredClientes(clientes[0].clientes, pesquisa);
   }
 
-  getSucessClientes(data, pesquisa: PesquisaModel): any{
-    let clientes = data.clientes;
+  getFilteredClientes(data, pesquisa: PesquisaModel): any{
+    let clientes = data;
     let total = 0;
+
+    alert(clientes.length)
 
     if (pesquisa.cliente) {
       clientes = _.filter(clientes, (cliente, index) => {

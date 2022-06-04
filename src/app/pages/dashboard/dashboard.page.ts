@@ -40,10 +40,17 @@ export class DashboardComponent implements OnInit {
     this.buttons = exportedComponents.buttons;
   }
 
-  ionViewDidEnter() {
-    this.statusService.onNetworkChanged.subscribe((data: boolean) => this.status = data)
+  async ionViewDidEnter() {
+    if(!this.localStorageService.get('ultimaAtualizacao')){
+      this.nativeStorageService.set('clientes', []);
+      this.nativeStorageService.set('clientes-novos', []);
+    }
 
-    this.atualizado = this.localStorageService.get('clientes-novos') ? false : true;
+    this.statusService.onNetworkChanged
+      .subscribe((data: boolean) => this.status = data)
+
+    this.atualizado = await this.nativeStorageService.getParse('clientes-novos') ? false : true;
+
   }
 
   goToView(page) {
@@ -63,14 +70,15 @@ export class DashboardComponent implements OnInit {
   enviarClientes() {
     return new Promise((resolve, reject) => {
       this.loadingService.showLoading('Enviando clientes....').then(async () => {
-        const clientes = this.localStorageService.getParse('clientes-novos');
+        const clientes = await this.nativeStorageService.getParse('clientes-novos');
+        alert(clientes)
         if (clientes.length > 0) {
           await this.clienteService.createMultiples(clientes);
         }else{
-          this.localStorageService.destroy('clientes-novos')
+          this.nativeStorageService.destroy('clientes-novos')
         }
-        setTimeout(() => {
-          this.atualizado = this.localStorageService.get('clientes-novos') ? false : true;
+        setTimeout(async () => {
+          this.atualizado = await this.nativeStorageService.get('clientes-novos') ? false : true;
           this.loadingService.hideLoading();
           resolve(true)
         }, 2000)
@@ -80,13 +88,12 @@ export class DashboardComponent implements OnInit {
 
   receberClientes() {
     return new Promise((resolve, reject) => {
-      this.loadingService.showLoading('Recebendo clientes...').then(() => {
-        // const ultimaAtualizacao = this.localStorageService.get('ultimaAtualizacao');
-        const ultimaAtualizacao = null;
-        // const clientes = this.localStorageService.getParse('clientes'); native storage;
+      this.loadingService.showLoading('Recebendo clientes...').then(async () => {
+        const ultimaAtualizacao = this.localStorageService.get('ultimaAtualizacao');
+        let clientes = await this.nativeStorageService.getParse('clientes');
 
-        let registros = 1000;
-        let skip = registros;
+        let registros = clientes.length == 0 ? 1000 : 100000;
+        let skip = clientes.length == 0 ? 1000 : 0;
 
         if(skip == 1000){
           this.clienteService.totalClientes()
@@ -96,25 +103,54 @@ export class DashboardComponent implements OnInit {
                 await this.getClientesSkip({ registros, ultimaAtualizacao, skip });
                 skip = skip + 1000;
               }
+              this.loadingService.hideLoading();
+              this.localStorageService.set('ultimaAtualizacao', moment().format('YYYY-MM-DD'));
+              resolve(true);
             });
-        }
+        }else{
+          this.clienteService.sync({ registros, ultimaAtualizacao, skip })
+            .then(async (data: any) => {
+              if(data.clientes.length > 0){
+                const identificadores = data.clientes.map(c => {
+                  return c.id;
+                });
 
-        this.loadingService.hideLoading();
-        this.localStorageService.set('ultimaAtualizacao', moment().format('YYYY-MM-DD'));
-        resolve(true);
+                clientes = clientes.map(clienteLocal => {
+                  if(identificadores.includes(clienteLocal.id)){
+                    clienteLocal = data.clientes.find(c => c.id == clienteLocal.id);
+                  }
+                  return clienteLocal;
+                });
+
+                this.nativeStorageService.setParse('clientes', clientes);
+              }
+
+              this.loadingService.hideLoading();
+              this.localStorageService.set('ultimaAtualizacao', moment().format('YYYY-MM-DD'));
+              resolve(true);
+            })
+        }
       })
     })
   }
 
-  getClientesSkip({ registros, ultimaAtualizacao, skip }){
+  getClientesSkip({ registros, ultimaAtualizacao, skip = 0 }){
     return new Promise((resolve, reject) => {
       this.clienteService.sync({ registros, ultimaAtualizacao, skip })
-      .then((data: ClienteModel[]) => {
-        let clientesLocal = this.nativeStorageService.getParse('clientes');
+      .then(async (data: any) => {
+
+        let clientesLocal = await this.nativeStorageService.getParse('clientes');
+
         let clientes = Object.assign(clientesLocal);
-        clientes.push(data);
+
+        clientes = clientes.length > 0 ? JSON.parse(clientes) : clientes;
+
+        data.clientes.map(cliente => clientes.push(cliente))
+
         this.nativeStorageService.setParse('clientes', clientes);
+
         resolve(true);
+
       }, (err) => alert(JSON.stringify(err)))
     });
   }
