@@ -13,7 +13,7 @@
     {
       "color": "blue-light-lg",
       "label": "planos",
-      "view": "planos-funerarios"
+      "view": "plano-funerario"
     }
   ]
 }

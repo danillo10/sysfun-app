@@ -1,4 +1,5 @@
 export interface PesquisaModel {
+  descricao?: string,
   situacao?: string,
   tipo_pesquisa?: string,
   tipo_cadastro?: string,

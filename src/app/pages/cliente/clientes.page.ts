@@ -34,7 +34,6 @@ export class ClientesPage implements OnInit {
     this.pesquisa.registros = 10;
     this.pesquisa.tipo_pesquisa = 'nome';
     this.pesquisa.cliente = '';
-    this.pesquisa.pagina = 1;
   }
 
   ngOnInit(){
@@ -55,7 +54,6 @@ export class ClientesPage implements OnInit {
 
     this._clienteService.get(this.pesquisa)
       .then((data: any) => {
-        alert(JSON.stringify(data));
         this.clientes = data.clientes;
         this.total = data.total;
       });

@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SelectModule } from 'src/app/components/select/select.module';
 import { AdicionarPlanoComponent } from './adicionar-plano/adicionar-plano.component';
+import { NavbarModule } from 'src/app/components/navbar/navbar.module';
 @NgModule({
   declarations: [
     PlanoFunerarioComponent,
@@ -21,7 +22,8 @@ import { AdicionarPlanoComponent } from './adicionar-plano/adicionar-plano.compo
     SelectModule,
     CheckboxModule,
     PaginationModule,
-    PlanoFunerarioPageRoutingModule
+    PlanoFunerarioPageRoutingModule,
+    NavbarModule
   ],
   exports: [
     PlanoFunerarioComponent

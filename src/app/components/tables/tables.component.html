@@ -1,7 +1,7 @@
 <div class="tabela" *ngIf="tabela == 'tabelaCliente'">
   <table class="table table-borderless">
     <tr
-      *ngFor="let cliente of clientes | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
+      *ngFor="let cliente of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
       <td>{{cliente.id}}</td>
       <td class="name">{{cliente.nome_fantasia}}</td>
       <td class="d-flex">
@@ -18,17 +18,16 @@
 
 
 <div class="tabela" *ngIf="tabela == 'tabelaContasReceber'">
-  <table>
-    <tr>
+  <table class="table table-borderless">
+    <tr
+      *ngFor="let conta of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
       <td colspan="2">
-        <button>
-          <img class="icone-tabela" src="../../../assets/icon/relogio.png" alt="">
-        </button>
+        {{conta.id}}
       </td>
-      <td class="name-table-contas">
-        Maycon Ferreira santos
-        cobrança de R$35,00
-        Vencimento dia 10/03/2020
+      <td class="name">
+        <div class="nome">{{conta.nome_fantasia}}</div><br>
+        Cobrança de<span>{{conta.valor | currency : 'BRL'}}</span><br>
+        Vencimento em {{conta.vencimento | date:'shortDate'}}
       </td>
       <td colspan="2">
         <button>

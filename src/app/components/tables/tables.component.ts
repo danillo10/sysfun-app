@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClienteModel } from 'src/app/pages/cliente/model/cliente.model';
 import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
+import { IContasReceber } from 'src/app/pages/contas-receber/model/contas-receber.model';
 
 @Component({
   selector: 'app-tables',
@@ -12,7 +13,7 @@ export class TablesComponent implements OnInit {
   @Input() tabela: 'tableCliente'|'tabelaContasReceber'| 'tabelaplanosFunerarios';
   @Input() nome: string;
   @Input() icon: string;
-  @Input() clientes: ClienteModel[];
+  @Input() data: ClienteModel[] | IContasReceber [];
   @Input() total: number;
   @Input() pesquisa: PesquisaModel;
 
