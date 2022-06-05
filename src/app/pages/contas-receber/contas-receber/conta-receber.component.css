@@ -1,0 +1,66 @@
+*{
+    font-family: "Montserrat";
+    text-transform: uppercase;
+  }
+  
+  ion-icon{
+    color: #015581;
+  }
+  
+  .container {
+    background: #fff;
+    height: 100vh auto;
+    min-height: 100vh;
+  }
+  
+  .icon{
+    width: 23px;
+  }
+  
+  .main{
+    padding-top: 2rem;
+    margin-bottom: 4rem;
+    background: #fff;
+  }
+  
+  h2{
+    margin-top: 1rem;
+    color: #015581;
+    font-size: 19px;
+    font-weight: bold;
+  }
+  
+  label{
+    font-weight: bold;
+    color: #5A5A5A;
+    font-size: 12px;
+  }
+  
+  span{
+    color: #5A5A5A;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .line{
+    border: 1px solid #CCCCCC;
+    height: 1px;
+  }
+  
+  .lista-dependentes{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+  }
+  
+  .deg90 {
+    transform: rotate(90deg);
+    margin-top: 5px;
+  }
+  
+  .deg151 {
+    transform: rotate(151deg);
+    margin-top: 5px;
+  }
+  

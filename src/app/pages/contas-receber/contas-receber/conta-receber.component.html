@@ -1,0 +1,53 @@
+<ion-content>
+    <div class="container">
+        <nav class="navbar navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">
+                    <img class="icon" src="../../../assets/icon/setaesquerda.png" alt="">
+                </a>
+                <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
+                <div class=""></div>
+            </div>
+        </nav>
+        <div class="container main">
+            <h2>Dados da conta</h2>
+
+            <form class="mt-4">
+
+                <app-input label="Nome da receita" type="text"></app-input>
+
+                <app-select label="Conta bancária"></app-select>
+
+                <app-input label="Categoria" type="text"></app-input>
+
+                <app-input label="Cliente" type="text"></app-input>
+
+                <app-input label="Vencimento" type="text"></app-input>
+
+                <app-input label="Valor" type="text" length="100"></app-input>
+
+                <app-select label="Tipo de registro"></app-select>
+
+                <app-input label="Data de emissão" type="text"></app-input>
+
+                <h2>Detalhes da conta</h2>
+
+                <app-input label="N° do documento" type="text"></app-input>
+
+                <app-select label="Forma de pagamento"></app-select>
+
+                <app-input label="Centro de custos" type="text"></app-input>
+
+                <app-select label="Ocorrência"></app-select>
+
+                <h6 class="mt-4">ANEXO</h6>
+                <app-butons color="white" label="selecionar arquivo"></app-butons>
+                <p>MÁXIMO 2MB, JPG, JPEG, GIF, PNG, PDF,DOC, XLS, CSV, ZIP.</p>
+
+                <app-inputs type="textArea" label="observações"></app-inputs>
+            </form>
+            <app-butons color="blue" label="Salvar"></app-butons>
+            <app-butons color="gray" label="Cancelar"></app-butons>
+        </div>
+    </div>
+</ion-content>
