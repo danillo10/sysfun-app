@@ -38,13 +38,13 @@
   </table>
 </div>
 
-<div class="tabela-planos-funerarios" *ngIf="tabela == 'tabelaplanosFunerarios'">
+<div class="tabela" *ngIf="tabela == 'tabelaplanosFunerarios'">
   <table class="table">
     <tbody>
-      <tr>
-        <td>1449</td>
-        <td>10/03/2020</td>
-        <td>Mauro Henrique de araujo</td>
+      <tr *ngFor="let plano of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
+        <td>{{plano.id}}</td>
+        <td>{{plano.data_os}}</td>
+        <td>{{plano.nome_fantasia}}</td>
         <td class="d-flex">
           <button>
             <img class="icone" src="../../../assets/icon/circulo.png" alt="">
@@ -56,21 +56,6 @@
       </tr>
     </tbody>
   </table>
-  <!-- <table class="table-2">
-        <tr>
-            <td colspan="2" class="p-1">1429</td>
-            <td colspan="2">10/03/2020</td>
-            <td colspan="2" class="p-2 name-table-3">Mauro Henrique de araujo </td>
-            <td colspan="2" class="d-flex">
-              <button>
-                <img class="icone-tabela" src="../../../assets/icon/circulo.png" alt="">
-              </button>
-              <button>
-              <img class="icone-tabela" src="../../../assets/icon/tres-pontos.png" alt="">
-            </button>
-            </td>
-        </tr>
-    </table> -->
 </div>
 
 <pagination-controls (pageChange)="pagina = $event; emit()"
