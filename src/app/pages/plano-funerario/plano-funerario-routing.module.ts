@@ -1,7 +1,7 @@
-import { PlanoFunerarioComponent } from './plano-funerario.page';
+import { PlanoFunerarioPage } from './plano-funerario.page';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdicionarPlanoComponent } from './adicionar-plano/adicionar-plano.component';
+import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.component';
 
 
 const routes: Routes = [
@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path     : ':id',
-    component: AdicionarPlanoComponent
+    component: PlanoFunerarioComponent
   }
 ];
 
