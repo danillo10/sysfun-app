@@ -6,12 +6,26 @@
 
 td{
   height: 68px;
-  text-transform: lowercase;
+  text-align: left;
 }
 
 .name{
   padding-left: 20px;
-  width: 220px;
+  overflow: hidden;
+  text-transform: capitalize;
+}
+
+.nome{
+  padding-left: 0;
+  margin-bottom: -2rem;
+  max-width: 20ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.name span{
+  text-transform: uppercase;
 }
 
 .name-table-contas{

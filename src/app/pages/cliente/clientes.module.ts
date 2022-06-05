@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { IonicModule } from '@ionic/angular';
 import { ButtonsModule } from 'src/app/components';
@@ -22,6 +21,7 @@ import { ClientePageRoutingModule } from './clientes-routing.module';
 import { ClientesPage } from './clientes.page';
 import { FiltroComponent } from './filtro/filtro.component';
 import { ClienteService } from './service/cliente.service';
+import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { ClienteService } from './service/cliente.service';
   imports: [
     CommonModule,
     IonicModule,
-    FormsModule,
+    SharedModule,
     ClientePageRoutingModule,
     ButtonsModule,
     TablesModule,
@@ -41,7 +41,7 @@ import { ClienteService } from './service/cliente.service';
     PaginationModule,
     NavbarModule,
     DependentesModule,
-    ClipboardModule
+    ClipboardModule,
   ],
   providers: [
     ClienteService,

@@ -1,7 +1,7 @@
 <div class="tabela" *ngIf="tabela == 'tabelaCliente'">
   <table class="table table-borderless">
     <tr
-      *ngFor="let cliente of clientes | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
+      *ngFor="let cliente of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
       <td>{{cliente.id}}</td>
       <td class="name">{{cliente.nome_fantasia}}</td>
       <td class="d-flex">
@@ -18,17 +18,16 @@
 
 
 <div class="tabela" *ngIf="tabela == 'tabelaContasReceber'">
-  <table>
-    <tr>
+  <table class="table table-borderless">
+    <tr
+      *ngFor="let conta of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
       <td colspan="2">
-        <button>
-          <img class="icone-tabela" src="../../../assets/icon/relogio.png" alt="">
-        </button>
+        {{conta.id}}
       </td>
-      <td class="name-table-contas">
-        Maycon Ferreira santos
-        cobrança de R$35,00
-        Vencimento dia 10/03/2020
+      <td class="name">
+        <div class="nome">{{conta.nome_fantasia}}</div><br>
+        Cobrança de<span>{{conta.valor | currency : 'BRL'}}</span><br>
+        Vencimento em {{conta.vencimento | date:'shortDate'}}
       </td>
       <td colspan="2">
         <button>
@@ -39,13 +38,13 @@
   </table>
 </div>
 
-<div class="tabela-planos-funerarios" *ngIf="tabela == 'tabelaplanosFunerarios'">
+<div class="tabela" *ngIf="tabela == 'tabelaplanosFunerarios'">
   <table class="table">
     <tbody>
-      <tr>
-        <td>1449</td>
-        <td>10/03/2020</td>
-        <td>Mauro Henrique de araujo</td>
+      <tr *ngFor="let plano of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
+        <td>{{plano.id}}</td>
+        <td>{{plano.data_os}}</td>
+        <td>{{plano.nome_fantasia}}</td>
         <td class="d-flex">
           <button>
             <img class="icone" src="../../../assets/icon/circulo.png" alt="">
@@ -57,21 +56,6 @@
       </tr>
     </tbody>
   </table>
-  <!-- <table class="table-2">
-        <tr>
-            <td colspan="2" class="p-1">1429</td>
-            <td colspan="2">10/03/2020</td>
-            <td colspan="2" class="p-2 name-table-3">Mauro Henrique de araujo </td>
-            <td colspan="2" class="d-flex">
-              <button>
-                <img class="icone-tabela" src="../../../assets/icon/circulo.png" alt="">
-              </button>
-              <button>
-              <img class="icone-tabela" src="../../../assets/icon/tres-pontos.png" alt="">
-            </button>
-            </td>
-        </tr>
-    </table> -->
 </div>
 
 <pagination-controls (pageChange)="pagina = $event; emit()"

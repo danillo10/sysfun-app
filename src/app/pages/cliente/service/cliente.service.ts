@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
@@ -10,6 +9,7 @@ import { PesquisaModel } from '../model/pesquisa.model';
 
 import * as _ from 'lodash';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'

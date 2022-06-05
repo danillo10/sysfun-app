@@ -10,7 +10,7 @@
       </div>
       <app-button class="bt" color="blue" label="Adicionar cliente/fornecedor" type="normal" (click)="add()"></app-button>
       <div class="tabela-clientes">
-        <app-tables [clientes]="clientes" tabela="tabelaCliente" [total]="total" [pesquisa]="pesquisa" (paginador)="pesquisar($event - 1)"></app-tables>
+        <app-tables [data]="clientes" tabela="tabelaCliente" [total]="total" [pesquisa]="pesquisa" (paginador)="pesquisar($event - 1)"></app-tables>
       </div>
     </div>
     <div class="container filtro" *ngIf="filtro">

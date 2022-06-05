@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'contas-receber', loadChildren: () => import('./pages/contas-receber/contas-receber.module').then(m => m.ContasReceberModule)
   },
   {
-    path: 'planosfunerarios', loadChildren: () => import('./pages/plano-funerario/plano-funerario.module').then(m => m.PlanoFunerarioModule)
+    path: 'plano-funerario', loadChildren: () => import('./pages/plano-funerario/plano-funerario.module').then(m => m.PlanoFunerarioModule)
   },
   {
     path: 'imprimir', loadChildren: () => import('./pages/imprimir-recibo/imprimir-recibo.module').then(m => m.ImprimirReciboModule)

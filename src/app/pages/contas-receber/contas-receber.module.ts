@@ -8,6 +8,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContasReceberPageRoutingModule } from './contas-receber-routing.module';
 import { LiquidarContaComponent } from './liquidar-conta/liquidar-conta.component';
+import { NavbarModule } from 'src/app/components/navbar/navbar.module';
+import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
 @NgModule({
   declarations: [
     ContasReceberComponent,
@@ -21,7 +23,9 @@ import { LiquidarContaComponent } from './liquidar-conta/liquidar-conta.componen
     CheckboxModule,
     PaginationModule,
     SelectModule,
-    ContasReceberPageRoutingModule
+    ContasReceberPageRoutingModule,
+    NavbarModule,
+    SharedModule
   ],
   exports: [
     ContasReceberComponent

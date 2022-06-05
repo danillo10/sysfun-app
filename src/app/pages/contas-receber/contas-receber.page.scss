@@ -1,47 +1,40 @@
 *{
   font-family: "Montserrat";
-}
-.icon{
-  width: 23px;
-}
-
-.container{
-  height: 100vh auto;
-  min-height: 100vh;
-  background: #fff;
-}
-
-.main{
-  padding-top: 1rem;
-  height: 100vh;
-}
-
-h2{
-  margin-top: 1rem;
-  color: #015581;
-  font-size: 19px;
-  font-weight: bold;
   text-transform: uppercase;
 }
 
-button{
-  background: transparent;
+.container{
+  background: #fff;
+  height: 100vh auto;
+  min-height: 100vh;
 }
 
 .icon-menu{
   width: 30px;
 }
 
-.icone{
-  width: 35px;
-  margin: 5px;
-}
-.icone-tabela{
-  width: 24px;
+button{
+  background: transparent;
 }
 
-.direita{
-  transform: rotate(180deg);
+.icon{
+  width: 23px;
+}
+
+.main{
+  padding-top: 1rem;
+
+}
+
+h2{
+  margin-top: 7px;
+  color: #015581;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.icone-tabela{
+  width: 24px;
 }
 
 .icone-lupa,.icone-filtro{
