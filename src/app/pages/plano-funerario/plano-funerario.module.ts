@@ -1,18 +1,21 @@
-import { PaginationModule } from './../../components/pagination/pagination.module';
-import { InputsModule } from './../../components/inputs/inputs.module';
-import { TablesModule } from './../../components/tables/tables.module';
-import { ButtonsModule, CheckboxModule } from 'src/app/components';
-import { PlanoFunerarioPageRoutingModule } from './plano-funerario-routing.module';
-import { PlanoFunerarioComponent } from './plano-funerario.page';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectModule } from 'src/app/components/select/select.module';
-import { AdicionarPlanoComponent } from './adicionar-plano/adicionar-plano.component';
+import { NgModule } from '@angular/core';
+import { ButtonsModule, CheckboxModule } from 'src/app/components';
 import { NavbarModule } from 'src/app/components/navbar/navbar.module';
+import { SelectModule } from 'src/app/components/select/select.module';
+import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
+
+import { InputsModule } from './../../components/inputs/inputs.module';
+import { PaginationModule } from './../../components/pagination/pagination.module';
+import { TablesModule } from './../../components/tables/tables.module';
+import { PlanoFunerarioPageRoutingModule } from './plano-funerario-routing.module';
+import { PlanoFunerarioPage } from './plano-funerario.page';
+import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.component';
+
 @NgModule({
   declarations: [
-    PlanoFunerarioComponent,
-    AdicionarPlanoComponent
+    PlanoFunerarioPage,
+    PlanoFunerarioComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { NavbarModule } from 'src/app/components/navbar/navbar.module';
     CheckboxModule,
     PaginationModule,
     PlanoFunerarioPageRoutingModule,
-    NavbarModule
+    NavbarModule,
+    SharedModule
   ],
   exports: [
     PlanoFunerarioComponent

@@ -11,13 +11,13 @@
         <h2 class="mb-4">Dados do plano</h2>
       <form action="">
         <fieldset>
-          <app-inputs type="text" label="cliente"></app-inputs>
+          <app-input type="text" label="cliente"></app-input>
 
-          <app-inputs type="text" label="vendedor 1"></app-inputs>
+          <app-input type="text" label="vendedor 1"></app-input>
 
-          <app-inputs type="text" label="vendedor 2"></app-inputs>
+          <app-input type="text" label="vendedor 2"></app-input>
 
-          <app-inputs type="text" label="número do plano"></app-inputs>
+          <app-input type="text" label="número do plano"></app-input>
 
         </fieldset>
         <fieldset>
@@ -25,53 +25,53 @@
 
           <div class="row">
             <div class="col-3">
-              <app-inputs label="serviço" type="text"></app-inputs>
+              <app-input label="serviço" type="text"></app-input>
             </div>
             <div class="col-9">
               <app-select></app-select>
             </div>
           </div>
 
-        <app-inputs  type="text" label="quantidade"></app-inputs>
+        <app-input  type="text" label="quantidade"></app-input>
 
-        <app-inputs  type="text" label="valor unitário"></app-inputs>
+        <app-input  type="text" label="valor unitário"></app-input>
 
-        <app-inputs  type="text" label="valor total"></app-inputs>
+        <app-input  type="text" label="valor total"></app-input>
 
       </fieldset>
       <fieldset>
         <legend>totais</legend>
 
-        <app-inputs  type="text" label="taxa de adesão"></app-inputs>
+        <app-input  type="text" label="taxa de adesão"></app-input>
 
-        <app-inputs  type="text" label="valor total"  icon="lupa.png" iconPosition="right"></app-inputs>
+        <app-input  type="text" label="valor total"  icon="lupa.png" iconPosition="right"></app-input>
 
         <fieldset>
           <legend>Pagamento</legend>
 
-          <app-inputs  type="date" label="data inicial"></app-inputs>
+          <app-input  type="date" label="data inicial"></app-input>
 
           <app-select type="text" label="forma de pagamento"></app-select>
 
-          <app-inputs  type="text" label="carencia (dias)"></app-inputs>
+          <app-input  type="text" label="carencia (dias)"></app-input>
 
-          <app-inputs  type="text" label="quantida de parcelas"></app-inputs>
+          <app-input  type="text" label="quantida de parcelas"></app-input>
 
           <app-select type="text" label="forma de gerar"></app-select>
 
           <div class="row">
             <div class="col-3">
-              <app-inputs  type="text" label="parcela"></app-inputs>
+              <app-input  type="text" label="parcela"></app-input>
             </div>
             <div class="col-9">
-              <app-inputs  type="date" label="data" ></app-inputs>
+              <app-input  type="date" label="data" ></app-input>
             </div>
           </div>
-          <app-inputs  type="text" label="valor"></app-inputs>
+          <app-input  type="text" label="valor"></app-input>
 
           <app-select type="text" label="forma de pagamento"></app-select>
 
-          <app-inputs  type="textArea" label="observações"></app-inputs>
+          <app-input  type="textArea" label="observações"></app-input>
         </fieldset>
       </fieldset>
       <div class="maisparcelas d-flex justify-content-center">
@@ -91,15 +91,15 @@
       </fieldset>
       <fieldset>
         <legend class="mt-4">Dependentes</legend>
-        <app-inputs  type="text" label="nome do dependente"></app-inputs>
+        <app-input  type="text" label="nome do dependente"></app-input>
 
         <app-select type="text" label="grau de parentesco"></app-select>
 
-        <app-inputs  type="text" label="telefone principal"></app-inputs>
+        <app-input  type="text" label="telefone principal"></app-input>
 
-        <app-inputs  type="text" label="cpf"></app-inputs>
+        <app-input  type="text" label="cpf"></app-input>
 
-        <app-inputs  type="text" label="data de nascimento"></app-inputs>
+        <app-input  type="text" label="data de nascimento"></app-input>
       </fieldset>
       <div class="adicionar d-flex justify-content-center">
         <a href="#"><img class="icon " src="../../../assets/icon/simbolo-de-adicao-de-espessura.png" alt="adicionar">Adicionar outro dependente</a>
@@ -107,23 +107,23 @@
       <fieldset>
         <legend>detalhes</legend>
 
-         <app-inputs type="date" label="data"></app-inputs>
+         <app-input type="date" label="data"></app-input>
 
-         <app-inputs type="date" label="data de entrega"></app-inputs>
+         <app-input type="date" label="data de entrega"></app-input>
 
-         <app-inputs type="text" label="hora da realização"></app-inputs>
+         <app-input type="text" label="hora da realização"></app-input>
 
-         <app-inputs type="textArea" label="observações"></app-inputs>
+         <app-input type="textArea" label="observações"></app-input>
 
-         <app-inputs  type="textArea" label="observações internas"></app-inputs>
+         <app-input  type="textArea" label="observações internas"></app-input>
       </fieldset>
       </form>
       <h6 class="mt-4">CONTRATO/ANEXOS</h6>
-      <app-butons color="white" label="selecionar arquivo"></app-butons>
+      <app-button color="white" label="selecionar arquivo"></app-button>
       <p>MÁXIMO 2MB, JPG, JPEG, GIF, PNG, PDF,DOC, XLS, CSV, ZIP.</p>
 
-        <app-butons color="blue" label="Salvar"></app-butons>
-        <app-butons color="gray" label="Cancelar"></app-butons>
+        <app-button color="blue" label="Salvar"></app-button>
+        <app-button color="gray" label="Cancelar"></app-button>
 
         <div class="line w-100 mt-5"></div>
     </div>

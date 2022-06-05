@@ -4,12 +4,13 @@ import { PesquisaModel } from '../cliente/model/pesquisa.model';
 import { PlanoFunerarioService } from './service/plano-funerario.service';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 import { IPlanoFunerario } from './model/plano-funerario.model';
+
 @Component({
   selector: 'app-plano-funerario',
   templateUrl: './plano-funerario.page.html',
   styleUrls: ['./plano-funerario.page.scss'],
 })
-export class PlanoFunerarioComponent implements OnInit {
+export class PlanoFunerarioPage implements OnInit {
   addPlano= false;
   pesquisa = {} as PesquisaModel;
   planosFunerarios: any[];
