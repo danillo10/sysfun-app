@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router, Event } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  @Input() rota: string;
+  rotaAtual: string;
+   
+  constructor(
+    private _router: Router,
+    private _activatedRouter: ActivatedRoute
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._router.events.subscribe((event: Event) =>{
+      if(event instanceof NavigationEnd){
+        this.rotaAtual = event.url;
+      }
+    })
+  }
 
+  navigate(){
+    this._router.navigate([this.rota]);
+  }
 }

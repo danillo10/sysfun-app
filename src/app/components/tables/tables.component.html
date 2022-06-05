@@ -43,7 +43,7 @@
     <tbody>
       <tr *ngFor="let plano of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
         <td>{{plano.id}}</td>
-        <td>{{plano.data_os}}</td>
+        <td>{{plano.data_os | date:'shortDate'}}</td>
         <td>{{plano.nome_fantasia}}</td>
         <td class="d-flex">
           <button>

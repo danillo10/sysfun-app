@@ -1,5 +1,6 @@
 <nav class="navbar navbar-light">
-  <div class="d-flex flex-row align-items-center justify-content-center nav-content">
+  <div class="d-flex flex-row align-items-center nav-content" [ngClass]="rotaAtual == '/dashboard' ? 'justify-content-center' : 'justify-content-between'">
+    <app-icon (click)="navigate()" name="setaesquerda" *ngIf="rotaAtual != '/dashboard'"></app-icon>
     <app-logo></app-logo>
     <app-icon name="menu-aberto"></app-icon>
   </div>
