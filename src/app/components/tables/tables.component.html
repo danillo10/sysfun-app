@@ -20,14 +20,14 @@
 <div class="tabela" *ngIf="tabela == 'tabelaContasReceber'">
   <table class="table table-borderless">
     <tr
-      *ngFor="let conta of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
+      *ngFor="let conta of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }" class="line-bottom">
       <td colspan="2">
         {{conta.id}}
       </td>
       <td class="name">
         <div class="nome">{{conta.nome_fantasia}}</div><br>
-        Cobrança de<span>{{conta.valor | currency : 'BRL'}}</span><br>
-        Vencimento em {{conta.vencimento | date:'shortDate'}}
+        Valor de<span>{{conta.valor | currency : 'BRL'}}</span><br>
+        Vencimento em {{conta.vencimento | date: 'dd/MM/yyyy'}}
       </td>
       <td colspan="2">
         <button>
@@ -43,8 +43,7 @@
     <tbody>
       <tr *ngFor="let plano of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
         <td>{{plano.id}}</td>
-        <td>{{plano.data_os | date:'shortDate'}}</td>
-        <td>{{plano.nome_fantasia}}</td>
+        <td><div class="nome">{{plano.nome_fantasia}}</div></td>
         <td class="d-flex">
           <button>
             <img class="icone" src="../../../assets/icon/circulo.png" alt="">
