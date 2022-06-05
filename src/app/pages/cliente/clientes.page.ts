@@ -55,7 +55,6 @@ export class ClientesPage implements OnInit {
 
     this._clienteService.get(this.pesquisa)
       .then((data: any) => {
-        alert(JSON.stringify(data));
         this.clientes = data.clientes;
         this.total = data.total;
       });
