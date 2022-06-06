@@ -204,29 +204,29 @@ export class ClienteComponent implements OnInit {
 
   create() {
 
-    if (this.form.value.nome_fantasia == "") {
-      return alert("Campo Nome Obrigatório!");
-    }
+    // if (this.form.value.nome_fantasia == "") {
+    //   return alert("Campo Nome Obrigatório!");
+    // }
 
-    if (this.form.value.pessoa == 'PF' || this.form.value.pessoa == 'PO') {
-      if (this.form.value.nome_mae == "" || this.form.value.nome_mae == null) {
-        return alert("Nome da Mãe Obrigatório!");
-      }
+    // if (this.form.value.pessoa == 'PF' || this.form.value.pessoa == 'PO') {
+    //   if (this.form.value.nome_mae == "" || this.form.value.nome_mae == null) {
+    //     return alert("Nome da Mãe Obrigatório!");
+    //   }
 
-      if (this.form.value.sexo == "" || this.form.value.sexo == null) {
-        return alert("Informar o sexo do cliente");
-      }
-    }
+    //   if (this.form.value.sexo == "" || this.form.value.sexo == null) {
+    //     return alert("Informar o sexo do cliente");
+    //   }
+    // }
 
-    if (this.form.value.pessoa != 'PO' && this.form.value.celular == "") {
-      return alert("Número de celular Obrigatório!");
-    }
+    // if (this.form.value.pessoa != 'PO' && this.form.value.celular == "") {
+    //   return alert("Número de celular Obrigatório!");
+    // }
 
-    if (this.form.value.pessoa == 'PF') {
-      if (this.form.value.emissor == "" || this.form.value.emissor == null) {
-        return alert("Orgão emissor Obrigatório!");
-      }
-    }
+    // if (this.form.value.pessoa == 'PF') {
+    //   if (this.form.value.emissor == "" || this.form.value.emissor == null) {
+    //     return alert("Orgão emissor Obrigatório!");
+    //   }
+    // }
 
     this.loadingService.showLoading("Salvando cadastro...")
       .then(() => {
@@ -234,23 +234,22 @@ export class ClienteComponent implements OnInit {
 
         const id = this.activatedRoute.snapshot.paramMap.get('id');
 
-        if (id !== 'novo-cliente')
+        if (id !== 'novo-cliente') {
           this.clienteService.update(id, this.form.value, this.criadoEm)
-            .subscribe((data: any) => {
+            .then((data: any) => {
               this.loadingService.hideLoading();
               if (data.status == 1) return alert(data.mensagem);
               this.router.navigate(['clientes']);
             })
-        else
+        } else {
           this.clienteService.create(this.form.value)
-            .subscribe((data: any) => {
+            .then((data: any) => {
               this.loadingService.hideLoading();
-              const clientes = this.localStorageService.getParse('clientes-novos');
               if (data.status == 1) return alert(data.mensagem);
               this.router.navigate(['clientes']);
             })
+        }
       })
-
   }
 
   getCategorias() {
@@ -292,11 +291,13 @@ export class ClienteComponent implements OnInit {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.activatedRoute.queryParams.subscribe(data => {
+
       this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
       if (id != 'novo-cliente') {
         this.loadingService.showLoading("Carregando dados...")
           .then(() => {
+            const id = data.aplicativo ? data.aplicativo : data.sistema;
             this.clienteService.show(id, this.criadoEm)
               .then((data: any) => {
                 this.cliente = new ClienteModel(data.cliente[0]);

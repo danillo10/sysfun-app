@@ -42,14 +42,14 @@ export class DashboardComponent implements OnInit {
 
   async ionViewDidEnter() {
     if(!this.localStorageService.get('ultimaAtualizacao')){
-      this.nativeStorageService.set('clientes', []);
-      this.nativeStorageService.set('clientes-novos', []);
+      this.nativeStorageService.setParse('clientes', []);
+      this.localStorageService.setParse('clientesNovos', []);
     }
 
     this.statusService.onNetworkChanged
       .subscribe((data: boolean) => this.status = data)
 
-    this.atualizado = await this.nativeStorageService.getParse('clientes-novos') ? false : true;
+    this.atualizado = this.localStorageService.getParse('clientesNovos') ? false : true;
 
   }
 
@@ -70,15 +70,14 @@ export class DashboardComponent implements OnInit {
   enviarClientes() {
     return new Promise((resolve, reject) => {
       this.loadingService.showLoading('Enviando clientes....').then(async () => {
-        const clientes = await this.nativeStorageService.getParse('clientes-novos');
-        alert(clientes)
+        const clientes = this.localStorageService.getParse('clientesNovos');
         if (clientes.length > 0) {
           await this.clienteService.createMultiples(clientes);
-        }else{
-          this.nativeStorageService.destroy('clientes-novos')
         }
+
         setTimeout(async () => {
-          this.atualizado = await this.nativeStorageService.get('clientes-novos') ? false : true;
+          this.localStorageService.destroy('clientesNovos');
+          this.atualizado = clientes.length > 0 ? false : true;
           this.loadingService.hideLoading();
           resolve(true)
         }, 2000)
@@ -91,6 +90,8 @@ export class DashboardComponent implements OnInit {
       this.loadingService.showLoading('Recebendo clientes...').then(async () => {
         const ultimaAtualizacao = this.localStorageService.get('ultimaAtualizacao');
         let clientes = await this.nativeStorageService.getParse('clientes');
+
+        clientes = JSON.parse(clientes);
 
         let registros = clientes.length == 0 ? 1000 : 100000;
         let skip = clientes.length == 0 ? 1000 : 0;
@@ -111,6 +112,7 @@ export class DashboardComponent implements OnInit {
           this.clienteService.sync({ registros, ultimaAtualizacao, skip })
             .then(async (data: any) => {
               if(data.clientes.length > 0){
+                alert(JSON.stringify(data.clientes))
                 const identificadores = data.clientes.map(c => {
                   return c.id;
                 });

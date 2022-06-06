@@ -25,25 +25,29 @@ export class ClienteService {
     private nativeStorageService: NativeStorageService
   ) { }
 
-  create(cliente: ClienteModel) {
+  async create(cliente: ClienteModel): Promise<any> {
     if (!navigator.onLine) {
-      const clientesNovos = this.localStorageService.getParse('clientes-novos');
-      const data = this.localStorageService.getParse('clientes');
+      let clientesNovos = this.localStorageService.getParse('clientesNovos');
+      let data = await this.nativeStorageService.getParse('clientes');
 
-      cliente.aplicativo_id = clientesNovos.length;
+      data = JSON.parse(data);
+
+      cliente.aplicativo_id = (clientesNovos.length + 1);
 
       clientesNovos.push(cliente);
 
-      data.clientes = [cliente, ...data.clientes];
+      data = [cliente, ...data];
 
-      this.localStorageService.setParse('clientes-novos', clientesNovos);
-      this.localStorageService.setParse('clientes', data);
+      this.localStorageService.setParse('clientesNovos', clientesNovos);
+      this.nativeStorageService.setParse('clientes', data);
 
-      return of(true);
+      return of(true)
+        .toPromise();
     }
 
     return this._http.post(`${environment.host}clientes`, cliente)
       .pipe(res => res)
+      .toPromise()
   }
 
   createMultiples(clientes: ClienteModel[]) {
@@ -56,8 +60,8 @@ export class ClienteService {
             ))
           .subscribe((data: any) => {
             if (data.status != "1") {
-              const clientesStorage = this.localStorageService.getParse('clientes-novos');
-              this.localStorageService.setParse('clientes-novos', clientesStorage.filter(c => c.cnpjcpf != cliente.cnpjcpf));
+              const clientesStorage = this.localStorageService.getParse('clientesNovos');
+              this.localStorageService.setParse('clientesNovos', clientesStorage.filter(c => c.cnpjcpf != cliente.cnpjcpf));
             }
           })
       })
@@ -70,11 +74,12 @@ export class ClienteService {
       let cliente: ClienteModel;
 
       if (criado_em == 'aplicativo') {
-        const clientes = await this.nativeStorageService.getParse('clientes-novos');
-        // cliente = clientes.find(cliente => cliente.aplicativo_id == id);
+        const clientes = this.localStorageService.getParse('clientesNovos');
+        cliente = clientes.find(cliente => cliente.aplicativo_id == id);
       } else {
-        const data = await this.nativeStorageService.getParse('clientes');
-        // cliente = data.clientes.find(cliente => cliente.id == id);
+        let data = await this.nativeStorageService.getParse('clientes');
+        data = JSON.parse(data);
+        cliente = data.find(cliente => cliente.id == id);
       }
 
       return of({ cliente: [cliente] })
@@ -97,11 +102,13 @@ export class ClienteService {
         this.salvaClienteAplicativo(cliente);
       }
 
-      return of(true);
+      return of(true)
+        .toPromise();
     }
 
     return this._http.put(`${environment.host}clientes/${id}`, cliente)
       .pipe(res => res)
+      .toPromise();
   }
 
   get(pesquisa: PesquisaModel): Promise<any> {
@@ -130,14 +137,12 @@ export class ClienteService {
   async getOffline(pesquisa: PesquisaModel) {
     const data = await this.nativeStorageService.getParse('clientes');
     const clientes = JSON.parse(data);
-    return this.getFilteredClientes(clientes[0].clientes, pesquisa);
+    return this.getFilteredClientes(clientes, pesquisa);
   }
 
   getFilteredClientes(data, pesquisa: PesquisaModel): any{
     let clientes = data;
     let total = 0;
-
-    alert(clientes.length)
 
     if (pesquisa.cliente) {
       clientes = _.filter(clientes, (cliente, index) => {
@@ -199,7 +204,7 @@ export class ClienteService {
   }
 
   salvaClientesNovos(cliente: ClienteModel, criadoEm: string) {
-    let clientes = this.localStorageService.getParse('clientes-novos');
+    let clientes = this.localStorageService.getParse('clientesNovos');
 
     const key = criadoEm == 'sistema' ? 'id' : 'aplicativo_id';
 
@@ -207,23 +212,27 @@ export class ClienteService {
 
     clientes = this.handleClientes(cliente, clientes, key, clt);
 
-    this.localStorageService.setParse('clientes-novos', clientes);
+    this.localStorageService.setParse('clientesNovos', clientes);
   }
 
-  salvaClientes(cliente: ClienteModel, criadoEm: string) {
-    let clientes = this.localStorageService.getParse('clientes').clientes;
+  async salvaClientes(cliente: ClienteModel, criadoEm: string) {
+    let clientes = await this.nativeStorageService.getParse('clientes');
+
+    clientes = JSON.parse(clientes);
 
     const key = criadoEm == 'sistema' ? 'id' : 'aplicativo_id';
 
     clientes = this.handleClientes(cliente, clientes, key, true);
 
-    this.localStorageService.setParse('clientes', { clientes: clientes, total: clientes.length });
+    this.nativeStorageService.setParse('clientes', clientes);
   }
 
   handleClientes(cliente: ClienteModel, clientes: ClienteModel[], key: string, clt?: any) {
     if (clt) {
       clientes = clientes.map(c => {
-        if (c[key] == cliente[key]) c = cliente;
+        if (c[key] == cliente[key]) {
+          c = cliente
+        }
         return c;
       });
     } else {
