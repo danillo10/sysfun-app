@@ -156,6 +156,8 @@ export class ClienteService {
       return index >= pesquisa.skip * 10 && index <= (pesquisa.skip * 10) + 9;
     });
 
+    clientes = clientes.sort((a,b) => (a.id - b.id)).reverse();
+
     return {clientes, total};
   }
 

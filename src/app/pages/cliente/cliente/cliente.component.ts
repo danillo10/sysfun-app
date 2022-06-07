@@ -204,29 +204,29 @@ export class ClienteComponent implements OnInit {
 
   create() {
 
-    // if (this.form.value.nome_fantasia == "") {
-    //   return alert("Campo Nome Obrigatório!");
-    // }
+    if (this.form.value.nome_fantasia == "") {
+      return alert("Campo Nome Obrigatório!");
+    }
 
-    // if (this.form.value.pessoa == 'PF' || this.form.value.pessoa == 'PO') {
-    //   if (this.form.value.nome_mae == "" || this.form.value.nome_mae == null) {
-    //     return alert("Nome da Mãe Obrigatório!");
-    //   }
+    if (this.form.value.pessoa == 'PF' || this.form.value.pessoa == 'PO') {
+      if (this.form.value.nome_mae == "" || this.form.value.nome_mae == null) {
+        return alert("Nome da Mãe Obrigatório!");
+      }
 
-    //   if (this.form.value.sexo == "" || this.form.value.sexo == null) {
-    //     return alert("Informar o sexo do cliente");
-    //   }
-    // }
+      if (this.form.value.sexo == "" || this.form.value.sexo == null) {
+        return alert("Informar o sexo do cliente");
+      }
+    }
 
-    // if (this.form.value.pessoa != 'PO' && this.form.value.celular == "") {
-    //   return alert("Número de celular Obrigatório!");
-    // }
+    if (this.form.value.pessoa != 'PO' && this.form.value.celular == "") {
+      return alert("Número de celular Obrigatório!");
+    }
 
-    // if (this.form.value.pessoa == 'PF') {
-    //   if (this.form.value.emissor == "" || this.form.value.emissor == null) {
-    //     return alert("Orgão emissor Obrigatório!");
-    //   }
-    // }
+    if (this.form.value.pessoa == 'PF') {
+      if (this.form.value.emissor == "" || this.form.value.emissor == null) {
+        return alert("Orgão emissor Obrigatório!");
+      }
+    }
 
     this.loadingService.showLoading("Salvando cadastro...")
       .then(() => {
