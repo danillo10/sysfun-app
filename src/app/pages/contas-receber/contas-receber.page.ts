@@ -10,7 +10,7 @@ import { IContasReceber } from './model/contas-receber.model';
   templateUrl: './contas-receber.page.html',
   styleUrls: ['./contas-receber.page.scss'],
 })
-export class ContasReceberComponent implements OnInit {
+export class ContasReceberPage implements OnInit {
   adicionarConta = false;
   pesquisa = {} as PesquisaModel;
   contasReceber: IContasReceber[];
@@ -34,7 +34,7 @@ export class ContasReceberComponent implements OnInit {
     this.pesquisar();
   }
 
-  addConta() {
+  add() {
     this._router.navigate(['contas-receber/receita']);
   }
 

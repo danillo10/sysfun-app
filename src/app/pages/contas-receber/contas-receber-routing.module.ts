@@ -1,5 +1,5 @@
 
-import { ContasReceberComponent } from './contas-receber.page';
+import { ContasReceberPage } from './contas-receber.page';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LiquidarContaComponent } from './liquidar-conta/liquidar-conta.component';
@@ -9,16 +9,16 @@ import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    component: ContasReceberComponent,
+    component: ContasReceberPage,
     canActivate: [AuthGuard]
   },
   {
-    path     : ':new',
-    component: LiquidarContaComponent,
+    path     : ':id',
+    component: ContaReceberComponent,
     canActivate: [AuthGuard]
   },
   {
-    path     : ':id/:conta-receber',
+    path     : ':id/:formulario',
     component: ContaReceberComponent,
     canActivate: [AuthGuard]
   }
