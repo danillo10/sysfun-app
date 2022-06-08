@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 import { NativeStorageService } from 'src/app/shared/services/native-storage.service';
 import { environment } from 'src/environments/environment';
@@ -8,7 +8,7 @@ import { ClienteModel } from '../model/cliente.model';
 import { PesquisaModel } from '../model/pesquisa.model';
 
 import * as _ from 'lodash';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -16,14 +16,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClienteService {
   status: boolean;
-  clientes: ClienteModel[];
   total: number;
+
+  clientes$: Observable<any>;
+  pesquisa = new Subject<any>();
+
+  clientes: ClienteModel[];
 
   constructor(
     private _http: HttpClient,
     private localStorageService: LocalstorageService,
     private nativeStorageService: NativeStorageService
-  ) { }
+  ) {
+    this.observer;
+  }
 
   async create(cliente: ClienteModel): Promise<any> {
     if (!navigator.onLine) {
@@ -243,5 +249,22 @@ export class ClienteService {
     }
 
     return clientes;
+  }
+
+  get observer(){
+    return this.clientes$ = this.pesquisa.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap((descricao: string) => this.search(descricao)),
+    )
+  }
+
+  search(cliente){
+    if(!cliente.trim()){
+      return of([]);
+    }
+
+    return this._http.get(`${environment.host}pesquisar/clientes/${cliente}`)
+    .pipe(res => res)
   }
 }

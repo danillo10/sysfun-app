@@ -9,13 +9,13 @@
 
 <div [formGroup]="form" class="mb-3 relative" *ngIf="(type == 'text' || type == 'number') && !mask && search">
   <label for="" class="form-label">{{ label }}</label>
-  <input upperCase (input)="emit($event.target.value)" [formControlName]="control" class="form-control" [type]="type" [attr.maxlength]="length" [name]="control">
+  <input upperCase (keyup)="searching($event.target.value)" [formControlName]="control" class="form-control" [type]="type" [attr.maxlength]="length" [name]="control">
   <div class="icon {{iconPosition}}">
     <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
   </div>
   <div class="list" *ngIf="options.length > 0">
     <ul>
-      <li *ngFor="let option of options" (click)="selecionar(option.value)">{{ option.description }}</li>
+      <li *ngFor="let option of options" (click)="selecionar(option)">{{ option.description }}</li>
     </ul>
   </div>
 </div>

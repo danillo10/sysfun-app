@@ -10,7 +10,7 @@
 
                 <app-select [form]="form" control="conta_bancaria" label="Conta bancária" [options]="contasBancarias"></app-select>
 
-                <app-input [form]="form" control="categoria" label="Categoria" type="text"></app-input>
+                <app-input (searchEmitter)="pesquisa.descricao = $event; pesquisaCategoria()" (selectEmitter)="selecionaCategoria($event)" [options]="categoriasFinanceiras" [form]="form" control="categoria_descricao" label="Categoria" type="text" search="true"></app-input>
 
                 <app-input [form]="form" control="cliente" label="Cliente" type="text"></app-input>
 
@@ -33,7 +33,7 @@
                 <app-select [form]="form" control="ocorrencia" label="Ocorrência"></app-select>
 
                 <h6 class="mt-4">ANEXO</h6>
-                <app-button color="white" [form]="form" control="" label="selecionar arquivo"></app-button>
+                <app-button color="white" label="selecionar arquivo"></app-button>
                 <p>MÁXIMO 2MB, JPG, JPEG, GIF, PNG, PDF,DOC, XLS, CSV, ZIP.</p>
 
                 <app-input type="textArea" [form]="form" control="" label="observações"></app-input>
