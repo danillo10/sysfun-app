@@ -8,10 +8,10 @@ export class SelectService {
 
   constructor() { }
 
-  handleSelect(data: any[], value: string, description?: string): SelectModel[]{
+  handleSelect(data: any[], id: string, description?: string): SelectModel[]{
     return data.map((d) => {
-      let desc = description ? d[description] : d[value];
-      return {value: d[value], description: desc}
+      let desc = description ? d[description] : d[id];
+      return {value: d[id], description: desc}
     });
   }
 }
