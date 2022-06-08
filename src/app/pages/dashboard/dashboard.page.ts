@@ -89,10 +89,9 @@ export class DashboardComponent implements OnInit {
 
         clientes = JSON.parse(clientes);
 
-        let registros = clientes.length == 0 ? 1000 : 100000;
-        let skip = clientes.length == 0 ? 1000 : 0;
+        let registros = 1000;
+        let skip = 0;
 
-        if (skip == 1000) {
           this.clienteService.totalClientes()
             .subscribe(async (data) => {
               let contagem = data;
@@ -104,43 +103,30 @@ export class DashboardComponent implements OnInit {
               this.localStorageService.set('ultimaAtualizacao', moment().format('YYYY-MM-DD'));
               resolve(true);
             });
-        } else {
-          this.clienteService.sync({ registros, ultimaAtualizacao, skip })
-            .then(async (data: any) => {
-              if (data.clientes.length > 0) {
-                const identificadores = data.clientes.map(c => {
-                  return c.id;
-                });
-
-                clientes = clientes.map(clienteLocal => {
-                  if (identificadores.includes(clienteLocal.id)) {
-                    clienteLocal = data.clientes.find(c => c.cnpjcpf == clienteLocal.cnpjcpf);
-                  }
-                  return clienteLocal;
-                });
-
-                this.nativeStorageService.setParse('clientes', clientes);
-              }
-
-              this.loadingService.hideLoading();
-              this.localStorageService.set('ultimaAtualizacao', moment().format('YYYY-MM-DD'));
-              resolve(true);
-            })
-        }
       })
     })
   }
 
-  getClientesSkip({ registros, ultimaAtualizacao, skip = 0 }) {
+  getClientesSkip({ registros = 100000, ultimaAtualizacao = null, skip = 0 }) {
     return new Promise((resolve, reject) => {
       this.clienteService.sync({ registros, ultimaAtualizacao, skip })
         .then(async (data: any) => {
-
           let clientesLocal = await this.nativeStorageService.getParse('clientes');
 
           let clientes = Object.assign(clientesLocal);
 
           clientes = clientes.length > 0 ? JSON.parse(clientes) : clientes;
+
+          const identificadores = data.clientes.map(c => {
+            return c.id;
+          });
+
+          clientes = clientes.map(clienteLocal => {
+            if (identificadores.includes(clienteLocal.id)) {
+              clienteLocal = data.clientes.find(c => c.cnpjcpf == clienteLocal.cnpjcpf);
+            }
+            return clienteLocal;
+          });
 
           data.clientes.map(cliente => clientes.push(cliente))
 

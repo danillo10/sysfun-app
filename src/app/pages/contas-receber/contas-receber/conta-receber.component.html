@@ -1,14 +1,6 @@
 <ion-content>
     <div class="container">
-        <nav class="navbar navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand">
-                    <img class="icon" src="../../../assets/icon/setaesquerda.png" alt="">
-                </a>
-                <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
-                <div class=""></div>
-            </div>
-        </nav>
+      <app-navbar rota="contas-receber"></app-navbar>
         <div class="container main">
             <h2>Dados da conta</h2>
 
@@ -16,7 +8,7 @@
 
                 <app-input [form]="form" control="descricao" label="Nome da receita" type="text"></app-input>
 
-                <app-select [form]="form" control="conta_bancaria" label="Conta bancária"></app-select>
+                <app-select [form]="form" control="conta_bancaria" label="Conta bancária" [options]="contasBancarias"></app-select>
 
                 <app-input [form]="form" control="categoria" label="Categoria" type="text"></app-input>
 

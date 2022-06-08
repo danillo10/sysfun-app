@@ -10,10 +10,12 @@ import { ContasReceberPageRoutingModule } from './contas-receber-routing.module'
 import { LiquidarContaComponent } from './liquidar-conta/liquidar-conta.component';
 import { NavbarModule } from 'src/app/components/navbar/navbar.module';
 import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
+import { ContaReceberComponent } from './contas-receber/conta-receber.component';
 
 @NgModule({
   declarations: [
     ContasReceberPage,
+    ContaReceberComponent,
     LiquidarContaComponent
   ],
   imports: [

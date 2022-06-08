@@ -2,7 +2,7 @@
   <label class="form-label">{{ label }}</label>
   <select [formControlName]="control" name="select-{{control}}" class="form-select" aria-label="select">
     <option selected></option>
-    <option *ngFor="let option of options" [value]="option.value">{{ option.description }}</option>
+    <option *ngFor="let option of options" [value]="option.value || option.id">{{ option.description || option.descricao }}</option>
   </select>
   <!-- <img class="icon" src="../../../assets/icon/seta-para-baixo.png" alt=""> -->
 </div>

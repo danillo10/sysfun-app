@@ -53,6 +53,7 @@ export class ClienteService {
   createMultiples(clientes: ClienteModel[]) {
     return new Promise((resolve, reject) => {
       clientes.map(cliente => {
+        alert(JSON.stringify(cliente))
         this._http.post(`${environment.host}clientes`, cliente)
           .pipe(
             res => res,
@@ -156,7 +157,7 @@ export class ClienteService {
       return index >= pesquisa.skip * 10 && index <= (pesquisa.skip * 10) + 9;
     });
 
-    clientes = clientes.sort((a,b) => (a.id - b.id)).reverse();
+    clientes = clientes.sort((a,b) => (a.id - b.id));
 
     return {clientes, total};
   }
