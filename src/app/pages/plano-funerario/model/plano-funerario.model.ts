@@ -57,4 +57,70 @@ export class IPlanoFunerario {
   atualizado_por?: any;
   os_gerada?: any;
   repetir_valor?: string
+  /**
+   * Constructor
+   *
+   * @param data
+   *     */
+   constructor(data?) {
+    data = data || {};
+    this.id = data.id || '';
+    this.tipo = data.tipo || '';
+    this.cliente = data.cliente || '';
+    this.indicacao = data.indicacao || '';
+    this.indicacao_parcelas = data.indicacao_parcelas || '';
+    this.tipo_liberacao = data.tipo_liberacao || '';
+    this.tecnico = data.tecnico || '';
+    this.profissional = data.profissional || '';
+    this.situacao = data.situacao || '';
+    this.lista_preco = data.lista_preco || '';
+    this.falecido = data.falecido || '';
+    this.contato = data.contato || '';
+    this.valor_servicos = data.valor_servicos || '';
+    this.valor_produtos = data.valor_produtos || '';
+    this.valor_despesas = data.valor_despesas || '';
+    this.valor_desconto_v = data.valor_desconto_v || '';
+    this.valor_desconto_p = data.valor_desconto_p || '';
+    this.valor_bruto = data.valor_bruto || '';
+    this.valor_liquido = data.valor_liquido || '';
+    this.taxa_adesao = data.taxa_adesao || '';
+    this.data_inicial = data.data_inicial || '';
+    this.forma_pagamento = data.forma_pagamento || '';
+    this.condicao_pagamento = data.condicao_pagamento || '';
+    this.qtd_parcelas = data.qtd_parcelas || '';
+    this.carencia = data.carencia || '';
+    this.rg_f_pendente = data.rg_f_pendente || '';
+    this.cpf_f_pendente = data.cpf_f_pendente || '';
+    this.declaracao_f_pendente = data.declaracao_f_pendente || '';
+    this.casamento_f_pendente = data.casamento_f_pendente || '';
+    this.residencia_f_pendente = data.casamento_f_pendente || '';
+    this.nascimento_f_pendente = data.nascimento_f_pendente || '';
+    this.cobito_f_pendente = data.cobito_f_pendente || '';
+    this.auxilio_f_pendente = data.auxilio_f_pendente || '';
+    this.rg_r_pendente = data.rg_r_pendente || '';
+    this.cpf_r_pendente = data.cpf_r_pendente || '';
+    this.residencia_r_pendente = data.residencia_r_pendente || '';
+    this.casamento_r_pendente = data.casamento_r_pendente || '';
+    this.data_os = data.data_os || '';
+    this.data_entrega = data.data_entrega || '';
+    this.garantia = data.garantia || '';
+    this.data_realizacao = data.data_realizacao || '';
+    this.hora_realizacao = data.hora_realizacao || '';
+    this.referencia = data.referencia || '';
+    this.obs = data.obs || '';
+    this.obs_internas = data.obs_internas || '';
+    this.equipamento = data.equipamento || '';
+    this.problema = data.problema || '';
+    this.obs_recebimento = data.obs_recebimento || '';
+    this.contas_lancadas = data.contas_lancadas || '';
+    this.laudo = data.laudo || '';
+    this.servicos = data.servicos || '';
+    this.produtos = data.produtos || '';
+    this.dependentes = data.dependentes || '';
+    this.parcelas = data.parcelas || '';
+    this.criado_por = data.criado_por || '';
+    this.atualizado_por = data.atualizado_por || '';
+    this.os_gerada = data.os_gerada || '';
+    this.repetir_valor = data.repetir_valor || '';
+    }
 }

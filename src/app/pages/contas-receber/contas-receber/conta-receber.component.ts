@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContaBancariaModel } from 'src/app/shared/models/conta-bancaria.model';
-import { CategoriasFinanceirasService } from 'src/app/shared/services/categorias-financeiras.service';
+import { CategoriasClientesService } from 'src/app/shared/services/categorias-clientes.service';
+
 import { ContasBancariasService } from 'src/app/shared/services/contas-bancarias.service';
 
 import { IContasReceber } from '../model/contas-receber.model';
@@ -26,7 +27,7 @@ export class ContaReceberComponent implements OnInit {
     private formBuilder: FormBuilder,
     private contaReceberService: ContasReceberService,
     private contasBancariasService: ContasBancariasService,
-    private categoriasFinanceirasService: CategoriasFinanceirasService
+    private categoriasFinanceirasService: CategoriasClientesService
   ) {
     this.receita = new IContasReceber();
   }

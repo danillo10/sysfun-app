@@ -1,75 +1,69 @@
 <ion-content>
   <div class="container">
-    <nav class="navbar navbar-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/planosfunerarios"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
-        <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
-        <div class=""></div>
-      </div>
-  </nav>
+    <app-navbar rota="planos-funerarios"></app-navbar>
     <div class="container main">
         <h2 class="mb-4">Dados do plano</h2>
-      <form action="">
+      <form [formGroup]="form">
         <fieldset>
-          <app-input type="text" label="cliente"></app-input>
+          <app-input [form]="form" control="cliente" type="text" label="cliente"></app-input>
 
-          <app-input type="text" label="vendedor 1"></app-input>
+          <app-input [form]="form" control="tecnico" type="text" label="vendedor 1"></app-input>
 
-          <app-input type="text" label="vendedor 2"></app-input>
+          <app-input [form]="form" control="profissional" type="text" label="vendedor 2"></app-input>
 
-          <app-input type="text" label="número do plano"></app-input>
+          <app-input [form]="form" control="id" type="text" label="número do plano"></app-input>
 
         </fieldset>
         <fieldset>
-          <legend>serviços</legend>
+          <legend>Planos funarários</legend>
 
           <div class="row">
             <div class="col-3">
-              <app-input label="serviço" type="text"></app-input>
+              <app-input [form]="form" control="servicos" label="Plano" type="text"></app-input>
             </div>
             <div class="col-9">
-              <app-select></app-select>
+              <app-input [form]="form" control="" label="Valor" type="text"></app-input>
             </div>
           </div>
 
-        <app-input  type="text" label="quantidade"></app-input>
+        <app-input [form]="form" control="qtd_parcelas"  type="text" label="quantidade"></app-input>
 
-        <app-input  type="text" label="valor unitário"></app-input>
+        <app-input [form]="form" control="valor_liquido"  type="text" label="valor unitário"></app-input>
 
-        <app-input  type="text" label="valor total"></app-input>
+        <app-input [form]="form" control="valor_liquido"  type="text" label="valor total"></app-input>
 
       </fieldset>
       <fieldset>
         <legend>totais</legend>
 
-        <app-input  type="text" label="taxa de adesão"></app-input>
+        <app-input [form]="form" control="taxa_adesao"  type="text" label="taxa de adesão"></app-input>
 
-        <app-input  type="text" label="valor total"  icon="lupa.png" iconPosition="right"></app-input>
+        <app-input [form]="form" control="valor_bruto"  type="text" label="valor total"  icon="lupa.png" iconPosition="right"></app-input>
 
         <fieldset>
           <legend>Pagamento</legend>
 
-          <app-input  type="date" label="data inicial"></app-input>
+          <app-input [form]="form" control=""  type="date" label="data inicial"></app-input>
 
-          <app-select type="text" label="forma de pagamento"></app-select>
+          <app-select [form]="forma_pagamento" type="text" label="forma de pagamento"></app-select>
 
-          <app-input  type="text" label="carencia (dias)"></app-input>
+          <app-input [form]="form" control="carencia"  type="text" label="carencia (dias)"></app-input>
 
-          <app-input  type="text" label="quantida de parcelas"></app-input>
+          <app-input [form]="form" control="qtd_parcelas"  type="text" label="quantida de parcelas"></app-input>
 
-          <app-select type="text" label="forma de gerar"></app-select>
+          <app-select [form]="" type="text" label="forma de gerar"></app-select>
 
           <div class="row">
             <div class="col-3">
-              <app-input  type="text" label="parcela"></app-input>
+              <app-input [form]="form" control="parcelas"  type="text" label="parcela"></app-input>
             </div>
             <div class="col-9">
-              <app-input  type="date" label="data" ></app-input>
+              <app-input [form]="form" control="data_inicial"  type="date" label="data" ></app-input>
             </div>
           </div>
-          <app-input  type="text" label="valor"></app-input>
+          <app-input [form]="form" control="valor_bruto"  type="text" label="valor"></app-input>
 
-          <app-select type="text" label="forma de pagamento"></app-select>
+          <app-select [form]="forma_pagamento" type="text" label="forma de pagamento"></app-select>
 
           <app-input  type="textArea" label="observações"></app-input>
         </fieldset>
@@ -89,33 +83,31 @@
 
          <app-checkbox type="checkbox" label="certidão casamento"></app-checkbox>
       </fieldset>
-      <fieldset>
+      <!-- <fieldset>
         <legend class="mt-4">Dependentes</legend>
-        <app-input  type="text" label="nome do dependente"></app-input>
+        <app-input [form]="form" control=""  type="text" label="nome do dependente"></app-input>
 
         <app-select type="text" label="grau de parentesco"></app-select>
 
-        <app-input  type="text" label="telefone principal"></app-input>
+        <app-input [form]="form" control=""  type="text" label="telefone principal"></app-input>
 
-        <app-input  type="text" label="cpf"></app-input>
+        <app-input [form]="form" control="cpf_f_pendente"  type="text" label="cpf"></app-input>
 
-        <app-input  type="text" label="data de nascimento"></app-input>
-      </fieldset>
+        <app-input [form]="form" control="nascimento_f_pendente"  type="text" label="data de nascimento"></app-input>
+      </fieldset> -->
       <div class="adicionar d-flex justify-content-center">
         <a href="#"><img class="icon " src="../../../assets/icon/simbolo-de-adicao-de-espessura.png" alt="adicionar">Adicionar outro dependente</a>
       </div>
       <fieldset>
         <legend>detalhes</legend>
 
-         <app-input type="date" label="data"></app-input>
+         <app-input [form]="form" control="data_os" type="text"  mask="data" label="data"></app-input>
 
-         <app-input type="date" label="data de entrega"></app-input>
+         <app-input [form]="form" control="hora_realizacao" type="text" label="hora da realização"></app-input>
 
-         <app-input type="text" label="hora da realização"></app-input>
+         <app-input [form]="form" control="obs" type="textArea" label="observações"></app-input>
 
-         <app-input type="textArea" label="observações"></app-input>
-
-         <app-input  type="textArea" label="observações internas"></app-input>
+         <app-input [form]="form" control="obs_internas"  type="textArea" label="observações internas"></app-input>
       </fieldset>
       </form>
       <h6 class="mt-4">CONTRATO/ANEXOS</h6>
