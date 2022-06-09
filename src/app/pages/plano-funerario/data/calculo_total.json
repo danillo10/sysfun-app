@@ -1,0 +1,12 @@
+{
+  "calculoTotal": [
+    {
+      "value": "repetir",
+      "description": "Repetir valor total<"
+    },
+    {
+      "value": "dividir",
+      "description": "Dividir valor total<"
+    }
+  ]
+}

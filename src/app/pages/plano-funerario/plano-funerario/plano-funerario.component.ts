@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { SelectModel } from 'src/app/components/select/model/select.model';
 import { IPlanoFunerario } from '../model/plano-funerario.model';
 import { PlanoFunerarioService } from '../service/plano-funerario.service';
 
@@ -13,10 +14,12 @@ export class PlanoFunerarioComponent implements OnInit {
 
   plano:IPlanoFunerario;
 
-  constructor( 
+  calculoTotal: SelectModel[];
+
+  constructor(
     private formBuilder: FormBuilder,
     private planoFunerarioService: PlanoFunerarioService,
-  ) { 
+  ) {
     this.plano = new IPlanoFunerario();
   }
 

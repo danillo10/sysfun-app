@@ -5,8 +5,6 @@
       <h2>Planos Funerários</h2>
       <div class="mb-3">
         <app-input (searchEmitter)="pesquisa.descricao = $event; pesquisar()" type="search" label="Pesquisar" name="search"></app-input>
-        <!-- <button icon="icone-lupa"></button>
-          <button icon="icone-filtro" (click)="filtro = !filtro" alt=""></button> -->
       </div>
       <app-button class="bt" color="blue" label="Adicionar plano" type="normal" (click)="add()"></app-button>
       <div class="tabela">

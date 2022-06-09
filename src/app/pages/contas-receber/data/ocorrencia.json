@@ -1,0 +1,12 @@
+{
+  "ocorrencia": [
+    {
+      "value": "Unica",
+      "description": "Única"
+    },
+    {
+      "value": "Parcelada",
+      "description": "Parcelada"
+    }
+  ]
+}

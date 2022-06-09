@@ -26,11 +26,13 @@
 
                 <app-input [form]="form" control="n_doc" label="N° do documento" type="text"></app-input>
 
-                <app-select [form]="form" control="forma_pagamento" label="Forma de pagamento"></app-select>
+                <app-select [form]="form" control="forma_pagamento" label="Forma de pagamento" [options]="formaPagamento"></app-select>
 
-                <app-input [form]="form" control="centro_custos" label="Centro de custos" type="text"></app-input>
+                <app-input (searchEmitter)="pesquisa.descricao = $event; pesquisaCentroCusto()" (selectEmitter)="selecionaCentroCusto($event)" [form]="form" control="centro_custos_descricao" label="Centro de custos" type="text" [options]="centrosCusto" search="true"></app-input>
 
-                <app-select [form]="form" control="ocorrencia" label="Ocorrência"></app-select>
+                <app-select [form]="form" control="ocorrencia" label="Ocorrência" [options]="ocorrencias"></app-select>
+
+                <app-input [form]="form" control="qtdParcelas" label="Quantidade de Parcelas" type="number"></app-input>
 
                 <h6 class="mt-4">ANEXO</h6>
                 <app-button color="white" label="selecionar arquivo"></app-button>
