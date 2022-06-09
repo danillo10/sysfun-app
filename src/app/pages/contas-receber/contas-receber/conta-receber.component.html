@@ -14,13 +14,13 @@
 
                 <app-input (searchEmitter)="pesquisa.descricao = $event; pesquisaCliente()" (selectEmitter)="selecionaCliente($event)" [options]="clientes" [form]="form" control="cliente_descricao" label="Cliente" type="text" search="true"></app-input>
 
-                <app-input [form]="form" control="vencimento" label="Vencimento" type="text" mask="data"></app-input>
+                <app-input [form]="form" control="vencimento" label="Vencimento" type="text" mask="DATA"></app-input>
 
                 <app-input [form]="form" control="valor" label="Valor" type="text" mask="MONEY"></app-input>
 
                 <app-select [form]="form" control="tipo_registro" label="Tipo de registro"></app-select>
 
-                <app-input [form]="form" control="data_emissao" label="Data de emissão" type="text" mask="data"></app-input>
+                <app-input [form]="form" control="data_emissao" label="Data de emissão" type="text" mask="DATA"></app-input>
 
                 <h2>Detalhes da conta</h2>
 
