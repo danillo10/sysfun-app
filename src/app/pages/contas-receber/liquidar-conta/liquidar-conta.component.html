@@ -9,33 +9,33 @@
   </nav>
     <div class="container main">
       <h2>Liquidar Conta</h2>
-      <form action="" class="mt-4">
-        <app-select label="Nome da receita" type="select"></app-select>
+      <form action="" class="mt-4" [formGroup]="form">
+        <app-select [form]="form" control="descricao" label="Nome da receita" type="select"></app-select>
 
-        <app-inputs label="cliente" type="text"></app-inputs>
+        <app-input [form]="form" control="cliente" label="cliente" type="text"></app-input>
 
-        <app-inputs label="data liquidação" type="date"></app-inputs>
+        <app-input label="data liquidação" type="date"></app-input>
 
-        <app-select label="conta Bancária" type="text"></app-select>
+        <app-select [form]="form" control="conta_bancaria" label="conta Bancária" type="text"></app-select>
 
-        <app-select label="forma de pagamento" type="text"></app-select>
+        <app-select [form]="form" control="forma_pagamento" label="forma de pagamento" type="text"></app-select>
 
-        <app-inputs label="valor pago" type="text"></app-inputs>
+        <app-input label="valor pago" type="text"></app-input>
 
-        <app-inputs label="juros" type="text"></app-inputs>
+        <app-input label="juros" type="text"></app-input>
 
-        <app-inputs  label="desconto/taxa" type="text"></app-inputs>
+        <app-input  label="desconto/taxa" type="text"></app-input>
 
-        <app-inputs  label="acréscimo" type="text"></app-inputs>
+        <app-input  label="acréscimo" type="text"></app-input>
 
-        <app-inputs label="observações" type="textArea"></app-inputs>
+        <app-input label="observações" type="textArea"></app-input>
 
         <div class="campo-checkbox d-flex align-items-center mt-4 mb-4" >
           <app-checkbox type="checkbox" label="Baixar conta"></app-checkbox>
         </div>
       </form>
-        <app-butons color="blue" label="Salvar"></app-butons>
-        <app-butons color="gray" label="Cancelar"></app-butons>
+        <app-button color="blue" label="Salvar"></app-button>
+        <app-button color="gray" label="Cancelar"></app-button>
     </div>
   </div>
 </ion-content>

@@ -7,7 +7,7 @@ import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.compo
 const routes: Routes = [
   {
     path: '',
-    component: PlanoFunerarioComponent
+    component: PlanoFunerarioPage
   },
   {
     path     : ':id',
