@@ -3,7 +3,9 @@ export class IContasReceber {
     descricao: string;
     conta_bancaria?: number;
     categoria?: number;
+    categoria_descricao?: string;
     cliente?: number;
+    cliente_descricao?: string;
     vencimento?: any;
     valor?: any;
     tipo_registro?: any;

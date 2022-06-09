@@ -50,8 +50,9 @@ export class ContaReceberComponent implements OnInit {
       descricao: [this.receita.descricao, Validators.required],
       conta_bancaria: [this.receita.conta_bancaria, Validators.required],
       categoria: [this.receita.categoria, Validators.required],
-      categoria_descricao: [this.receita.categoria],
+      categoria_descricao: [this.receita.categoria_descricao],
       cliente: [this.receita.cliente, Validators.required],
+      cliente_descricao: [this.receita.cliente_descricao],
       vencimento: [this.receita.vencimento, Validators.required],
       valor: [this.receita.valor, Validators.required],
       tipo_registro: [this.receita.tipo_registro, Validators.required],
@@ -82,7 +83,7 @@ export class ContaReceberComponent implements OnInit {
   getClientes(){
     this.clientesService.clientes$
       .subscribe((clientes: any) => {
-        this.clientes = this.selectService.handleSelect(clientes, 'id', 'descricao');
+        this.clientes = this.selectService.handleSelect(clientes, 'id', 'nome_fantasia');
       })
   }
 
@@ -99,9 +100,9 @@ export class ContaReceberComponent implements OnInit {
     this.categoriasFinanceirasService.pesquisa.next('');
   }
 
-  selecionaCliente(categoria){
-    this.form.patchValue({categoria: categoria.value, categoria_descricao: categoria.description});
-    this.categoriasFinanceirasService.pesquisa.next('');
+  selecionaCliente(cliente){
+    this.form.patchValue({cliente: cliente.value, clietne_descricao: cliente.description});
+    this.clientesService.pesquisa.next('');
   }
 
 }
