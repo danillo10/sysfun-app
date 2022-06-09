@@ -8,7 +8,7 @@
         <!-- <button icon="icone-lupa"></button>
           <button icon="icone-filtro" (click)="filtro = !filtro" alt=""></button> -->
       </div>
-      <app-button class="bt" color="blue" label="Adicionar receita" type="normal" (click)="add()"></app-button>
+      <app-button class="bt" color="blue" label="Adicionar plano" type="normal" (click)="add()"></app-button>
       <div class="tabela">
         <app-tables [data]="planosFunerarios" tabela="tabelaplanosFunerarios" [total]="total" [pesquisa]="pesquisa" (paginador)="pesquisar($event - 1)"></app-tables>
       </div>
