@@ -43,7 +43,7 @@ export class IContasReceber {
         this.cliente = data.cliente || '';
         this.vencimento = data.vencimento || '';
         this.valor = data.valor || '';
-        this.tipo_registro = data.tipo_registro || '';
+        this.tipo_registro = data.tipo_registro || 'Boleto';
         this.data_emissao = data.data_emissao || '';
         this.pago = data.pago || '';
         this.situacao = data.situacao || '';

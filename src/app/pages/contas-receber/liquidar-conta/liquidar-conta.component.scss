@@ -3,11 +3,14 @@
   text-transform: uppercase;
 }
 
-.container{
+.container {
+  background: #fff;
   height: 100vh auto;
   min-height: 100vh;
-  padding: 0 1rem;
-  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
 }
 
 .icon{

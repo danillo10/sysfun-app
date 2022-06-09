@@ -7,7 +7,7 @@ import { NativeStorageService } from 'src/app/shared/services/native-storage.ser
 import { StatusService } from 'src/app/shared/services/status.service';
 
 import { ClienteService } from '../cliente/service/cliente.service';
-import exportedComponents from './dashboard-buttons.json';
+import dataButtons from './dashboard-buttons.json';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.buttons = exportedComponents.buttons;
+    this.buttons = dataButtons.buttons;
   }
 
   async ionViewDidEnter() {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-icon',
@@ -7,9 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class IconsComponent implements OnInit {
   @Input() name: string;
+  @Input() ionic: boolean;
+
+  @Output() selectIcon = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {}
+
+  handleIcon(){
+    this.selectIcon.emit(true);
+  }
 
 }

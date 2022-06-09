@@ -16,6 +16,7 @@ export class ContasReceberPage implements OnInit {
   contasReceber: IContasReceber[];
   total: number;
   filtro: boolean;
+  viewLiquidar: boolean;
 
   constructor(
     private _router: Router,
@@ -26,7 +27,6 @@ export class ContasReceberPage implements OnInit {
     this.pesquisa.registros = 10;
     this.pesquisa.pagina = 1;
     this.pesquisa.descricao = '';
-    this.filtro = true;
   }
 
   ngOnInit() { }

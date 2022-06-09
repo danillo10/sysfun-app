@@ -1,7 +1,7 @@
 <ion-content>
     <div class="container">
       <app-navbar rota="contas-receber"></app-navbar>
-        <div class="container main">
+        <div class="container main pb-4">
             <h2>Dados da conta</h2>
 
             <form [formGroup]="form" class="mt-4">
@@ -18,7 +18,7 @@
 
                 <app-input [form]="form" control="valor" label="Valor" type="text" mask="MONEY"></app-input>
 
-                <app-select [form]="form" control="tipo_registro" label="Tipo de registro"></app-select>
+                <app-select [form]="form" control="tipo_registro" label="Tipo de registro" [options]="tiposRegistro"></app-select>
 
                 <app-input [form]="form" control="data_emissao" label="Data de emissão" type="text" mask="DATA"></app-input>
 
@@ -38,7 +38,7 @@
 
                 <app-input type="textArea" [form]="form" control="" label="observações"></app-input>
             </form>
-            <app-button color="blue" label="Salvar"></app-button>
+            <app-button (click)="create()" [disabled]="form.invalid" type="normal" color="blue" label="Salvar"></app-button>
             <app-button color="gray" label="Cancelar"></app-button>
         </div>
     </div>

@@ -1,0 +1,16 @@
+{
+  "tipoRegistro": [
+    {
+      "value": "Boleto",
+      "description": "Boleto"
+    },
+    {
+      "value": "Conta",
+      "description": "Conta"
+    },
+    {
+      "value": "Duplicata",
+      "description": "Duplicata"
+    }
+  ]
+}

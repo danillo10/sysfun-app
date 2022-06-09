@@ -1,41 +1,34 @@
-<ion-content>
-  <div class="container">
-    <nav class="navbar navbar-light">
-      <div class="container-fluid">
-        <a class="navbar-brand"routerLink="/contas-receber"><img class="icon" src="../../../assets/icon/setaesquerda.png" alt=""></a>
-        <img class="icon-logo" src="../../../assets/icon/logo.png" alt="">
-        <div class=""></div>
-      </div>
-  </nav>
-    <div class="container main">
-      <h2>Liquidar Conta</h2>
-      <form action="" class="mt-4" [formGroup]="form">
-        <app-select [form]="form" control="descricao" label="Nome da receita" type="select"></app-select>
-
-        <app-input [form]="form" control="cliente" label="cliente" type="text"></app-input>
-
-        <app-input label="data liquidação" type="date"></app-input>
-
-        <app-select [form]="form" control="conta_bancaria" label="conta Bancária" type="text"></app-select>
-
-        <app-select [form]="form" control="forma_pagamento" label="forma de pagamento" type="text"></app-select>
-
-        <app-input label="valor pago" type="text"></app-input>
-
-        <app-input label="juros" type="text"></app-input>
-
-        <app-input  label="desconto/taxa" type="text"></app-input>
-
-        <app-input  label="acréscimo" type="text"></app-input>
-
-        <app-input label="observações" type="textArea"></app-input>
-
-        <div class="campo-checkbox d-flex align-items-center mt-4 mb-4" >
-          <app-checkbox type="checkbox" label="Baixar conta"></app-checkbox>
-        </div>
-      </form>
-        <app-button color="blue" label="Salvar"></app-button>
-        <app-button color="gray" label="Cancelar"></app-button>
-    </div>
+<div class="container main pb-4">
+  <div class="close">
+    <app-icon name="close-outline" ionic="true" (selectIcon)="closeView()"></app-icon>
   </div>
-</ion-content>
+  <h2>Liquidar Conta</h2>
+  <form class="mt-4" [formGroup]="form">
+
+    <app-input [form]="form" control="descricao" label="Nome da receita" type="text"></app-input>
+
+    <app-input [form]="form" control="cliente" label="cliente" type="text"></app-input>
+
+    <app-input [form]="form" control="data_liquidacao" label="data liquidação" type="text" mask="DATA"></app-input>
+
+    <app-select [form]="form" control="conta_bancaria" label="conta Bancária" type="text"></app-select>
+
+    <app-select [form]="form" control="forma_pagamento" label="forma de pagamento" type="text"></app-select>
+
+    <app-input [form]="form" control="valor" label="valor pago" type="text" mask="MONEY"></app-input>
+
+    <app-input [form]="form" control="juros" label="juros" type="text" mask="MONEY"></app-input>
+
+    <app-input [form]="form" control="desconto" label="desconto/taxa" type="text" mask="MONEY"></app-input>
+
+    <app-input [form]="form" control="acrescimo" label="acréscimo" type="text" mask="MONEY"></app-input>
+
+    <app-input [form]="form" control="obs" label="observações" type="textarea"></app-input>
+
+    <div class="campo-checkbox d-flex align-items-center mt-4 mb-4">
+      <app-checkbox [form]="form" control="pago" type="checkbox" label="Baixar conta"></app-checkbox>
+    </div>
+  </form>
+  <app-button (click)="create()" [disabled]="form.invalid" type="normal" color="blue" label="Salvar"></app-button>
+  <app-button color="gray" label="Cancelar"></app-button>
+</div>

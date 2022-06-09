@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ContasReceberBaixaModel } from '../model/conta-receber-baixa.model';
-import { LiquidarService } from './liquidar.service';
+import { ContasReceberBaixaModel } from './model/conta-receber-baixa.model';
+import { LiquidarService } from './service/liquidar.service';
 
 @Component({
   selector: 'app-liquidar-conta',
@@ -10,6 +10,8 @@ import { LiquidarService } from './liquidar.service';
 })
 export class LiquidarContaComponent implements OnInit {
   @Input() form: FormGroup;
+
+  @Output() close = new EventEmitter();
 
   receber: ContasReceberBaixaModel
 
@@ -40,5 +42,8 @@ export class LiquidarContaComponent implements OnInit {
     })
   }
 
+  closeView(){
+    this.close.emit(true);
+  }
 
 }

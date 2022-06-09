@@ -1,1 +1,2 @@
-<img class="{{name}}" src="../../../assets/icon/{{name}}.png" class="icon" alt="">
+<img *ngIf="!ionic" [class]="name" src="../../../assets/icon/{{name}}.png" class="icon" alt="">
+<ion-icon *ngIf="ionic" [name]="name" [class]="name" (click)="handleIcon()"></ion-icon>

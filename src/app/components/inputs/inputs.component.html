@@ -38,7 +38,7 @@
 
 <div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'text' && mask == 'DATA'">
   <label for="" class="form-label">{{ label }}</label>
-  <input [formControlName]="control" class="form-control" type="text" mask="**/**/****" placeholder="00/00/0000" [attr.maxlength]="length" [name]="control" NumberInput>
+  <input [formControlName]="control" class="form-control" type="text" mask="**/**/****" placeholder="00/00/0000" [attr.maxlength]="10" [name]="control" NumberInput>
   <div class="icon {{iconPosition}}">
     <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
   </div>
@@ -89,11 +89,13 @@
   <input (keyup)="searching($event.target.value)" upperCase type="search" class="search" style="width: 20rem;" [name]="control">
   <div class="icon {{iconPosition}}">
     <button> <img class="icon-search" src="../../../assets/icon/lupa.png" alt=""></button>
-    <button routerLink=""><img class="icon-search" src="../../../assets/icon/filtro.png" alt=""></button>
+    <button (click)="iconClicked()">
+      <img class="icon-search" src="../../../assets/icon/filtro.png" alt="">
+    </button>
   </div>
 </div>
 
-<div class="input-textArea row" *ngIf="type == 'textarea'">
+<div [formGroup]="form" class="input-textArea row" *ngIf="type == 'textarea'">
   <label for="textarea1" class="form-label mt-3">{{label}}</label>
-  <textarea upperCase class="form-control" id="textarea1" rows="3" [name]="control"></textarea>
+  <textarea upperCase [formControlName]="control" class="form-control" rows="3" [name]="control"></textarea>
 </div>

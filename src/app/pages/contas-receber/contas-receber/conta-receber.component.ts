@@ -13,6 +13,8 @@ import { ClienteService } from '../../cliente/service/cliente.service';
 import { IContasReceber } from '../model/contas-receber.model';
 import { ContasReceberService } from '../service/contas-receber.service';
 
+import dataTipoRegistro from '../data/tipo_registro.json';
+
 
 @Component({
   selector: 'app-conta-receber',
@@ -30,6 +32,7 @@ export class ContaReceberComponent implements OnInit {
 
   categoriasFinanceiras: SelectModel[];
   clientes: SelectModel[];
+  tiposRegistro: SelectModel[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,6 +45,7 @@ export class ContaReceberComponent implements OnInit {
     this.receita = new IContasReceber();
     this.categoriasFinanceiras = [];
     this.clientes = [];
+    this.tiposRegistro = dataTipoRegistro.tipoRegistro;
   }
 
   ngOnInit() {

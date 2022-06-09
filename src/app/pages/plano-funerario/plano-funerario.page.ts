@@ -34,8 +34,8 @@ export class PlanoFunerarioPage implements OnInit {
     this.pesquisar();
   }
 
-  adicionarPlano(){
-    this._router.navigate(['planosfunerarios/adicionar-plano']);
+  add(){
+    this._router.navigate(['plano-funerario/new']);
   }
 
   pesquisar(skip: number = 0) {

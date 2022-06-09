@@ -30,7 +30,7 @@ export class ContasReceberBaixaModel{
         this.desconto = data.desconto || '';
         this.acrescimo = data.acrescimo || '';
         this.obs = data.obs || '';
-        this.pago = data.pago || '';
+        this.pago = data.pago || true;
         this.situacao = data.situacao || '';
     }
 }

@@ -28,9 +28,6 @@ import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.compo
     PlanoFunerarioPageRoutingModule,
     NavbarModule,
     SharedModule
-  ],
-  exports: [
-    PlanoFunerarioComponent
   ]
 })
 export class PlanoFunerarioModule { }
