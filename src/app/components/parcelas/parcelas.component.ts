@@ -29,10 +29,12 @@ export class ParcelasComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
+
   }
 
   emit() {
