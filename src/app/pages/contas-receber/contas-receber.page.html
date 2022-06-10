@@ -12,5 +12,8 @@
       </div>
     </div>
     <app-liquidar-conta *ngIf="viewLiquidar" (close)="viewLiquidar = false"></app-liquidar-conta>
+    <div class="container filtro" *ngIf="filtro">
+      <app-filtro-contas-receber></app-filtro-contas-receber>
+    </div>
   </div>
 </ion-content>

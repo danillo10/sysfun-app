@@ -4,6 +4,15 @@
   </div>
   <div class="selecao mt-4 mb-4">
     <form action="">
+      <div class="row">
+        <h2>Data de vencimento</h2>
+        <div class="col-4">
+          <app-input  label="De" type="text" mask="data" number="true"></app-input>
+        </div>
+        <div class="col-4">
+          <app-input  label="Até" type="text" mask="data"></app-input>
+        </div>
+      </div>
       <app-select type="select" label="filtrar por"></app-select>
 
       <app-select type="select" label="situação"></app-select>
