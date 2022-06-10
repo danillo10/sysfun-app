@@ -21,6 +21,7 @@ export class IContasReceber {
     forma_pagamento?: number;
     parcela_pago?: any;
     centro_custos?: any;
+    centro_custos_descricao?: string;
     ocorrencia?: any;
     qtdParcelas?: number;
     obs?: string;
@@ -56,8 +57,9 @@ export class IContasReceber {
         this.forma_pagamento = data.forma_pagamento || '';
         this.parcela_pago = data.parcela_pago || '';
         this.centro_custos = data.centro_custos || '';
-        this.ocorrencia = data.ocorrencia || '';
-        this.qtdParcelas = data.qtdParcelas || '';
+        this.centro_custos_descricao = data.centro_custos_descricao || '';
+        this.ocorrencia = data.ocorrencia || 'Unica';
+        this.qtdParcelas = data.qtdParcelas || 1;
         this.obs = data.obs || '';
         this.referencia = data.referencia || '';
         this.atendentes = data.atendentes || '';
