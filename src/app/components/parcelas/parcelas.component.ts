@@ -24,7 +24,7 @@ export class ParcelasComponent implements OnInit {
   parcelas: IParcela[];
 
   constructor(
-    private parcelasService: ParcelasService,
+    private parcelasService: ParcelasService
   ) {
 
   }
