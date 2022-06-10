@@ -1,0 +1,35 @@
+<div class="container main">
+    <div class="campo-pesquisa mt-5">
+      <app-inputs type="search" label="pesquisar"></app-inputs>
+    </div>
+    <div class="selecao mt-4 mb-4">
+      <form action="">
+        <div class="row">
+          <h2>Data de vencimento</h2>
+          <div class="col-4">
+            <app-input  label="De" type="text" mask="data" number="true"></app-input>
+          </div>
+          <div class="col-4">
+            <app-input  label="Até" type="text" mask="data"></app-input>
+          </div>
+        </div>
+        <app-input label="Cidade" type="text"></app-input>
+  
+        <app-input label="Bairro" type="text"></app-input>
+
+        <app-input label="Rua" type="text"></app-input>
+  
+        <app-select type="select" label="Situação"></app-select>
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-6">
+            <app-butons color="gray" label="Limpar"></app-butons>
+          </div>
+          <div class="col-6">
+            <app-butons color="blue" label="Concluir" (click)="search()"></app-butons>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -11,12 +11,14 @@ import { TablesModule } from './../../components/tables/tables.module';
 import { ContasReceberPageRoutingModule } from './contas-receber-routing.module';
 import { ContasReceberPage } from './contas-receber.page';
 import { ContaReceberComponent } from './contas-receber/conta-receber.component';
+import { FiltroContasComponent } from './filtro/filtro.contas.component';
 import { LiquidarContaModule } from './liquidar-conta/liquidar-conta.module';
 
 @NgModule({
   declarations: [
     ContasReceberPage,
-    ContaReceberComponent
+    ContaReceberComponent,
+    FiltroContasComponent
   ],
   imports: [
     CommonModule,
