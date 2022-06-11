@@ -1,6 +1,6 @@
 <div class="container main">
   <div class="campo-pesquisa mt-5">
-    <app-inputs type="search" label="pesquisar"></app-inputs>
+    <app-input type="search"></app-input>
   </div>
   <div class="selecao mt-4 mb-4">
     <form action="">
@@ -21,10 +21,10 @@
 
       <div class="row d-flex justify-content-center">
         <div class="col-6">
-          <app-butons color="gray" label="Limpar"></app-butons>
+          <app-button color="gray" label="Limpar"></app-button>
         </div>
         <div class="col-6">
-          <app-butons color="blue" label="Concluir" (click)="search()"></app-butons>
+          <app-button color="blue" label="Concluir" (click)="search()"></app-button>
         </div>
       </div>
     </form>
