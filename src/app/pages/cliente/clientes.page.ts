@@ -19,7 +19,6 @@ export class ClientesPage implements OnInit {
   pesquisado: string;
   formulario = false;
   filtro : boolean;
-
   pesquisa$: Observable<any>;
   clientePesquisado = new Subject<any>();
 
@@ -34,7 +33,6 @@ export class ClientesPage implements OnInit {
     this.pesquisa.registros = 10;
     this.pesquisa.tipo_pesquisa = 'nome';
     this.pesquisa.cliente = '';
-    this.filtro = true;
   }
 
   ngOnInit(){
