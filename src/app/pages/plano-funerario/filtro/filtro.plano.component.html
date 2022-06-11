@@ -1,18 +1,13 @@
 <div class="container main">
-    <div class="campo-pesquisa mt-5">
-      <app-input type="search" label="pesquisar"></app-input>
-    </div>
     <div class="selecao mt-4 mb-4">
       <form [formGroup]="form" action="">
-        <div class="row">
-          <h2>Data de vencimento</h2>
-          <div class="col-4">
-            <app-input [form]="form" control="data_vencimento" label="De" type="text" mask="data" number="true"></app-input>
-          </div>
-          <div class="col-4">
-            <app-input [form]="form" control="data_final" label="Até" type="text" mask="data"></app-input>
-          </div>
-        </div>
+       
+          <h2>Filtrar por</h2>
+       
+        <app-input [form]="form" control="data_vencimento" label="Data de vencimento de" type="text" mask="data" number="true"></app-input>
+        
+        <app-input [form]="form" control="data_final" label="Até" type="text" mask="data"></app-input>
+        
         <app-input [form]="form" control="cidade" label="Cidade" type="text"></app-input>
   
         <app-input [form]="form" control="bairro" label="Bairro" type="text"></app-input>
