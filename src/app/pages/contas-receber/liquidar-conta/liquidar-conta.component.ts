@@ -17,9 +17,12 @@ export class LiquidarContaComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private liquidarService: LiquidarService
+    private liquidarService: LiquidarService,
   ) {
-    this.receber = new ContasReceberBaixaModel();
+    console.log(this.liquidarService.contaReceber)
+    this.liquidarService.contaReceber ?
+      this.receber = new ContasReceberBaixaModel(this.liquidarService.contaReceber) :
+      this.receber = new ContasReceberBaixaModel();
   }
 
   ngOnInit() {

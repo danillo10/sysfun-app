@@ -15,6 +15,7 @@ import { ContasReceberService } from '../service/contas-receber.service';
 import dataTipoRegistro from '../data/tipo_registro.json';
 import dataOcorrencia from '../data/ocorrencia.json';
 import { FormaPagamentoService } from 'src/app/shared/services/forma-pagamento.service';
+import { ActionsheetService } from 'src/app/shared/services/actionsheet.service';
 
 @Component({
   selector: 'app-conta-receber',

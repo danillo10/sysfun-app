@@ -4,6 +4,8 @@ import { ContasReceberService } from './service/contas-receber.service';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 import { PesquisaModel } from '../cliente/model/pesquisa.model';
 import { IContasReceber } from './model/contas-receber.model';
+import { ActionsheetService } from 'src/app/shared/services/actionsheet.service';
+import { LiquidarService } from './liquidar-conta/service/liquidar.service';
 
 @Component({
   selector: 'app-contas-receber',
@@ -21,7 +23,9 @@ export class ContasReceberPage implements OnInit {
   constructor(
     private _router: Router,
     private _contasReceberService: ContasReceberService,
-    private _localStorageService: LocalstorageService
+    private _localStorageService: LocalstorageService,
+    private _actionSheetService: ActionsheetService,
+    private _liquidarService: LiquidarService
   ) {
     this.pesquisa.skip = 0;
     this.pesquisa.registros = 10;
@@ -34,10 +38,19 @@ export class ContasReceberPage implements OnInit {
   ionViewDidEnter() {
     this.pesquisa.pagina = 1;
     this.pesquisar();
+    this.getLiquidar();
   }
 
   add() {
     this._router.navigate(['contas-receber/receita']);
+  }
+
+  getLiquidar(){
+    this._actionSheetService.liquidar$
+      .subscribe((conta: IContasReceber) => {
+        this.viewLiquidar = true;
+        this._liquidarService.contaReceber = conta;
+      })
   }
 
   pesquisar(skip: number = 0) {

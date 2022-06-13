@@ -30,7 +30,7 @@
         Vencimento em {{conta.vencimento | date: 'dd/MM/yyyy'}}
       </td>
       <td colspan="2">
-        <button>
+        <button (click)="showActionsContas(conta)">
           <img class="icone-tabela" src="../../../assets/icon/tres-pontos.png" alt="">
         </button>
       </td>

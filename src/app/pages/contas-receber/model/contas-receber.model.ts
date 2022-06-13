@@ -30,6 +30,8 @@ export class IContasReceber {
     parcelas?: any;
     criado_por: any;
     atualizado_por: any;
+    action: boolean;
+
     /**
    * Constructor
    *
@@ -66,5 +68,6 @@ export class IContasReceber {
         this.parcelas = data.parcelas || '';
         this.criado_por = data.criado_por || '';
         this.atualizado_por = data.atualizado_por || '';
+        this.action = false;
     }
 }

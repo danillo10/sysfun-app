@@ -1,8 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ClienteModel } from 'src/app/pages/cliente/model/cliente.model';
 import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
 import { IContasReceber } from 'src/app/pages/contas-receber/model/contas-receber.model';
+import { ActionSheetModel } from 'src/app/shared/models/action-sheet.model';
+import { ActionsheetService } from 'src/app/shared/services/actionsheet.service';
 
 @Component({
   selector: 'app-tables',
@@ -19,16 +22,24 @@ export class TablesComponent implements OnInit {
 
   pagina: number;
 
+  liquidar$: Observable<any>;
+
   @Output() paginador = new EventEmitter();
+  @Output() liquidar = new EventEmitter();
 
   constructor(
-    private _router: Router
+    private _router: Router,
+    private _actionSheeService: ActionsheetService
   ) {
     this.pagina = 1;
   }
 
   ngOnInit() {
 
+  }
+
+  showActionsContas(conta: IContasReceber): void {
+    this._actionSheeService.showActionSheetContaReceber('Ação', conta);
   }
 
   navigate(route: string, cliente: ClienteModel){
