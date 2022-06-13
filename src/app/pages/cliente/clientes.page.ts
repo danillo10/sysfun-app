@@ -18,8 +18,7 @@ export class ClientesPage implements OnInit {
   total: number;
   pesquisado: string;
   formulario = false;
-  filtro = false;
-
+  filtro : boolean;
   pesquisa$: Observable<any>;
   clientePesquisado = new Subject<any>();
 

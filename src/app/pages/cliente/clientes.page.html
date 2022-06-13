@@ -4,7 +4,7 @@
     <div class="container main pb-4" *ngIf="!filtro">
       <h2>Clientes e fornecedores</h2>
       <div class="mb-3">
-        <app-input (searchEmitter)="pesquisa.cliente = $event; pesquisar()" type="search" label="Pesquisar" name="search"></app-input>
+        <app-input (searchEmitter)="pesquisa.cliente = $event; pesquisar()" label="pesquisar" (selectIcon)="filtro = true" type="search" label="Pesquisar" name="search"></app-input>
         <!-- <button icon="icone-lupa"></button>
           <button icon="icone-filtro" (click)="filtro = !filtro" alt=""></button> -->
       </div>

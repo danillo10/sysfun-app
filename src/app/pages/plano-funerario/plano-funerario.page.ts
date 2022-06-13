@@ -15,6 +15,7 @@ export class PlanoFunerarioPage implements OnInit {
   pesquisa = {} as PesquisaModel;
   planosFunerarios: any[];
   total: number;
+  filtro: boolean;
 
   constructor(
     private _router: Router,

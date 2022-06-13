@@ -4,7 +4,7 @@
     <div class="container main pb-4" *ngIf="!filtro">
       <h2>Planos Funerários</h2>
       <div class="mb-3">
-        <app-input (searchEmitter)="pesquisa.descricao = $event; pesquisar()" type="search" label="Pesquisar" name="search"></app-input>
+        <app-input (searchEmitter)="pesquisa.descricao = $event; pesquisar()" (selectIcon)="filtro = true" type="search" label="Pesquisar" name="search"></app-input>
       </div>
       <app-button class="bt" color="blue" label="Adicionar plano" type="normal" (click)="add()"></app-button>
       <div class="tabela">
