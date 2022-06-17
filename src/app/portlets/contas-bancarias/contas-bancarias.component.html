@@ -1,0 +1,12 @@
+<div [formGroup]="form" class="mb-3 relative">
+  <label for="" class="form-label">{{ label }}</label>
+  <input upperCase (keyup)="searching($event.target.value)" [formControlName]="control" class="form-control" [type]="type" [attr.maxlength]="length" [name]="control">
+  <div class="icon {{iconPosition}}">
+    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  </div>
+  <div class="list" *ngIf="contas.length > 0">
+    <ul>
+      <li *ngFor="let conta of contas" (click)="selecionar(conta)">{{ conta.descricao }}</li>
+    </ul>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export class ContasReceberBaixaModel{
     id?: any;
     descricao?: string;
@@ -21,7 +23,7 @@ export class ContasReceberBaixaModel{
         this.descricao = data.descricao || '';
         this.cliente = data.cliente || '';
         this.nome_fantasia = data.nome_fantasia || '';
-        this.data_liquidacao = data.data_liquidacao || '';
+        this.data_liquidacao = moment().format('DD/MM/YYYY');
         this.conta_bancaria = data.conta_bancaria || '';
         this.forma_pagamento = data.forma_pagamento || '';
         this.forma_descricao = data.forma_descricao || '';
@@ -30,7 +32,7 @@ export class ContasReceberBaixaModel{
         this.desconto = data.desconto || '';
         this.acrescimo = data.acrescimo || '';
         this.obs = data.obs || '';
-        this.pago = data.pago || true;
+        this.pago = data.pago || false;
         this.situacao = data.situacao || '';
     }
 }

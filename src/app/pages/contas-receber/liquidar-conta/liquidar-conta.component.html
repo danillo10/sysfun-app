@@ -2,33 +2,43 @@
   <div class="close">
     <app-icon name="close-outline" ionic="true" (selectIcon)="closeView()"></app-icon>
   </div>
-  <h2>Liquidar Conta</h2>
-  <form class="mt-4" [formGroup]="form">
+  <div *ngIf="!receber.pago">
+    <h2>Liquidar Conta</h2>
+    <form class="mt-4" [formGroup]="form">
 
-    <app-input [form]="form" control="descricao" label="Nome da receita" type="text"></app-input>
+      <app-input [form]="form" control="descricao" label="Nome da receita" type="text"></app-input>
 
-    <app-input [form]="form" control="nome_fantasia" label="nome_fantasia" type="text"></app-input>
+      <app-input [form]="form" control="nome_fantasia" label="nome_fantasia" type="text"></app-input>
 
-    <app-input [form]="form" control="data_liquidacao" label="data liquidação" type="text" mask="DATA"></app-input>
+      <app-input [form]="form" control="data_liquidacao" label="data liquidação" type="text" mask="DATA"></app-input>
 
-    <app-select [form]="form" control="conta_bancaria" label="conta Bancária" type="text"></app-select>
+      <app-select [form]="form" control="conta_bancaria" label="Conta bancária" [options]="contasBancarias">
+      </app-select>
 
-    <app-select [form]="form" control="forma_pagamento" label="forma de pagamento" type="text"></app-select>
+      <app-select [form]="form" control="forma_pagamento" label="Forma de pagamento" [options]="formaPagamento">
+      </app-select>
 
-    <app-input [form]="form" control="valor" label="valor pago" type="text" mask="MONEY"></app-input>
+      <app-input [form]="form" control="valor" label="valor pago" type="text" mask="MONEY"></app-input>
 
-    <app-input [form]="form" control="juros" label="juros" type="text" mask="MONEY"></app-input>
+      <app-input [form]="form" control="juros" label="juros" type="text" mask="MONEY"></app-input>
 
-    <app-input [form]="form" control="desconto" label="desconto/taxa" type="text" mask="MONEY"></app-input>
+      <app-input [form]="form" control="desconto" label="desconto/taxa" type="text" mask="MONEY"></app-input>
 
-    <app-input [form]="form" control="acrescimo" label="acréscimo" type="text" mask="MONEY"></app-input>
+      <app-input [form]="form" control="acrescimo" label="acréscimo" type="text" mask="MONEY"></app-input>
 
-    <app-input [form]="form" control="obs" label="observações" type="textarea"></app-input>
+      <app-input [form]="form" control="obs" label="observações" type="textarea"></app-input>
 
-    <div class="campo-checkbox d-flex align-items-center mt-4 mb-4">
-      <app-checkbox [form]="form" control="pago" type="checkbox" label="Baixar conta"></app-checkbox>
-    </div>
-  </form>
-  <app-button (click)="create()" [disabled]="form.invalid" type="normal" color="blue" label="Salvar"></app-button>
-  <app-button color="gray" label="Cancelar"></app-button>
+      <div class="campo-checkbox d-flex align-items-center mt-4 mb-4">
+        <app-checkbox [form]="form" control="pago" type="checkbox" label="Baixar conta"></app-checkbox>
+      </div>
+    </form>
+
+    <app-contas-parcela-parcial *ngIf="pagamentos.length > 0" [pagamentos]="pagamentos"></app-contas-parcela-parcial>
+
+    <app-button (click)="liquidar()" [disabled]="form.invalid" type="normal" color="blue" label="Salvar"></app-button>
+    <app-button color="gray" label="Cancelar"></app-button>
+  </div>
+  <div *ngIf="receber.pago">
+    <app-contas-parcelas-liquidadas [pagamentos]="pagamentos"></app-contas-parcelas-liquidadas>
+  </div>
 </div>

@@ -1,0 +1,16 @@
+<table class="tabela">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Valor</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pagamento of pagamentos">
+      <td>{{ pagamento.data_liquidacao | date:'dd/MM/YYYY' }}</td>
+      <td>{{ pagamento.valor }}</td>
+      <td><app-icon [ionic]="true" name="print-outline"></app-icon></td>
+    </tr>
+  </tbody>
+</table>

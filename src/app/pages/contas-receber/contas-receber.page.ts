@@ -1,11 +1,13 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ContasReceberService } from './service/contas-receber.service';
-import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
-import { PesquisaModel } from '../cliente/model/pesquisa.model';
-import { IContasReceber } from './model/contas-receber.model';
+import { Router } from '@angular/router';
 import { ActionsheetService } from 'src/app/shared/services/actionsheet.service';
+import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
+
+import { PesquisaModel } from '../cliente/model/pesquisa.model';
+import { ContasReceberBaixaModel } from './liquidar-conta/model/conta-receber-baixa.model';
 import { LiquidarService } from './liquidar-conta/service/liquidar.service';
+import { IContasReceber } from './model/contas-receber.model';
+import { ContasReceberService } from './service/contas-receber.service';
 
 @Component({
   selector: 'app-contas-receber',
@@ -48,8 +50,13 @@ export class ContasReceberPage implements OnInit {
   getLiquidar(){
     this._actionSheetService.liquidar$
       .subscribe((conta: IContasReceber) => {
-        this.viewLiquidar = true;
-        this._liquidarService.contaReceber = conta;
+        this._contasReceberService.dadosLiquidar(conta.id)
+          .subscribe((data: any) => {
+            this._liquidarService.contaAtiva = conta;
+            this._liquidarService.contaReceber = new ContasReceberBaixaModel(data.conta);
+            this._liquidarService.pagamentos = data.contas;
+            this.viewLiquidar = true;
+          })
       })
   }
 

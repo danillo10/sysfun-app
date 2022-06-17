@@ -2,19 +2,21 @@
     <div class="selecao mt-4 mb-4">
       <form action="" [formGroup]="form">
           <h2>Filtrar por</h2>
-  
+
         <app-input [form]="form" control="data_vencimento" label="Data de vencimento de" type="text" mask="DATA"></app-input>
-         
+
         <app-input  [form]="form" control="data_final" label="Até" type="text" mask="DATA"></app-input>
-          
-        <app-input [form]="form" control="cidade" label="Cidade" type="text"></app-input>
-  
+
+        <app-select [form]="form" control="estado" [options]="estados" label="estado" type="text"></app-select>
+
+        <app-portlet-cidade [form]="form" control="cidade"></app-portlet-cidade>
+
         <app-input [form]="form" control="bairro" label="Bairro" type="text"></app-input>
 
         <app-input [form]="form" control="rua" label="Rua" type="text"></app-input>
-  
+
         <app-select [form]="form" control="situacao" type="select" label="Situação"></app-select>
-  
+
         <div class="row d-flex justify-content-center">
           <div class="col-6">
             <app-button color="gray" type="normal" label="Limpar"></app-button>
@@ -26,4 +28,3 @@
       </form>
     </div>
   </div>
-  
