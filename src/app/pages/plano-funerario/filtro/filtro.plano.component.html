@@ -7,12 +7,12 @@
         <app-input [form]="form" control="data_vencimento" label="Data de vencimento de" type="text" mask="data" number="true"></app-input>
         
         <app-input [form]="form" control="data_final" label="Até" type="text" mask="data"></app-input>
-        
-        <app-input [form]="form" control="cidade" label="Cidade" type="text"></app-input>
   
-        <app-input [form]="form" control="bairro" label="Bairro" type="text"></app-input>
+        <app-portlet-cidade [form]="form" control="cidade" label="Cidade" type="text"></app-portlet-cidade>
 
-        <app-input [form]="form" control="rua" label="Rua" type="text"></app-input>
+        <app-portlet-bairro [form]="form" control="bairro" label="Bairro" type="text"></app-portlet-bairro>
+
+        <app-portlet-endereco [form]="form" control="endereco" label="Endereço" type="text"></app-portlet-endereco>
   
         <app-select [form]="form" control="situacao" type="select" label="Situação"></app-select>
   
