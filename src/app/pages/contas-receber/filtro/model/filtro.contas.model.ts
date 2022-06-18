@@ -4,6 +4,6 @@ export class IFiltroContas{
     estado: string;
     cidade: string;
     bairro: string;
-    rua: string;
+    endereco: string;
     situacao: []
 }

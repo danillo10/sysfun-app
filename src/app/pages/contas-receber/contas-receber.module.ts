@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ButtonsModule, PaginationModule } from 'src/app/components';
 import { NavbarModule } from 'src/app/components/navbar/navbar.module';
+import { BairroModule } from 'src/app/portlets/bairro/bairro.module';
 import { CidadeModule } from 'src/app/portlets/cidade/cidade.module';
+import { EnderecoModule } from 'src/app/portlets/endereco/endereco.module';
 import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
 
 import { CheckboxModule } from './../../components/checkbox/checkbox.module';
@@ -33,7 +35,9 @@ import { LiquidarContaModule } from './liquidar-conta/liquidar-conta.module';
     NavbarModule,
     SharedModule,
     LiquidarContaModule,
-    CidadeModule
+    CidadeModule,
+    BairroModule,
+    EnderecoModule
   ]
 })
 export class ContasReceberModule { }

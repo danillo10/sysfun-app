@@ -31,7 +31,7 @@ export class FiltroContasComponent implements OnInit {
     estado: [this.filtrarContas.estado],
     cidade: [this.filtrarContas.cidade],
     bairro: [this.filtrarContas.bairro],
-    rua: [this.filtrarContas.rua],
+    endereco: [this.filtrarContas.endereco],
     situacao: [this.filtrarContas.situacao],
     })
 
