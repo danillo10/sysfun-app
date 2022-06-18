@@ -4,7 +4,7 @@
     <div class="container main pb-4" *ngIf="!filtro">
       <h2>Contas a receber</h2>
       <div class="mb-3">
-        <app-input (searchEmitter)="pesquisa.descricao = $event; pesquisar()" (selectIcon)="filtro = true" type="search" label="Pesquisar" name="search"></app-input>
+        <app-input [searchText]="pesquisa.descricao" (searchEmitter)="pesquisa.descricao = $event; pesquisar()" (selectIcon)="filtro = true" type="search" label="Pesquisar" name="search"></app-input>
       </div>
       <app-button class="bt" color="blue" label="Adicionar receita" type="normal" (click)="add()"></app-button>
       <div class="tabela">
@@ -13,7 +13,7 @@
     </div>
     <app-liquidar-conta *ngIf="viewLiquidar" (close)="viewLiquidar = false"></app-liquidar-conta>
     <div class="container filtro" *ngIf="filtro">
-      <app-filtro-contas-receber (filtrado)="pesquisa = $event; pesquisar(); filtro = false"></app-filtro-contas-receber>
+      <app-filtro-contas-receber (filtrado)="pesquisa = $event; pesquisar(); filtro = false" (close)="filtro = false"></app-filtro-contas-receber>
     </div>
   </div>
 </ion-content>

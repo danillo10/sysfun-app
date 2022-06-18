@@ -86,9 +86,11 @@
 
 <div class="input-search mt-4" *ngIf="type == 'search'">
   <label class="form-label search-label">{{ label }}</label>
-  <input (keyup)="searching($event.target.value)" upperCase type="search" class="search" style="width: 20rem;" [name]="control">
+  <input [(ngModel)]="searchText"upperCase type="search" class="search" style="width: 20rem;" [name]="control">
   <div class="icon {{iconPosition}}">
-    <button> <img class="icon-search" src="../../../assets/icon/lupa.png" alt=""></button>
+    <button (click)="searching(searchText)">
+      <img class="icon-search" src="../../../assets/icon/lupa.png" alt="">
+    </button>
     <button (click)="iconClicked()">
       <img class="icon-search" src="../../../assets/icon/filtro.png" alt="">
     </button>

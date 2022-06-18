@@ -5,6 +5,7 @@ import estados from '../../utils/estados.json';
 import situacao from '../../utils/situacao-receita.json';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { FiltroContaService } from './service/filtro.conta.service';
+import { PesquisaModel } from '../../cliente/model/pesquisa.model';
 
 @Component({
   selector: 'app-filtro-contas-receber',
@@ -20,19 +21,20 @@ export class FiltroContasComponent implements OnInit {
   estados: SelectModel[];
   situacao: SelectModel[];
 
-  filtrarContas: IFiltroContas;
+  filtrarContas: PesquisaModel;
 
   constructor(
     private formBuilder: FormBuilder,
     private filtroContaService: FiltroContaService
   ){
-    this.filtrarContas = (this.filtroContaService.pesquisa) ? new IFiltroContas(this.filtroContaService.pesquisa) : new IFiltroContas();
+    this.filtrarContas = (this.filtroContaService.pesquisa) ? this.filtroContaService.pesquisa : new PesquisaModel();
     this.estados = estados.estados;
     this.situacao = situacao.situacao;
    }
 
   ngOnInit() {
    this.form = this.formBuilder.group({
+    descricao: [this.filtrarContas.descricao],
     vencimento_inicio: [this.filtrarContas.vencimento_inicio],
     vencimento_final: [this.filtrarContas.vencimento_final],
     estado: [this.filtrarContas.estado],
@@ -40,6 +42,8 @@ export class FiltroContasComponent implements OnInit {
     bairro: [this.filtrarContas.bairro],
     endereco: [this.filtrarContas.endereco],
     situacao: [this.filtrarContas.situacao],
+    skip: [this.filtrarContas.skip],
+    registros: [this.filtrarContas.registros]
   })
 
     this.form.patchValue({estado: 'MA'})

@@ -23,6 +23,7 @@ export class InputsComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() control: string;
   @Input() search: boolean;
+  @Input() searchText: string;
 
   @Input() set data(options: SelectModel[]){
     this.options = options.length > 0 ? options : [];

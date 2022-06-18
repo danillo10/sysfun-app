@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { IconsModule } from 'src/app/components';
 import { BairroModule } from 'src/app/portlets/bairro/bairro.module';
 import { CidadeModule } from 'src/app/portlets/cidade/cidade.module';
 

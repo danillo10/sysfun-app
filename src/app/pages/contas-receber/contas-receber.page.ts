@@ -4,6 +4,7 @@ import { ActionsheetService } from 'src/app/shared/services/actionsheet.service'
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 
 import { PesquisaModel } from '../cliente/model/pesquisa.model';
+import { FiltroContaService } from './filtro/service/filtro.conta.service';
 import { ContasReceberBaixaModel } from './liquidar-conta/model/conta-receber-baixa.model';
 import { LiquidarService } from './liquidar-conta/service/liquidar.service';
 import { IContasReceber } from './model/contas-receber.model';
@@ -27,12 +28,12 @@ export class ContasReceberPage implements OnInit {
     private _contasReceberService: ContasReceberService,
     private _localStorageService: LocalstorageService,
     private _actionSheetService: ActionsheetService,
-    private _liquidarService: LiquidarService
+    private _liquidarService: LiquidarService,
+    private _filtroContaService: FiltroContaService
   ) {
     this.pesquisa.skip = 0;
     this.pesquisa.registros = 10;
     this.pesquisa.pagina = 1;
-    this.pesquisa.descricao = '';
   }
 
   ngOnInit() { }
@@ -61,15 +62,11 @@ export class ContasReceberPage implements OnInit {
   }
 
   pesquisar(skip: number = 0) {
-    this.pesquisa.skip = skip;
-
-    if(!this.pesquisa.registros)
-      this.pesquisa.registros = 10;
-
     this._contasReceberService.get(this.pesquisa)
       .then((data: any) => {
         this.contasReceber = data.contasReceber;
         this.total = data.total;
+        this._filtroContaService.pesquisa = this.pesquisa;
       });
   }
 
