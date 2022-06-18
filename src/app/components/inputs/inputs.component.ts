@@ -32,6 +32,7 @@ export class InputsComponent implements OnInit {
   @Output() searchEmitter = new EventEmitter();
   @Output() selectEmitter = new EventEmitter();
   @Output() selectIcon = new EventEmitter();
+  @Output() moneyEmitter = new EventEmitter();
 
   options: SelectModel[];
 
@@ -67,6 +68,10 @@ export class InputsComponent implements OnInit {
 
   searching(e){
     this.searchEvent.next(e)
+  }
+
+  handleMoney(){
+    this.moneyEmitter.emit(true);
   }
 
 }

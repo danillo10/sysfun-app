@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { ContaBancariaModel } from 'src/app/shared/models/conta-bancaria.model';
+import { CalculoTotalService } from 'src/app/shared/services/calculo-total.service';
 import { ContasBancariasService } from 'src/app/shared/services/contas-bancarias.service';
 import { FormaPagamentoService } from 'src/app/shared/services/forma-pagamento.service';
 import { SelectService } from 'src/app/shared/services/select.service';
@@ -31,7 +32,8 @@ export class LiquidarContaComponent implements OnInit {
     private formaPagamentoService: FormaPagamentoService,
     private contasBancariasService: ContasBancariasService,
     private selectService: SelectService,
-    private contasReceberService: ContasReceberService
+    private contasReceberService: ContasReceberService,
+    private calculoTotalService: CalculoTotalService
   ) {
       this.formaPagamento = [];
       this.pagamentos = this.liquidarService.pagamentos;
@@ -80,6 +82,11 @@ export class LiquidarContaComponent implements OnInit {
     .subscribe((formaPagamento: any)=>{
       this.formaPagamento = this.selectService.handleSelect(formaPagamento, 'id', 'descricao');
     })
+  }
+
+  calculaTotal(){
+    this.calculoTotalService.calculaTotal(this.form.value)
+      .then(valor => this.form.patchValue({valor: valor}));
   }
 
   closeView(){
