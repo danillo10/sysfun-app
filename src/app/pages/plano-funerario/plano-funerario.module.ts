@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { ButtonsModule, CheckboxModule } from 'src/app/components';
 import { NavbarModule } from 'src/app/components/navbar/navbar.module';
 import { SelectModule } from 'src/app/components/select/select.module';
+import { BairroModule } from 'src/app/portlets/bairro/bairro.module';
+import { CidadeModule } from 'src/app/portlets/cidade/cidade.module';
+import { EnderecoModule } from 'src/app/portlets/endereco/endereco.module';
 import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
 
 import { InputsModule } from './../../components/inputs/inputs.module';
@@ -29,7 +32,10 @@ import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.compo
     PaginationModule,
     PlanoFunerarioPageRoutingModule,
     NavbarModule,
-    SharedModule
+    SharedModule,
+    BairroModule,
+    CidadeModule,
+    EnderecoModule
   ]
 })
 export class PlanoFunerarioModule { }

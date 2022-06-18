@@ -4,120 +4,117 @@
     <div class="container main">
       <h2 class="mb-4">Dados do plano</h2>
       <form [formGroup]="form">
-        <fieldset>
-          <app-input [form]="form" control="cliente" type="text" label="cliente"></app-input>
 
-          <app-input [form]="form" control="tecnico" type="text" label="vendedor 1"></app-input>
+        <app-input [form]="form" control="cliente" type="text" label="cliente"></app-input>
 
-          <app-input [form]="form" control="profissional" type="text" label="vendedor 2"></app-input>
+        <app-input [form]="form" control="tecnico" type="text" label="vendedor 1"></app-input>
 
-          <app-input [form]="form" control="id" type="text" label="número do plano"></app-input>
+        <app-input [form]="form" control="profissional" type="text" label="vendedor 2"></app-input>
 
-        </fieldset>
-        <fieldset>
-          <legend>Planos funarários</legend>
+        <app-input [form]="form" control="id" type="text" label="número do plano"></app-input>
 
-          <div class="row">
-            <div class="col-3">
-              <app-input [form]="form" control="servicos" label="Plano" type="text"></app-input>
-            </div>
-            <div class="col-9">
-              <app-input [form]="form" control="valor" label="Valor" type="text"></app-input>
-            </div>
+        <h2>Planos funarários</h2>
+
+        <div class="row">
+          <div class="col-3">
+            <app-input [form]="form" control="servicos" label="Plano" type="text"></app-input>
           </div>
+          <div class="col-9">
+            <app-input [form]="form" control="valor_liquido" label="Valor" type="text"></app-input>
+          </div>
+        </div>
 
-          <app-input [form]="form" control="qtd_parcelas" type="text" label="quantidade"></app-input>
+        <app-input [form]="form" control="qtd_parcelas" type="text" label="quantidade"></app-input>
 
-          <app-input [form]="form" control="valor_liquido" type="text" label="valor unitário"></app-input>
+        <app-input [form]="form" control="valor_liquido" type="text" label="valor unitário"></app-input>
 
-          <app-input [form]="form" control="valor_liquido" type="text" label="valor total"></app-input>
+        <app-input [form]="form" control="valor_liquido" type="text" label="valor total"></app-input>
 
-        </fieldset>
-        <fieldset>
-          <legend>totais</legend>
 
-          <app-input [form]="form" control="taxa_adesao" type="text" label="taxa de adesão"></app-input>
+        <h2>totais</h2>
 
-          <app-input [form]="form" control="valor_bruto" type="text" label="valor total" icon="lupa.png"
-            iconPosition="right"></app-input>
+        <app-input [form]="form" control="taxa_adesao" type="text" label="taxa de adesão"></app-input>
 
-          <fieldset>
-            <legend>Pagamento</legend>
+        <app-input [form]="form" control="valor_bruto" type="text" label="valor total" icon="lupa.png"
+          iconPosition="right"></app-input>
 
-            <app-input [form]="form" control="data_inicial" type="text" mask="DATA" label="data inicial"></app-input>
+        <h2>Pagamento</h2>
 
-            <app-select [form]="form" control="forma_pagamento" type="text" label="forma de pagamento"></app-select>
+        <app-input [form]="form" control="data_inicial" type="text" mask="DATA" label="data inicial"></app-input>
 
-            <app-input [form]="form" control="carencia" type="text" label="carencia (dias)"></app-input>
+        <app-select [form]="form" control="forma_pagamento" type="text" label="forma de pagamento"></app-select>
 
-            <app-input [form]="form" control="qtd_parcelas" type="text" label="quantida de parcelas"></app-input>
+        <app-input [form]="form" control="carencia" type="text" label="carencia (dias)"></app-input>
 
-            <app-select [form]="form" control="repetir_valor" type="text" label="forma de gerar"></app-select>
+        <app-input [form]="form" control="qtd_parcelas" type="text" label="quantida de parcelas"></app-input>
 
-            <div class="row">
-              <div class="col-3">
-                <app-input [form]="form" control="parcelas" type="text" label="parcela"></app-input>
-              </div>
-              <div class="col-9">
-                <app-input [form]="form" control="data_inicial" type="date" label="data"></app-input>
-              </div>
-            </div>
-            <app-input [form]="form" control="valor_bruto" type="text" label="valor"></app-input>
+        <app-select [form]="form" control="repetir_valor" type="text" label="forma de gerar"></app-select>
 
-            <app-select [form]="form" type="text" label="forma de pagamento"></app-select>
+        <div class="row">
+          <div class="col-3">
+            <app-input [form]="form" control="parcelas" type="text" label="parcela"></app-input>
+          </div>
+          <div class="col-9">
+            <app-input [form]="form" control="data_inicial" type="date" label="data"></app-input>
+          </div>
+        </div>
 
-            <app-input type="textArea" label="observações"></app-input>
-          </fieldset>
-        </fieldset>
+        <app-input [form]="form" control="valor_bruto" type="text" label="valor"></app-input>
+
+        <app-select [form]="form" type="text" control="forma_pagamento" label="forma de pagamento"></app-select>
+
+        <app-input [form]="form" control="obs" type="textarea" label="observações"></app-input>
+
         <div class="maisparcelas d-flex justify-content-center">
           <a href="">ver mais parcelas <img class="icon" src="../../../assets/icon/seta-para-baixo.png" alt=""></a>
         </div>
-        <fieldset class="checkbox">
-          <legend>documentos pendentes</legend>
-          <label class="mt-3 mb-3">Documento do responsável</label>
 
-          <app-checkbox type="checkbox" label="rg"></app-checkbox>
+        <h2>documentos pendentes</h2>
+        <label class="mt-3 mb-3">Documento do responsável</label>
 
-          <app-checkbox type="checkbox" label="cpf"></app-checkbox>
+        <app-checkbox type="checkbox" [form]="form" control="rg_f_pendente" label="rg"></app-checkbox>
 
-          <app-checkbox type="checkbox" label="comprovante residência"></app-checkbox>
+        <app-checkbox type="checkbox" [form]="form" control="cpf_f_pendente" label="cpf" mask="CPF"></app-checkbox>
 
-          <app-checkbox type="checkbox" label="certidão casamento"></app-checkbox>
-        </fieldset>
-        <!-- <fieldset>
-        <legend class="mt-4">Dependentes</legend>
+        <app-checkbox type="checkbox" [form]="form" control="residencia_f_pendente" label="comprovante residência">
+        </app-checkbox>
+
+        <app-checkbox type="checkbox" [form]="form" control="casamento_f_pendente" control="nascimento_f_pendente"
+          label="certidão casamento"></app-checkbox>
+
+        <!-- <h2 class="mt-4">Dependentes</h2>
         <app-input [form]="form" control=""  type="text" label="nome do dependente"></app-input>
 
-        <app-select type="text" label="grau de parentesco"></app-select>
+        <app-select type="text" control="" label="grau de parentesco"></app-select>
 
         <app-input [form]="form" control=""  type="text" label="telefone principal"></app-input>
 
-        <app-input [form]="form" control="cpf_f_pendente"  type="text" label="cpf"></app-input>
+        <app-input [form]="form" control="cpf_f_pendente"  type="text" label="cpf" mask="CPF"></app-input>
 
-        <app-input [form]="form" control="nascimento_f_pendente"  type="text" label="data de nascimento"></app-input>
-      </fieldset> -->
+        <app-input [form]="form" control="nascimento_f_pendente"  type="text" label="data de nascimento"></app-input> -->
+
         <div class="adicionar d-flex justify-content-center">
           <a href="#"><img class="icon " src="../../../assets/icon/simbolo-de-adicao-de-espessura.png"
               alt="adicionar">Adicionar outro dependente</a>
         </div>
-        <fieldset>
-          <legend>detalhes</legend>
 
-          <app-input [form]="form" control="data_os" type="text" mask="data" label="data"></app-input>
+        <h2>detalhes</h2>
 
-          <app-input [form]="form" control="hora_realizacao" type="text" label="hora da realização"></app-input>
+        <app-input [form]="form" control="data_os" type="text" mask="data" label="data"></app-input>
 
-          <app-input [form]="form" control="obs" type="textArea" label="observações"></app-input>
+        <app-input [form]="form" control="hora_realizacao" type="text" label="hora da realização"></app-input>
 
-          <app-input [form]="form" control="obs_internas" type="textArea" label="observações internas"></app-input>
-        </fieldset>
+        <app-input [form]="form" control="obs" type="textarea" label="observações"></app-input>
+
+        <app-input [form]="form" control="obs_internas" type="textarea" label="observações internas"></app-input>
       </form>
+      
       <h6 class="mt-4">CONTRATO/ANEXOS</h6>
-      <app-button color="white" label="selecionar arquivo"></app-button>
+      <app-button color="white" label="selecionar arquivo" type="normal"></app-button>
       <p>MÁXIMO 2MB, JPG, JPEG, GIF, PNG, PDF,DOC, XLS, CSV, ZIP.</p>
 
-      <app-button color="blue" label="Salvar"></app-button>
-      <app-button color="gray" label="Cancelar"></app-button>
+      <app-button color="blue" type="normal" label="Salvar"></app-button>
+      <app-button color="gray" type="normal" label="Cancelar"></app-button>
 
       <div class="line w-100 mt-5"></div>
     </div>
