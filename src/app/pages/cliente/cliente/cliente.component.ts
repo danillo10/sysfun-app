@@ -283,7 +283,7 @@ export class ClienteComponent implements OnInit {
   }
 
   selecionaProfissao(profissao) {
-    this.form.patchValue({ profissao });
+    this.form.patchValue({ profissao: profissao.value });
     this.profissoes = [];
   }
 

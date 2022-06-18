@@ -50,7 +50,7 @@
 
         <app-select [form]="form" control="estado_civil" [options]="estadocivil" label="estado Civil" type="select"></app-select>
 
-        <app-input [form]="form" control="profissao" label="profissão" type="text" search="true" [options]="profissoes" (searchEmitter)="pesquisaProfissao($event)" (selectEmitter)="selecionaProfissao($event)"></app-input>
+        <app-input [form]="form" control="profissao" label="profissão" type="text" search="true" [data]="profissoes" (searchEmitter)="pesquisaProfissao($event)" (selectEmitter)="selecionaProfissao($event)"></app-input>
 
         <app-input [form]="form" control="email" label="E-mail" type="text"></app-input>
 
