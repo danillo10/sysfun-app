@@ -68,6 +68,14 @@
   </div>
 </div>
 
+<div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'text' && mask == 'MONEY2'">
+  <label for="" class="form-label">{{ label }}</label>
+  <input [formControlName]="control" class="form-control" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" [name]="control" placeholder="0,00">
+  <div class="icon {{iconPosition}}" (click)="iconClicked()">
+    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  </div>
+</div>
+
 <div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'password'">
   <label class="form-label">{{ label }}</label>
   <input [formControlName]="control" type="password" placeholder="{{placeholder}}" class="form-control login" [name]="control">

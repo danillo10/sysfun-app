@@ -50,7 +50,6 @@ export class FiltroContasComponent implements OnInit {
     registros: [this.filtrarContas.registros]
   })
 
-    this.form.patchValue({estado: 'MA'})
   }
 
   search(){

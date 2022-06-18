@@ -5,17 +5,15 @@ import { ContaBancariaModel } from 'src/app/shared/models/conta-bancaria.model';
 import { CategoriasFinanceirasService } from 'src/app/shared/services/categorias-financeiras.service';
 import { CentroCustoService } from 'src/app/shared/services/centro-custo.service';
 import { ContasBancariasService } from 'src/app/shared/services/contas-bancarias.service';
+import { FormaPagamentoService } from 'src/app/shared/services/forma-pagamento.service';
 import { SelectService } from 'src/app/shared/services/select.service';
 
 import { PesquisaModel } from '../../cliente/model/pesquisa.model';
 import { ClienteService } from '../../cliente/service/cliente.service';
+import dataOcorrencia from '../data/ocorrencia.json';
+import dataTipoRegistro from '../data/tipo_registro.json';
 import { IContasReceber } from '../model/contas-receber.model';
 import { ContasReceberService } from '../service/contas-receber.service';
-
-import dataTipoRegistro from '../data/tipo_registro.json';
-import dataOcorrencia from '../data/ocorrencia.json';
-import { FormaPagamentoService } from 'src/app/shared/services/forma-pagamento.service';
-import { ActionsheetService } from 'src/app/shared/services/actionsheet.service';
 
 @Component({
   selector: 'app-conta-receber',
