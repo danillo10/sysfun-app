@@ -1,0 +1,31 @@
+{
+    "formaPagamento":[   
+       {"value" :"27","description": "Banco"},
+       {"value" :"1", "description":"NDES"},
+       {"value" :"2", "description":"Boleto"},
+       {"value" :"3", "description":"Cartão_de_Crédito"},
+       {"value" :"4", "description":"Cartão_de_Débito"},
+       {"value" :"5", "description":"H_Descontado"},
+       {"value" :"6", "description":"Cheque"},
+       {"value" :"7", "description":"cDA"},
+       {"value" :"8", "description":"Débito Automático"},
+       {"value" :"9", "description":"Depósito em C/C"},
+       {"value" :"10", "description":"Depósito_Identificado"},
+       {"value" :"11", "description":"Dinheiro"},
+       {"value" :"12", "description":"Doc"},
+       {"value" :"13", "description":"DP_Descontada"},
+       {"value" :"14", "description":"Duplicata Mercantil"},
+       {"value" :"15", "description":"Faturado"},
+       {"value" :"16", "description":"Faturar"},
+       {"value" :"17", "description":"Lotérica"},
+       {"value" :"18", "description":"Outros"},
+       {"value" :"19", "description":"Pagamento online"},
+       {"value" :"20", "description":"Permuta"},
+       {"value" :"21", "description":"Ted"},
+       {"value" :"22", "description":"Transferência"},
+       {"value" :"23", "description":"Vale Alimentação"},
+       {"value" :"24", "description":"Vale Combustível"},
+       {"value" :"25", "description":"Vale Presente"},
+       {"value" :"26", "description":"Vale Refeição"}
+    ]
+}
