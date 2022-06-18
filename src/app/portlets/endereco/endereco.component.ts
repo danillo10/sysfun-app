@@ -12,25 +12,26 @@ import { EnderecoService } from './service/endereco.service';
 export class EnderecoComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() control: string;
- 
+
   enderecos: SelectModel[];
-  
+
   pesquisa = {} as PesquisaModel;
-  
+
   constructor(
     private enderecoService: EnderecoService,
     private selectService: SelectService,
-  ) { }
+  ) {
+    this.enderecos = [];
+  }
 
   ngOnInit() {
-    this.enderecos = [];
     this.get();
   }
 
   get() {
     this.enderecoService.enderecos$
       .subscribe((data: any) => {
-        this.enderecos = this.selectService.handleSelect(data, 'enderecos');
+        this.enderecos = this.selectService.handleSelect(data, 'endereco');
       })
   }
 

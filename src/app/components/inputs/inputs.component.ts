@@ -23,10 +23,9 @@ export class InputsComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() control: string;
   @Input() search: boolean;
+
   @Input() set data(options: SelectModel[]){
-    if(options.length > 0){
-      this.options = options;
-    }
+    this.options = options.length > 0 ? options : [];
   }
 
   @Output() searchEmitter = new EventEmitter();
@@ -51,7 +50,6 @@ export class InputsComponent implements OnInit {
     )
 
     this.searchObservable$.subscribe(text => this.emit(text))
-    console.log(this.options)
   }
 
   emit(e){

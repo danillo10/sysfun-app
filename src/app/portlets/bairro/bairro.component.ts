@@ -15,16 +15,17 @@ export class BairroComponent implements OnInit {
   @Input() control: string;
 
   bairros: SelectModel[];
-  
+
   pesquisa = {} as PesquisaModel;
 
   constructor(
     private bairroService: BairroService,
     private selectService: SelectService,
-  ) { }
+  ) {
+    this.bairros = [];
+  }
 
   ngOnInit() {
-    this.bairros = [];
     this.get();
   }
 

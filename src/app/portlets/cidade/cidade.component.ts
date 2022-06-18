@@ -22,10 +22,11 @@ export class CidadeComponent implements OnInit {
   constructor(
     private cidadeService: CidadeService,
     private selectService: SelectService,
-  ) { }
+  ) {
+    this.cidades = [];
+  }
 
   ngOnInit() {
-    this.cidades = [];
     this.get();
   }
 

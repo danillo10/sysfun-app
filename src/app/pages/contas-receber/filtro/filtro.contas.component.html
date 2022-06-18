@@ -1,11 +1,16 @@
-<div class="container main">
+<ion-content>
+  <div class="container main">
+    <div class="close">
+      <app-icon name="close-outline" ionic="true" (selectIcon)="closeView()"></app-icon>
+    </div>
     <div class="selecao mt-4 mb-4">
       <form action="" [formGroup]="form">
-          <h2>Filtrar por</h2>
+        <h2>Filtrar por</h2>
 
-        <app-input [form]="form" control="data_vencimento" label="Data de vencimento de" type="text" mask="DATA"></app-input>
+        <app-input [form]="form" control="vencimento_inicio" label="Data de vencimento de" type="text" mask="DATA">
+        </app-input>
 
-        <app-input  [form]="form" control="data_final" label="Até" type="text" mask="DATA"></app-input>
+        <app-input [form]="form" control="vencimento_final" label="Até" type="text" mask="DATA"></app-input>
 
         <app-select [form]="form" control="estado" [options]="estados" label="estado" type="text"></app-select>
 
@@ -13,9 +18,9 @@
 
         <app-portlet-bairro [form]="form" control="bairro"></app-portlet-bairro>
 
-        <app-portlet-endereco  [form]="form" control="endereco"></app-portlet-endereco>
+        <app-portlet-endereco [form]="form" control="endereco"></app-portlet-endereco>
 
-        <app-select [form]="form" control="situacao" type="select" label="Situação"></app-select>
+        <app-select [form]="form" control="situacao" type="select" label="Situação" [options]="situacao"></app-select>
 
         <div class="row d-flex justify-content-center">
           <div class="col-6">
@@ -28,3 +33,4 @@
       </form>
     </div>
   </div>
+</ion-content>

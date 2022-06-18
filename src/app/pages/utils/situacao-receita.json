@@ -1,0 +1,8 @@
+{
+  "situacao": [
+    {"value": "", "description":"Todos"},
+    {"value": "0", "description":"Em Aberto"},
+    {"value": "2", "description":"Em Atraso"},
+    {"value": "1", "description":"Pago"}
+  ]
+}

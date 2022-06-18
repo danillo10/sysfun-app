@@ -63,6 +63,9 @@ export class ContasReceberPage implements OnInit {
   pesquisar(skip: number = 0) {
     this.pesquisa.skip = skip;
 
+    if(!this.pesquisa.registros)
+      this.pesquisa.registros = 10;
+
     this._contasReceberService.get(this.pesquisa)
       .then((data: any) => {
         this.contasReceber = data.contasReceber;
