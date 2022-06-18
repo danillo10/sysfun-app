@@ -6,6 +6,7 @@ import situacao from '../../utils/situacao-receita.json';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { FiltroContaService } from './service/filtro.conta.service';
 import { PesquisaModel } from '../../cliente/model/pesquisa.model';
+import formaPagamento from '../../utils/forma_pagamento.json'
 
 @Component({
   selector: 'app-filtro-contas-receber',
@@ -20,6 +21,7 @@ export class FiltroContasComponent implements OnInit {
 
   estados: SelectModel[];
   situacao: SelectModel[];
+  formaPagamento: SelectModel[];
 
   filtrarContas: PesquisaModel;
 
@@ -30,6 +32,7 @@ export class FiltroContasComponent implements OnInit {
     this.filtrarContas = (this.filtroContaService.pesquisa) ? this.filtroContaService.pesquisa : new PesquisaModel();
     this.estados = estados.estados;
     this.situacao = situacao.situacao;
+    this.formaPagamento = formaPagamento.formaPagamento;
    }
 
   ngOnInit() {
@@ -42,6 +45,7 @@ export class FiltroContasComponent implements OnInit {
     bairro: [this.filtrarContas.bairro],
     endereco: [this.filtrarContas.endereco],
     situacao: [this.filtrarContas.situacao],
+    forma_pagamento: [this.filtrarContas.forma_pagamento],
     skip: [this.filtrarContas.skip],
     registros: [this.filtrarContas.registros]
   })

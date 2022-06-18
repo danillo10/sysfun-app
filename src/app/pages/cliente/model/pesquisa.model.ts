@@ -19,6 +19,7 @@ export class PesquisaModel {
   cidade?: string;
   bairro?: string;
   endereco?: string;
+  forma_pagamento?: number;
 
   constructor(data?){
     data = data || {};
@@ -32,5 +33,6 @@ export class PesquisaModel {
     this.situacao = data.situacao || '';
     this.skip = data.skip || 0;
     this.registros = data.registros || 10;
+    this.forma_pagamento = data.forma_pagamento || '';
   }
 }

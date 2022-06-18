@@ -19,6 +19,7 @@ export class TablesComponent implements OnInit {
   @Input() data: ClienteModel[] | IContasReceber [];
   @Input() total: number;
   @Input() pesquisa: PesquisaModel;
+  // @Input() status;
 
   pagina: number;
 
