@@ -7,9 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StatusComponent implements OnInit {
 
-  pago: boolean = false;
-  atraso: boolean = true;
-  status: boolean = false;
+  statusAberto:'status';
+  statusPago:'pago';
+  statusPendente:'atraso';
 
   constructor() { }
 
