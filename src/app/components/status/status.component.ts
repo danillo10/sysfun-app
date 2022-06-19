@@ -6,13 +6,19 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./status.component.scss'],
 })
 export class StatusComponent implements OnInit {
+  @Input() status: any;
 
-  statusAberto:'status';
-  statusPago:'pago';
-  statusPendente:'atraso';
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.status == '0'){
+      this.status = 'aberto'; 
+    }else if(this.status == '1'){
+      this.status = 'pago';
+    }else if(this.status == '2'){
+      this.status = 'atraso';
+    }
+    console.log(this.status)
+  }
 
 }

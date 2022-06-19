@@ -30,7 +30,7 @@
         Vencimento em {{conta.vencimento | date: 'dd/MM/yyyy'}}
       </td>
       <td>
-        <app-status></app-status>
+        <app-status [status]="conta.situacao"></app-status>
       </td>
       <td colspan="2">
         <button (click)="showActionsContas(conta)">
