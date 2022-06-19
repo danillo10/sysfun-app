@@ -2,6 +2,8 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 import { FormGroup } from '@angular/forms';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { CalculoTotalService } from 'src/app/shared/services/calculo-total.service';
+import { UtilsCalculosService } from 'src/app/shared/services/utils-calculos.service';
 
 import { SelectModel } from '../select/model/select.model';
 
@@ -39,7 +41,10 @@ export class InputsComponent implements OnInit {
   searchEvent = new Subject<any>();
   searchObservable$: Observable<any>;
 
-  constructor() { }
+  constructor(
+    private _utilsCalculosService: UtilsCalculosService,
+    private _calculoTotalService: CalculoTotalService,
+  ) { }
 
   ngOnInit() {
     this.searchObservable$ = this.searchEvent
@@ -70,7 +75,8 @@ export class InputsComponent implements OnInit {
     this.searchEvent.next(e)
   }
 
-  handleMoney(){
+  setValor(control, v){
+    this.form.patchValue({control: this._utilsCalculosService.castingToNumber(v)});
     this.moneyEmitter.emit(true);
   }
 

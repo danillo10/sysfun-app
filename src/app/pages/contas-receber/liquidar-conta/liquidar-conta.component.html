@@ -18,13 +18,13 @@
       <app-select [form]="form" control="forma_pagamento" label="Forma de pagamento" [options]="formaPagamento">
       </app-select>
 
-      <app-input [form]="form" control="valor" label="valor pago" type="text" mask="MONEY" (moneyEmitter)="calculaTotal()"></app-input>
+      <app-input [form]="form" control="valor" label="valor pago" type="text" mask="MONEY2" (moneyEmitter)="calculaTotal()"></app-input>
 
-      <app-input [form]="form" control="juros" label="juros" type="text" mask="MONEY" (moneyEmitter)="calculaTotal()"></app-input>
+      <app-input [form]="form" control="juros" label="juros" type="text" mask="MONEY2" (moneyEmitter)="calculaTotal()"></app-input>
 
-      <app-input [form]="form" control="desconto" label="desconto/taxa" type="text" mask="MONEY" (moneyEmitter)="calculaTotal()"></app-input>
+      <app-input [form]="form" control="desconto" label="desconto/taxa" type="text" mask="MONEY2" (moneyEmitter)="calculaTotal()"></app-input>
 
-      <app-input [form]="form" control="acrescimo" label="acréscimo" type="text" mask="MONEY" (moneyEmitter)="calculaTotal()"></app-input>
+      <app-input [form]="form" control="acrescimo" label="acréscimo" type="text" mask="MONEY2" (moneyEmitter)="calculaTotal()"></app-input>
 
       <app-input [form]="form" control="obs" label="observações" type="textarea"></app-input>
 
