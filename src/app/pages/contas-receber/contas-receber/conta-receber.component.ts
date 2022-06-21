@@ -1,11 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { ContaBancariaModel } from 'src/app/shared/models/conta-bancaria.model';
 import { CategoriasFinanceirasService } from 'src/app/shared/services/categorias-financeiras.service';
 import { CentroCustoService } from 'src/app/shared/services/centro-custo.service';
 import { ContasBancariasService } from 'src/app/shared/services/contas-bancarias.service';
 import { FormaPagamentoService } from 'src/app/shared/services/forma-pagamento.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 import { SelectService } from 'src/app/shared/services/select.service';
 
 import { PesquisaModel } from '../../cliente/model/pesquisa.model';
@@ -35,6 +37,8 @@ export class ContaReceberComponent implements OnInit {
   tiposRegistro: SelectModel[];
   ocorrencias: SelectModel[];
   formaPagamento: SelectModel[];
+  router: any;
+  criadoEm: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,7 +48,9 @@ export class ContaReceberComponent implements OnInit {
     private clientesService: ClienteService,
     private selectService: SelectService,
     private centroCustoService: CentroCustoService,
-    private formaPagamentoService: FormaPagamentoService
+    private formaPagamentoService: FormaPagamentoService,
+    private loadingService: LoadingService,
+    private activatedRoute: ActivatedRoute,
   ) {
     this.receita = new IContasReceber();
     this.categoriasFinanceiras = [];
@@ -142,5 +148,30 @@ export class ContaReceberComponent implements OnInit {
     this.form.patchValue({centro_custo: centroCusto.value, centro_custo_descricao: centroCusto.description});
     this.centroCustoService.pesquisa.next('');
   }
+  create() {
 
+    if (this.form.value.nome_fantasia == "") {
+      return alert("Campo Nome Obrigatório!");
+    }
+
+    if (this.form.value.pessoa == 'PF' || this.form.value.pessoa == 'PO') {
+      if (this.form.value.nome_mae == "" || this.form.value.nome_mae == null) {
+        return alert("Nome da Mãe Obrigatório!");
+      }
+
+      if (this.form.value.sexo == "" || this.form.value.sexo == null) {
+        return alert("Informar o sexo do cliente");
+      }
+    }
+
+    if (this.form.value.pessoa != 'PO' && this.form.value.celular == "") {
+      return alert("Número de celular Obrigatório!");
+    }
+
+    if (this.form.value.pessoa == 'PF') {
+      if (this.form.value.emissor == "" || this.form.value.emissor == null) {
+        return alert("Orgão emissor Obrigatório!");
+      }
+    }
+  }
 }

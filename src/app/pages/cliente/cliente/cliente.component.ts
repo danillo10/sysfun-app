@@ -26,6 +26,7 @@ import { ClienteService } from '../service/cliente.service';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 import { DependentesService } from 'src/app/shared/services/dependentes.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 interface Clipboard {
   writeText(newClipText: string): Promise<void>;
@@ -79,7 +80,8 @@ export class ClienteComponent implements OnInit {
     private socialSharing: SocialSharing,
     private utilsService: UtilsService,
     private localStorageService: LocalstorageService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private authService: AuthService,
   ) {
     this.cliente = new ClienteModel();
     this.pessoas = pessoas.pessoas;
@@ -373,5 +375,4 @@ export class ClienteComponent implements OnInit {
       'null'
     );
   }
-
 }
