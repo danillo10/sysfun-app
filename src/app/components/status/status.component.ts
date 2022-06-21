@@ -18,7 +18,6 @@ export class StatusComponent implements OnInit {
     }else if(this.status == '2'){
       this.status = 'atraso';
     }
-    console.log(this.status)
   }
 
 }

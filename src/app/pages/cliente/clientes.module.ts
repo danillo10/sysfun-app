@@ -22,6 +22,7 @@ import { ClientesPage } from './clientes.page';
 import { FiltroComponent } from './filtro/filtro.component';
 import { ClienteService } from './service/cliente.service';
 import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
+import { LoginPageRoutingModule } from '../login/login-routing.module';
 
 @NgModule({
   declarations: [
