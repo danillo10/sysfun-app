@@ -29,7 +29,7 @@
       <app-input [form]="form" control="obs" label="observações" type="textarea"></app-input>
 
       <div class="campo-checkbox d-flex align-items-center mt-4 mb-4">
-        <app-checkbox [form]="form" control="pago" type="checkbox" label="Baixar conta"></app-checkbox>
+        <app-checkbox [form]="form" control="pago" type="checkbox" label="Baixar conta" (checkboxSetted)="handleCheckbox()"></app-checkbox>
       </div>
     </form>
 

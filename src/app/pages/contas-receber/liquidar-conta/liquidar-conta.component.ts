@@ -67,8 +67,7 @@ export class LiquidarContaComponent implements OnInit {
     this.contasReceberService.liquidar(this.form.value)
       .subscribe((data: any) => {
         if(data.status == 1) return alert(data.mensagem);
-        this.liquidarService.contaAtiva.valor = data.valor;
-        this.closeView();
+        this.closeView(true);
       })
   }
 
@@ -89,8 +88,13 @@ export class LiquidarContaComponent implements OnInit {
       .then(valor => this.form.patchValue({valor: valor}));
   }
 
-  closeView(){
-    this.close.emit(true);
+  handleCheckbox(){
+    const obs = (this.form.value.pago) ? 'Conta liquidada' : 'Baixa parcial';
+    this.form.patchValue({obs});
+  }
+
+  closeView(v: boolean = false){
+    this.close.emit(v);
   }
 
 }

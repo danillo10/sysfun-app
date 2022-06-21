@@ -11,6 +11,7 @@ export class CheckboxComponent implements OnInit {
   @Input() label: string;
   @Input() form: FormGroup;
   @Input() control: string;
+
   @Output() checkboxSetted = new EventEmitter();
 
   constructor() { }
@@ -19,6 +20,7 @@ export class CheckboxComponent implements OnInit {
 
   set(e){
     this.form.value[this.control] = e.target.checked
+    this.checkboxSetted.emit(e.target.checked);
   }
 
 }

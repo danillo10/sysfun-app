@@ -63,3 +63,7 @@
 <pagination-controls (pageChange)="pagina = $event; emit()"
   directionLinks="false" autoHide="false" previousLabel="" nextLabel="">
 </pagination-controls>
+
+<div class="total" *ngIf="data && data.length > 0">
+  Total de registros {{ total }}
+</div>
