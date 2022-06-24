@@ -2,6 +2,10 @@
   <div class="container">
     <app-navbar rota="clientes"></app-navbar>
     <div class="container main">
+      <span *ngIf="form.value.responsavel">
+        <h2>Reponsável</h2>{{ form.value.responsavel }}
+      </span>
+
       <h2>Novo cliente/fornecedor</h2>
 
       <form [formGroup]="form" class="mt-4">

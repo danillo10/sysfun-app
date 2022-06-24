@@ -62,12 +62,22 @@ export class ContasReceberPage implements OnInit {
   }
 
   pesquisar(skip: number = 0) {
+    this.pesquisa.skip = skip;
+
     this._contasReceberService.get(this.pesquisa)
       .then((data: any) => {
         this.contasReceber = data.contasReceber;
         this.total = data.total;
         this._filtroContaService.pesquisa = this.pesquisa;
       });
+  }
+
+  closeFilter(v: boolean) {
+    if(v) {
+      this.pesquisar();
+    }
+
+    this.viewLiquidar = false;
   }
 
 }

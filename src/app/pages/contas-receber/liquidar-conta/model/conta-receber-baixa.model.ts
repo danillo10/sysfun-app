@@ -31,7 +31,7 @@ export class ContasReceberBaixaModel{
         this.juros = data.juros || '';
         this.desconto = data.desconto || '';
         this.acrescimo = data.acrescimo || '';
-        this.obs = data.obs || '';
+        this.obs = data.obs || 'Baixa parcial';
         this.pago = data.pago || false;
         this.situacao = data.situacao || '';
     }

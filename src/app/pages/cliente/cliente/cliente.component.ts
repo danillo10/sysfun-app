@@ -304,9 +304,9 @@ export class ClienteComponent implements OnInit {
               .then((data: any) => {
                 this.cliente = new ClienteModel(data.cliente[0]);
 
-                if (navigator.onLine)
+                if (navigator.onLine && data.dependentes)
                   this.cliente.dependentes = data.dependentes;
-
+                console.log(this.cliente)
                 this.form.patchValue(this.cliente);
 
                 this.loadingService.hideLoading();

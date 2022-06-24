@@ -11,7 +11,7 @@
         <app-tables [data]="contasReceber" tabela="tabelaContasReceber" [total]="total" [pesquisa]="pesquisa" (paginador)="pesquisar($event - 1)"></app-tables>
       </div>
     </div>
-    <app-liquidar-conta *ngIf="viewLiquidar" (close)="viewLiquidar = false"></app-liquidar-conta>
+    <app-liquidar-conta *ngIf="viewLiquidar" (close)="closeFilter($event)"></app-liquidar-conta>
     <div class="container filtro" *ngIf="filtro">
       <app-filtro-contas-receber (filtrado)="pesquisa = $event; pesquisar(); filtro = false" (close)="filtro = false"></app-filtro-contas-receber>
     </div>
