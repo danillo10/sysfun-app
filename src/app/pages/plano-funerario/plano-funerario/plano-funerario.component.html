@@ -1,11 +1,11 @@
 <ion-content>
   <div class="container">
-    <app-navbar rota="formulario"></app-navbar>
+    <app-navbar rota="plano-funerario"></app-navbar>
     <div class="container main">
       <h2 class="mb-4">Dados do plano</h2>
       <form [formGroup]="form">
 
-        <app-input [form]="form" control="cliente" type="text" label="cliente"></app-input>
+        <app-portlet-cliente [form]="form" control="cliente" type="text" label="Cliente"></app-portlet-cliente>
 
         <app-input [form]="form" control="tecnico" type="text" label="vendedor 1"></app-input>
 
@@ -113,7 +113,7 @@
       <app-button color="white" label="selecionar arquivo" type="normal"></app-button>
       <p>MÁXIMO 2MB, JPG, JPEG, GIF, PNG, PDF,DOC, XLS, CSV, ZIP.</p>
 
-      <app-button color="blue" type="normal" label="Salvar"></app-button>
+      <app-button color="blue" type="normal" (click)="get()" label="Salvar"></app-button>
       <app-button color="gray" type="normal" label="Cancelar"></app-button>
 
       <div class="line w-100 mt-5"></div>

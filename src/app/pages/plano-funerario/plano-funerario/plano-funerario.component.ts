@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { IPlanoFunerario } from '../model/plano-funerario.model';
@@ -24,6 +24,7 @@ export class PlanoFunerarioComponent implements OnInit {
     private planoFunerarioService: PlanoFunerarioService,
     private loadingService: LoadingService,
     private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.plano = new IPlanoFunerario();
   }
@@ -90,53 +91,75 @@ export class PlanoFunerarioComponent implements OnInit {
       repetir_valor: [this.plano.repetir_valor]
     })
   }
-  // create() {
 
-  //   if (this.form.value.nome_fantasia == "") {
-  //     return alert("Campo Nome Obrigatório!");
-  //   }
+  ionViewDidEnter() {
+    // this.get();
+  }
+  create() {
 
-  //   if (this.form.value.pessoa == 'PF' || this.form.value.pessoa == 'PO') {
-  //     if (this.form.value.nome_mae == "" || this.form.value.nome_mae == null) {
-  //       return alert("Nome da Mãe Obrigatório!");
-  //     }
+    if (this.form.value.cliente == '') {
+      return alert("Campo Cliente Obrigatório!");
+    }
+    if (this.form.value.tecnico == '') {
+      return alert("Campo Técnico 1 Obrigatório!");
+    }
+    if (this.form.value.profissional == '') {
+      return alert("Campo Técnico 2 Obrigatório!");
+    }
+    if (this.form.value.id == '') {
+      return alert("Número do plano Obrigatório!");
+    }
+    // this.loadingService.showLoading("Salvando cadastro...")
+    //   .then(() => {
+    //     this.form.patchValue({ dependentes: this.plano.dependentes });
 
-  //     if (this.form.value.sexo == "" || this.form.value.sexo == null) {
-  //       return alert("Informar o sexo do cliente");
-  //     }
-  //   }
+    //     const id = this.activatedRoute.snapshot.paramMap.get('id');
 
-  //   if (this.form.value.pessoa != 'PO' && this.form.value.celular == "") {
-  //     return alert("Número de celular Obrigatório!");
-  //   }
+    //     if (id !== 'novo-cliente') {
+    //       this.planoFunerarioService.salvaPlanos(this.form.value,this.criadoEm)
+    //         .then((data: any) => {
+    //           this.loadingService.hideLoading();
+    //           if (data.status == 1) return alert(data.mensagem);
+    //           this.router.navigate(['plano-funerario']);
+    //         })
+    //     } else {
+    //       this.planoFunerarioService.create(this.form.value)
+    //         .then((data: any) => {
+    //           this.loadingService.hideLoading();
+    //           if (data.status == 1) return alert(data.mensagem);
+    //           this.router.navigate(['plano-funerario']);
+    //         })
+    //     }
+    //   })
+    
+   }
+   get() {
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-  //   if (this.form.value.pessoa == 'PF') {
-  //     if (this.form.value.emissor == "" || this.form.value.emissor == null) {
-  //       return alert("Orgão emissor Obrigatório!");
-  //     }
-  //   }
+    this.activatedRoute.queryParams.subscribe(data => {
 
-  //   this.loadingService.showLoading("Salvando cadastro...")
-  //     .then(() => {
-  //       this.form.patchValue({ dependentes: this.cliente.dependentes });
+      this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
-  //       const id = this.activatedRoute.snapshot.paramMap.get('id');
+      if (id != 'plano-funerario') {
+        
+        this.loadingService.showLoading("Salvando dados...")
+          .then(() => {
+            const id = data.aplicativo ? data.aplicativo : data.sistema;
+            this.planoFunerarioService.salvaPlanos(id, this.criadoEm)
+              .then((data: any) => {
+                this.plano = new IPlanoFunerario(data.plano[0]);
 
-  //       if (id !== 'novo-cliente') {
-  //         this.clienteService.update(id, this.form.value, this.criadoEm)
-  //           .then((data: any) => {
-  //             this.loadingService.hideLoading();
-  //             if (data.status == 1) return alert(data.mensagem);
-  //             this.router.navigate(['clientes']);
-  //           })
-  //       } else {
-  //         this.clienteService.create(this.form.value)
-  //           .then((data: any) => {
-  //             this.loadingService.hideLoading();
-  //             if (data.status == 1) return alert(data.mensagem);
-  //             this.router.navigate(['clientes']);
-  //           })
-  //       }
-  //     })
-  // }
+                if (navigator.onLine)
+                  this.plano.dependentes = data.dependentes;
+
+                this.form.patchValue(this.plano);
+
+                this.loadingService.hideLoading();
+
+              });
+          })
+      }
+    });
+
+  }
 }

@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
 import { SelectService } from 'src/app/shared/services/select.service';
-
 import { CidadeService } from './service/cidade.service';
 
 @Component({
