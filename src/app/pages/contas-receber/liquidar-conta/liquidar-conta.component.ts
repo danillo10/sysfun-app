@@ -108,27 +108,23 @@ export class LiquidarContaComponent implements OnInit {
   }
 
   setValor() {
-    this.calculoTotalService.castingValor('valor', this.form.value.valor)
-      .setValor(this.form)
-      .calculaTotal();
+    this.calculoTotalService.setForm(this.form)
+    .setValor(this.form.value.valor);
   }
 
   setJuros() {
-    this.calculoTotalService.castingValor('juros', this.form.value.juros)
-      .setJuros(this.form)
-      .calculaTotal();
+    this.calculoTotalService.setForm(this.form)
+    .setJuros(this.form.value.juros);
   }
 
   setDesconto() {
-    this.calculoTotalService.castingValor('desconto', this.form.value.desconto)
-      .setDesconto(this.form)
-      .calculaTotal();
+    this.calculoTotalService.setForm(this.form)
+    .setDesconto(this.form.value.desconto);
   }
 
   setAcrescimo() {
-    this.calculoTotalService.castingValor('acrescimo', this.form.value.acrescimo)
-      .setAcrescimo(this.form)
-      .calculaTotal();
+    this.calculoTotalService.setForm(this.form)
+    .setAcrescimo(this.form.value.acrescimo);
   }
 
 }
