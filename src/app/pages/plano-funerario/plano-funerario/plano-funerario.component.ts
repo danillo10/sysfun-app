@@ -14,7 +14,7 @@ import { PlanoFunerarioService } from '../service/plano-funerario.service';
 export class PlanoFunerarioComponent implements OnInit {
   @Input() form: FormGroup;
 
-  plano:IPlanoFunerario;
+  plano: IPlanoFunerario;
   criadoEm: string;
 
   calculoTotal: SelectModel[];
@@ -32,8 +32,9 @@ export class PlanoFunerarioComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       id: [this.plano.id],
-      tipo:[this.plano.tipo],
+      tipo: [this.plano.tipo],
       cliente: [this.plano.cliente],
+      nome_cliente: [this.plano.nome_cliente],
       indicacao: [this.plano.indicacao],
       indicacao_parcelas: [this.plano.indicacao_parcelas],
       tipo_liberacao: [this.plano.tipo_liberacao],
@@ -73,41 +74,40 @@ export class PlanoFunerarioComponent implements OnInit {
       garantia: [this.plano.garantia],
       data_realizacao: [this.plano.data_realizacao],
       hora_realizacao: [this.plano.hora_realizacao],
-      referencia:[this.plano.referencia],
-      obs:[this.plano.obs],
-      obs_internas:[this.plano.obs_internas],
-      equipamento:[this.plano.equipamento],
-      problema:[this.plano.problema],
+      referencia: [this.plano.referencia],
+      obs: [this.plano.obs],
+      obs_internas: [this.plano.obs_internas],
+      equipamento: [this.plano.equipamento],
+      problema: [this.plano.problema],
       obs_recebimento: [this.plano.obs_recebimento],
       contas_lancadas: [this.plano.contas_lancadas],
       laudo: [this.plano.laudo],
       servicos: [this.plano.servicos],
       produtos: [this.plano.produtos],
-      dependentes:[this.plano.dependentes],
+      dependentes: [this.plano.dependentes],
       parcelas: [this.plano.parcelas],
       criado_por: [this.plano.criado_por],
       atualizado_por: [this.plano.atualizado_por],
       os_gerada: [this.plano.os_gerada],
-      repetir_valor: [this.plano.repetir_valor]
-    })
+      repetir_valor: [this.plano.repetir_valor],
+    });
   }
 
   ionViewDidEnter() {
     // this.get();
   }
   create() {
-
     if (this.form.value.cliente == '') {
-      return alert("Campo Cliente Obrigatório!");
+      return alert('Campo Cliente Obrigatório!');
     }
     if (this.form.value.tecnico == '') {
-      return alert("Campo Técnico 1 Obrigatório!");
+      return alert('Campo Técnico 1 Obrigatório!');
     }
     if (this.form.value.profissional == '') {
-      return alert("Campo Técnico 2 Obrigatório!");
+      return alert('Campo Técnico 2 Obrigatório!');
     }
     if (this.form.value.id == '') {
-      return alert("Número do plano Obrigatório!");
+      return alert('Número do plano Obrigatório!');
     }
     // this.loadingService.showLoading("Salvando cadastro...")
     //   .then(() => {
@@ -131,35 +131,29 @@ export class PlanoFunerarioComponent implements OnInit {
     //         })
     //     }
     //   })
-    
-   }
-   get() {
+  }
+  get() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.activatedRoute.queryParams.subscribe(data => {
-
+    this.activatedRoute.queryParams.subscribe((data) => {
       this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
       if (id != 'plano-funerario') {
-        
-        this.loadingService.showLoading("Salvando dados...")
-          .then(() => {
-            const id = data.aplicativo ? data.aplicativo : data.sistema;
-            this.planoFunerarioService.salvaPlanos(id, this.criadoEm)
-              .then((data: any) => {
-                this.plano = new IPlanoFunerario(data.plano[0]);
+        this.loadingService.showLoading('Salvando dados...').then(() => {
+          const id = data.aplicativo ? data.aplicativo : data.sistema;
+          this.planoFunerarioService
+            .salvaPlanos(id, this.criadoEm)
+            .then((data: any) => {
+              this.plano = new IPlanoFunerario(data.plano[0]);
 
-                if (navigator.onLine)
-                  this.plano.dependentes = data.dependentes;
+              if (navigator.onLine) this.plano.dependentes = data.dependentes;
 
-                this.form.patchValue(this.plano);
+              this.form.patchValue(this.plano);
 
-                this.loadingService.hideLoading();
-
-              });
-          })
+              this.loadingService.hideLoading();
+            });
+        });
       }
     });
-
   }
 }
