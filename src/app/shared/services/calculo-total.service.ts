@@ -1,27 +1,69 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { Observable, of, Subject } from 'rxjs';
+import { UtilsCalculosService } from './utils-calculos.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalculoTotalService {
-  ultimoTotal: number;
-  ultimoJuros: number;
-  ultimoDesconto: number;
-  ultimoAcrescimo: number;
+  form: FormGroup;
+  ultimoTotal: number = 0;
+  ultimoJuros: number = 0;
+  ultimoDesconto: number = 0;
+  ultimoAcrescimo: number = 0;
 
-  constructor() { }
+  constructor(
+    private _utilsCalculosService: UtilsCalculosService
+  ) {
+  }
 
-  calculaTotal(form): Promise<number> {
+  calculaTotal() {
     let total: number = 0;
-    // let valor: number = (form.valor) ? form.valor : 0;
-    let juros: number = (form.juros) ? form.juros : 0;
-    let desconto: number = (form.desconto) ? form.desconto : 0;
-    let acrescimo: number = (form.acrescimo) ? form.acrescimo : 0;
+    let valor: number = (this.form.value.valor) ? this.form.value.valor : 0;
+    let juros: number = (this.form.value.juros) ? this.form.value.juros : 0;
+    let desconto: number = (this.form.value.desconto) ? this.form.value.desconto : 0;
+    let acrescimo: number = (this.form.value.acrescimo) ? this.form.value.acrescimo : 0;
 
-    total = (form.valor + juros + acrescimo) - desconto;
+    total = (valor + juros + acrescimo) - desconto;
 
-    return of(total)
-      .toPromise();
+    this.form.patchValue({valor: total});
+  }
+
+  setValor(form: FormGroup){
+    this.form.patchValue({valor: this.form.value.valor});
+    return this;
+  }
+
+  setJuros(form: FormGroup){
+    this.form = form;
+    if (!isNaN(this.form.value.juros)) {
+      this.form.patchValue({valor: this.form.value.valor -= this.ultimoJuros});
+      this.ultimoJuros = this.form.value.juros;
+    }
+    return this;
+  }
+
+  setDesconto(form: FormGroup){
+    this.form = form;
+    if (!isNaN(this.form.value.desconto)) {
+      this.form.patchValue({valor: this.form.value.valor += this.ultimoDesconto});
+      this.ultimoDesconto = this.form.value.desconto;
+    }
+    return this;
+  }
+
+  setAcrescimo(form: FormGroup){
+    this.form = form;
+    if (!isNaN(this.form.value.acrescimo)) {
+      this.form.patchValue({valor: this.form.value.valor -= this.ultimoAcrescimo});
+      this.ultimoAcrescimo = this.form.value.acrescimo;
+    }
+    return this;
+  }
+
+  castingValor(_control, v){
+    this.form.patchValue({_control: this._utilsCalculosService.castingToNumber(v)});
+    return this;
   }
 }

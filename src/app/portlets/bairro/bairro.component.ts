@@ -38,7 +38,6 @@ export class BairroComponent implements OnInit {
 
   pesquisaBairro(){
     this.bairroService.pesquisa.next({bairro: this.pesquisa.descricao, cidade: this.form.value.cidade,estado: this.form.value.estado});
-    console.log(this.pesquisa.descricao)
   }
 
   selecionaBairro(bairro){

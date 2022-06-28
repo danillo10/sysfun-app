@@ -15,6 +15,7 @@ export class ContasReceberBaixaModel{
     acrescimo?: any;
     obs?: any;
     pago?: any;
+    status?: boolean;
     situacao?: any
 
     constructor(data?){
@@ -31,8 +32,9 @@ export class ContasReceberBaixaModel{
         this.juros = data.juros || '';
         this.desconto = data.desconto || '';
         this.acrescimo = data.acrescimo || '';
-        this.obs = data.obs || 'Baixa parcial';
-        this.pago = data.pago || false;
+        this.obs = data.obs || 'Conta liquidada';
+        this.pago = data.pago || true;
+        this.status = false;
         this.situacao = data.situacao || '';
     }
 }

@@ -5,6 +5,7 @@ import { ContaBancariaModel } from 'src/app/shared/models/conta-bancaria.model';
 import { CalculoTotalService } from 'src/app/shared/services/calculo-total.service';
 import { ContasBancariasService } from 'src/app/shared/services/contas-bancarias.service';
 import { FormaPagamentoService } from 'src/app/shared/services/forma-pagamento.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 import { SelectService } from 'src/app/shared/services/select.service';
 import { ContasReceberService } from '../service/contas-receber.service';
 
@@ -25,6 +26,7 @@ export class LiquidarContaComponent implements OnInit {
   receber: ContasReceberBaixaModel;
   pagamentos: ContasReceberBaixaModel[];
   formaPagamento: SelectModel[];
+  loading: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,11 +35,13 @@ export class LiquidarContaComponent implements OnInit {
     private contasBancariasService: ContasBancariasService,
     private selectService: SelectService,
     private contasReceberService: ContasReceberService,
-    private calculoTotalService: CalculoTotalService
+    private calculoTotalService: CalculoTotalService,
+    private loadingService: LoadingService
   ) {
       this.formaPagamento = [];
       this.pagamentos = this.liquidarService.pagamentos;
       this.receber = this.liquidarService.contaReceber;
+      this.receber.status = (this.receber.pago === 1) ? true : false;
   }
 
   ngOnInit() {
@@ -64,10 +68,16 @@ export class LiquidarContaComponent implements OnInit {
   }
 
   liquidar(){
-    this.contasReceberService.liquidar(this.form.value)
-      .subscribe((data: any) => {
-        if(data.status == 1) return alert(data.mensagem);
-        this.closeView(true);
+    this.loading = true;
+    this.loadingService.showLoading("Carregando...")
+      .then(() => {
+        this.contasReceberService.liquidar(this.form.value)
+        .subscribe((data: any) => {
+          if(data.status == 1) return alert(data.mensagem);
+          this.loadingService.hideLoading();
+          this.closeView(true);
+          this.loading = false;
+        })
       })
   }
 
@@ -84,8 +94,8 @@ export class LiquidarContaComponent implements OnInit {
   }
 
   calculaTotal(){
-    this.calculoTotalService.calculaTotal(this.form.value)
-      .then(valor => this.form.patchValue({valor: valor}));
+    // this.calculoTotalService.calculaTotal()
+    //   .subscribe(valor => this.form.patchValue({valor: valor}));
   }
 
   handleCheckbox(){
@@ -95,6 +105,30 @@ export class LiquidarContaComponent implements OnInit {
 
   closeView(v: boolean = false){
     this.close.emit(v);
+  }
+
+  setValor() {
+    this.calculoTotalService.castingValor('valor', this.form.value.valor)
+      .setValor(this.form)
+      .calculaTotal();
+  }
+
+  setJuros() {
+    this.calculoTotalService.castingValor('juros', this.form.value.juros)
+      .setJuros(this.form)
+      .calculaTotal();
+  }
+
+  setDesconto() {
+    this.calculoTotalService.castingValor('desconto', this.form.value.desconto)
+      .setDesconto(this.form)
+      .calculaTotal();
+  }
+
+  setAcrescimo() {
+    this.calculoTotalService.castingValor('acrescimo', this.form.value.acrescimo)
+      .setAcrescimo(this.form)
+      .calculaTotal();
   }
 
 }

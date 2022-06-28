@@ -22,6 +22,7 @@
     <tr
       *ngFor="let conta of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }" class="line-bottom">
       <td colspan="2">
+        {{conta.n_doc}}<br>
         {{conta.id}}
       </td>
       <td class="name">

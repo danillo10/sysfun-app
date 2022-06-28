@@ -14,19 +14,19 @@
 
         <app-select [form]="form" control="estado" [options]="estados" label="estado" type="text"></app-select>
 
-        <app-portlet-cidade [form]="form" control="cidade"></app-portlet-cidade>
+        <app-portlet-cidade *ngIf="form.value.estado" [form]="form" control="cidade"></app-portlet-cidade>
 
-        <app-portlet-bairro [form]="form" control="bairro"></app-portlet-bairro>
+        <app-portlet-bairro *ngIf="form.value.cidade" [form]="form" control="bairro"></app-portlet-bairro>
 
-        <app-portlet-endereco [form]="form" control="endereco"></app-portlet-endereco>
+        <app-portlet-endereco *ngIf="form.value.bairro" [form]="form" control="endereco"></app-portlet-endereco>
 
         <app-select [form]="form" control="situacao" type="select" label="Situação" [options]="situacao"></app-select>
-        
+
         <app-select [form]="form" control="forma_pagamento" [options]="formaPagamento" type="select" label="Forma de pagamento"></app-select>
 
         <div class="row d-flex justify-content-center">
           <div class="col-6">
-            <app-button color="gray" type="normal" label="Limpar"></app-button>
+            <app-button color="gray" type="normal" label="Limpar" (click)="clear()"></app-button>
           </div>
           <div class="col-6">
             <app-button color="blue" type="normal" label="Filtrar" (click)="search()"></app-button>

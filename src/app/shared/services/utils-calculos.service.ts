@@ -8,7 +8,7 @@ export class UtilsCalculosService {
   constructor() { }
 
   castingToNumber(v){
-    if(v == "" || v == undefined || v == 0) return "";
+    if(!v) return 0;
     if(v.indexOf(',') == -1) return v;
     return v.split('.').join('').split(',').join('.');
   }

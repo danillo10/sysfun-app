@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 
 import { ClienteModel } from './model/cliente.model';
@@ -27,7 +28,8 @@ export class ClientesPage implements OnInit {
   constructor(
     private router: Router,
     private _clienteService: ClienteService,
-    private _localStorageService: LocalstorageService
+    private _localStorageService: LocalstorageService,
+    private _loadingService: LoadingService
   ) {
     this.pesquisa.skip = 0;
     this.pesquisa.registros = 10;
@@ -49,13 +51,17 @@ export class ClientesPage implements OnInit {
   }
 
   pesquisar(skip: number = 0) {
-    this.pesquisa.skip = skip;
+    this._loadingService.showLoading("Carregando...")
+      .then(() => {
+        this.pesquisa.skip = skip;
 
-    this._clienteService.get(this.pesquisa)
-      .then((data: any) => {
-        this.clientes = data.clientes;
-        this.total = data.total;
-      });
+        this._clienteService.get(this.pesquisa)
+          .then((data: any) => {
+            this.clientes = data.clientes;
+            this.total = data.total;
+            this._loadingService.hideLoading();
+          });
+      })
   }
 
 }

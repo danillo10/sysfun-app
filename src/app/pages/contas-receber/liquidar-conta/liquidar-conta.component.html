@@ -2,7 +2,7 @@
   <div class="close">
     <app-icon name="close-outline" ionic="true" (selectIcon)="closeView()"></app-icon>
   </div>
-  <div *ngIf="!receber.pago">
+  <div *ngIf="!receber.status">
     <h2>Liquidar Conta</h2>
     <form class="mt-4" [formGroup]="form">
 
@@ -18,13 +18,13 @@
       <app-select [form]="form" control="forma_pagamento" label="Forma de pagamento" [options]="formaPagamento">
       </app-select>
 
-      <app-input [form]="form" control="valor" label="valor pago" type="text" mask="MONEY2" (moneyEmitter)="calculaTotal()"></app-input>
+      <app-input [form]="form" control="valor" label="valor pago" type="text" mask="MONEY2" (moneyEmitter)="setValor()"></app-input>
 
-      <app-input [form]="form" control="juros" label="juros" type="text" mask="MONEY2" (moneyEmitter)="calculaTotal()"></app-input>
+      <app-input [form]="form" control="juros" label="juros" type="text" mask="MONEY2" (moneyEmitter)="setJuros(); "></app-input>
 
-      <app-input [form]="form" control="desconto" label="desconto/taxa" type="text" mask="MONEY2" (moneyEmitter)="calculaTotal()"></app-input>
+      <app-input [form]="form" control="desconto" label="desconto/taxa" type="text" mask="MONEY2" (moneyEmitter)="setDesconto()"></app-input>
 
-      <app-input [form]="form" control="acrescimo" label="acréscimo" type="text" mask="MONEY2" (moneyEmitter)="calculaTotal()"></app-input>
+      <app-input [form]="form" control="acrescimo" label="acréscimo" type="text" mask="MONEY2" (moneyEmitter)="setAcrescimo()"></app-input>
 
       <app-input [form]="form" control="obs" label="observações" type="textarea"></app-input>
 
@@ -35,10 +35,10 @@
 
     <app-contas-parcela-parcial *ngIf="pagamentos.length > 0" [pagamentos]="pagamentos"></app-contas-parcela-parcial>
 
-    <app-button (click)="liquidar()" [disabled]="form.invalid" type="normal" color="blue" label="Salvar"></app-button>
+    <app-button (click)="liquidar()" [disabled]="form.invalid || loading" type="normal" color="blue" label="Salvar"></app-button>
     <app-button color="gray" label="Cancelar"></app-button>
   </div>
-  <div *ngIf="receber.pago">
+  <div *ngIf="receber.status">
     <app-contas-parcelas-liquidadas [pagamentos]="pagamentos"></app-contas-parcelas-liquidadas>
   </div>
 </div>

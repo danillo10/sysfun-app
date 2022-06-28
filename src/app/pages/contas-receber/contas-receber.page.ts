@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionsheetService } from 'src/app/shared/services/actionsheet.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 
 import { PesquisaModel } from '../cliente/model/pesquisa.model';
@@ -29,7 +30,8 @@ export class ContasReceberPage implements OnInit {
     private _localStorageService: LocalstorageService,
     private _actionSheetService: ActionsheetService,
     private _liquidarService: LiquidarService,
-    private _filtroContaService: FiltroContaService
+    private _filtroContaService: FiltroContaService,
+    private _loadingService: LoadingService
   ) {
     this.pesquisa.skip = 0;
     this.pesquisa.registros = 10;
@@ -62,14 +64,19 @@ export class ContasReceberPage implements OnInit {
   }
 
   pesquisar(skip: number = 0) {
-    this.pesquisa.skip = skip;
+    this._loadingService.showLoading("Carregando...")
+      .then(() => {
+        this.pesquisa.skip = skip;
 
-    this._contasReceberService.get(this.pesquisa)
-      .then((data: any) => {
-        this.contasReceber = data.contasReceber;
-        this.total = data.total;
-        this._filtroContaService.pesquisa = this.pesquisa;
-      });
+      this._contasReceberService.get(this.pesquisa)
+        .then((data: any) => {
+          this.contasReceber = data.contasReceber;
+          this.total = data.total;
+          this._filtroContaService.pesquisa = this.pesquisa;
+          this._loadingService.hideLoading();
+        });
+      })
+
   }
 
   closeFilter(v: boolean) {

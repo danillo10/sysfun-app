@@ -57,6 +57,14 @@ export class FiltroContasComponent implements OnInit {
     this.filtrado.emit(this.form.value);
   }
 
+  clear(){
+    this.form.reset({
+      descricao: this.form.value.descricao,
+      registros: this.form.value.registros,
+      skip: this.form.value.skip
+    })
+  }
+
   closeView(){
     this.close.emit(true);
   }
