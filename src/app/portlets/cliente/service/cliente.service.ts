@@ -5,32 +5,31 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClientePortletService {
   clientes$: Observable<any>;
   pesquisa = new Subject<any>();
 
-  constructor(
-    private _http: HttpClient
-  ) {
+  constructor(private _http: HttpClient) {
     this.observer;
-   }
+  }
 
-   search(data){
-    if(!data.cliente || !data.cliente.trim()){
+  search(data) {
+    if (!data.cliente || !data.cliente.trim()) {
       return of([]);
     }
 
-    return this._http.post(`${environment.host}pesquisar/clientes`, {cliente: data.cliente})
-      .pipe(res => res)
+    return this._http
+      .get(`${environment.host}pesquisar/clientes/${data.cliente}`)
+      .pipe((res) => res);
   }
 
-  get observer(){
-    return this.clientes$ = this.pesquisa.pipe(
+  get observer() {
+    return (this.clientes$ = this.pesquisa.pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      switchMap((data: any) => this.search(data)),
-    )
+      switchMap((data: any) => this.search(data))
+    ));
   }
 }

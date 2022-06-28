@@ -2,6 +2,7 @@ export class IPlanoFunerario {
   id?: any;
   tipo?: string;
   cliente?: any;
+  nome_cliente?: any;
   indicacao?: any;
   indicacao_parcelas?: any;
   tipo_liberacao?: any;
@@ -56,17 +57,18 @@ export class IPlanoFunerario {
   criado_por?: any;
   atualizado_por?: any;
   os_gerada?: any;
-  repetir_valor?: string
+  repetir_valor?: string;
   /**
    * Constructor
    *
    * @param data
    *     */
-   constructor(data?) {
+  constructor(data?) {
     data = data || {};
     this.id = data.id || '';
     this.tipo = data.tipo || '';
     this.cliente = data.cliente || '';
+    this.nome_cliente = data.nome_cliente || '';
     this.indicacao = data.indicacao || '';
     this.indicacao_parcelas = data.indicacao_parcelas || '';
     this.tipo_liberacao = data.tipo_liberacao || '';
@@ -122,5 +124,5 @@ export class IPlanoFunerario {
     this.atualizado_por = data.atualizado_por || '';
     this.os_gerada = data.os_gerada || '';
     this.repetir_valor = data.repetir_valor || '';
-    }
+  }
 }

@@ -5,7 +5,6 @@ import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
 import { SelectService } from 'src/app/shared/services/select.service';
 import { ClientePortletService } from './service/cliente.service';
 
-
 @Component({
   selector: 'app-portlet-cliente',
   templateUrl: './cliente.component.html',
@@ -20,27 +19,36 @@ export class ClientePortletComponent implements OnInit {
 
   constructor(
     private clientePortletService: ClientePortletService,
-    private selectService: SelectService,
+    private selectService: SelectService
   ) {
     this.cliente = [];
-   }
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.get();
+  }
 
   get() {
-    this.clientePortletService.clientes$
-      .subscribe((data: any) => {
-        this.cliente = this.selectService.handleSelect(data, 'cliente');
-      })
+    this.clientePortletService.clientes$.subscribe((data: any) => {
+      this.cliente = this.selectService.handleSelect(
+        data,
+        'id',
+        'nome_fantasia'
+      );
+    });
   }
 
-  pesquisaCliente(){
-    this.clientePortletService.pesquisa.next({cliente:this.pesquisa.cliente});
+  pesquisaCliente() {
+    this.clientePortletService.pesquisa.next({
+      cliente: this.pesquisa.cliente,
+    });
   }
 
-  selecionaCliente(cliente){
-    this.form.patchValue({cliente: cliente.value});
+  selecionaCliente(cliente) {
+    this.form.patchValue({
+      cliente: cliente.value,
+      nome_cliente: cliente.description,
+    });
     this.clientePortletService.pesquisa.next('');
   }
-
 }
