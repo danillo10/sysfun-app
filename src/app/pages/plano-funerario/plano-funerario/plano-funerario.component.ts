@@ -36,6 +36,7 @@ export class PlanoFunerarioComponent implements OnInit {
       cliente: [this.plano.cliente],
       nome_cliente: [this.plano.nome_cliente],
       indicacao: [this.plano.indicacao],
+      nome_indicacao: [this.plano.nome_indicacao],
       indicacao_parcelas: [this.plano.indicacao_parcelas],
       tipo_liberacao: [this.plano.tipo_liberacao],
       tecnico: [this.plano.tecnico],

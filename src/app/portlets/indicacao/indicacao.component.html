@@ -1,0 +1,10 @@
+<app-input
+  (searchEmitter)="pesquisa.indicacao = $event; pesquisaIndicacao()"
+  (selectEmitter)="selecionaIndicacao($event)"
+  [form]="form"
+  [control]="control"
+  label="Indicação"
+  type="text"
+  [search]="true"
+  [data]="indicacao"
+></app-input>

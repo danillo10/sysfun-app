@@ -5,6 +5,7 @@ export class PesquisaModel {
   tipo_cadastro?: string;
   categoria?: string;
   cliente?:string;
+  indicacao?:string;
   pessoa?: string;
   deve_receber_sms?: string;
   deve_receber_torpedo_voz?: string;

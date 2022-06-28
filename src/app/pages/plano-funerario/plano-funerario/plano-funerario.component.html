@@ -7,6 +7,8 @@
 
         <app-portlet-cliente [form]="form" control="cliente" type="text" label="Cliente"></app-portlet-cliente>
 
+        <app-portlet-indicacao [form]="form" control="nome_indicacao" type="text" label="Indicação"></app-portlet-indicacao>
+
         <app-input [form]="form" control="tecnico" type="text" label="vendedor 1"></app-input>
 
         <app-input [form]="form" control="profissional" type="text" label="vendedor 2"></app-input>
@@ -108,7 +110,7 @@
 
         <app-input [form]="form" control="obs_internas" type="textarea" label="observações internas"></app-input>
       </form>
-      
+
       <h6 class="mt-4">CONTRATO/ANEXOS</h6>
       <app-button color="white" label="selecionar arquivo" type="normal"></app-button>
       <p>MÁXIMO 2MB, JPG, JPEG, GIF, PNG, PDF,DOC, XLS, CSV, ZIP.</p>
