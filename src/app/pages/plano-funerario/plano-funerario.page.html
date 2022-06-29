@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="container filtro" *ngIf="filtro">
-      <app-filtro-plano-funerario></app-filtro-plano-funerario>
+      <app-filtro-plano-funerario (close)="filtro = false"></app-filtro-plano-funerario>
     </div>
   </div>
 </ion-content>
