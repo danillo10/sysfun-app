@@ -1,0 +1,10 @@
+<app-input
+  (searchEmitter)="pesquisa.vendedor = $event; pesquisaVendedor()"
+  (selectEmitter)="selecionaVendedor($event)"
+  [form]="form"
+  [control]="getControlName()"
+  label="Vendedor"
+  type="text"
+  [search]="true"
+  [data]="vendedor"
+></app-input>
