@@ -18,52 +18,35 @@ export class CalculoTotalService {
   ) {
   }
 
-  calculaTotal() {
-    let total: number = 0;
-    let valor: number = (this.form.value.valor) ? this.form.value.valor : 0;
-    let juros: number = (this.form.value.juros) ? this.form.value.juros : 0;
-    let desconto: number = (this.form.value.desconto) ? this.form.value.desconto : 0;
-    let acrescimo: number = (this.form.value.acrescimo) ? this.form.value.acrescimo : 0;
-
-    total = (valor + juros + acrescimo) - desconto;
-
-    this.form.patchValue({valor: total});
+  setValor(valor: number) {
+    this.form.patchValue({ valor: this.form.value.valor });
   }
 
-  setValor(form: FormGroup){
-    this.form.patchValue({valor: this.form.value.valor});
+  setJuros(juros: number) {
+    let valor = this.form.value.valor -= this.ultimoJuros;
+    this.form.patchValue({ valor: valor += juros });
+    this.ultimoJuros = juros;
+  }
+
+  setDesconto(desconto: number) {
+    let valor = this.form.value.valor += this.ultimoDesconto;
+    this.form.patchValue({ valor: valor -= desconto });
+    this.ultimoDesconto = desconto;
+  }
+
+  setAcrescimo(acrescimo: number) {
+    let valor = this.form.value.valor -= this.ultimoAcrescimo;
+    this.form.patchValue({ valor: valor += acrescimo });
+    this.ultimoAcrescimo = acrescimo;
+  }
+
+  castingValor(_control, v) {
+    this.form.patchValue({ _control: this._utilsCalculosService.castingToNumber(v) });
     return this;
   }
 
-  setJuros(form: FormGroup){
+  setForm(form: FormGroup) {
     this.form = form;
-    if (!isNaN(this.form.value.juros)) {
-      this.form.patchValue({valor: this.form.value.valor -= this.ultimoJuros});
-      this.ultimoJuros = this.form.value.juros;
-    }
-    return this;
-  }
-
-  setDesconto(form: FormGroup){
-    this.form = form;
-    if (!isNaN(this.form.value.desconto)) {
-      this.form.patchValue({valor: this.form.value.valor += this.ultimoDesconto});
-      this.ultimoDesconto = this.form.value.desconto;
-    }
-    return this;
-  }
-
-  setAcrescimo(form: FormGroup){
-    this.form = form;
-    if (!isNaN(this.form.value.acrescimo)) {
-      this.form.patchValue({valor: this.form.value.valor -= this.ultimoAcrescimo});
-      this.ultimoAcrescimo = this.form.value.acrescimo;
-    }
-    return this;
-  }
-
-  castingValor(_control, v){
-    this.form.patchValue({_control: this._utilsCalculosService.castingToNumber(v)});
     return this;
   }
 }

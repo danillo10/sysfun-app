@@ -4,6 +4,7 @@ export class IPlanoFunerario {
   cliente?: any;
   nome_cliente?: any;
   indicacao?: any;
+  nome_indicacao?: string;
   indicacao_parcelas?: any;
   tipo_liberacao?: any;
   tecnico?: any;
