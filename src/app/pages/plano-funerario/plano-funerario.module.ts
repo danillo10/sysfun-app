@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ButtonsModule, CheckboxModule } from 'src/app/components';
+import { ButtonsModule, CheckboxModule, IconsModule } from 'src/app/components';
 import { NavbarModule } from 'src/app/components/navbar/navbar.module';
 import { SelectModule } from 'src/app/components/select/select.module';
 import { BairroModule } from 'src/app/portlets/bairro/bairro.module';
@@ -29,6 +29,7 @@ import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.compo
     ButtonsModule,
     TablesModule,
     InputsModule,
+    IconsModule,
     SelectModule,
     CheckboxModule,
     PaginationModule,
