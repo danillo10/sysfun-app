@@ -7,6 +7,7 @@ import { BairroModule } from 'src/app/portlets/bairro/bairro.module';
 import { CidadeModule } from 'src/app/portlets/cidade/cidade.module';
 import { ClientePortletComponent } from 'src/app/portlets/cliente/cliente.component';
 import { ClientePortletsModule } from 'src/app/portlets/cliente/cliente.module';
+import { VendedorPortletsModule } from 'src/app/portlets/vendedor/vendedor.module';
 import { EnderecoModule } from 'src/app/portlets/endereco/endereco.module';
 import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
 
@@ -22,7 +23,7 @@ import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.compo
   declarations: [
     PlanoFunerarioPage,
     PlanoFunerarioComponent,
-    FiltroPlanoComponent
+    FiltroPlanoComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +39,8 @@ import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.compo
     BairroModule,
     CidadeModule,
     EnderecoModule,
-    ClientePortletsModule
-  ]
+    ClientePortletsModule,
+    VendedorPortletsModule,
+  ],
 })
-export class PlanoFunerarioModule { }
+export class PlanoFunerarioModule {}

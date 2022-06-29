@@ -7,7 +7,9 @@ export class IPlanoFunerario {
   indicacao_parcelas?: any;
   tipo_liberacao?: any;
   tecnico?: any;
+  nome_tecnico?: any;
   profissional?: any;
+  nome_profissional?: any;
   situacao?: any;
   lista_preco?: any;
   falecido?: any;
@@ -73,7 +75,9 @@ export class IPlanoFunerario {
     this.indicacao_parcelas = data.indicacao_parcelas || '';
     this.tipo_liberacao = data.tipo_liberacao || '';
     this.tecnico = data.tecnico || '';
+    this.nome_tecnico = data.nome_tecnico || '';
     this.profissional = data.profissional || '';
+    this.nome_profissional = data.nome_profissional || '';
     this.situacao = data.situacao || '';
     this.lista_preco = data.lista_preco || '';
     this.falecido = data.falecido || '';

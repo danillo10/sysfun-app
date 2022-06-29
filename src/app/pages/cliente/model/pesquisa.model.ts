@@ -4,15 +4,16 @@ export class PesquisaModel {
   tipo_pesquisa?: string;
   tipo_cadastro?: string;
   categoria?: string;
-  cliente?:string;
+  cliente?: string;
+  vendedor?: string;
   pessoa?: string;
   deve_receber_sms?: string;
   deve_receber_torpedo_voz?: string;
-  tipo?:string;
+  tipo?: string;
   skip?: number;
   registros?: number;
   pagina?: number;
-  ultimaAtualizacao?: any
+  ultimaAtualizacao?: any;
   vencimento_inicio?: any;
   vencimento_final?: any;
   estado?: string;
@@ -21,7 +22,7 @@ export class PesquisaModel {
   endereco?: string;
   forma_pagamento?: number;
 
-  constructor(data?){
+  constructor(data?) {
     data = data || {};
     this.descricao = data.descricao || '';
     this.vencimento_inicio = data.vencimento_inicio || '';
