@@ -6,6 +6,7 @@ export class PesquisaModel {
   categoria?: string;
   cliente?: string;
   indicacao?: string;
+  vendedor?: string;
   pessoa?: string;
   deve_receber_sms?: string;
   deve_receber_torpedo_voz?: string;
