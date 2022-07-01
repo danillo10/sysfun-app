@@ -18,6 +18,7 @@ import { FiltroPlanoComponent } from './filtro/filtro.plano.component';
 import { PlanoFunerarioPageRoutingModule } from './plano-funerario-routing.module';
 import { PlanoFunerarioPage } from './plano-funerario.page';
 import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.component';
+import { PlanosFunerariosModule } from 'src/app/components/planos-funerarios/planos-funerarios.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.compo
     ClientePortletsModule,
     VendedorPortletsModule,
     IndicacaoPortletsModule,
+    PlanosFunerariosModule,
   ],
 })
 export class PlanoFunerarioModule {}
