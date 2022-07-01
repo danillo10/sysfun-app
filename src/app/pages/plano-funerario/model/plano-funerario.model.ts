@@ -123,7 +123,7 @@ export class IPlanoFunerario {
     this.laudo = data.laudo || '';
     this.servicos = data.servicos || '';
     this.produtos = data.produtos || '';
-    this.dependentes = data.dependentes || '';
+    this.dependentes = data.dependentes || [];
     this.parcelas = data.parcelas || '';
     this.criado_por = data.criado_por || '';
     this.atualizado_por = data.atualizado_por || '';

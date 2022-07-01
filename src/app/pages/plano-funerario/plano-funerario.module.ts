@@ -20,6 +20,9 @@ import { PlanoFunerarioPage } from './plano-funerario.page';
 import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.component';
 import { PagamentoModule } from 'src/app/portlets/pagamento/pagamento.module';
 import { PeriodicidadeModule } from 'src/app/portlets/periodicidade/periodicidade.module';
+import { DependentesModule } from 'src/app/components/dependentes/dependentes.module';
+import { ParcelasModule } from 'src/app/components/parcelas/parcelas.module';
+import { PlanosFunerariosModule } from 'src/app/components/planos-funerarios/planos-funerarios.module';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { PeriodicidadeModule } from 'src/app/portlets/periodicidade/periodicidad
     ClientePortletsModule,
     VendedorPortletsModule,
     IndicacaoPortletsModule,
+    DependentesModule,
+    ParcelasModule,
+    PlanosFunerariosModule
   ],
 })
 export class PlanoFunerarioModule {}

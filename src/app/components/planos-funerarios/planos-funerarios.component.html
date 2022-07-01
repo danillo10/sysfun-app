@@ -1,0 +1,51 @@
+<div class="container">
+  <div
+    class="col-12"
+    *ngFor="let planoFunerario of planosFunerarios; let i = index"
+  >
+    <div class="form-group relative">
+      <label for="">Plano</label>
+      <input
+        (input)="
+          pesquisaPlanoFunerario(planoFunerario, planoFunerario.servicos)
+        "
+        [(ngModel)]="planoFunerario.servicos"
+        type="text"
+        class="form-control"
+        name="planoFunerario_servicos{{ i }}"
+      />
+      <div class="list">
+        <ul>
+          <li
+            *ngFor="let servico of planoFunerario.pesquisados"
+            (click)="selecionar(servico, planoFunerario)"
+          >
+            {{ servico.nome }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Valor</label>
+      <input
+        currencyMask
+        [options]="{ prefix: '', thousands: '.', decimal: ',' }"
+        [(ngModel)]="planoFunerario.valor_liquido"
+        type="text"
+        class="form-control"
+        name="planoFunerario_valor_liquido{{ i }}"
+      />
+    </div>
+  </div>
+
+  <div class="adicionar d-flex justify-content-center">
+    <span (click)="adicionaPlanoFunerario()">
+      <img
+        class="icon"
+        src="../../../assets/icon/simbolo-de-adicao-de-espessura.png"
+        alt="adicionar"
+      />
+      Adicionar outro serviço
+    </span>
+  </div>
+</div>

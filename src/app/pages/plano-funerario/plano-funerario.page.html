@@ -4,7 +4,7 @@
     <div class="container main pb-4" *ngIf="!filtro">
       <h2>Planos Funerários</h2>
       <div class="mb-3">
-        <app-input (searchEmitter)="pesquisa.descricao = $event; pesquisar()" (selectIcon)="filtro = true" type="search" label="Pesquisar" name="search"></app-input>
+        <app-input [searchText]="pesquisa.descricao" (searchEmitter)="pesquisa.descricao = $event; pesquisar()" (selectIcon)="filtro = true" type="search" label="Pesquisar" name="search"></app-input>
       </div>
       <app-button class="bt" color="blue" label="Adicionar plano" type="normal" (click)="add()"></app-button>
       <div class="tabela">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="container filtro" *ngIf="filtro">
-      <app-filtro-plano-funerario (close)="filtro = false"></app-filtro-plano-funerario>
+      <app-filtro-plano-funerario (close)="filtro = false" (filtrado)="pesquisa = $event; pesquisar(); filtro = false"></app-filtro-plano-funerario>
     </div>
   </div>
 </ion-content>

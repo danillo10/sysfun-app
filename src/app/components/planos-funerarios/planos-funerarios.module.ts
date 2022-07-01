@@ -2,30 +2,24 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicInputMaskModule } from '@thiagoprz/ionic-input-mask';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NumberinputDirective } from 'src/app/shared/directives/numberinput.directive';
 import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
 
 import { ButtonsModule, InputsModule } from '..';
 import { SelectModule } from '../select/select.module';
-import { IParcela } from './model/parcelas.model';
-import { ParcelasComponent } from './parcelas.component';
+import { PlanosFunerariosComponent } from './planos-funerarios.component';
 
 @NgModule({
-  declarations: [
-    ParcelasComponent
-  ],
+  declarations: [PlanosFunerariosComponent],
   imports: [
     CommonModule,
+    FormsModule,
     SharedModule,
     InputsModule,
     SelectModule,
-    IonicInputMaskModule,
     ButtonsModule,
-    CurrencyMaskModule
+    IonicInputMaskModule,
   ],
-  exports: [
-    ParcelasComponent,
-    IParcela
-  ]
+  exports: [PlanosFunerariosComponent],
 })
-export class ParcelasModule { }
+export class PlanosFunerariosModule {}
