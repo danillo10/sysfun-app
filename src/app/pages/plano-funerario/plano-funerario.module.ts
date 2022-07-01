@@ -18,8 +18,13 @@ import { FiltroPlanoComponent } from './filtro/filtro.plano.component';
 import { PlanoFunerarioPageRoutingModule } from './plano-funerario-routing.module';
 import { PlanoFunerarioPage } from './plano-funerario.page';
 import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.component';
+<<<<<<< HEAD
 import { DependentesModule } from 'src/app/components/dependentes/dependentes.module';
 import { ParcelasModule } from 'src/app/components/parcelas/parcelas.module';
+import { PlanosFunerariosModule } from 'src/app/components/planos-funerarios/planos-funerarios.module';
+=======
+import { PlanosFunerariosModule } from 'src/app/components/planos-funerarios/planos-funerarios.module';
+>>>>>>> 1db4a45ffe639e1018ac3ace45f1b001ac67510c
 
 @NgModule({
   declarations: [
@@ -46,7 +51,8 @@ import { ParcelasModule } from 'src/app/components/parcelas/parcelas.module';
     VendedorPortletsModule,
     IndicacaoPortletsModule,
     DependentesModule,
-    ParcelasModule
+    ParcelasModule,
+    PlanosFunerariosModule
   ],
 })
 export class PlanoFunerarioModule {}
