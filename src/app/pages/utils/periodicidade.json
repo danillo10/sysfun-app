@@ -1,0 +1,8 @@
+{
+    "periodicidade": [
+      {"value": "Mensal"},
+      {"value": "Trimestral"},
+      {"value": "Semestral"},
+      {"value": "Anual"}
+    ]
+  }

@@ -18,12 +18,14 @@ import { FiltroPlanoComponent } from './filtro/filtro.plano.component';
 import { PlanoFunerarioPageRoutingModule } from './plano-funerario-routing.module';
 import { PlanoFunerarioPage } from './plano-funerario.page';
 import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.component';
+import { PagamentoModule } from 'src/app/portlets/pagamento/pagamento.module';
+import { PeriodicidadeModule } from 'src/app/portlets/periodicidade/periodicidade.module';
 
 @NgModule({
   declarations: [
     PlanoFunerarioPage,
     PlanoFunerarioComponent,
-    FiltroPlanoComponent,
+    FiltroPlanoComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,8 @@ import { PlanoFunerarioComponent } from './plano-funerario/plano-funerario.compo
     BairroModule,
     CidadeModule,
     EnderecoModule,
+    PagamentoModule,
+    PeriodicidadeModule,
     ClientePortletsModule,
     VendedorPortletsModule,
     IndicacaoPortletsModule,
