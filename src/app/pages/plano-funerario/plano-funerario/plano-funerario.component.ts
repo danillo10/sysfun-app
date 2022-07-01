@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IParcela } from 'src/app/components/parcelas/model/parcelas.model';
 import { SelectModel } from 'src/app/components/select/model/select.model';
+import { DependentesService } from 'src/app/shared/services/dependentes.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
+import { IDependentes } from '../../cliente/model/cliente.model';
 import { IPlanoFunerario } from '../model/plano-funerario.model';
 import { PlanoFunerarioService } from '../service/plano-funerario.service';
 
@@ -24,6 +27,7 @@ export class PlanoFunerarioComponent implements OnInit {
     private planoFunerarioService: PlanoFunerarioService,
     private loadingService: LoadingService,
     private activatedRoute: ActivatedRoute,
+    private dependentesService: DependentesService,
     private router: Router
   ) {
     this.plano = new IPlanoFunerario();
@@ -94,6 +98,16 @@ export class PlanoFunerarioComponent implements OnInit {
       os_gerada: [this.plano.os_gerada],
       repetir_valor: [this.plano.repetir_valor],
     });
+
+    this.setDependentes([]);
+    this.setParcelas([
+      {
+        parcela_data: '12/02/2022',
+        parcela_forma_pagamento: 'Dinheiro',
+        parcela_obs: 'ok',
+        parcela_valor: 10
+      }
+    ]);
   }
 
   ionViewDidEnter() {
@@ -158,5 +172,13 @@ export class PlanoFunerarioComponent implements OnInit {
         });
       }
     });
+  }
+
+  setDependentes(dependentes: IDependentes[]) {
+    this.plano.dependentes = dependentes.length == 0 ? this.dependentesService.reorganizar() : dependentes;
+  }
+
+  setParcelas(parcelas: IParcela[]) {
+    this.plano.parcelas = parcelas;
   }
 }

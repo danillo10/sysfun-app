@@ -78,7 +78,7 @@ export class DependentesComponent implements OnInit {
     dependente.id = dependenteSelecionado.id;
     dependente.nome = dependenteSelecionado.nome_fantasia;
     dependente.cpf = dependenteSelecionado.cnpjcpf;
-    dependente.data_nasc = this.dateService.format(dependenteSelecionado.data_nascimento);
+    dependente.data_nasc = dependenteSelecionado.data_nascimento;
     dependente.telefone = dependenteSelecionado.celular;
     dependente.idade = dependenteSelecionado.idade;
     dependente.pessoa = dependenteSelecionado.pessoa;
