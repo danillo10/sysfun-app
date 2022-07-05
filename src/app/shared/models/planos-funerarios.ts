@@ -1,0 +1,257 @@
+export class IPlanosFunerarios {
+  id?: string;
+  nome?: string;
+  codigo?: string;
+  variacao?: string;
+  marca?: string;
+  unidade?: string;
+  classificacao?: string;
+  tipo?: string;
+  servico_plano?: string;
+  estoque?: string;
+  localizacao_estoque?: string;
+  estoque_minimo?: string;
+  estoque_maximo?: string;
+  valor_venda?: string;
+  valor_custo?: string;
+  valor_porcentagem?: string;
+  qtd_parcelas?: string;
+  valor_parcela?: string;
+  valor_restante?: string;
+  dia_vencimento?: string;
+  status?: string;
+  lista_preco?: string;
+  origem?: string;
+  fornecedor?: string;
+  tamanho?: string;
+  numero_ordem?: string;
+  categoria?: string;
+  subcategoria?: string;
+  kit?: string;
+  kit_desmembrar?: string;
+  kit_movimentar?: string;
+  obs?: string;
+  criado_por?: string;
+  atualizado_por?: string;
+  created_at?: string;
+  updated_at?: string;
+  fornecedor_seguro?: string;
+  anual_mensal?: string;
+  vigencia_seguro?: string;
+  seguro_apolice?: string;
+  morte_natural?: string;
+  capital_assegurado?: string;
+  carencia_morte_natural?: string;
+  mes_carencia_morte_natural?: string;
+  morte_acidental?: string;
+  carencia_morte_acidental?: string;
+  mes_carencia_morte_acidental?: string;
+  cobertura_funeraria?: string;
+  carencia_cobertura_funeraria?: string;
+  cobertura_por_item?: string;
+  cobertura_item?: string;
+  tipo_cobertura?: string;
+  individual_morte_natural?: string;
+  individual_limite_idade?: string;
+  individual_carencia?: string;
+  individual_morte_acidental?: string;
+  individual_limite_idade_acidental?: string;
+  individual_carencia_acidental?: string;
+  cobertura_pais?: string;
+  limite_idade?: string;
+  idade_limite?: string;
+  carencia_cobertura_pais?: string;
+  mes_carencia_cobertura_pais?: string;
+  cobertura_conjuge?: string;
+  limite_idade_conjuge?: string;
+  idade_limite_conjuge?: string;
+  carencia_cobertura_conjuge?: string;
+  mes_carencia_cobertura_conjuge?: string;
+  cobertura_filho_especial?: string;
+  idade_filho_especial?: string;
+  carencia_cobertura_filho_especial?: string;
+  mes_carencia_cobertura_filho_especial?: string;
+  cobertura_filho_homem?: string;
+  limite_idade_filho_homem?: string;
+  carencia_cobertura_filho_homem?: string;
+  mes_carencia_cobertura_filho_homem?: string;
+  cobertura_filha_mulher?: string;
+  carencia_cobertura_filha_mulher?: string;
+  mes_carencia_cobertura_filha_mulher?: string;
+  cobertura_nivel_superior?: string;
+  mes_cobertura_nivel_superior?: string;
+  cobertura_filha_mulher_solteira?: string;
+  limite_idade_filha_solteira?: string;
+  carencia_cobertura_filha_mulher_solteira?: string;
+  mes_carencia_cobertura_filha_mulher_solteira?: string;
+  cobertura_sogros?: string;
+  limite_idade_sogros?: string;
+  idade_limite_sogros?: string;
+  carencia_cobertura_sogros?: string;
+  mes_carencia_cobertura_sogros?: string;
+  cobertura_enteados?: string;
+  limite_idade_enteados?: string;
+  idade_limite_enteados?: string;
+  carencia_cobertura_enteados?: string;
+  mes_carencia_cobertura_enteados?: string;
+  cobertura_avos?: string;
+  limite_idade_avos?: string;
+  idade_limite_avos?: string;
+  carencia_cobertura_avos?: string;
+  mes_carencia_cobertura_avos?: string;
+  cobertura_sobrinho?: string;
+  limite_idade_sobrinho?: string;
+  idade_limite_sobrinho?: string;
+  carencia_cobertura_sobrinho?: string;
+  mes_carencia_cobertura_sobrinho?: string;
+  cobertura_neto?: string;
+  limite_idade_neto?: string;
+  idade_limite_neto?: string;
+  carencia_cobertura_neto?: string;
+  mes_carencia_cobertura_neto?: string;
+  cobertura_irmao?: string;
+  limite_idade_irmao?: string;
+  idade_limite_irmao?: string;
+  carencia_cobertura_irmao?: string;
+  mes_carencia_cobertura_irmao?: string;
+  cesta_basica?: string;
+  /**
+   * Constructor
+   *
+   * @param data
+   *     */
+  constructor(data?) {
+    data = data || {};
+    this.id = data.id || '';
+    this.nome = data.nome || '';
+    this.codigo = data.codigo || '';
+    this.variacao = data.variacao || '';
+    this.marca = data.marca || '';
+    this.unidade = data.unidade || '';
+    this.classificacao = data.classificacao || '';
+    this.tipo = data.tipo || '';
+    this.servico_plano = data.servico_plano || '';
+    this.estoque = data.estoque || '';
+    this.localizacao_estoque = data.localizacao_estoque || '';
+    this.estoque_minimo = data.estoque_minimo || '';
+    this.estoque_maximo = data.estoque_maximo || '';
+    this.valor_venda = data.valor_venda || '';
+    this.valor_custo = data.valor_custo || '';
+    this.valor_porcentagem = data.valor_porcentagem || '';
+    this.qtd_parcelas = data.qtd_parcelas || '';
+    this.valor_parcela = data.valor_parcela || '';
+    this.valor_restante = data.valor_restante || '';
+    this.dia_vencimento = data.dia_vencimento || '';
+    this.status = data.status || '';
+    this.lista_preco = data.lista_preco || '';
+    this.origem = data.origem || '';
+    this.fornecedor = data.fornecedor || '';
+    this.tamanho = data.tamanho || '';
+    this.numero_ordem = data.numero_ordem || '';
+    this.categoria = data.categoria || '';
+    this.subcategoria = data.subcategoria || '';
+    this.kit = data.kit || '';
+    this.kit_desmembrar = data.kit_desmembrar || '';
+    this.kit_movimentar = data.kit_movimentar || '';
+    this.obs = data.obs || '';
+    this.criado_por = data.criado_por || '';
+    this.atualizado_por = data.atualizado_por || '';
+    this.created_at = data.created_at || '';
+    this.updated_at = data.updated_at || '';
+    this.fornecedor_seguro = data.fornecedor_seguro || '';
+    this.anual_mensal = data.anual_mensal || '';
+    this.vigencia_seguro = data.vigencia_seguro || '';
+    this.seguro_apolice = data.seguro_apolice || '';
+    this.morte_natural = data.morte_natural || '';
+    this.capital_assegurado = data.capital_assegurado || '';
+    this.carencia_morte_natural = data.carencia_morte_natural || '';
+    this.mes_carencia_morte_natural = data.mes_carencia_morte_natural || '';
+    this.morte_acidental = data.morte_acidental || '';
+    this.carencia_morte_acidental = data.carencia_morte_acidental || '';
+    this.mes_carencia_morte_acidental = data.mes_carencia_morte_acidental || '';
+    this.cobertura_funeraria = data.cobertura_funeraria || '';
+    this.carencia_cobertura_funeraria = data.carencia_cobertura_funeraria || '';
+    this.cobertura_por_item = data.cobertura_por_item || '';
+    this.cobertura_item = data.cobertura_item || '';
+    this.tipo_cobertura = data.tipo_cobertura || '';
+    this.individual_morte_natural = data.individual_morte_natural || '';
+    this.individual_limite_idade = data.individual_limite_idade || '';
+    this.individual_carencia = data.individual_carencia || '';
+    this.individual_morte_acidental = data.individual_morte_acidental || '';
+    this.individual_limite_idade_acidental =
+      data.individual_limite_idade_acidental || '';
+    this.individual_carencia_acidental =
+      data.individual_carencia_acidental || '';
+    this.cobertura_pais = data.cobertura_pais || '';
+    this.limite_idade = data.limite_idade || '';
+    this.idade_limite = data.idade_limite || '';
+    this.carencia_cobertura_pais = data.carencia_cobertura_pais || '';
+    this.mes_carencia_cobertura_pais = data.mes_carencia_cobertura_pais || '';
+    this.cobertura_conjuge = data.cobertura_conjuge || '';
+    this.limite_idade_conjuge = data.limite_idade_conjuge || '';
+    this.idade_limite_conjuge = data.idade_limite_conjuge || '';
+    this.carencia_cobertura_conjuge = data.carencia_cobertura_conjuge || '';
+    this.mes_carencia_cobertura_conjuge =
+      data.mes_carencia_cobertura_conjuge || '';
+    this.cobertura_filho_especial = data.cobertura_filho_especial || '';
+    this.idade_filho_especial = data.idade_filho_especial || '';
+    this.carencia_cobertura_filho_especial =
+      data.carencia_cobertura_filho_especial || '';
+    this.mes_carencia_cobertura_filho_especial =
+      data.mes_carencia_cobertura_filho_especial || '';
+    this.cobertura_filho_homem = data.cobertura_filho_homem || '';
+    this.limite_idade_filho_homem = data.limite_idade_filho_homem || '';
+    this.carencia_cobertura_filho_homem =
+      data.carencia_cobertura_filho_homem || '';
+    this.mes_carencia_cobertura_filho_homem =
+      data.mes_carencia_cobertura_filho_homem || '';
+    this.cobertura_filha_mulher = data.cobertura_filha_mulher || '';
+    this.carencia_cobertura_filha_mulher =
+      data.carencia_cobertura_filha_mulher || '';
+    this.mes_carencia_cobertura_filha_mulher =
+      data.mes_carencia_cobertura_filha_mulher || '';
+    this.cobertura_nivel_superior = data.cobertura_nivel_superior || '';
+    this.mes_cobertura_nivel_superior = data.mes_cobertura_nivel_superior || '';
+    this.cobertura_filha_mulher_solteira =
+      data.cobertura_filha_mulher_solteira || '';
+    this.limite_idade_filha_solteira = data.limite_idade_filha_solteira || '';
+    this.carencia_cobertura_filha_mulher_solteira =
+      data.carencia_cobertura_filha_mulher_solteira || '';
+    this.mes_carencia_cobertura_filha_mulher_solteira =
+      data.mes_carencia_cobertura_filha_mulher_solteira || '';
+    this.cobertura_sogros = data.cobertura_sogros || '';
+    this.limite_idade_sogros = data.limite_idade_sogros || '';
+    this.idade_limite_sogros = data.idade_limite_sogros || '';
+    this.carencia_cobertura_sogros = data.carencia_cobertura_sogros || '';
+    this.mes_carencia_cobertura_sogros =
+      data.mes_carencia_cobertura_sogros || '';
+    this.cobertura_enteados = data.cobertura_enteados || '';
+    this.limite_idade_enteados = data.limite_idade_enteados || '';
+    this.idade_limite_enteados = data.idade_limite_enteados || '';
+    this.carencia_cobertura_enteados = data.carencia_cobertura_enteados || '';
+    this.mes_carencia_cobertura_enteados =
+      data.mes_carencia_cobertura_enteados || '';
+    this.cobertura_avos = data.cobertura_avos || '';
+    this.limite_idade_avos = data.limite_idade_avos || '';
+    this.idade_limite_avos = data.idade_limite_avos || '';
+    this.carencia_cobertura_avos = data.carencia_cobertura_avos || '';
+    this.mes_carencia_cobertura_avos = data.mes_carencia_cobertura_avos || '';
+    this.cobertura_sobrinho = data.cobertura_sobrinho || '';
+    this.limite_idade_sobrinho = data.limite_idade_sobrinho || '';
+    this.idade_limite_sobrinho = data.idade_limite_sobrinho || '';
+    this.carencia_cobertura_sobrinho = data.carencia_cobertura_sobrinho || '';
+    this.mes_carencia_cobertura_sobrinho =
+      data.mes_carencia_cobertura_sobrinho || '';
+    this.cobertura_neto = data.cobertura_neto || '';
+    this.limite_idade_neto = data.limite_idade_neto || '';
+    this.idade_limite_neto = data.idade_limite_neto || '';
+    this.carencia_cobertura_neto = data.carencia_cobertura_neto || '';
+    this.mes_carencia_cobertura_neto = data.mes_carencia_cobertura_neto || '';
+    this.cobertura_irmao = data.cobertura_irmao || '';
+    this.limite_idade_irmao = data.limite_idade_irmao || '';
+    this.idade_limite_irmao = data.idade_limite_irmao || '';
+    this.carencia_cobertura_irmao = data.carencia_cobertura_irmao || '';
+    this.mes_carencia_cobertura_irmao = data.mes_carencia_cobertura_irmao || '';
+    this.cesta_basica = data.cesta_basica || '';
+  }
+}

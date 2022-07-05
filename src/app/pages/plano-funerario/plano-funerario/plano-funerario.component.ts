@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IParcela } from 'src/app/components/parcelas/model/parcelas.model';
 import { SelectModel } from 'src/app/components/select/model/select.model';
@@ -105,8 +105,8 @@ export class PlanoFunerarioComponent implements OnInit {
         parcela_data: '12/02/2022',
         parcela_forma_pagamento: 'Dinheiro',
         parcela_obs: 'ok',
-        parcela_valor: 10
-      }
+        parcela_valor: 10,
+      },
     ]);
   }
 
@@ -175,7 +175,10 @@ export class PlanoFunerarioComponent implements OnInit {
   }
 
   setDependentes(dependentes: IDependentes[]) {
-    this.plano.dependentes = dependentes.length == 0 ? this.dependentesService.reorganizar() : dependentes;
+    this.plano.dependentes =
+      dependentes.length == 0
+        ? this.dependentesService.reorganizar()
+        : dependentes;
   }
 
   setParcelas(parcelas: IParcela[]) {

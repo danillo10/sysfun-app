@@ -7,7 +7,7 @@ import { SelectModel } from '../select/model/select.model';
 import parentescos from '../../pages/utils/parentescos.json';
 import { DateService } from 'src/app/shared/services/date.service';
 import { IPlanoFunerario } from 'src/app/pages/plano-funerario/model/plano-funerario.model';
-import { PlanoFunerarioService } from 'src/app/pages/plano-funerario/service/plano-funerario.service';
+import { PlanosFunerariosService } from 'src/app/shared/services/planos-funerarios.service';
 
 @Component({
   selector: 'app-planos-funerarios',
@@ -23,7 +23,7 @@ export class PlanosFunerariosComponent implements OnInit {
 
   @Output() planosFunerariosSelecionados = new EventEmitter();
 
-  planosFunerario$: Observable<any>;
+  planosFunerarios$: Observable<any>;
   planosFunerarioPesquisado = new Subject<any>();
   planosFunerario: IPlanoFunerario;
   planosFunerarios: IPlanoFunerario[];
@@ -31,13 +31,13 @@ export class PlanosFunerariosComponent implements OnInit {
   parentescos: SelectModel[];
 
   constructor(
-    private planosFunerarioService: PlanoFunerarioService,
+    private planosFunerariosService: PlanosFunerariosService,
     private dateService: DateService
   ) {}
 
   ngOnInit(): void {
     this.parentescos = parentescos.parentescos;
-    // this.getplanosFunerarios();
+    this.planosFunerarios = [new IPlanoFunerario()];
   }
 
   ngOnChanges() {
@@ -106,17 +106,19 @@ export class PlanosFunerariosComponent implements OnInit {
   /**
    * Observable para os planosFunerarios
    */
-  // getplanosFunerarios() {
-  //   this.planosFunerarios$ = this.planosFunerarioPesquisado.pipe(
-  //     debounceTime(500),
-  //     distinctUntilChanged(),
-  //     switchMap((data) => this.planosFunerarioService.get(data))
-  //   );
+  getPlanosFunerarios() {
+    this.planosFunerarios$ = this.planosFunerarioPesquisado.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap((data) => this.planosFunerariosService.get(data))
+    );
 
-  //   this.planosFunerarios$.subscribe((data) => {
-  //     this.planosFunerario.pesquisados = data;
-  //   });
-  // }
+    this.planosFunerarios$.subscribe((data) => {
+      console.log('PIPE');
+      console.log(data);
+      // this.planosFunerario.pesquisados = data;
+    });
+  }
 
   emit() {
     this.planosFunerariosSelecionados.emit(this.planosFunerarios);
