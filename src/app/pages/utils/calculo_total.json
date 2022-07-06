@@ -1,0 +1,6 @@
+{
+  "calculoTotal": [
+    { "value": "Repetir", "description": "Repetir valor total" },
+    { "value": "Dividir", "description": "Dividir valor total" }
+  ]
+}
