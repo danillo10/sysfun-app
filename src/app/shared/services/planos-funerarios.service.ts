@@ -36,10 +36,7 @@ export class PlanosFunerariosService {
     }
 
     return this._http
-      .post(`${environment.host}pesquisar/clientes/planos-funerarios`, {
-        cliente: data.nome,
-        ids: data.ids,
-      })
+      .get(`${environment.host}pesquisar/planos-funerarios/${data.nome}`)
       .pipe((res) => res);
   }
 

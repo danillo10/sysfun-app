@@ -25,7 +25,7 @@ export class PlanosFunerariosComponent implements OnInit {
 
   planosFunerarios$: Observable<any>;
   planosFunerarioPesquisado = new Subject<any>();
-  planosFunerario: IPlanoFunerario;
+  planoFunerario: IPlanoFunerario;
   planosFunerarios: IPlanoFunerario[];
 
   parentescos: SelectModel[];
@@ -38,6 +38,7 @@ export class PlanosFunerariosComponent implements OnInit {
   ngOnInit(): void {
     this.parentescos = parentescos.parentescos;
     this.planosFunerarios = [new IPlanoFunerario()];
+    this.getPlanosFunerarios();
   }
 
   ngOnChanges() {
@@ -50,13 +51,7 @@ export class PlanosFunerariosComponent implements OnInit {
 
   delete(planosFunerario) {
     if (planosFunerario.id) {
-      if (
-        confirm(
-          'Deseja excluir o serviço selecionado ? Esta ação é irreversível.'
-        )
-      ) {
-        return this.planosFunerarios.filter((d) => d.id != planosFunerario.id);
-      }
+      return this.planosFunerarios.filter((d) => d.id != planosFunerario.id);
     }
     // this.planosFunerarios = this.planosFunerarioService.reorganizar(
     //   planosFunerario,
@@ -64,44 +59,50 @@ export class PlanosFunerariosComponent implements OnInit {
     // );
   }
 
-  pesquisaPlanosFunerario(planosFunerario, nome) {
-    this.planosFunerario = planosFunerario;
+  pesquisaPlanosFunerario(planoFunerario) {
+    this.planoFunerario = planoFunerario;
     const ids = this.planosFunerarios
-      .map((planosFunerario) => planosFunerario.id)
-      .filter((d) => d != null);
-    this.planosFunerarioPesquisado.next({ nome, ids });
+      .map((planosFunerarios) => planosFunerarios.id)
+    this.planosFunerarioPesquisado.next({ nome: planoFunerario.nome });
   }
 
-  // selecionar(planosFunerarioSelecionado, planosFunerario) {
-  //   planosFunerario.pesquisados = [];
-  //   planosFunerario.cliente_id = planosFunerarioSelecionado.id;
-  //   planosFunerario.id_planosFunerario =
-  //     planosFunerarioSelecionado.id_planosFunerario;
-  //   planosFunerario.id = planosFunerarioSelecionado.id;
-  //   planosFunerario.nome = planosFunerarioSelecionado.nome_fantasia;
-  //   planosFunerario.cpf = planosFunerarioSelecionado.cnpjcpf;
-  //   planosFunerario.data_nasc = this.dateService.format(
-  //     planosFunerarioSelecionado.data_nascimento
-  //   );
-  //   planosFunerario.telefone = planosFunerarioSelecionado.celular;
-  //   planosFunerario.idade = planosFunerarioSelecionado.idade;
-  //   planosFunerario.pessoa = planosFunerarioSelecionado.pessoa;
+  selecionar(
+    planoFunerarioSelecionado: IPlanoFunerario,
+    planoFunerario: IPlanoFunerario
+  ) {
+    planoFunerario.id = planoFunerarioSelecionado.id;
+    planoFunerario.nome = planoFunerarioSelecionado.nome;
+    planoFunerario.valor_venda = planoFunerarioSelecionado.valor_venda;
 
-  //   this.planosFunerarioService
-  //     .planosFunerarioUsuario(planosFunerario.id)
-  //     .subscribe((data: any) => {
-  //       if (data.cliente)
-  //         alert(
-  //           'O planosFunerario já está cadastrado no cliente ' +
-  //             data.cliente +
-  //             ' com CPF: ' +
-  //             data.cpf
-  //         );
-  //     });
+    // planosFunerario.pesquisados = [];
+    // planosFunerario.cliente_id = planosFunerarioSelecionado.id;
+    // planosFunerario.id_planosFunerario =
+    //   planosFunerarioSelecionado.id_planosFunerario;
+    // planosFunerario.id = planosFunerarioSelecionado.id;
+    // planosFunerario.nome = planosFunerarioSelecionado.nome_fantasia;
+    // planosFunerario.cpf = planosFunerarioSelecionado.cnpjcpf;
+    // planosFunerario.data_nasc = this.dateService.format(
+    //   planosFunerarioSelecionado.data_nascimento
+    // );
+    // planosFunerario.telefone = planosFunerarioSelecionado.celular;
+    // planosFunerario.idade = planosFunerarioSelecionado.idade;
+    // planosFunerario.pessoa = planosFunerarioSelecionado.pessoa;
 
-  //   this.planosFunerarioPesquisado.next('');
-  //   this.emit();
-  // }
+    // this.planosFunerarioService
+    //   .planosFunerarioUsuario(planosFunerario.id)
+    //   .subscribe((data: any) => {
+    //     if (data.cliente)
+    //       alert(
+    //         'O planosFunerario já está cadastrado no cliente ' +
+    //           data.cliente +
+    //           ' com CPF: ' +
+    //           data.cpf
+    //       );
+    //   });
+
+    this.planosFunerarioPesquisado.next('');
+    this.emit();
+  }
 
   /**
    * Observable para os planosFunerarios
@@ -114,9 +115,7 @@ export class PlanosFunerariosComponent implements OnInit {
     );
 
     this.planosFunerarios$.subscribe((data) => {
-      console.log('PIPE');
-      console.log(data);
-      // this.planosFunerario.pesquisados = data;
+      this.planoFunerario.pesquisados = data;
     });
   }
 

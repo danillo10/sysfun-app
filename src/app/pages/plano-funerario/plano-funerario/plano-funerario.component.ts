@@ -6,7 +6,7 @@ import { SelectModel } from 'src/app/components/select/model/select.model';
 import { DependentesService } from 'src/app/shared/services/dependentes.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { IDependentes } from '../../cliente/model/cliente.model';
-import { IPlanoFunerario } from '../model/plano-funerario.model';
+import { IPlanoFunerario, PlanoFunerarioModel } from '../model/plano-funerario.model';
 import { PlanoFunerarioService } from '../service/plano-funerario.service';
 
 @Component({
@@ -17,7 +17,7 @@ import { PlanoFunerarioService } from '../service/plano-funerario.service';
 export class PlanoFunerarioComponent implements OnInit {
   @Input() form: FormGroup;
 
-  plano: IPlanoFunerario;
+  plano: PlanoFunerarioModel;
   criadoEm: string;
 
   calculoTotal: SelectModel[];
@@ -30,7 +30,7 @@ export class PlanoFunerarioComponent implements OnInit {
     private dependentesService: DependentesService,
     private router: Router
   ) {
-    this.plano = new IPlanoFunerario();
+    this.plano = new PlanoFunerarioModel();
   }
 
   ngOnInit() {
@@ -161,7 +161,7 @@ export class PlanoFunerarioComponent implements OnInit {
           this.planoFunerarioService
             .salvaPlanos(id, this.criadoEm)
             .then((data: any) => {
-              this.plano = new IPlanoFunerario(data.plano[0]);
+              this.plano = new PlanoFunerarioModel(data.plano[0]);
 
               if (navigator.onLine) this.plano.dependentes = data.dependentes;
 

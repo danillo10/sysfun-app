@@ -40,8 +40,6 @@ export class PlanoFunerarioService {
 
       data = JSON.parse(data);
 
-      plano.atualizado_por = planosNovos.length + 1;
-
       planosNovos.push(plano);
 
       data = [plano, ...data];
