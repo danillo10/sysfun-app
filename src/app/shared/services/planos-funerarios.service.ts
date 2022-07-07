@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { IPlanoFunerario } from 'src/app/pages/plano-funerario/model/plano-funerario.model';
 import { environment } from 'src/environments/environment';
 import { IPlanosFunerarios } from '../models/planos-funerarios';
 
@@ -10,24 +11,8 @@ import { IPlanosFunerarios } from '../models/planos-funerarios';
 export class PlanosFunerariosService {
   constructor(private _http: HttpClient) {}
 
-  first(): IPlanosFunerarios {
-    return new IPlanosFunerarios();
-  }
-
-  add(planosFunerarios: IPlanosFunerarios[]): IPlanosFunerarios {
-    let ultimoCampo = planosFunerarios.length;
-    // let ultimoNumero = planosFunerarios[ultimoCampo - 1].numero;
-
-    let dependente = this.first();
-    // dependente.numero = ultimoNumero + 1;
-
-    return dependente;
-  }
-
-  delete(dependente: IPlanosFunerarios): Observable<any> {
-    return this._http
-      .get(`${environment.host}planos-funerarios/remover/${dependente.id}`)
-      .pipe((res) => res);
+  first(): IPlanoFunerario {
+    return new IPlanoFunerario();
   }
 
   get(data) {
@@ -46,17 +31,20 @@ export class PlanosFunerariosService {
       .pipe((res) => res);
   }
 
-  //   reorganizar(planosFunerario?: IPlanosFunerarios, planosFunerarios?: IPlanosFunerarios[]): IPlanosFunerarios[]{
-  //     if(!planosFunerario){
-  //       return [this.first()];
-  //     }
+  reorganizar(
+    planoFunerario?: IPlanoFunerario,
+    planosFunerarios?: IPlanoFunerario[]
+  ): IPlanoFunerario[] {
+    if (!planoFunerario.id) {
+      return [this.first()];
+    }
 
-  //     if (
-  //       (planosFunerario.numero == 1 && planosFunerarios.length == 1) ||
-  //       (planosFunerario.numero > 1 && planosFunerarios.length == 1)
-  //     )
-  //       return [this.first()];
+    if (
+      (planoFunerario.numero == 1 && planosFunerarios.length == 1) ||
+      (planoFunerario.numero > 1 && planosFunerarios.length == 1)
+    )
+      return [this.first()];
 
-  //     return planosFunerarios.filter(d => d.numero != planosFunerario.numero);
-  //   }
+    return planosFunerarios.filter((d) => d.numero != planoFunerario.numero);
+  }
 }

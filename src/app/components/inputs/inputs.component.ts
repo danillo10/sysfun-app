@@ -26,6 +26,7 @@ export class InputsComponent implements OnInit {
   @Input() control: string;
   @Input() search: boolean;
   @Input() searchText: string;
+  @Input() disabled: boolean = false;
 
   @Input() set data(options: SelectModel[]){
     this.options = options.length > 0 ? options : [];

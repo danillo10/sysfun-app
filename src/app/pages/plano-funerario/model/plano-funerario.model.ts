@@ -143,4 +143,13 @@ export class IPlanoFunerario {
   pesquisados?: any[];
   created_at?: Date;
   updated_at?: Date;
+
+  constructor(data?) {
+    data = data || {};
+    this.id = null;
+    this.numero = data.numero + 1 || 1;
+    this.nome = null;
+    this.valor_venda = null;
+    this.pesquisados = [];
+  }
 }

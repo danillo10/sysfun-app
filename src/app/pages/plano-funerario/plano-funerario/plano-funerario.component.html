@@ -4,6 +4,16 @@
     <div class="container main">
       <h2 class="mb-4">Dados do plano</h2>
       <form [formGroup]="form">
+
+        <app-input
+          [form]="form"
+          control="id"
+          type="number"
+          label="número do plano"
+          [disabled]="true"
+          *ngIf="plano.id"
+        ></app-input>
+
         <app-portlet-cliente
           [form]="form"
           control="cliente"
@@ -31,13 +41,6 @@
           type="text"
           label="Indicação"
         ></app-portlet-indicacao>
-
-        <app-input
-          [form]="form"
-          control="id"
-          type="text"
-          label="número do plano"
-        ></app-input>
 
         <h2>Planos funarários</h2>
 
@@ -132,7 +135,7 @@
               [form]="form"
               control="parcelas"
               type="text"
-              label="parcela"
+              label="parcelas"
             ></app-input>
           </div>
 

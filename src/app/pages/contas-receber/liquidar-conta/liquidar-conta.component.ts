@@ -88,7 +88,7 @@ export class LiquidarContaComponent implements OnInit {
 
   getFormasPagamentos(){
     this.formaPagamentoService.get()
-    .subscribe((formaPagamento: any)=>{
+    .subscribe((formaPagamento: any)=> {
       this.formaPagamento = this.selectService.handleSelect(formaPagamento, 'id', 'descricao');
     })
   }

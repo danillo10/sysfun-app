@@ -2,5 +2,15 @@
   "situacao": [
     {"value": "Ativo", "description":"Ativo"},
     {"value": "Inativo", "description":"Inativo"}
+  ],
+
+  "planoFunerarioSituacao": [
+    {"value": 0, "description":"Em Aberto"},
+    {"value": 1, "description":"Carnê Impresso"},
+    {"value": 4, "description":"Contrato Impresso"},
+    {"value": 2, "description":"Vigente"},
+    {"value": 3, "description":"Cancelado"},
+    {"value": 6, "description":"Desistente"},
+    {"value": 5, "description":"Carnê Liquidado"}
   ]
 }
