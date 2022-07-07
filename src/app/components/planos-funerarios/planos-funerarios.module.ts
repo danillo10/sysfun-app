@@ -11,7 +11,7 @@ import { SelectModule } from '../select/select.module';
 import { PlanosFunerariosComponent } from './planos-funerarios.component';
 
 @NgModule({
-  declarations: [PlanosFunerariosComponent],
+  declarations: [PlanosFunerariosComponent, NumberinputDirective],
   imports: [
     CommonModule,
     FormsModule,

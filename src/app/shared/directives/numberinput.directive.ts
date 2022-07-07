@@ -1,11 +1,10 @@
 import { Directive, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[NumberInput]'
+  selector: '[NumberInput]',
 })
 export class NumberinputDirective {
-
-  constructor() { }
+  constructor() {}
 
   @HostListener('keypress')
   onkeypress(e) {
@@ -22,5 +21,4 @@ export class NumberinputDirective {
     }
     return true;
   }
-
 }
