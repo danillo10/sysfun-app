@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { IFiltroPlanos } from './model/filtro.model';
-import estados from '../../utils/estados.json';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { FiltroContaService } from '../../contas-receber/filtro/service/filtro.conta.service';
 import { PesquisaModel } from '../../cliente/model/pesquisa.model';
+
+import estados from '../../utils/estados.json';
 
 @Component({
   selector: 'app-filtro-plano-funerario',

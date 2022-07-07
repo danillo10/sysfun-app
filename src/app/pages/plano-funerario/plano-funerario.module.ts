@@ -24,6 +24,7 @@ import { DependentesModule } from 'src/app/components/dependentes/dependentes.mo
 import { ParcelasModule } from 'src/app/components/parcelas/parcelas.module';
 import { PlanosFunerariosModule } from 'src/app/components/planos-funerarios/planos-funerarios.module';
 import { CalculoTotalModule } from 'src/app/portlets/calculo-total/calculo-total.module';
+import { SituacaoModule } from 'src/app/portlets/situacao/situacao.module';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CalculoTotalModule } from 'src/app/portlets/calculo-total/calculo-total
     ParcelasModule,
     PlanosFunerariosModule,
     CalculoTotalModule,
+    SituacaoModule
   ],
 })
 export class PlanoFunerarioModule {}

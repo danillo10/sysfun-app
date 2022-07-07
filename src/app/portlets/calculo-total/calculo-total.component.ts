@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
-import json from '../../pages/utils/calculo_total.json';
+
+import calculo from '../../pages/utils/calculo_total.json';
 
 @Component({
   selector: 'app-portlet-calculo-total',
@@ -17,7 +18,7 @@ export class CalculoTotalComponent implements OnInit {
   calculo: SelectModel[];
 
   constructor() {
-    this.calculo = json.calculoTotal;
+    this.calculo = calculo.calculoTotal;
   }
 
   ngOnInit() {}

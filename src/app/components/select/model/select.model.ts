@@ -1,5 +1,5 @@
 export class SelectModel {
-  value?: string;
+  value?: number | string;
   description?: string;
 
   constructor(data?){

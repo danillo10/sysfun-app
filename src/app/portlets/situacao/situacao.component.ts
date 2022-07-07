@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 
-import situacao from '../../utils/situacao.json';
+import situacao from '../../pages/utils/situacao.json';
 
 @Component({
   selector: 'app-situacao',
@@ -9,14 +10,17 @@ import situacao from '../../utils/situacao.json';
   styleUrls: ['./situacao.component.scss'],
 })
 export class SituacaoComponent implements OnInit {
+  @Input() form: FormGroup;
+  @Input() control: string;
   @Input() tipo: 'situacao' | 'planoFunerarioSituacao';
 
   situacao: SelectModel[];
 
   constructor() {
-    this.situacao = situacao[this.tipo];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.situacao = situacao[this.tipo];
+  }
 
 }
