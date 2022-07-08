@@ -15,9 +15,8 @@ import { DateService } from 'src/app/shared/services/date.service';
   styleUrls: ['./dependentes.component.scss'],
 })
 export class DependentesComponent implements OnInit {
-
-  @Input() set data(dependentes: IDependentes[]){
-    if(dependentes.length > 0){
+  @Input() set data(dependentes: IDependentes[]) {
+    if (dependentes.length > 0) {
       this.dependentes = dependentes;
     }
   }
@@ -34,16 +33,14 @@ export class DependentesComponent implements OnInit {
   constructor(
     private dependenteService: DependentesService,
     private dateService: DateService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.parentescos = parentescos.parentescos;
     this.getDependentes();
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.emit();
   }
 
@@ -54,20 +51,33 @@ export class DependentesComponent implements OnInit {
 
   delete(dependente) {
     if (dependente.id) {
-      if (confirm("Deseja excluir o dependente selecionado ? Esta ação é irreversível.")) {
-        return this.dependenteService.delete(dependente)
+      if (
+        confirm(
+          'Deseja excluir o dependente selecionado ? Esta ação é irreversível.'
+        )
+      ) {
+        return this.dependenteService
+          .delete(dependente)
           .subscribe((data: any) => {
-            this.dependentes = this.dependenteService.reorganizar(dependente, this.dependentes);
+            this.dependentes = this.dependenteService.reorganizar(
+              dependente,
+              this.dependentes
+            );
             this.emit();
           });
       }
     }
-    this.dependentes = this.dependenteService.reorganizar(dependente, this.dependentes);
+    this.dependentes = this.dependenteService.reorganizar(
+      dependente,
+      this.dependentes
+    );
   }
 
   pesquisaDependente(dependente, nome) {
     this.dependente = dependente;
-    const ids = this.dependentes.map(dependente => dependente.id).filter(d => d != null);
+    const ids = this.dependentes
+      .map((dependente) => dependente.id)
+      .filter((d) => d != null);
     this.dependentePesquisado.next({ nome, ids });
   }
 
@@ -83,11 +93,17 @@ export class DependentesComponent implements OnInit {
     dependente.idade = dependenteSelecionado.idade;
     dependente.pessoa = dependenteSelecionado.pessoa;
 
-    this.dependenteService.dependenteUsuario(dependente.id)
+    this.dependenteService
+      .dependenteUsuario(dependente.id)
       .subscribe((data: any) => {
         if (data.cliente)
-          alert("O dependente já está cadastrado no cliente " + data.cliente + " com CPF: " + data.cpf)
-      })
+          alert(
+            'O dependente já está cadastrado no cliente ' +
+              data.cliente +
+              ' com CPF: ' +
+              data.cpf
+          );
+      });
 
     this.dependentePesquisado.next('');
     this.emit();
@@ -95,21 +111,20 @@ export class DependentesComponent implements OnInit {
 
   /**
    * Observable para os dependentes
-  */
+   */
   getDependentes() {
     this.dependentes$ = this.dependentePesquisado.pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      switchMap(data => this.dependenteService.get(data)),
-    )
+      switchMap((data) => this.dependenteService.get(data))
+    );
 
     this.dependentes$.subscribe((data) => {
       this.dependente.pesquisados = data;
-    })
+    });
   }
 
   emit() {
     this.dependentesSelecionados.emit(this.dependentes);
   }
-
 }
