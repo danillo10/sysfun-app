@@ -37,4 +37,11 @@ export class ParcelasComponent implements OnInit {
   emit() {
     this.parcelasSelecionadas.emit(this.parcelas);
   }
+
+  delete(parcela) {
+    if (parcela.id)
+      this.parcelas = this.parcelas.filter((item) => item.id !== parcela.id);
+
+    this.emit();
+  }
 }

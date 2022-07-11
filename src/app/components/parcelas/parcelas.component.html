@@ -5,6 +5,9 @@
       <input
         [(ngModel)]="parcela.parcela_data"
         type="text"
+        mask="**/**/****"
+        placeholder="00/00/0000"
+        maxlength="10"
         class="form-control"
         name="parcela-{{ i }}"
       />
@@ -21,7 +24,7 @@
       />
     </div>
     <div class="mb-3">
-      <label class="form-label">{{ label }}</label>
+      <label class="form-label">Forma de pagamento</label>
       <select
         [(ngModel)]="parcela.parcela_forma_pagamento"
         name="select-{{ i }}"

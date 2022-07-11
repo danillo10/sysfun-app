@@ -103,19 +103,13 @@ export class PlanoFunerarioComponent implements OnInit {
     });
 
     this.setDependentes([]);
-    this.setParcelas([
-      {
-        parcela_data: '12/02/2022',
-        parcela_forma_pagamento: 'Dinheiro',
-        parcela_obs: 'ok',
-        parcela_valor: 10,
-      },
-    ]);
+    // this.setParcelas([new IParcela()]);
   }
 
   ionViewDidEnter() {
     // this.get();
   }
+
   create() {
     if (this.form.value.cliente == '') {
       return alert('Campo Cliente Obrigatório!');
@@ -152,6 +146,7 @@ export class PlanoFunerarioComponent implements OnInit {
     //     }
     //   })
   }
+
   get() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
@@ -188,8 +183,20 @@ export class PlanoFunerarioComponent implements OnInit {
     this.plano.parcelas = parcelas;
   }
 
-  teste(value) {
-    console.log('Chegou');
-    console.log(value);
+  alteraQuantidadeParcelas(e) {
+    const qtdParcelas = e.target.value;
+    const parcelas = [];
+    const dataAtual = new Date(Date.now());
+    for (let i = 0; i < qtdParcelas; i++) {
+      let dataParcela = new Date(dataAtual.setMonth(dataAtual.getMonth() + 1));
+      parcelas.push(
+        new IParcela({
+          id: Math.floor(Math.random() * Date.now()),
+          parcela_data: `${dataParcela.getDate()}/${dataParcela.getMonth()}/${dataParcela.getFullYear()}`,
+        })
+      );
+    }
+    console.log(parcelas);
+    this.plano.parcelas = parcelas;
   }
 }

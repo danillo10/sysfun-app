@@ -117,9 +117,9 @@
         <app-input
           [form]="form"
           control="qtd_parcelas"
-          type="text"
+          type="number"
           label="quantida de parcelas"
-          (change)="teste($event)"
+          (searchEmitter)="alteraQuantidadeParcelas($event)"
         ></app-input>
 
         <app-select
@@ -129,7 +129,7 @@
           label="forma de gerar"
         ></app-select>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-3">
             <app-input
               [form]="form"
@@ -137,9 +137,9 @@
               type="text"
               label="parcelas"
             ></app-input>
-          </div>
+          </div> -->
 
-          <!-- <app-portlets-periodicidade
+        <!-- <app-portlets-periodicidade
             [form]="form"
             control=""
             type="text"
@@ -147,7 +147,7 @@
           >
           </app-portlets-periodicidade> -->
 
-          <div class="col-9">
+        <!-- <div class="col-9">
             <app-input
               [form]="form"
               control="data_inicial"
@@ -155,7 +155,7 @@
               label="data"
             ></app-input>
           </div>
-        </div>
+        </div> -->
 
         <app-parcelas [data]="plano.parcelas"></app-parcelas>
 

@@ -1,111 +1,262 @@
-<div [formGroup]="form" class="mb-3 relative" *ngIf="(type == 'text' || type == 'number') && !mask && !search">
+<div
+  [formGroup]="form"
+  class="mb-3 relative"
+  *ngIf="(type == 'text' || type == 'number') && !mask && !search"
+>
   <label for="" class="form-label">{{ label }}</label>
-  <input upperCase [formControlName]="control" *ngIf="number" class="form-control {{iconPosition}}" [type]="type" [attr.maxlength]="length" NumberInput [name]="control" [disabled]="disabled">
-  <input upperCase [formControlName]="control" *ngIf="!number" class="form-control {{iconPosition}}" [type]="type" [attr.maxlength]="length" [name]="control" [disabled]="disabled">
-  <div class="icon {{iconPosition}}">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    upperCase
+    [formControlName]="control"
+    *ngIf="number"
+    class="form-control {{ iconPosition }}"
+    [type]="type"
+    [attr.maxlength]="length"
+    NumberInput
+    [name]="control"
+    [disabled]="disabled"
+    (change)="emit($event)"
+  />
+  <input
+    upperCase
+    [formControlName]="control"
+    *ngIf="!number"
+    class="form-control {{ iconPosition }}"
+    [type]="type"
+    [attr.maxlength]="length"
+    [name]="control"
+    [disabled]="disabled"
+    (change)="emit($event)"
+  />
+  <div class="icon {{ iconPosition }}">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
 </div>
 
-<div [formGroup]="form" class="mb-3 relative" *ngIf="(type == 'text' || type == 'number') && !mask && search">
+<div
+  [formGroup]="form"
+  class="mb-3 relative"
+  *ngIf="(type == 'text' || type == 'number') && !mask && search"
+>
   <label for="" class="form-label">{{ label }}</label>
-  <input upperCase (keyup)="searching($event.target.value)" [formControlName]="control" class="form-control" [type]="type" [attr.maxlength]="length" [name]="control">
-  <div class="icon {{iconPosition}}">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    upperCase
+    (keyup)="searching($event.target.value)"
+    [formControlName]="control"
+    class="form-control"
+    [type]="type"
+    [attr.maxlength]="length"
+    [name]="control"
+  />
+  <div class="icon {{ iconPosition }}">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
   <div class="list" *ngIf="options.length > 0">
     <ul>
-      <li *ngFor="let option of options" (click)="selecionar(option)">{{ option.description }}</li>
+      <li *ngFor="let option of options" (click)="selecionar(option)">
+        {{ option.description }}
+      </li>
     </ul>
   </div>
 </div>
 
-<div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'text' && mask == 'CPF'">
+<div
+  [formGroup]="form"
+  class="mb-3 relative"
+  *ngIf="type == 'text' && mask == 'CPF'"
+>
   <label for="" class="form-label">{{ label }}</label>
-  <input [formControlName]="control" class="form-control" type="text" mask="***.***.***-**" placeholder="000.000.000-00" [attr.maxlength]="length" [name]="control" NumberInput>
-  <div class="icon {{iconPosition}}">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    [formControlName]="control"
+    class="form-control"
+    type="text"
+    mask="***.***.***-**"
+    placeholder="000.000.000-00"
+    [attr.maxlength]="length"
+    [name]="control"
+    NumberInput
+  />
+  <div class="icon {{ iconPosition }}">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
 </div>
 
-<div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'text' && mask == 'CNPJ'">
+<div
+  [formGroup]="form"
+  class="mb-3 relative"
+  *ngIf="type == 'text' && mask == 'CNPJ'"
+>
   <label for="" class="form-label">{{ label }}</label>
-  <input [formControlName]="control" class="form-control" type="text" mask="**.***.***/****-**" placeholder="00.000.000/0000-00" [attr.maxlength]="length" [name]="control" NumberInput>
-  <div class="icon {{iconPosition}}">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    [formControlName]="control"
+    class="form-control"
+    type="text"
+    mask="**.***.***/****-**"
+    placeholder="00.000.000/0000-00"
+    [attr.maxlength]="length"
+    [name]="control"
+    NumberInput
+  />
+  <div class="icon {{ iconPosition }}">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
 </div>
 
-<div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'text' && mask == 'DATA'">
+<div
+  [formGroup]="form"
+  class="mb-3 relative"
+  *ngIf="type == 'text' && mask == 'DATA'"
+>
   <label for="" class="form-label">{{ label }}</label>
-  <input [formControlName]="control" class="form-control" type="text" mask="**/**/****" placeholder="00/00/0000" [attr.maxlength]="10" [name]="control" NumberInput>
-  <div class="icon {{iconPosition}}">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    [formControlName]="control"
+    class="form-control"
+    type="text"
+    mask="**/**/****"
+    placeholder="00/00/0000"
+    [attr.maxlength]="10"
+    [name]="control"
+    NumberInput
+  />
+  <div class="icon {{ iconPosition }}">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
 </div>
 
-<div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'text' && mask == 'CEP'">
+<div
+  [formGroup]="form"
+  class="mb-3 relative"
+  *ngIf="type == 'text' && mask == 'CEP'"
+>
   <label for="" class="form-label">{{ label }}</label>
-  <input [formControlName]="control" class="form-control" type="text" mask="*****-***" placeholder="00000-000" [attr.maxlength]="length" [name]="control" NumberInput>
-  <div class="icon {{iconPosition}}">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    [formControlName]="control"
+    class="form-control"
+    type="text"
+    mask="*****-***"
+    placeholder="00000-000"
+    [attr.maxlength]="length"
+    [name]="control"
+    NumberInput
+  />
+  <div class="icon {{ iconPosition }}">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
 </div>
 
-<div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'text' && mask == 'TEL'">
+<div
+  [formGroup]="form"
+  class="mb-3 relative"
+  *ngIf="type == 'text' && mask == 'TEL'"
+>
   <label for="" class="form-label">{{ label }}</label>
-  <input [formControlName]="control" class="form-control" type="text" mask="(**) *****-****" placeholder="(00) 00000-0000" [attr.maxlength]="length" [name]="control" NumberInput>
-  <div class="icon {{iconPosition}}" (click)="iconClicked()">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    [formControlName]="control"
+    class="form-control"
+    type="text"
+    mask="(**) *****-****"
+    placeholder="(00) 00000-0000"
+    [attr.maxlength]="length"
+    [name]="control"
+    NumberInput
+  />
+  <div class="icon {{ iconPosition }}" (click)="iconClicked()">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
 </div>
 
-<div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'text' && mask == 'MONEY'">
+<div
+  [formGroup]="form"
+  class="mb-3 relative"
+  *ngIf="type == 'text' && mask == 'MONEY'"
+>
   <label for="" class="form-label">{{ label }}</label>
-  <input [formControlName]="control" class="form-control" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" [name]="control" placeholder="0,00">
-  <div class="icon {{iconPosition}}" (click)="iconClicked()">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    [formControlName]="control"
+    class="form-control"
+    currencyMask
+    [options]="{ prefix: '', thousands: '.', decimal: ',' }"
+    [name]="control"
+    placeholder="0,00"
+  />
+  <div class="icon {{ iconPosition }}" (click)="iconClicked()">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
 </div>
 
-<div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'text' && mask == 'MONEY2'">
+<div
+  [formGroup]="form"
+  class="mb-3 relative"
+  *ngIf="type == 'text' && mask == 'MONEY2'"
+>
   <label for="" class="form-label">{{ label }}</label>
-  <input currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (focusout)="setValor(control, $event.target.value)" [formControlName]="control" class="form-control" [name]="control" placeholder="0,00">
-  <div class="icon {{iconPosition}}" (click)="iconClicked()">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    currencyMask
+    [options]="{ prefix: '', thousands: '.', decimal: ',' }"
+    (focusout)="setValor(control, $event.target.value)"
+    [formControlName]="control"
+    class="form-control"
+    [name]="control"
+    placeholder="0,00"
+  />
+  <div class="icon {{ iconPosition }}" (click)="iconClicked()">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
 </div>
 
 <div [formGroup]="form" class="mb-3 relative" *ngIf="type == 'password'">
   <label class="form-label">{{ label }}</label>
-  <input [formControlName]="control" type="password" placeholder="{{placeholder}}" class="form-control login" [name]="control">
-  <div class="icon {{iconPosition}}">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    [formControlName]="control"
+    type="password"
+    placeholder="{{ placeholder }}"
+    class="form-control login"
+    [name]="control"
+  />
+  <div class="icon {{ iconPosition }}">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
 </div>
 
 <div class="mb-3 relative" *ngIf="type == 'login'">
   <label class="form-label">{{ label }}</label>
-  <input type="text" placeholder="{{placeholder}}" class="form-control login" [name]="control">
-  <div class="icon {{iconPosition}}">
-    <img class="icon" src="../../../assets/icon/{{icon}}" alt="">
+  <input
+    type="text"
+    placeholder="{{ placeholder }}"
+    class="form-control login"
+    [name]="control"
+  />
+  <div class="icon {{ iconPosition }}">
+    <img class="icon" src="../../../assets/icon/{{ icon }}" alt="" />
   </div>
 </div>
 
 <div class="input-search mt-4" *ngIf="type == 'search'">
   <label class="form-label search-label">{{ label }}</label>
-  <input [(ngModel)]="searchText"upperCase type="search" class="search" style="width: 20rem;" [name]="control">
-  <div class="icon {{iconPosition}}">
+  <input
+    [(ngModel)]="searchText"
+    upperCase
+    type="search"
+    class="search"
+    style="width: 20rem"
+    [name]="control"
+  />
+  <div class="icon {{ iconPosition }}">
     <button (click)="searching(searchText)">
-      <img class="icon-search" src="../../../assets/icon/lupa.png" alt="">
+      <img class="icon-search" src="../../../assets/icon/lupa.png" alt="" />
     </button>
     <button (click)="iconClicked()">
-      <img class="icon-search" src="../../../assets/icon/filtro.png" alt="">
+      <img class="icon-search" src="../../../assets/icon/filtro.png" alt="" />
     </button>
   </div>
 </div>
 
 <div [formGroup]="form" class="input-textArea row" *ngIf="type == 'textarea'">
-  <label for="textarea1" class="form-label mt-3">{{label}}</label>
-  <textarea upperCase [formControlName]="control" class="form-control" rows="3" [name]="control"></textarea>
+  <label for="textarea1" class="form-label mt-3">{{ label }}</label>
+  <textarea
+    upperCase
+    [formControlName]="control"
+    class="form-control"
+    rows="3"
+    [name]="control"
+  ></textarea>
 </div>
