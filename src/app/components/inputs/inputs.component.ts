@@ -1,4 +1,12 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
@@ -14,9 +22,10 @@ import { SelectModel } from '../select/model/select.model';
 })
 export class InputsComponent implements OnInit {
   @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
-  @Input() type: 'text' | 'password' | 'search'| 'textarea';
+  @Input() type: 'text' | 'password' | 'search' | 'textarea';
   @Input() mask: 'CPF' | 'CNPJ' | 'CEP' | 'DATA';
   @Input() length: number;
+  @Input() rows: number;
   @Input() number: number;
   @Input() label: string;
   @Input() icon: string;
@@ -26,8 +35,9 @@ export class InputsComponent implements OnInit {
   @Input() control: string;
   @Input() search: boolean;
   @Input() searchText: string;
+  @Input() disabled: boolean = false;
 
-  @Input() set data(options: SelectModel[]){
+  @Input() set data(options: SelectModel[]) {
     this.options = options.length > 0 ? options : [];
   }
 
@@ -43,41 +53,41 @@ export class InputsComponent implements OnInit {
 
   constructor(
     private _utilsCalculosService: UtilsCalculosService,
-    private _calculoTotalService: CalculoTotalService,
-  ) { }
+    private _calculoTotalService: CalculoTotalService
+  ) {}
 
   ngOnInit() {
-    this.searchObservable$ = this.searchEvent
-    .pipe(
+    this.searchObservable$ = this.searchEvent.pipe(
       map((event: any) => {
         return event;
       }),
       debounceTime(1000),
       distinctUntilChanged()
-    )
+    );
 
-    this.searchObservable$.subscribe(text => this.emit(text))
+    this.searchObservable$.subscribe((text) => this.emit(text));
   }
 
-  emit(e){
+  emit(e) {
     this.searchEmitter.emit(e);
   }
 
-  selecionar(e){
+  selecionar(e) {
     this.selectEmitter.emit(e);
   }
 
-  iconClicked(){
+  iconClicked() {
     this.selectIcon.emit();
   }
 
-  searching(e){
-    this.searchEvent.next(e)
+  searching(e) {
+    this.searchEvent.next(e);
   }
 
-  setValor(control, v){
-    this.form.patchValue({control: this._utilsCalculosService.castingToNumber(v)});
+  setValor(control, v) {
+    this.form.patchValue({
+      control: this._utilsCalculosService.castingToNumber(v),
+    });
     this.moneyEmitter.emit(true);
   }
-
 }

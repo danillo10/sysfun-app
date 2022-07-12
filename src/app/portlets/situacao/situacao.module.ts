@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CalculototalComponent } from './calculototal.component';
+import { SituacaoComponent } from './situacao.component';
 import { SelectModule } from 'src/app/components/select/select.module';
-
-
 
 @NgModule({
   declarations: [
-    CalculototalComponent
+    SituacaoComponent
   ],
   imports: [
     CommonModule,
     SelectModule
   ],
   exports: [
-    CalculototalComponent
+    SituacaoComponent
   ]
 })
-export class CalculototalModule { }
+export class SituacaoModule { }

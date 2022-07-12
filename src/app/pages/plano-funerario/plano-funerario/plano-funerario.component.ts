@@ -1,12 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IParcela } from 'src/app/components/parcelas/model/parcelas.model';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { DependentesService } from 'src/app/shared/services/dependentes.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { IDependentes } from '../../cliente/model/cliente.model';
-import { IPlanoFunerario } from '../model/plano-funerario.model';
+import {
+  IPlanoFunerario,
+  PlanoFunerarioModel,
+} from '../model/plano-funerario.model';
 import { PlanoFunerarioService } from '../service/plano-funerario.service';
 
 @Component({
@@ -17,7 +20,7 @@ import { PlanoFunerarioService } from '../service/plano-funerario.service';
 export class PlanoFunerarioComponent implements OnInit {
   @Input() form: FormGroup;
 
-  plano: IPlanoFunerario;
+  plano: PlanoFunerarioModel;
   criadoEm: string;
 
   calculoTotal: SelectModel[];
@@ -30,7 +33,7 @@ export class PlanoFunerarioComponent implements OnInit {
     private dependentesService: DependentesService,
     private router: Router
   ) {
-    this.plano = new IPlanoFunerario();
+    this.plano = new PlanoFunerarioModel();
   }
 
   ngOnInit() {
@@ -100,19 +103,13 @@ export class PlanoFunerarioComponent implements OnInit {
     });
 
     this.setDependentes([]);
-    this.setParcelas([
-      {
-        parcela_data: '12/02/2022',
-        parcela_forma_pagamento: 'Dinheiro',
-        parcela_obs: 'ok',
-        parcela_valor: 10
-      }
-    ]);
+    // this.setParcelas([new IParcela()]);
   }
 
   ionViewDidEnter() {
     // this.get();
   }
+
   create() {
     if (this.form.value.cliente == '') {
       return alert('Campo Cliente Obrigatório!');
@@ -149,6 +146,7 @@ export class PlanoFunerarioComponent implements OnInit {
     //     }
     //   })
   }
+
   get() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
@@ -161,7 +159,7 @@ export class PlanoFunerarioComponent implements OnInit {
           this.planoFunerarioService
             .salvaPlanos(id, this.criadoEm)
             .then((data: any) => {
-              this.plano = new IPlanoFunerario(data.plano[0]);
+              this.plano = new PlanoFunerarioModel(data.plano[0]);
 
               if (navigator.onLine) this.plano.dependentes = data.dependentes;
 
@@ -175,10 +173,30 @@ export class PlanoFunerarioComponent implements OnInit {
   }
 
   setDependentes(dependentes: IDependentes[]) {
-    this.plano.dependentes = dependentes.length == 0 ? this.dependentesService.reorganizar() : dependentes;
+    this.plano.dependentes =
+      dependentes.length == 0
+        ? this.dependentesService.reorganizar()
+        : dependentes;
   }
 
   setParcelas(parcelas: IParcela[]) {
+    this.plano.parcelas = parcelas;
+  }
+
+  alteraQuantidadeParcelas(e) {
+    const qtdParcelas = e.target.value;
+    const parcelas = [];
+    const dataAtual = new Date(Date.now());
+    for (let i = 0; i < qtdParcelas; i++) {
+      let dataParcela = new Date(dataAtual.setMonth(dataAtual.getMonth() + 1));
+      parcelas.push(
+        new IParcela({
+          id: Math.floor(Math.random() * Date.now()),
+          parcela_data: `${dataParcela.getDate()}/${dataParcela.getMonth()}/${dataParcela.getFullYear()}`,
+        })
+      );
+    }
+    console.log(parcelas);
     this.plano.parcelas = parcelas;
   }
 }

@@ -2,18 +2,49 @@
   <div class="col-12" *ngFor="let parcela of parcelas; let i = index">
     <div class="form-group relative">
       <label for="">Data</label>
-      <input [(ngModel)]="parcela.parcela_data" type="text" class="form-control" name="parcela{{i}}">
+      <input
+        [(ngModel)]="parcela.parcela_data"
+        type="text"
+        mask="**/**/****"
+        placeholder="00/00/0000"
+        maxlength="10"
+        class="form-control"
+        name="parcela-{{ i }}"
+      />
     </div>
     <div class="form-group relative">
       <label for="">Valor</label>
-      <input class="form-control" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" name="valor-{{i}}" placeholder="0,00">
+      <input
+        [(ngModel)]="parcela.parcela_valor"
+        class="form-control"
+        currencyMask
+        [options]="{ prefix: '', thousands: '.', decimal: ',' }"
+        name="valor-{{ i }}"
+        placeholder="0,00"
+      />
     </div>
-    <div [formGroup]="form" class="mb-3">
-      <label class="form-label">{{ label }}</label>
-      <select name="select-{{i}}" class="form-select" aria-label="select">
+    <div class="mb-3">
+      <label class="form-label">Forma de pagamento</label>
+      <select
+        [(ngModel)]="parcela.parcela_forma_pagamento"
+        name="select-{{ i }}"
+        class="form-select"
+        aria-label="select"
+      >
         <option selected></option>
-        <option *ngFor="let option of options" [value]="option.value || option.id">{{ option.description || option.descricao }}</option>
+        <option *ngFor="let forma of formaPagamento" [value]="forma.value">
+          {{ forma.description }}
+        </option>
       </select>
+    </div>
+    <div class="form-group relative">
+      <label for="">Observações</label>
+      <textarea
+        [(ngModel)]="parcela.parcela_obs"
+        class="form-control"
+        name="obs-{{ i }}"
+      >
+      </textarea>
     </div>
     <div class="form-group">
       <app-button type="delete" (click)="delete(parcela)"></app-button>

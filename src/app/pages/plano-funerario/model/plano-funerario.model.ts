@@ -1,4 +1,4 @@
-export class IPlanoFunerario {
+export class PlanoFunerarioModel {
   id?: any;
   tipo?: string;
   cliente?: any;
@@ -61,6 +61,8 @@ export class IPlanoFunerario {
   atualizado_por?: any;
   os_gerada?: any;
   repetir_valor?: string;
+  pesquisados?: any[];
+
   /**
    * Constructor
    *
@@ -129,5 +131,25 @@ export class IPlanoFunerario {
     this.atualizado_por = data.atualizado_por || '';
     this.os_gerada = data.os_gerada || '';
     this.repetir_valor = data.repetir_valor || '';
+    this.pesquisados = [];
+  }
+}
+
+export class IPlanoFunerario {
+  numero?: number;
+  id?: number;
+  nome?: string;
+  valor_venda?: number;
+  pesquisados?: any[];
+  created_at?: Date;
+  updated_at?: Date;
+
+  constructor(data?) {
+    data = data || {};
+    this.id = null;
+    this.numero = data.numero + 1 || 1;
+    this.nome = null;
+    this.valor_venda = null;
+    this.pesquisados = [];
   }
 }

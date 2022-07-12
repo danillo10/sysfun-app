@@ -10,9 +10,7 @@ import { SelectModule } from '../select/select.module';
 import { DependentesComponent } from './dependentes.component';
 
 @NgModule({
-  declarations: [
-    DependentesComponent
-  ],
+  declarations: [DependentesComponent, NumberinputDirective],
   imports: [
     CommonModule,
     FormsModule,
@@ -20,10 +18,8 @@ import { DependentesComponent } from './dependentes.component';
     InputsModule,
     SelectModule,
     ButtonsModule,
-    IonicInputMaskModule
+    IonicInputMaskModule,
   ],
-  exports: [
-    DependentesComponent
-  ]
+  exports: [DependentesComponent],
 })
-export class DependentesModule { }
+export class DependentesModule {}

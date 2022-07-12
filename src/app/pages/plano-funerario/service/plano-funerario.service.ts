@@ -7,22 +7,21 @@ import { LocalstorageService } from 'src/app/shared/services/localstorage.servic
 import { NativeStorageService } from 'src/app/shared/services/native-storage.service';
 import { of } from 'rxjs';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PlanoFunerarioService {
-
   constructor(
     private _http: HttpClient,
     private localStorageService: LocalstorageService,
     private nativeStorageService: NativeStorageService
-    ){}
+  ) {}
 
   get(pesquisa: PesquisaModel): Promise<any> {
-    return this._http.post(`${environment.host}pesquisa/avancada/planos-funerarios`, pesquisa)
-    .pipe(res => res)
-    .toPromise();
+    return this._http
+      .post(`${environment.host}pesquisa/avancada/planos-funerarios`, pesquisa)
+      .pipe((res) => res)
+      .toPromise();
   }
 
   salvaPlanoAplicativo(plano: IPlanoFunerario) {
@@ -41,8 +40,6 @@ export class PlanoFunerarioService {
 
       data = JSON.parse(data);
 
-      plano.atualizado_por = (planosNovos.length + 1);
-
       planosNovos.push(plano);
 
       data = [plano, ...data];
@@ -50,21 +47,21 @@ export class PlanoFunerarioService {
       this.localStorageService.setParse('clientesNovos', planosNovos);
       this.nativeStorageService.setParse('clientes', data);
 
-      return of(true)
-        .toPromise();
+      return of(true).toPromise();
     }
 
-    return this._http.post(`${environment.host}planos-funerarios`, plano)
-      .pipe(res => res)
-      .toPromise()
+    return this._http
+      .post(`${environment.host}planos-funerarios`, plano)
+      .pipe((res) => res)
+      .toPromise();
   }
-  
+
   salvaClientesNovos(plano: IPlanoFunerario, criadoEm: string) {
     let planos = this.localStorageService.getParse('PlanoNovos');
 
     const key = criadoEm == 'sistema' ? 'id' : 'aplicativo_id';
 
-    const clt = planos.find(c => c[key] == plano[key]);
+    const clt = planos.find((c) => c[key] == plano[key]);
 
     planos = this.handlePlanos(plano, planos, key, clt);
 
@@ -83,11 +80,16 @@ export class PlanoFunerarioService {
     this.nativeStorageService.setParse('clientes', clientes);
   }
 
-  handlePlanos(plano: IPlanoFunerario, planos: IPlanoFunerario[], key: string, clt?: any) {
+  handlePlanos(
+    plano: IPlanoFunerario,
+    planos: IPlanoFunerario[],
+    key: string,
+    clt?: any
+  ) {
     if (clt) {
-      planos = planos.map(c => {
+      planos = planos.map((c) => {
         if (c[key] == plano[key]) {
-          c = plano
+          c = plano;
         }
         return c;
       });
@@ -97,5 +99,4 @@ export class PlanoFunerarioService {
 
     return planos;
   }
-
 }

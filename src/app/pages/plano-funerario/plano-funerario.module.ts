@@ -23,12 +23,14 @@ import { PeriodicidadeModule } from 'src/app/portlets/periodicidade/periodicidad
 import { DependentesModule } from 'src/app/components/dependentes/dependentes.module';
 import { ParcelasModule } from 'src/app/components/parcelas/parcelas.module';
 import { PlanosFunerariosModule } from 'src/app/components/planos-funerarios/planos-funerarios.module';
+import { CalculoTotalModule } from 'src/app/portlets/calculo-total/calculo-total.module';
+import { SituacaoModule } from 'src/app/portlets/situacao/situacao.module';
 
 @NgModule({
   declarations: [
     PlanoFunerarioPage,
     PlanoFunerarioComponent,
-    FiltroPlanoComponent
+    FiltroPlanoComponent,
   ],
   imports: [
     CommonModule,
@@ -52,7 +54,9 @@ import { PlanosFunerariosModule } from 'src/app/components/planos-funerarios/pla
     IndicacaoPortletsModule,
     DependentesModule,
     ParcelasModule,
-    PlanosFunerariosModule
+    PlanosFunerariosModule,
+    CalculoTotalModule,
+    SituacaoModule
   ],
 })
 export class PlanoFunerarioModule {}

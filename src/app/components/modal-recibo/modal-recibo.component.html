@@ -1,0 +1,42 @@
+<div class="modal">
+  <div class="modal-title" *ngIf="!viewRecibo">
+    <span>Imprimir Recibo</span>
+  </div>
+
+  <div class="modal-content-sf" *ngIf="!viewRecibo">
+    <app-input [form]="form" control="data" type="text" mask="DATA" label="Data"></app-input>
+    <app-input [form]="form" control="valor" type="text" mask="MONEY" label="Valor"></app-input>
+
+    <app-input [form]="form" control="mensagem" type="textarea" rows="2" label="Correspondente a"></app-input>
+
+    <app-button class="bt" color="blue" label="Imprimir" type="normal" (click)="imprimir()"></app-button>
+  </div>
+
+  <div class="recibo" *ngIf="viewRecibo">
+    <app-logo></app-logo>
+
+    <h2>Funerária Aliança</h2>
+    <p>CNPJ:</p>
+    <p>ENDEREÇO</p>
+
+    <div class="separator"></div>
+
+    <h2>COMPROVANTE DE PAGAMENTO</h2>
+    <h2>01/07/2022 às 13:00</h2>
+
+    <div class="separator"></div>
+
+    <h2>CARLA ALVES SANTANA</h2>
+    <p>RUA ALVES PEREIRA 110, JD PAULISTA - SP</p>
+
+    <div class="separator"></div>
+
+    <p>DATA: 11/01/2022</p>
+    <p>CONTRATO: 1640</p>
+    <p>MENSALIDADE: R$ 40,00</p>
+    <p>VENCIMENTO: 18</p>
+    <p>PLANO: PRATA</p>
+
+    <div class="separator"></div>
+  </div>
+</div>

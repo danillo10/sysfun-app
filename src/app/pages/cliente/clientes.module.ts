@@ -22,13 +22,14 @@ import { ClientesPage } from './clientes.page';
 import { FiltroComponent } from './filtro/filtro.component';
 import { ClienteService } from './service/cliente.service';
 import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
-import { LoginPageRoutingModule } from '../login/login-routing.module';
+import { NumberinputDirective } from 'src/app/shared/directives/numberinput.directive';
 
 @NgModule({
   declarations: [
     ClientesPage,
     ClienteComponent,
-    FiltroComponent
+    FiltroComponent,
+    NumberinputDirective,
   ],
   imports: [
     CommonModule,
@@ -50,10 +51,8 @@ import { LoginPageRoutingModule } from '../login/login-routing.module';
     SelectService,
     CategoriasClientesService,
     SocialSharing,
-    { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
   ],
-  exports: [
-
-  ]
+  exports: [],
 })
-export class ClienteModule { }
+export class ClienteModule {}

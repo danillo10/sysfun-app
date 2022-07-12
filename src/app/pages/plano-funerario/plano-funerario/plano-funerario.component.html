@@ -4,6 +4,15 @@
     <div class="container main">
       <h2 class="mb-4">Dados do plano</h2>
       <form [formGroup]="form">
+        <app-input
+          [form]="form"
+          control="id"
+          type="number"
+          label="número do plano"
+          [disabled]="true"
+          *ngIf="plano.id"
+        ></app-input>
+
         <app-portlet-cliente
           [form]="form"
           control="cliente"
@@ -32,18 +41,11 @@
           label="Indicação"
         ></app-portlet-indicacao>
 
-        <app-input
-          [form]="form"
-          control="id"
-          type="text"
-          label="número do plano"
-        ></app-input>
-
         <h2>Planos funarários</h2>
 
-        <!-- <app-planos-funerarios></app-planos-funerarios> -->
+        <app-planos-funerarios></app-planos-funerarios>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-3">
             <app-input
               [form]="form"
@@ -60,9 +62,9 @@
               type="text"
             ></app-input>
           </div>
-        </div>
+        </div> -->
 
-        <h2>Totais</h2>
+        <h2 class="mt-4">Totais</h2>
 
         <app-input
           [form]="form"
@@ -91,18 +93,19 @@
         ></app-input>
 
         <app-portlet-pagamento
-        [form]="form"
-        control="forma_pagamento"
-        type="text"
-        label="forma de pagamento">
-       </app-portlet-pagamento>
+          [form]="form"
+          control="forma_pagamento"
+          type="text"
+          label="forma de pagamento"
+        >
+        </app-portlet-pagamento>
 
-       <app-input
-       [form]="form"
-       control="valor_liquido"
-       type="text"
-       label="Calculo do total"
-     ></app-input>
+        <app-portlet-calculo-total
+          [form]="form"
+          control="valor_liquido"
+          type="text"
+          label="Calculo do total"
+        ></app-portlet-calculo-total>
 
         <app-input
           [form]="form"
@@ -114,8 +117,9 @@
         <app-input
           [form]="form"
           control="qtd_parcelas"
-          type="text"
+          type="number"
           label="quantida de parcelas"
+          (searchEmitter)="alteraQuantidadeParcelas($event)"
         ></app-input>
 
         <app-select
@@ -125,25 +129,25 @@
           label="forma de gerar"
         ></app-select>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-3">
             <app-input
               [form]="form"
               control="parcelas"
               type="text"
-              label="parcela"
+              label="parcelas"
             ></app-input>
-          </div>
+          </div> -->
 
-          <app-portlets-periodicidade
-          [form]="form"
-          control=""
-          type="text"
-          label="Periodicidade"
+        <!-- <app-portlets-periodicidade
+            [form]="form"
+            control=""
+            type="text"
+            label="Periodicidade"
           >
-          </app-portlets-periodicidade>
+          </app-portlets-periodicidade> -->
 
-          <div class="col-9">
+        <!-- <div class="col-9">
             <app-input
               [form]="form"
               control="data_inicial"
@@ -151,18 +155,17 @@
               label="data"
             ></app-input>
           </div>
-        </div>
+        </div> -->
 
         <app-parcelas [data]="plano.parcelas"></app-parcelas>
 
-        <app-input
+        <!-- <app-input
           [form]="form"
           control="obs"
           type="textarea"
           label="observações"
-        ></app-input>
+        ></app-input> -->
 
-        <div class="maisparcelas d-flex justify-content-center">
         <!-- <div class="maisparcelas d-flex justify-content-center">
           <a href=""
             >ver mais parcelas
@@ -209,7 +212,10 @@
 
         <h2 class="mt-5">Dependentes</h2>
 
-        <app-dependentes [data]="plano.dependentes" (dependentesSelecionados)="setDependentes($event)"></app-dependentes>
+        <app-dependentes
+          [data]="plano.dependentes"
+          (dependentesSelecionados)="setDependentes($event)"
+        ></app-dependentes>
 
         <h2 class="mt-5">detalhes</h2>
 
