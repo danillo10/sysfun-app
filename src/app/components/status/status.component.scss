@@ -1,23 +1,20 @@
-.aberto{
-    background-color: #b4b4b4;
+.bg-gray,.pago,.bg-yellow,.bg-dark-gray{
     border-radius: 100%;
     margin-left: 10px;
     width: 25px;
     height: 25px;
 }
-
+.bg-gray{
+    background-color: #b4b4b4;
+}
 .pago{
     background-color:#56b910;
-    border-radius: 100%;
-    margin-left: 10px;
-    width: 25px;
-    height: 25px;
 }
 
-.atraso{
+.bg-yellow{
     background-color: #f5db00;
-    border-radius: 100%;
-    margin-left: 10px;
-    width: 25px;
-    height: 25px;
+}
+
+.bg-dark-gray{
+    background-color: #56676e;
 }

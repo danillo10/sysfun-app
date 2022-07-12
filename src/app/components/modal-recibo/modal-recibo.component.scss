@@ -11,6 +11,10 @@
   background: #fff;
 }
 
+p{
+ font-size:12px;
+}
+
 .modal-title {
   width: 90%;
   height: 62px;
@@ -40,7 +44,7 @@
 .separator {
   width: 95%;
   border-bottom: 1px solid #dde3e7;
-  margin-top: 0;
+  margin: 15px 0 15px 0;
 }
 
 .recibo {
@@ -49,4 +53,28 @@
   background: white;
   text-align: center;
   padding: 10px;
+}
+h1{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+h2{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+tabela{
+  margin-top: 1rem;
+  width: 100%;
+  height: auto;
+}
+th,td{
+  width: 115px;
+  font-size: 12px;
+}
+
+span{
+  font-weight: bold;
+  font-size: 20px;
 }
