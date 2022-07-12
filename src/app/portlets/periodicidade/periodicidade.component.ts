@@ -6,8 +6,8 @@ import periodicidade from '../../pages/utils/periodicidade.json'
 
 @Component({
   selector: 'app-portlets-periodicidade',
-  templateUrl: './periocidade.component.html',
-  styleUrls: ['./periocidade.component.scss'],
+  templateUrl: './periodicidade.component.html',
+  styleUrls: ['./periodicidade.component.scss'],
 })
 export class PeriodicidadeComponent implements OnInit {
 @Input() form: FormControl;
