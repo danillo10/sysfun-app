@@ -23,9 +23,6 @@ const routes: Routes = [
     path: 'plano-funerario', loadChildren: () => import('./pages/plano-funerario/plano-funerario.module').then(m => m.PlanoFunerarioModule)
   },
   {
-    path: 'imprimir', loadChildren: () => import('./pages/imprimir-recibo/imprimir-recibo.module').then(m => m.ImprimirReciboModule)
-  },
-  {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },

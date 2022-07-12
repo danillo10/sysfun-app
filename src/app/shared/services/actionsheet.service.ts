@@ -13,11 +13,15 @@ export class ActionsheetService {
   liquidar$: Observable<any>;
   liquidar = new Subject();
 
+  imprimir$: Observable<any>;
+  imprimir = new Subject();
+
   constructor(
     private actionSheetController: ActionSheetController,
     private liquidarService: LiquidarService
   ) {
     this.liquidar$ = this.liquidar.pipe(res => res);
+    this.imprimir$ = this.imprimir.pipe(res => res);
   }
 
   async showActionSheetContaReceber(
@@ -39,7 +43,7 @@ export class ActionsheetService {
           text: 'Imprimir Comprovante',
           // icon: 'print',
           handler: () => {
-            console.log('Share clicked');
+            this.imprimir.next(conta);
           },
         },
         {

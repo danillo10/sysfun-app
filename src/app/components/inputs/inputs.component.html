@@ -107,5 +107,5 @@
 
 <div [formGroup]="form" class="input-textArea row" *ngIf="type == 'textarea'">
   <label for="textarea1" class="form-label mt-3">{{label}}</label>
-  <textarea upperCase [formControlName]="control" class="form-control" rows="3" [name]="control"></textarea>
+  <textarea upperCase [formControlName]="control" class="form-control" [rows]="rows" [name]="control"></textarea>
 </div>

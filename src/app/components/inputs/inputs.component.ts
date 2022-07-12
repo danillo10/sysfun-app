@@ -17,6 +17,7 @@ export class InputsComponent implements OnInit {
   @Input() type: 'text' | 'password' | 'search'| 'textarea';
   @Input() mask: 'CPF' | 'CNPJ' | 'CEP' | 'DATA';
   @Input() length: number;
+  @Input() rows: number;
   @Input() number: number;
   @Input() label: string;
   @Input() icon: string;

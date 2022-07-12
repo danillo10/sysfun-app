@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ButtonsModule, IconsModule, PaginationModule } from 'src/app/components';
+import { ModalReciboModule } from 'src/app/components/modal-recibo/modal-recibo.module';
 import { NavbarModule } from 'src/app/components/navbar/navbar.module';
 import { BairroModule } from 'src/app/portlets/bairro/bairro.module';
 import { CidadeModule } from 'src/app/portlets/cidade/cidade.module';
@@ -38,7 +39,8 @@ import { LiquidarContaModule } from './liquidar-conta/liquidar-conta.module';
     LiquidarContaModule,
     CidadeModule,
     BairroModule,
-    EnderecoModule
+    EnderecoModule,
+    ModalReciboModule
   ]
 })
 export class ContasReceberModule { }

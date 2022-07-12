@@ -20,9 +20,11 @@ export class ContasReceberPage implements OnInit {
   adicionarConta = false;
   pesquisa = {} as PesquisaModel;
   contasReceber: IContasReceber[];
+  contaReceber: IContasReceber;
   total: number;
   filtro: boolean;
   viewLiquidar: boolean;
+  viewRecibo: boolean;
 
   constructor(
     private _router: Router,
@@ -44,6 +46,7 @@ export class ContasReceberPage implements OnInit {
     this.pesquisa.pagina = 1;
     this.pesquisar();
     this.getLiquidar();
+    this.getImprimir();
   }
 
   add() {
@@ -63,6 +66,14 @@ export class ContasReceberPage implements OnInit {
       })
   }
 
+  getImprimir(){
+    this._actionSheetService.imprimir$
+      .subscribe((conta: IContasReceber) => {
+        this.contaReceber = conta;
+        this.viewRecibo = true;
+      })
+  }
+
   pesquisar(skip: number = 0) {
     this._loadingService.showLoading("Carregando...")
       .then(() => {
@@ -76,14 +87,12 @@ export class ContasReceberPage implements OnInit {
           this._loadingService.hideLoading();
         });
       })
-
   }
 
   closeFilter(v: boolean) {
     if(v) {
       this.pesquisar();
     }
-
     this.viewLiquidar = false;
   }
 
