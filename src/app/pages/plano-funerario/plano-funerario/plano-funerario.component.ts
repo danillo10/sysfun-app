@@ -6,7 +6,10 @@ import { SelectModel } from 'src/app/components/select/model/select.model';
 import { DependentesService } from 'src/app/shared/services/dependentes.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { IDependentes } from '../../cliente/model/cliente.model';
-import { IPlanoFunerario, PlanoFunerarioModel } from '../model/plano-funerario.model';
+import {
+  IPlanoFunerario,
+  PlanoFunerarioModel,
+} from '../model/plano-funerario.model';
 import { PlanoFunerarioService } from '../service/plano-funerario.service';
 
 @Component({
@@ -100,19 +103,13 @@ export class PlanoFunerarioComponent implements OnInit {
     });
 
     this.setDependentes([]);
-    this.setParcelas([
-      {
-        parcela_data: '12/02/2022',
-        parcela_forma_pagamento: 'Dinheiro',
-        parcela_obs: 'ok',
-        parcela_valor: 10,
-      },
-    ]);
+    // this.setParcelas([new IParcela()]);
   }
 
   ionViewDidEnter() {
     // this.get();
   }
+
   create() {
     if (this.form.value.cliente == '') {
       return alert('Campo Cliente Obrigatório!');
@@ -149,6 +146,7 @@ export class PlanoFunerarioComponent implements OnInit {
     //     }
     //   })
   }
+
   get() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
@@ -182,6 +180,23 @@ export class PlanoFunerarioComponent implements OnInit {
   }
 
   setParcelas(parcelas: IParcela[]) {
+    this.plano.parcelas = parcelas;
+  }
+
+  alteraQuantidadeParcelas(e) {
+    const qtdParcelas = e.target.value;
+    const parcelas = [];
+    const dataAtual = new Date(Date.now());
+    for (let i = 0; i < qtdParcelas; i++) {
+      let dataParcela = new Date(dataAtual.setMonth(dataAtual.getMonth() + 1));
+      parcelas.push(
+        new IParcela({
+          id: Math.floor(Math.random() * Date.now()),
+          parcela_data: `${dataParcela.getDate()}/${dataParcela.getMonth()}/${dataParcela.getFullYear()}`,
+        })
+      );
+    }
+    console.log(parcelas);
     this.plano.parcelas = parcelas;
   }
 }

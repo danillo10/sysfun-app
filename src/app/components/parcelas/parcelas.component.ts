@@ -1,8 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SelectModel } from '../select/model/select.model';
 
 import { IParcela } from './model/parcelas.model';
 import { ParcelasService } from './service/parcelas.service';
+
+import json from '../../pages/utils/forma_pagamento.json';
 
 @Component({
   selector: 'app-parcelas',
@@ -10,9 +13,8 @@ import { ParcelasService } from './service/parcelas.service';
   styleUrls: ['./parcelas.component.scss'],
 })
 export class ParcelasComponent implements OnInit {
-
-  @Input() set data(parcelas: IParcela[]){
-    if(parcelas.length > 0){
+  @Input() set data(parcelas: IParcela[]) {
+    if (parcelas.length > 0) {
       this.parcelas = parcelas;
     }
   }
@@ -22,23 +24,24 @@ export class ParcelasComponent implements OnInit {
   parcelas$: Observable<any>;
   parcela: IParcela;
   parcelas: IParcela[];
+  formaPagamento: SelectModel[];
 
-  constructor(
-    private parcelasService: ParcelasService
-  ) {
-
+  constructor(private parcelasService: ParcelasService) {
+    this.formaPagamento = json.formaPagamento;
   }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-  }
-
-  ngOnChanges() {
-
-  }
+  ngOnChanges() {}
 
   emit() {
     this.parcelasSelecionadas.emit(this.parcelas);
   }
 
+  delete(parcela) {
+    if (parcela.id)
+      this.parcelas = this.parcelas.filter((item) => item.id !== parcela.id);
+
+    this.emit();
+  }
 }
