@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import moment from 'moment';
+
 import { IContasReceber } from 'src/app/pages/contas-receber/model/contas-receber.model';
 import { ModalReciboService } from './service/modal-recibo.service';
 
@@ -13,6 +14,10 @@ import { ModalReciboService } from './service/modal-recibo.service';
 export class ModalReciboComponent implements OnInit {
   form: FormGroup;
   viewRecibo: boolean;
+  dataHoje: any;
+  contaRecebida: any;
+  contasRecebidas: any[];
+  total: number;
 
   @Input() conta: IContasReceber;
 
@@ -20,7 +25,9 @@ export class ModalReciboComponent implements OnInit {
     private formBuilder: FormBuilder,
     private modalReciboService: ModalReciboService
   ) {
-    this.viewRecibo = true
+    this.total = 0;
+    this.viewRecibo = false;
+    this.dataHoje = moment().format('DD/MM/YYYY HH:mm:ss');
   }
 
   ngOnInit() {
@@ -33,10 +40,16 @@ export class ModalReciboComponent implements OnInit {
 
   imprimir() {
     this.viewRecibo = true;
-
     this.modalReciboService.imprimir(this.conta)
       .subscribe((data: any) => {
+        this.contaRecebida = data.conta;
+        this.contasRecebidas = data.contas;
+        this.calculaTotal();
       })
+  }
+
+  calculaTotal(){
+    this.contasRecebidas.map(c => this.total += c.valor);
   }
 
 }

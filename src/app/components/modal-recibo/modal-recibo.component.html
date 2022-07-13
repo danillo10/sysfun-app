@@ -4,101 +4,78 @@
   </div>
 
   <div class="modal-content-sf" *ngIf="!viewRecibo">
-    <app-input [form]="form" control="data" type="text" mask="DATA" label="Data"></app-input>
-    <app-input [form]="form" control="valor" type="text" mask="MONEY" label="Valor"></app-input>
+    <app-input
+      [form]="form"
+      control="data"
+      type="text"
+      mask="DATA"
+      label="Data"
+    ></app-input>
+    <app-input
+      [form]="form"
+      control="valor"
+      type="text"
+      mask="MONEY"
+      label="Valor"
+    ></app-input>
 
-    <app-input [form]="form" control="mensagem" type="textarea" rows="2" label="Correspondente a"></app-input>
+    <app-input
+      [form]="form"
+      control="mensagem"
+      type="textarea"
+      rows="2"
+      label="Correspondente a"
+    ></app-input>
 
-    <app-button class="bt" color="blue" label="Imprimir" type="normal" (click)="imprimir()"></app-button>
+    <app-button
+      class="bt"
+      color="blue"
+      label="Imprimir"
+      type="normal"
+      (click)="imprimir()"
+    ></app-button>
   </div>
 
   <div class="recibo" *ngIf="viewRecibo">
     <app-logo></app-logo>
 
     <h1 class="mt-4">Funerária Aliança</h1>
-    <p>CNPJ</p>
-    <p>ENDEREÇO</p>
+    <p>CNPJ: 02.317.053/0001-66</p>
+    <p>ENDEREÇO: AVENIDA CASTELO BRANCO, 06, VILA VITÓRIA, IMPERATRIZ-MA</p>
 
     <div class="separator"></div>
 
     <h2>COMPROVANTE DE PAGAMENTO</h2>
-    <h2>01/07/2022 às 13:00</h2>
+    <h2>{{ dataHoje }}</h2>
 
     <div class="separator"></div>
 
-    <h2 >CARLA ALVES SANTANA</h2>
+    <h2>{{ contaRecebida.nome_fantasia }}</h2>
     <p>RUA ALVES PEREIRA 110, JD PAULISTA - SP</p>
 
     <div class="separator"></div>
 
-    <p>DATA: 11/01/2022</p>
-    <p>CONTRATO: 1640</p>
-    <p>MENSALIDADE: R$ 40,00</p>
-    <p>VENCIMENTO: 18</p>
-    <p>PLANO: PRATA</p>
+    <p>DATA:</p>
+    <p>CONTRATO: {{ contaRecebida.n_os }}</p>
+    <p>MENSALIDADE: {{ contaRecebida.valor | currency: "BRL" }}</p>
+    <p>VENCIMENTO: {{ contaRecebida.n_parcela }}</p>
+    <p>PLANO:</p>
 
     <div class="separator"></div>
-  <table>
-    <tr>
-      <td>
-        FEV
-      </td>
-      <td>
-        01/01/22
-      </td>
-      <td>
-        R$40,00
-      </td>
-    </tr>
-  <tr>
-    <td>
-      FEV
-    </td>
-    <td>
-      01/01/22
-    </td>
-    <td>
-      R$40,00
-    </td>
-  </tr>
-  <tr>
-    <td>
-      MAR
-    </td>
-    <td>
-      01/01/22
-    </td>
-    <td>
-      R$40,00
-    </td>
-  </tr>
-  <tr>
-    <td>
-      ABR
-    </td>
-    <td>
-      01/01/22
-    </td>
-    <td>
-      R$40,00
-    </td>
-  </tr>
-  <tr>
-    <td>
-      MAI
-    </td>
-    <td>
-      01/01/22
-    </td>
-    <td>
-      R$40,00
-    </td>
-  </tr>
-  </table>
-  <h2 class="mt-4">PAGOU R$ 240,00</h2>
-  <div class="separator"></div>
 
-  <h2>ROBERTO SOARES</h2>
-  <span>(00)00000-0000</span>
+    <table>
+      <tr *ngFor="let conta of contasRecebidas">
+        <td>FEV</td>
+        <td>{{ conta.data_liquidacao | date:'dd/MM/YYYY' }}</td>
+        <td>{{ conta.valor | currency:'BRL' }}</td>
+      </tr>
+    </table>
+
+    <h2 class="mt-4">PAGOU {{ total | currency:'BRL' }}</h2>
+
+    <div class="separator"></div>
+
+    <h2>ROBERTO SOARES</h2>
+    <span>(00)00000-0000</span>
   </div>
 </div>
