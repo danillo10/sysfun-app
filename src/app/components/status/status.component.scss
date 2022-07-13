@@ -1,4 +1,4 @@
-.bg-gray,.pago,.bg-yellow,.bg-dark-gray{
+.bg-gray,.bg-green,.bg-yellow,.bg-dark-gray,.bg-red,.bg-blue,.bg-orange{
     border-radius: 100%;
     margin-left: 10px;
     width: 25px;
@@ -7,7 +7,7 @@
 .bg-gray{
     background-color: #b4b4b4;
 }
-.pago{
+.bg-green{
     background-color:#56b910;
 }
 
@@ -15,6 +15,18 @@
     background-color: #f5db00;
 }
 
+.bg-red{
+    background-color: #f55557;;
+}
+
+.bg-blue{
+    background-color: #399dff;
+}
+
 .bg-dark-gray{
     background-color: #56676e;
+}
+
+.bg-orange{
+    background-color: orange;
 }
