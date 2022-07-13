@@ -12,6 +12,11 @@
 
         <app-input [form]="form" control="vencimento_final" label="Até" type="text" mask="DATA"></app-input>
 
+        <app-input [form]="form" control="recebimento_inicio" label="Data de recebimento de" type="text" mask="DATA">
+        </app-input>
+
+        <app-input [form]="form" control="recebimento_final" label="Até" type="text" mask="DATA"></app-input>
+
         <app-select [form]="form" control="estado" [options]="estados" label="estado" type="text"></app-select>
 
         <app-portlet-cidade *ngIf="form.value.estado" [form]="form" control="cidade"></app-portlet-cidade>

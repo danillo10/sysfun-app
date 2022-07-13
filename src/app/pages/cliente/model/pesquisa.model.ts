@@ -17,6 +17,8 @@ export class PesquisaModel {
   ultimaAtualizacao?: any;
   vencimento_inicio?: any;
   vencimento_final?: any;
+  recebimento_inicio?: any;
+  recebimento_final?: any;
   estado?: string;
   cidade?: string;
   bairro?: string;
@@ -28,6 +30,8 @@ export class PesquisaModel {
     this.descricao = data.descricao || '';
     this.vencimento_inicio = data.vencimento_inicio || '';
     this.vencimento_final = data.vencimento_final || '';
+    this.recebimento_inicio = data.recebimento_inicio || '';
+    this.recebimento_final = data.recebimento_final || '';
     this.estado = data.estado || '';
     this.cidade = data.cidade || '';
     this.bairro = data.bairro || '';

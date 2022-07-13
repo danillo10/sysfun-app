@@ -40,6 +40,8 @@ export class FiltroContasComponent implements OnInit {
     descricao: [this.filtrarContas.descricao],
     vencimento_inicio: [this.filtrarContas.vencimento_inicio],
     vencimento_final: [this.filtrarContas.vencimento_final],
+    recebimento_inicio: [this.filtrarContas.recebimento_inicio],
+    recebimento_final: [this.filtrarContas.recebimento_final],
     estado: [this.filtrarContas.estado],
     cidade: [this.filtrarContas.cidade],
     bairro: [this.filtrarContas.bairro],
