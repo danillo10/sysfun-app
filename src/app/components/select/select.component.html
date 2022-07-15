@@ -1,8 +1,16 @@
 <div [formGroup]="form" class="mb-3">
   <label class="form-label">{{ label }}</label>
-  <select [formControlName]="control" name="select-{{control}}" class="form-select" aria-label="select">
+  <select
+    [formControlName]="control"
+    name="select-{{ control }}"
+    class="form-select"
+    aria-label="select"
+    (change)="selecionar($event)"
+  >
     <option selected></option>
-    <option *ngFor="let option of options" [value]="option.value || option.id">{{ option.description || option.descricao }}</option>
+    <option *ngFor="let option of options" [value]="option.value || option.id">
+      {{ option.description || option.descricao }}
+    </option>
   </select>
   <!-- <img class="icon" src="../../../assets/icon/seta-para-baixo.png" alt=""> -->
 </div>

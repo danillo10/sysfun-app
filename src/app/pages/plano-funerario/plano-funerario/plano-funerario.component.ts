@@ -12,6 +12,8 @@ import {
 } from '../model/plano-funerario.model';
 import { PlanoFunerarioService } from '../service/plano-funerario.service';
 
+import calculoTotalJson from '../../../pages/utils/calculo_total.json';
+
 @Component({
   selector: 'app-plano-funerario',
   templateUrl: './plano-funerario.component.html',
@@ -183,8 +185,11 @@ export class PlanoFunerarioComponent implements OnInit {
     this.plano.parcelas = parcelas;
   }
 
-  alteraQuantidadeParcelas(e) {
-    const qtdParcelas = e.target.value;
+  alteraValorParcelas(qtdParcelas = null, valorParcelas = null) {
+    qtdParcelas = qtdParcelas ? qtdParcelas : this.plano.qtd_parcelas;
+    valorParcelas = valorParcelas
+      ? valorParcelas
+      : this.plano.valor_bruto / qtdParcelas;
     const parcelas = [];
     const dataAtual = new Date(Date.now());
     for (let i = 0; i < qtdParcelas; i++) {
@@ -193,10 +198,46 @@ export class PlanoFunerarioComponent implements OnInit {
         new IParcela({
           id: Math.floor(Math.random() * Date.now()),
           parcela_data: `${dataParcela.getDate()}/${dataParcela.getMonth()}/${dataParcela.getFullYear()}`,
+          parcela_valor: valorParcelas,
         })
       );
     }
-    console.log(parcelas);
     this.plano.parcelas = parcelas;
+  }
+
+  alteraQuantidadeParcelas(e) {
+    const qtdParcelas = e.target.value;
+    const valorParcelas = this.plano.valor_bruto / qtdParcelas;
+    this.alteraValorParcelas(qtdParcelas, valorParcelas);
+  }
+
+  adicionaTaxaAdesao(e) {
+    const valorTaxaAdesao = e.target.value;
+    this.plano.valor_bruto = (
+      Number(this.plano.taxa_adesao) -
+      Number(this.plano.valor_bruto) +
+      Number(valorTaxaAdesao)
+    ).toFixed(2);
+    this.plano.taxa_adesao = Number(valorTaxaAdesao).toFixed(2);
+    this.form.patchValue(this.plano);
+  }
+
+  recebePlano(planoFunerarioSelecionado: IPlanoFunerario) {
+    this.plano.valor_bruto = (
+      Number(this.plano.valor_bruto) +
+      Number(planoFunerarioSelecionado.valor_venda)
+    ).toFixed(2);
+    this.form.patchValue(this.plano);
+  }
+
+  alteraCalculoTotal(e) {
+    // const calculoTotal = e.target.value;
+    // if (calculoTotal == calculoTotalJson[0].value)
+    //   this.alteraValorParcelas(null, this.plano.valor_bruto);
+    // else if (calculoTotal == calculoTotalJson[0].value)
+    //   this.alteraValorParcelas(
+    //     null,
+    //     this.plano.valor_bruto / this.plano.qtd_parcelas
+    //   );
   }
 }
