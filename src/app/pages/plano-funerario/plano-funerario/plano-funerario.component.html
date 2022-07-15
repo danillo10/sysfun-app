@@ -89,7 +89,7 @@
           control="valor_liquido"
           type="text"
           label="Calculo do total"
-          (calculoSelecionado)="alteraCalculoTotal($event)"
+          (calculoSelecionado)="alteraValorParcelas()"
         ></app-portlet-calculo-total>
 
         <app-input
@@ -104,7 +104,7 @@
           control="qtd_parcelas"
           type="number"
           label="quantida de parcelas"
-          (searchEmitter)="alteraQuantidadeParcelas($event)"
+          (searchEmitter)="alteraValorParcelas()"
         ></app-input>
 
         <!-- <app-select
@@ -142,7 +142,7 @@
           </div>
         </div> -->
 
-        <app-parcelas [data]="plano.parcelas"></app-parcelas>
+        <app-parcelas [data]="form.value.parcelas"></app-parcelas>
 
         <!-- <app-input
           [form]="form"
