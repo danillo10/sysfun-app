@@ -267,4 +267,12 @@ export class ClienteService {
     return this._http.get(`${environment.host}pesquisar/clientes/${cliente}`)
     .pipe(res => res)
   }
+  
+  ngOnChanges(celular:ClienteModel): Promise<any>{
+    return this._http
+    .post(`${environment.host}/pesquisar/celular`, celular)
+    .pipe((resp) => resp)
+    .toPromise();
+    console.log('valor ')
+  }
 }

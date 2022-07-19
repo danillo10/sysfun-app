@@ -6,6 +6,7 @@ import { IPlanoFunerario } from '../model/plano-funerario.model';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 import { NativeStorageService } from 'src/app/shared/services/native-storage.service';
 import { of } from 'rxjs';
+import { ClienteModel } from '../../cliente/model/cliente.model';
 
 @Injectable({
   providedIn: 'root',
