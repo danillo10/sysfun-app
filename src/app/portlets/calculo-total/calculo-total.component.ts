@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
@@ -13,6 +13,7 @@ import calculo from '../../pages/utils/calculo_total.json';
 export class CalculoTotalComponent implements OnInit {
   @Input() form: FormControl;
   @Input() control: string;
+  @Output() calculoSelecionado = new EventEmitter();
 
   pesquisa = {} as PesquisaModel;
   calculo: SelectModel[];
@@ -24,6 +25,7 @@ export class CalculoTotalComponent implements OnInit {
   ngOnInit() {}
 
   selecionaCalculoTotal(calculo) {
-    this.form.patchValue({ calculo: calculo.value });
+    // this.form.patchValue({ calculo: calculo.value });
+    this.calculoSelecionado.emit(calculo);
   }
 }

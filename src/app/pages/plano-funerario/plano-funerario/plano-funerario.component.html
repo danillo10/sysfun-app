@@ -43,26 +43,9 @@
 
         <h2>Planos funarários</h2>
 
-        <app-planos-funerarios></app-planos-funerarios>
-
-        <!-- <div class="row">
-          <div class="col-3">
-            <app-input
-              [form]="form"
-              control="servicos"
-              label="Plano"
-              type="text"
-            ></app-input>
-          </div>
-          <div class="col-9">
-            <app-input
-              [form]="form"
-              control="valor_liquido"
-              label="Valor"
-              type="text"
-            ></app-input>
-          </div>
-        </div> -->
+        <app-planos-funerarios
+          (planoFunerarioSelecionado)="recebePlano($event)"
+        ></app-planos-funerarios>
 
         <h2 class="mt-4">Totais</h2>
 
@@ -71,6 +54,7 @@
           control="taxa_adesao"
           type="text"
           label="taxa de adesão"
+          (searchEmitter)="adicionaTaxaAdesao($event)"
         ></app-input>
 
         <app-input
@@ -105,6 +89,7 @@
           control="valor_liquido"
           type="text"
           label="Calculo do total"
+          (calculoSelecionado)="alteraValorParcelas()"
         ></app-portlet-calculo-total>
 
         <app-input
@@ -119,7 +104,7 @@
           control="qtd_parcelas"
           type="number"
           label="quantida de parcelas"
-          (searchEmitter)="alteraQuantidadeParcelas($event)"
+          (searchEmitter)="alteraValorParcelas()"
         ></app-input>
 
         <!-- <app-select
@@ -157,7 +142,7 @@
           </div>
         </div> -->
 
-        <app-parcelas [data]="plano.parcelas"></app-parcelas>
+        <app-parcelas [data]="form.value.parcelas"></app-parcelas>
 
         <!-- <app-input
           [form]="form"

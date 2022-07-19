@@ -24,6 +24,7 @@ export class PlanosFunerariosComponent implements OnInit {
   }
 
   @Output() planosFunerariosSelecionados = new EventEmitter();
+  @Output() planoFunerarioSelecionado = new EventEmitter();
 
   planosFunerarios$: Observable<any>;
   planosFunerarioPesquisado = new Subject<any>();
@@ -53,14 +54,18 @@ export class PlanosFunerariosComponent implements OnInit {
   }
 
   delete(planoFunerario) {
-    this.planosFunerarios = this.planosFunerariosService.reorganizar(planoFunerario, this.planosFunerarios);
+    this.planosFunerarios = this.planosFunerariosService.reorganizar(
+      planoFunerario,
+      this.planosFunerarios
+    );
     this.emit();
   }
 
   pesquisaPlanosFunerario(planoFunerario) {
     this.planoFunerario = planoFunerario;
-    const ids = this.planosFunerarios
-      .map((planosFunerarios) => planosFunerarios.id)
+    const ids = this.planosFunerarios.map(
+      (planosFunerarios) => planosFunerarios.id
+    );
     this.planosFunerarioPesquisado.next({ nome: planoFunerario.nome });
   }
 
@@ -73,6 +78,7 @@ export class PlanosFunerariosComponent implements OnInit {
     planoFunerario.valor_venda = planoFunerarioSelecionado.valor_venda;
 
     this.planosFunerarioPesquisado.next('');
+    this.planoFunerarioSelecionado.emit(planoFunerarioSelecionado);
     this.emit();
   }
 

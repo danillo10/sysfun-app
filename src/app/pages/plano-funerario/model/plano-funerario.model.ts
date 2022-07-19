@@ -1,3 +1,5 @@
+import { IParcela } from 'src/app/components/parcelas/model/parcelas.model';
+
 export class PlanoFunerarioModel {
   id?: any;
   tipo?: string;
@@ -23,7 +25,7 @@ export class PlanoFunerarioModel {
   valor_bruto?: any;
   valor_liquido?: any;
   taxa_adesao?: any;
-  data_inicial?: any;
+  data_inicial?: Date;
   forma_pagamento?: any;
   condicao_pagamento?: number;
   qtd_parcelas?: any;
@@ -56,7 +58,7 @@ export class PlanoFunerarioModel {
   servicos?: Array<any>;
   produtos?: Array<any>;
   dependentes?: Array<any>;
-  parcelas?: Array<any>;
+  parcelas?: IParcela[];
   criado_por?: any;
   atualizado_por?: any;
   os_gerada?: any;
@@ -91,9 +93,9 @@ export class PlanoFunerarioModel {
     this.valor_desconto_v = data.valor_desconto_v || '';
     this.valor_desconto_p = data.valor_desconto_p || '';
     this.valor_bruto = data.valor_bruto || '';
-    this.valor_liquido = data.valor_liquido || '';
+    this.valor_liquido = data.valor_liquido || 'Dividir';
     this.taxa_adesao = data.taxa_adesao || '';
-    this.data_inicial = data.data_inicial || '';
+    this.data_inicial = data.data_inicial || new Date(Date.now());
     this.forma_pagamento = data.forma_pagamento || '';
     this.condicao_pagamento = data.condicao_pagamento || '';
     this.qtd_parcelas = data.qtd_parcelas || '';
@@ -132,6 +134,7 @@ export class PlanoFunerarioModel {
     this.os_gerada = data.os_gerada || '';
     this.repetir_valor = data.repetir_valor || '';
     this.pesquisados = [];
+    this.parcelas = data.parcelas || [];
   }
 }
 
