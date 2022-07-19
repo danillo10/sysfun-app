@@ -34,7 +34,7 @@ export class ModalReciboComponent implements OnInit {
     this.form = this.formBuilder.group({
       'data': [moment().format('DD/MM/YYYY'), Validators.required],
       'valor': [this.conta.valor, Validators.required],
-      'mensagem': [null, Validators.required]
+      'mensagem': [null]
     })
   }
 

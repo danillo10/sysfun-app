@@ -17,15 +17,16 @@
       type="text"
       mask="MONEY"
       label="Valor"
+      [disabled]="true"
     ></app-input>
 
-    <app-input
+    <!-- <app-input
       [form]="form"
       control="mensagem"
       type="textarea"
       rows="2"
       label="Correspondente a"
-    ></app-input>
+    ></app-input> -->
 
     <app-button
       class="bt"
@@ -51,11 +52,11 @@
     <div class="separator"></div>
 
     <h2>{{ contaRecebida.nome_fantasia }}</h2>
-    <p>RUA ALVES PEREIRA 110, JD PAULISTA - SP</p>
+    <p>{{ contaRecebida.endereco }}, {{ contaRecebida.numero }} {{ contaRecebida.complemento }}, {{ contaRecebida.bairro }} ,{{ contaRecebida.cidade }} - {{ contaRecebida.estado }}</p>
 
     <div class="separator"></div>
 
-    <p>DATA:</p>
+    <p>DATA: {{ conta.data_liquidacao | date:'dd/MM/YYYY' }}</p>
     <p>CONTRATO: {{ contaRecebida.n_os }}</p>
     <p>MENSALIDADE: {{ contaRecebida.valor | currency: "BRL" }}</p>
     <p>VENCIMENTO: {{ contaRecebida.n_parcela }}</p>
@@ -65,7 +66,7 @@
 
     <table>
       <tr *ngFor="let conta of contasRecebidas">
-        <td>FEV</td>
+        <td>{{ conta.forma_descricao }}</td>
         <td>{{ conta.data_liquidacao | date:'dd/MM/YYYY' }}</td>
         <td>{{ conta.valor | currency:'BRL' }}</td>
       </tr>
