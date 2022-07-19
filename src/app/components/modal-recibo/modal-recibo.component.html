@@ -17,7 +17,7 @@
       type="text"
       mask="MONEY"
       label="Valor"
-      [disabled]="true"
+      disabled="true"
     ></app-input>
 
     <!-- <app-input
@@ -56,11 +56,11 @@
 
     <div class="separator"></div>
 
-    <p>DATA: {{ conta.data_liquidacao | date:'dd/MM/YYYY' }}</p>
+    <p>DATA: {{ contaRecebida.data_emissao | date:'dd/MM/YYYY' }}</p>
     <p>CONTRATO: {{ contaRecebida.n_os }}</p>
     <p>MENSALIDADE: {{ contaRecebida.valor | currency: "BRL" }}</p>
     <p>VENCIMENTO: {{ contaRecebida.n_parcela }}</p>
-    <p>PLANO:</p>
+    <p>PRODUTO/SERVIÇO: {{ contaRecebida.plano }}</p>
 
     <div class="separator"></div>
 
@@ -76,7 +76,7 @@
 
     <div class="separator"></div>
 
-    <h2>ROBERTO SOARES</h2>
-    <span>(00)00000-0000</span>
+    <h2>{{ contaRecebida.nome_fantasia }}</h2>
+    <span>{{ contaRecebida.celular }}</span>
   </div>
 </div>
