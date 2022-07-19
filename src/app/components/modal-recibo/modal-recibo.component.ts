@@ -34,7 +34,7 @@ export class ModalReciboComponent implements OnInit {
     this.form = this.formBuilder.group({
       'data': [moment().format('DD/MM/YYYY'), Validators.required],
       'valor': [this.conta.valor, Validators.required],
-      'mensagem': [null, Validators.required]
+      'mensagem': [null]
     })
   }
 
@@ -42,6 +42,7 @@ export class ModalReciboComponent implements OnInit {
     this.viewRecibo = true;
     this.modalReciboService.imprimir(this.conta)
       .subscribe((data: any) => {
+        this.dataHoje = this.form.value.data + " " + moment().format('HH:mm:ss');
         this.contaRecebida = data.conta;
         this.contasRecebidas = data.contas;
         this.calculaTotal();

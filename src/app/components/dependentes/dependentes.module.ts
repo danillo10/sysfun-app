@@ -10,7 +10,7 @@ import { SelectModule } from '../select/select.module';
 import { DependentesComponent } from './dependentes.component';
 
 @NgModule({
-  declarations: [DependentesComponent, NumberinputDirective],
+  declarations: [DependentesComponent],
   imports: [
     CommonModule,
     FormsModule,
