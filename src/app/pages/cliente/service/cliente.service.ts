@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, SimpleChanges} from '@angular/core';
 import { catchError, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 import { NativeStorageService } from 'src/app/shared/services/native-storage.service';
@@ -17,6 +17,7 @@ import { HttpClient } from '@angular/common/http';
 export class ClienteService {
   status: boolean;
   total: number;
+  celular: any;
 
   clientes$: Observable<any>;
   pesquisa = new Subject<any>();
@@ -266,5 +267,11 @@ export class ClienteService {
 
     return this._http.get(`${environment.host}pesquisar/clientes/${cliente}`)
     .pipe(res => res)
+  }
+  
+  getCell(celular:ClienteModel): Observable<any>{
+    return this._http
+    .post(`${environment.host}/pesquisar/celular`,celular)
+    .pipe((res) => res)
   }
 }

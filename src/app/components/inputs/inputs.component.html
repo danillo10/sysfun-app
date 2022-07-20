@@ -157,6 +157,7 @@
     placeholder="(00) 00000-0000"
     [attr.maxlength]="length"
     [name]="control"
+    (change)="handleCell()"
     NumberInput
   />
   <div class="icon {{ iconPosition }}" (click)="iconClicked()">

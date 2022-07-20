@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
@@ -195,7 +195,7 @@ export class ClienteComponent implements OnInit {
     this.getCategorias();
     this.copiarDependentes();
   }
-
+  
   ionViewDidEnter() {
     this.get();
   }
@@ -373,5 +373,14 @@ export class ClienteComponent implements OnInit {
       '',
       'null'
     );
+  }
+
+  getCell(){
+    this.clienteService.getCell(this.form.value.celular)
+    .subscribe((data:any) =>{
+      if(data.status == 1){
+        return alert(data.mensagem + ' ' + data.cliente[0].nome_fantasia)
+      }
+    })
   }
 }
