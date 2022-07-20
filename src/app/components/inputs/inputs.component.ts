@@ -45,6 +45,7 @@ export class InputsComponent implements OnInit {
   @Output() selectEmitter = new EventEmitter();
   @Output() selectIcon = new EventEmitter();
   @Output() moneyEmitter = new EventEmitter();
+  @Output() cellEmitter = new EventEmitter();
 
   options: SelectModel[];
 
@@ -89,5 +90,9 @@ export class InputsComponent implements OnInit {
       control: this._utilsCalculosService.castingToNumber(v),
     });
     this.moneyEmitter.emit(true);
+  }
+
+   handleCell(){
+    this.cellEmitter.emit(true);
   }
 }

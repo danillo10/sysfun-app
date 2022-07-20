@@ -269,14 +269,9 @@ export class ClienteService {
     .pipe(res => res)
   }
   
-  // ngOnChanges(changes: SimpleChanges){
-  //   this.celular = this.clientes.find()
-  // }
-  
-  // postCell(celular:ClienteModel): Promise<any>{
-  //   return this._http
-  //   .post(`${environment.host}/pesquisar/celular`,celular)
-  //   .pipe((res) => res)
-  //   .toPromise();
-  // }
+  getCell(celular:ClienteModel): Observable<any>{
+    return this._http
+    .post(`${environment.host}/pesquisar/celular`,celular)
+    .pipe((res) => res)
+  }
 }

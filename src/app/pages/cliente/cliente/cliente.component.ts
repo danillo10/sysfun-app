@@ -62,7 +62,6 @@ export class ClienteComponent implements OnInit {
   dependentesCopiados: string;
   enderecos: boolean;
   criadoEm: string;
-  numeroCelular: Number;
 
   profissao$: Observable<any>;
   profissaoPesquisada = new Subject<any>();
@@ -374,5 +373,14 @@ export class ClienteComponent implements OnInit {
       '',
       'null'
     );
+  }
+
+  getCell(){
+    this.clienteService.getCell(this.form.value.celular)
+    .subscribe((data:any) =>{
+      if(data.status == 1){
+        return alert(data.mensagem + ' ' + data.cliente[0].nome_fantasia)
+      }
+    })
   }
 }
