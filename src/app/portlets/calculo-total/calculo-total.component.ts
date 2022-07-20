@@ -25,7 +25,6 @@ export class CalculoTotalComponent implements OnInit {
   ngOnInit() {}
 
   selecionaCalculoTotal(calculo) {
-    // this.form.patchValue({ calculo: calculo.value });
     this.calculoSelecionado.emit(calculo);
   }
 }

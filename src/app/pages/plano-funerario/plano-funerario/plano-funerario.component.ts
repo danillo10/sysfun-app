@@ -24,6 +24,7 @@ export class PlanoFunerarioComponent implements OnInit {
   @Input() form: FormGroup;
 
   plano: PlanoFunerarioModel;
+  planosFunerarios: IPlanoFunerario[];
   criadoEm: string;
 
   calculoTotal: SelectModel[];
@@ -107,12 +108,9 @@ export class PlanoFunerarioComponent implements OnInit {
     });
 
     this.setDependentes([]);
-    // this.setParcelas([new IParcela()]);
   }
 
-  ionViewDidEnter() {
-    // this.get();
-  }
+  ionViewDidEnter() {}
 
   create() {
     if (this.form.value.cliente == '') {
@@ -226,11 +224,18 @@ export class PlanoFunerarioComponent implements OnInit {
     this.form.patchValue(this.form.value);
   }
 
-  recebePlano(planoFunerarioSelecionado: IPlanoFunerario) {
-    this.form.value.valor_bruto = (
-      Number(this.form.value.valor_bruto) +
-      Number(planoFunerarioSelecionado.valor_venda)
-    ).toFixed(2);
+  alteraPlanos(planosFunerarios: IPlanoFunerario[]) {
+    this.planosFunerarios = planosFunerarios;
+    this.calculaValorPlano();
+  }
+
+  calculaValorPlano() {
+    let valorTotal = 0;
+    this.planosFunerarios.forEach((plano) => {
+      valorTotal += Number(plano.valor_venda);
+    });
+    this.form.value.valor_bruto = valorTotal.toFixed(2);
     this.form.patchValue(this.form.value);
+    this.alteraValorParcelas();
   }
 }

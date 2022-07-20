@@ -21,6 +21,7 @@
         [options]="{ prefix: '', thousands: '.', decimal: ',' }"
         name="valor-{{ i }}"
         placeholder="0,00"
+        (ngModelChange)="ngOnChanges(parcela)"
       />
     </div>
     <div class="mb-3">
@@ -37,7 +38,7 @@
         </option>
       </select>
     </div>
-    <div class="form-group relative">
+    <div class="mb-3">
       <label for="">Observações</label>
       <textarea
         [(ngModel)]="parcela.parcela_obs"
@@ -45,9 +46,6 @@
         name="obs-{{ i }}"
       >
       </textarea>
-    </div>
-    <div class="form-group">
-      <app-button type="delete" (click)="delete(parcela)"></app-button>
     </div>
   </div>
 </div>
