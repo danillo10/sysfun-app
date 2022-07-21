@@ -2,6 +2,17 @@
   font-family: "Montserrat";
   text-transform: uppercase;
 }
+
+.container, ion-content {
+  background: #fff;
+  height: auto;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
 .icon{
   width: 23px;
 }

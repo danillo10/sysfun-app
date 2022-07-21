@@ -3,7 +3,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { IonicModule } from '@ionic/angular';
-import { ButtonsModule } from 'src/app/components';
+import { ButtonsModule, IconsModule } from 'src/app/components';
 import { DependentesModule } from 'src/app/components/dependentes/dependentes.module';
 import { NavbarModule } from 'src/app/components/navbar/navbar.module';
 import { ClipboardModule } from 'ngx-clipboard';
@@ -34,6 +34,7 @@ import { NumberinputDirective } from 'src/app/shared/directives/numberinput.dire
   imports: [
     CommonModule,
     IonicModule,
+    IconsModule,
     SharedModule,
     ClientePageRoutingModule,
     ButtonsModule,

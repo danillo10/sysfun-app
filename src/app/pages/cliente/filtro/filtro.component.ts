@@ -9,6 +9,7 @@ import { IFiltroClientes } from './model/filtro.cliente.model';
 })
 export class FiltroComponent implements OnInit {
   @Output() filtrado = new EventEmitter();
+  @Output() close = new EventEmitter();
   @Input() form: FormGroup;
 
   filtrarClientes:  IFiltroClientes;
@@ -34,4 +35,7 @@ export class FiltroComponent implements OnInit {
     this.filtrado.emit(true);
   }
 
+  closeView(){
+    this.close.emit(true);
+  }
 }

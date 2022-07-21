@@ -6,37 +6,106 @@
     <h2>Liquidar Conta</h2>
     <form class="mt-4" [formGroup]="form">
 
-      <app-input [form]="form" control="descricao" label="Nome da receita" type="text"></app-input>
+      <app-input
+       [form]="form" 
+       control="descricao" 
+       label="Nome da receita" 
+       type="text">
+      </app-input>
 
-      <app-input [form]="form" control="nome_fantasia" label="Nome" type="text"></app-input>
+      <app-input 
+      [form]="form" 
+      control="nome_fantasia" 
+      label="Nome" 
+      type="text">
+      </app-input>
 
-      <app-input [form]="form" control="data_liquidacao" label="data liquidação" type="text" mask="DATA"></app-input>
+      <app-input 
+      [form]="form" 
+      control="data_liquidacao" 
+      label="data liquidação" 
+      type="text" 
+      mask="DATA">
+      </app-input>
 
-      <app-select [form]="form" control="conta_bancaria" label="Conta bancária" [options]="contasBancarias">
+      <app-select 
+      [form]="form" 
+      control="conta_bancaria"
+      label="Conta bancária" 
+      [options]="contasBancarias">
       </app-select>
 
-      <app-select [form]="form" control="forma_pagamento" label="Forma de pagamento" [options]="formaPagamento">
+      <app-select 
+      [form]="form" 
+      control="forma_pagamento" 
+      label="Forma de pagamento" 
+      [options]="formaPagamento">
       </app-select>
 
-      <app-input [form]="form" control="valor" label="valor pago" type="text" mask="MONEY2" (moneyEmitter)="setValor()"></app-input>
+      <app-input 
+      [form]="form" 
+      control="valor" 
+      label="valor pago" 
+      type="text" mask="MONEY2" (moneyEmitter)="setValor()"></app-input>
 
-      <app-input [form]="form" control="juros" label="juros" type="text" mask="MONEY2" (moneyEmitter)="setJuros(); "></app-input>
+      <app-input 
+      [form]="form" 
+      control="juros" 
+      label="juros" 
+      type="text" 
+      mask="MONEY2" 
+      (moneyEmitter)="setJuros();">
+      </app-input>
 
-      <app-input [form]="form" control="desconto" label="desconto/taxa" type="text" mask="MONEY2" (moneyEmitter)="setDesconto()"></app-input>
+      <app-input 
+      [form]="form" 
+      control="desconto" 
+      label="desconto/taxa" 
+      type="text" 
+      mask="MONEY2" 
+      (moneyEmitter)="setDesconto()">
+      </app-input>
 
-      <app-input [form]="form" control="acrescimo" label="acréscimo" type="text" mask="MONEY2" (moneyEmitter)="setAcrescimo()"></app-input>
+      <app-input 
+      [form]="form" 
+      control="acrescimo" 
+      label="acréscimo" 
+      type="text" 
+      mask="MONEY2" 
+      (moneyEmitter)="setAcrescimo()">
+      </app-input>
 
-      <app-input [form]="form" control="obs" label="observações" type="textarea"></app-input>
+      <app-input 
+      [form]="form" 
+      control="obs" 
+      label="observações" 
+      type="textarea">
+      </app-input>
 
       <div class="campo-checkbox d-flex align-items-center mt-4 mb-4">
-        <app-checkbox [form]="form" control="pago" type="checkbox" label="Baixar conta" (checkboxSetted)="handleCheckbox()"></app-checkbox>
+        <app-checkbox 
+        [form]="form" 
+        control="pago" 
+        type="checkbox" 
+        label="Baixar conta" 
+        (checkboxSetted)="handleCheckbox()">
+        </app-checkbox>
       </div>
     </form>
 
     <app-contas-parcela-parcial *ngIf="pagamentos.length > 0" [pagamentos]="pagamentos"></app-contas-parcela-parcial>
 
-    <app-button (click)="liquidar()" [disabled]="form.invalid || loading" type="normal" color="blue" label="Salvar"></app-button>
-    <app-button color="gray" label="Cancelar"></app-button>
+    <app-button 
+    (click)="liquidar()" 
+    [disabled]="form.invalid || loading" 
+    type="normal" color="blue" 
+    label="Salvar">
+    </app-button>
+
+    <app-button 
+     color="gray" 
+     label="Cancelar">
+    </app-button>
   </div>
   <div *ngIf="receber.status">
     <app-contas-parcelas-liquidadas [pagamentos]="pagamentos"></app-contas-parcelas-liquidadas>

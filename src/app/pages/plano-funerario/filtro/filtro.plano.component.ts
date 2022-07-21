@@ -13,9 +13,8 @@ import estados from '../../utils/estados.json';
 })
 export class FiltroPlanoComponent implements OnInit {
   @Input() form: FormGroup;
-
-  @Output() close = new EventEmitter();
   @Output() filtrado = new EventEmitter();
+  @Output() close = new EventEmitter();
 
   filtrar: PesquisaModel;
   pesquisaModel
