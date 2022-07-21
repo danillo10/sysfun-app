@@ -100,4 +100,11 @@ export class PlanosFunerariosComponent implements OnInit {
   emit() {
     this.planosFunerariosSelecionados.emit(this.planosFunerarios);
   }
+
+  onChange(novoValor, planoFunerarioId) {
+    this.planosFunerarios.find(
+      (plano) => plano.id === planoFunerarioId
+    ).valor_venda = novoValor;
+    this.emit();
+  }
 }

@@ -18,12 +18,14 @@ export class ParcelasComponent implements OnInit {
       this.parcelas = parcelas;
     }
   }
+  @Input() valorBruto: number;
+  @Input() calculoTotal: string;
 
   @Output() parcelasSelecionadas = new EventEmitter();
 
   parcelas$: Observable<any>;
   parcela: IParcela;
-  parcelas: IParcela[];
+  parcelas: IParcela[] = [];
   formaPagamento: SelectModel[];
 
   constructor(private parcelasService: ParcelasService) {
@@ -32,16 +34,38 @@ export class ParcelasComponent implements OnInit {
 
   ngOnInit() {}
 
-  ngOnChanges() {}
+  ngOnChanges(parcela: IParcela) {
+    if (!parcela.parcela_alterada) parcela.parcela_alterada = true;
+
+    if (this.calculoTotal === 'Dividir') this.alteraValorParcelas();
+  }
 
   emit() {
     this.parcelasSelecionadas.emit(this.parcelas);
   }
 
-  delete(parcela) {
-    if (parcela.id)
-      this.parcelas = this.parcelas.filter((item) => item.id !== parcela.id);
+  alteraValorParcelas() {
+    const qtdParcelas = this.parcelas.length;
+    const valorTotal = this.valorBruto;
+    let valorParcelas = 0;
+    let valorParcelasAlteradas = 0;
+    let qtdParcelasAlteradas = 0;
 
-    this.emit();
+    this.parcelas.forEach((parcela) => {
+      if (parcela.parcela_alterada) {
+        valorParcelasAlteradas += parcela.parcela_valor;
+        qtdParcelasAlteradas++;
+      }
+    });
+
+    if (valorTotal > valorParcelasAlteradas) {
+      valorParcelas =
+        (valorTotal - valorParcelasAlteradas) /
+        (qtdParcelas - qtdParcelasAlteradas);
+    }
+
+    this.parcelas.forEach((parcela) => {
+      if (!parcela.parcela_alterada) parcela.parcela_valor = valorParcelas;
+    });
   }
 }

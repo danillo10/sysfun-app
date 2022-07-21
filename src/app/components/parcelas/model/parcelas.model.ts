@@ -4,6 +4,7 @@ export class IParcela {
   parcela_valor: number;
   parcela_forma_pagamento: any;
   parcela_obs?: string;
+  parcela_alterada: boolean;
 
   constructor(data?) {
     data = data || {};
@@ -12,5 +13,6 @@ export class IParcela {
     this.parcela_valor = data.parcela_valor || '';
     this.parcela_forma_pagamento = data.parcela_forma_pagamento || '';
     this.parcela_obs = data.parcela_obs || '';
+    this.parcela_alterada = data.parcela_alterada || false;
   }
 }
