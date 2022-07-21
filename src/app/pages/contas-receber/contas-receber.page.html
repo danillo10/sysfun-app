@@ -18,6 +18,6 @@
       <app-filtro-contas-receber (filtrado)="pesquisa = $event; pesquisar(); filtro = false" (close)="filtro = false"></app-filtro-contas-receber>
     </div>
 
-    <app-modal-recibo [conta]="contaReceber" *ngIf="viewRecibo"></app-modal-recibo>
+    <app-modal-recibo [conta]="contaReceber" *ngIf="viewRecibo" (closeViewReciboEmit)="viewRecibo = false"></app-modal-recibo>
   </div>
 </ion-content>

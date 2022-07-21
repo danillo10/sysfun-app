@@ -1,4 +1,10 @@
 <div class="modal">
+  <div class="print" *ngIf="viewRecibo">
+    <app-icon name="print-outline" ionic="true" (selectIcon)="print()"></app-icon>
+  </div>
+  <div class="close">
+    <app-icon name="close-outline" ionic="true" (selectIcon)="closeView()"></app-icon>
+  </div>
   <div class="modal-title" *ngIf="!viewRecibo">
     <span>Imprimir Recibo</span>
   </div>
@@ -37,8 +43,8 @@
     ></app-button>
   </div>
 
-  <div class="recibo" *ngIf="viewRecibo">
-    <app-logo></app-logo>
+  <div class="recibo" *ngIf="viewRecibo" #recibo>
+    <img src="../../../assets/icon/logo.png" alt="">
 
     <h1 class="mt-4">Funerária Aliança</h1>
     <p>CNPJ: 02.317.053/0001-66</p>
