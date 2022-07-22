@@ -106,7 +106,6 @@ export class PlanoFunerarioComponent implements OnInit {
       os_gerada: [this.plano.os_gerada],
       repetir_valor: [this.plano.repetir_valor],
     });
-
     this.setDependentes([]);
   }
 

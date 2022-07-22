@@ -1,45 +1,60 @@
 <div class="container">
-  <div
-    class="col-12"
-    *ngFor="let planoFunerario of planosFunerarios; let i = index"
-  >
-    <div class="form-group relative">
-      <label for="">Plano</label>
-      <input
-        (input)="pesquisaPlanosFunerario(planoFunerario, planoFunerario.nome)"
-        [(ngModel)]="planoFunerario.nome"
-        type="text"
-        class="form-control"
-        name="planoFunerario_servicos{{ i }}"
-      />
-      <div class="list">
-        <ul>
-          <li
-            *ngFor="let plano of planoFunerario.pesquisados"
-            (click)="selecionar(plano, planoFunerario)"
-          >
-            {{ plano.nome }}
-          </li>
-        </ul>
+  <div class="row">
+    <div class="col-7">
+      <div class="form-group">
+        <label for="">Plano</label>
       </div>
     </div>
-    <div class="form-group">
-      <label for="">Valor</label>
-      <input
-        currencyMask
-        [options]="{ prefix: '', thousands: '.', decimal: ',' }"
-        [ngModel]="planoFunerario.valor_venda"
-        (ngModelChange)="onChange($event, planoFunerario.id)"
-        type="text"
-        class="form-control"
-        name="planoFunerario_valor_venda{{ i }}"
-      />
-    </div>
-    <div class="form-group">
-      <app-button type="delete" (click)="delete(planoFunerario)"></app-button>
+    <div class="col-5">
+      <div class="form-group">
+        <label for="">Valor</label>
+      </div>
     </div>
   </div>
-
+  <div
+    class="row"
+    *ngFor="let planoFunerario of planosFunerarios; let i = index"
+  >
+    <div class="col-7">
+      <div class="form-group relative">
+        <input
+          (input)="pesquisaPlanosFunerario(planoFunerario, planoFunerario.nome)"
+          [(ngModel)]="planoFunerario.nome"
+          type="text"
+          class="form-control"
+          name="planoFunerario_servicos{{ i }}"
+        />
+        <div class="list">
+          <ul>
+            <li
+              *ngFor="let plano of planoFunerario.pesquisados"
+              (click)="selecionar(plano, planoFunerario)"
+            >
+              {{ plano.nome }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="form-group">
+        <input
+          currencyMask
+          [options]="{ prefix: '', thousands: '.', decimal: ',' }"
+          [ngModel]="planoFunerario.valor_venda"
+          (ngModelChange)="onChange($event, planoFunerario.id)"
+          type="text"
+          class="form-control"
+          name="planoFunerario_valor_venda{{ i }}"
+        />
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group align-right">
+        <app-button type="delete" (click)="delete(planoFunerario)"></app-button>
+      </div>
+    </div>
+  </div>
   <div class="adicionar d-flex justify-content-center">
     <span (click)="adicionaPlanoFunerario()">
       <img
