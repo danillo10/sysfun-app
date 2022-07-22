@@ -44,7 +44,7 @@
   </div>
 
   <div class="recibo" *ngIf="viewRecibo" #recibo>
-    <img src="../../../assets/icon/logo.png" alt="">
+    <img src="http://www.funerariaalianca.com.br/assets/img/logo_recibo.png" alt="">
 
     <h1 class="mt-4">Funerária Aliança</h1>
     <p>CNPJ: 02.317.053/0001-66</p>
@@ -78,7 +78,7 @@
       </tr>
     </table>
 
-    <h2 class="mt-4">PAGOU {{ total | currency:'BRL' }}</h2>
+    <h2 class="mt-4">PAGOU {{ form.value.valor | currency:'BRL' }}</h2>
 
     <div class="separator"></div>
 

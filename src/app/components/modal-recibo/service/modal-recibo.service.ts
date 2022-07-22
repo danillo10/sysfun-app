@@ -16,6 +16,11 @@ export class ModalReciboService {
 
   imprimir(conta: IContasReceber) {
     return this.http.get(`${environment.host}dados/baixar/conta/receber/${conta.id}`)
-    .pipe(res => res);
+      .pipe(res => res);
+  }
+
+  imprimirRecibo(conta: IContasReceber){
+    return this.http.post(`${environment.host}pdf/recibo`, conta)
+      .pipe(res => res);
   }
 }

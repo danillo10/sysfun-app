@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
+import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
 
 import moment from 'moment';
 
@@ -28,7 +29,8 @@ export class ModalReciboComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private modalReciboService: ModalReciboService,
-    private pdfGenerator: PDFGenerator
+    private pdfGenerator: PDFGenerator,
+    private document: DocumentViewer
   ) {
     this.total = 0;
     this.viewRecibo = false;
@@ -56,21 +58,16 @@ export class ModalReciboComponent implements OnInit {
   }
 
   print() {
-    console.log(this.modalContent.nativeElement)
-    let options = {
-      documentSize: 'A4',
-      type: 'share'
-    }
-
-    let html = '<div class="recibo"><h1 class="mt-4">Funerária Aliança</h1><p>CNPJ: 02.317.053/0001-66</p><p>ENDEREÇO: AVENIDA CASTELO BRANCO, 06, VILA VITÓRIA, IMPERATRIZ-MA</p><div class="separator"></div><h2>COMPROVANTE DE PAGAMENTO</h2><h2>20/07/2022 20:53:22</h2><div class="separator"></div><h2>ANTONIO JOSE DE OLIVEIRA</h2><p>RUA FLAMENGO, 108 , CAEMA ,IMPERATRIZ - MA</p><div class="separator"></div><p>DATA: 20/07/2022</p><p>CONTRATO: 1658</p><p>MENSALIDADE: R$30.00</p><p>VENCIMENTO: 26</p><p>PRODUTO/SERVIÇO: </p><div class="separator"></div><table></table><h2 class="mt-4">PAGOU R$0.00</h2><div class="separator"></div><h2>ANTONIO JOSE DE OLIVEIRA</h2><span>(99) 98549-5154</span></div>'
-
-    this.pdfGenerator.fromData(html, options).
-      then(resolve => {
-        alert("DEu bom " + resolve);
+    this.contaRecebida.dataHoje = this.dataHoje;
+    this.contaRecebida.total = this.form.value.valor;
+    this.contaRecebida.contas = this.contasRecebidas;
+    this.modalReciboService.imprimirRecibo(this.contaRecebida)
+    .subscribe((data: any) => {
+      const options = {
+        title: 'Recibo'
       }
-      ).catch((err) => {
-        alert("Deu ruim " + JSON.stringify(err));
-      });
+      this.document.viewDocument('https://www.sistemafunerario.com.br/recibo-'+this.form.value.data, 'application/pdf', options);
+    },(err) => alert("Erro ao emitir recibo"))
   }
 
   calculaTotal(){
