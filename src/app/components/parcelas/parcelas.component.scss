@@ -1,41 +1,51 @@
-.container{
+.container {
   padding: 0;
 }
 
-.form-group{
+h2 {
+  color: #015581;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-group {
   padding: 7px 0px;
 }
 
-.form-group:last-child{
-  margin-bottom: 18px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
+.form-group.align-center {
+  text-align: center;
 }
 
-label{
+.row.margin-left {
+  padding-left: 2rem;
+}
+
+.row:last-child {
+  margin-bottom: 18px;
+}
+
+label {
   font-size: 14px;
   font-weight: bold;
-  font-family: 'Montserrat';
-  color: #5A5A5A;
+  font-family: "Montserrat";
+  color: #5a5a5a;
 }
 
-input{
+input {
   width: 100%;
   height: 61px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 16px;
   border-radius: 10px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   text-transform: uppercase;
 }
 
 .relative {
-    position: relative;
+  position: relative;
 }
 
-.list{
+.list {
   position: absolute;
   top: 98px;
   background-color: #fff;
@@ -53,15 +63,15 @@ input{
 
 .list ul li {
   padding: 10px 5px;
-  color: #5A5A5A;
+  color: #5a5a5a;
 }
 
 .icon {
   width: 23px;
 }
 
-span{
-  color: #5A5A5A;
+span {
+  color: #5a5a5a;
   font-weight: bold;
   cursor: pointer;
 }
@@ -70,14 +80,14 @@ select {
   width: 100%;
   height: 61px;
   border-radius: 5px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   text-indent: 1px;
-  text-overflow: '';
+  text-overflow: "";
   cursor: pointer;
   position: relative;
 }
 
-.list{
+.list {
   position: absolute;
   top: 98px;
   background-color: #fff;
@@ -95,6 +105,12 @@ select {
 
 .list ul li {
   padding: 10px 5px;
-  color: #5A5A5A;
+  color: #5a5a5a;
 }
 
+li::marker {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Montserrat";
+  color: #5a5a5a;
+}

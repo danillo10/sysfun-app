@@ -49,65 +49,85 @@
 
         <h2 class="mt-4">Totais</h2>
 
-        <app-input
-          [form]="form"
-          control="taxa_adesao"
-          type="text"
-          label="taxa de adesão"
-          (searchEmitter)="adicionaTaxaAdesao($event)"
-        ></app-input>
+        <div class="row">
+          <div class="col-6">
+            <app-input
+              [form]="form"
+              control="taxa_adesao"
+              type="text"
+              label="Adesão"
+              (searchEmitter)="adicionaTaxaAdesao($event)"
+            ></app-input>
+          </div>
 
-        <app-input
-          [form]="form"
-          control="valor_bruto"
-          type="text"
-          label="valor total"
-          icon="lupa.png"
-          iconPosition="right"
-          (searchEmitter)="teste($event)"
-        ></app-input>
+          <div class="col-6">
+            <app-input
+              [form]="form"
+              control="valor_bruto"
+              type="text"
+              label="Valor Total"
+              icon="lupa.png"
+              iconPosition="right"
+              (searchEmitter)="teste($event)"
+            ></app-input>
+          </div>
+        </div>
 
         <h2>Pagamento</h2>
 
-        <app-input
-          [form]="form"
-          control="data_inicial"
-          type="text"
-          mask="DATA"
-          label="data inicial"
-        ></app-input>
+        <div class="row">
+          <div class="col-6">
+            <app-input
+              [form]="form"
+              control="data_inicial"
+              type="text"
+              mask="DATA"
+              label="data inicial"
+            ></app-input>
+          </div>
 
-        <app-portlet-pagamento
-          [form]="form"
-          control="forma_pagamento"
-          type="text"
-          label="forma de pagamento"
-          (pagamentoSelecionado)="alteraValorParcelas()"
-        >
-        </app-portlet-pagamento>
+          <div class="col-6">
+            <app-portlet-pagamento
+              [form]="form"
+              control="forma_pagamento"
+              type="text"
+              label="forma de pagamento"
+              (pagamentoSelecionado)="alteraValorParcelas()"
+            >
+            </app-portlet-pagamento>
+          </div>
+        </div>
 
-        <app-portlet-calculo-total
-          [form]="form"
-          control="valor_liquido"
-          type="text"
-          label="Calculo do total"
-          (calculoSelecionado)="alteraValorParcelas()"
-        ></app-portlet-calculo-total>
+        <div class="row">
+          <app-portlet-calculo-total
+            [form]="form"
+            control="valor_liquido"
+            type="text"
+            label="Calculo do total"
+            (calculoSelecionado)="alteraValorParcelas()"
+          ></app-portlet-calculo-total>
+        </div>
 
-        <app-input
-          [form]="form"
-          control="carencia"
-          type="text"
-          label="carencia (dias)"
-        ></app-input>
+        <div class="row">
+          <div class="col-6">
+            <app-input
+              [form]="form"
+              control="carencia"
+              type="text"
+              label="carencia (dias)"
+            ></app-input>
+          </div>
 
-        <app-input
-          [form]="form"
-          control="qtd_parcelas"
-          type="number"
-          label="quantida de parcelas"
-          (searchEmitter)="alteraValorParcelas()"
-        ></app-input>
+          <div class="col-6">
+            <app-input
+              [form]="form"
+              control="qtd_parcelas"
+              type="number"
+              label="Q.Parcelas"
+              (searchEmitter)="alteraValorParcelas()"
+            ></app-input>
+          </div>
+        </div>
 
         <app-parcelas
           [data]="form.value.parcelas"
