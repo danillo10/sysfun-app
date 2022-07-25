@@ -1,12 +1,13 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
-import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
-
-import moment from 'moment';
+import { DocumentViewer } from '@awesome-cordova-plugins/document-viewer/ngx';
 
 import { IContasReceber } from 'src/app/pages/contas-receber/model/contas-receber.model';
 import { ModalReciboService } from './service/modal-recibo.service';
+
+import moment from 'moment';
+
 
 @Component({
   selector: 'app-modal-recibo',
@@ -63,10 +64,11 @@ export class ModalReciboComponent implements OnInit {
     this.contaRecebida.contas = this.contasRecebidas;
     this.modalReciboService.imprimirRecibo(this.contaRecebida)
     .subscribe((data: any) => {
-      const options = {
+      const options: any = {
         title: 'Recibo'
       }
-      this.document.viewDocument('https://www.sistemafunerario.com.br/recibo-'+this.form.value.data, 'application/pdf', options);
+      const url = 'https://www.sistemafunerario.com.br/recibo-'+moment(this.form.value.data, 'DD/MM/YYYY').format('DD-MM-YYYY') + '.pdf';
+      this.document.viewDocument(url, 'application/pdf', options)
     },(err) => alert("Erro ao emitir recibo"))
   }
 

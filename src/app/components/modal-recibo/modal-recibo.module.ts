@@ -6,6 +6,7 @@ import { ButtonsModule } from '../buttons/buttons.module';
 import { LogoModule } from '../logo/logo.module';
 import { IconsModule } from '../icons/icons.module';
 import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
+import { DocumentViewer } from '@awesome-cordova-plugins/document-viewer/ngx';
 
 
 @NgModule({
@@ -17,13 +18,14 @@ import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
     InputsModule,
     ButtonsModule,
     LogoModule,
-    IconsModule
+    IconsModule,
   ],
   exports: [
     ModalReciboComponent
   ],
   providers: [
-    PDFGenerator
+    PDFGenerator,
+    DocumentViewer
   ]
 })
 export class ModalReciboModule { }

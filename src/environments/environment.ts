@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  host: 'http://localhost:8000/',
-  // host: 'https://www.sistemafunerario.com.br/',
+  // host: 'http://localhost:8000/',
+  host: 'https://www.sistemafunerario.com.br/',
   // host: 'http://191.252.120.137:8003/'
 }
 
