@@ -7,6 +7,9 @@ import { LogoModule } from '../logo/logo.module';
 import { IconsModule } from '../icons/icons.module';
 import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 import { DocumentViewer } from '@awesome-cordova-plugins/document-viewer/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { File } from '@awesome-cordova-plugins/file/ngx';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@awesome-cordova-plugins/file-transfer/ngx';
 
 
 @NgModule({
@@ -25,7 +28,11 @@ import { DocumentViewer } from '@awesome-cordova-plugins/document-viewer/ngx';
   ],
   providers: [
     PDFGenerator,
-    DocumentViewer
+    DocumentViewer,
+    FileOpener,
+    File,
+    FileTransfer,
+    FileTransferObject
   ]
 })
 export class ModalReciboModule { }

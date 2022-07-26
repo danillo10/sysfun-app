@@ -2,6 +2,9 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 import { DocumentViewer } from '@awesome-cordova-plugins/document-viewer/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { File } from '@awesome-cordova-plugins/file/ngx';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@awesome-cordova-plugins/file-transfer/ngx';
 
 import { IContasReceber } from 'src/app/pages/contas-receber/model/contas-receber.model';
 import { ModalReciboService } from './service/modal-recibo.service';
@@ -21,6 +24,8 @@ export class ModalReciboComponent implements OnInit {
   contaRecebida: any;
   contasRecebidas: any[];
   total: number;
+  fileTransfer: FileTransferObject
+
   @ViewChild('recibo', {static: false}) modalContent: ElementRef<any>;
 
   @Input() conta: IContasReceber;
@@ -31,12 +36,15 @@ export class ModalReciboComponent implements OnInit {
     private formBuilder: FormBuilder,
     private modalReciboService: ModalReciboService,
     private pdfGenerator: PDFGenerator,
-    private document: DocumentViewer
+    private document: DocumentViewer,
+    private fileOpener: FileOpener,
+    private file: File,
+    private transfer: FileTransfer,
   ) {
     this.total = 0;
     this.viewRecibo = false;
     this.dataHoje = moment().format('DD/MM/YYYY HH:mm:ss');
-
+    this.fileTransfer = this.transfer.create();
   }
 
   ngOnInit() {
@@ -54,6 +62,7 @@ export class ModalReciboComponent implements OnInit {
         this.dataHoje = this.form.value.data + " " + moment().format('HH:mm:ss');
         this.contaRecebida = data.conta;
         this.contasRecebidas = data.contas;
+        this.contaRecebida.produto = data.produto;
         this.calculaTotal();
       })
   }
@@ -64,12 +73,20 @@ export class ModalReciboComponent implements OnInit {
     this.contaRecebida.contas = this.contasRecebidas;
     this.modalReciboService.imprimirRecibo(this.contaRecebida)
     .subscribe((data: any) => {
+      let path = this.file.dataDirectory;
+
       const options: any = {
         title: 'Recibo'
       }
       const url = 'https://www.sistemafunerario.com.br/recibo-'+moment(this.form.value.data, 'DD/MM/YYYY').format('DD-MM-YYYY') + '.pdf';
-      this.document.viewDocument(url, 'application/pdf', options)
-    },(err) => alert("Erro ao emitir recibo"))
+      this.fileTransfer.download(url, path + 'recibo.pdf')
+        .then((entry) => {
+          this.fileOpener.open(path + 'recibo.pdf', 'application/pdf')
+          .then(() => { console.log("open") })
+          .catch(e => alert(JSON.stringify(e)));
+        })
+        .catch(err => alert(JSON.stringify(err)))
+    },(err) => alert(JSON.stringify(err)))
   }
 
   calculaTotal(){

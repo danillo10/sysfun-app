@@ -58,7 +58,7 @@
     <div class="separator"></div>
 
     <h2>{{ contaRecebida.nome_fantasia }}</h2>
-    <p>{{ contaRecebida.endereco }}, {{ contaRecebida.numero }} {{ contaRecebida.complemento }}, {{ contaRecebida.bairro }} ,{{ contaRecebida.cidade }} - {{ contaRecebida.estado }}</p>
+    <p>{{ contaRecebida.endereco }}, {{ contaRecebida.numero }} {{ contaRecebida.complemento }}, {{ contaRecebida.bairro }} ,{{ contaRecebida.cidade }} - {{ contaRecebida.estado }} FONE: {{ contaRecebida.celular }}</p>
 
     <div class="separator"></div>
 
@@ -66,7 +66,7 @@
     <p>CONTRATO: {{ contaRecebida.n_os }}</p>
     <p>MENSALIDADE: {{ contaRecebida.valor | currency: "BRL" }}</p>
     <p>VENCIMENTO: {{ contaRecebida.n_parcela }}</p>
-    <p>PRODUTO/SERVIÇO: {{ contaRecebida.plano }}</p>
+    <p>PRODUTO/SERVIÇO: {{ contaRecebida.produto }}</p>
 
     <div class="separator"></div>
 
@@ -82,7 +82,6 @@
 
     <div class="separator"></div>
 
-    <h2>{{ contaRecebida.nome_fantasia }}</h2>
-    <span>{{ contaRecebida.celular }}</span>
+    <p>VENDEDOR: {{ contaRecebida.v_nome_fantasia }}</p>
   </div>
 </div>
