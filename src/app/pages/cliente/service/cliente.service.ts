@@ -18,7 +18,6 @@ export class ClienteService {
   status: boolean;
   total: number;
   celular: any;
-
   clientes$: Observable<any>;
   pesquisa = new Subject<any>();
 
@@ -264,14 +263,32 @@ export class ClienteService {
     if(!cliente.trim()){
       return of([]);
     }
-
     return this._http.get(`${environment.host}pesquisar/clientes/${cliente}`)
     .pipe(res => res)
   }
   
   getCell(celular:ClienteModel): Observable<any>{
+    if(!navigator.onLine){
+      const cliente = this.localStorageService.getParse('cliente')
+      let nome_fantasia = '';
+
+      const celularCadastrado = cliente.some(cliente =>{
+        nome_fantasia = cliente.nome_fantasia;
+        return cliente.calular == celular;
+      })
+
+      if (celularCadastrado) {
+        return of({
+          status: 1,
+          mensagem: 'Número já cadastrado no cliente: ',
+          cliente: [{
+            nome_fantasia
+          }]
+        })
+      }
+    }
     return this._http
-    .post(`${environment.host}/pesquisar/celular`,celular)
+    .post(`${environment.host}/pesquisar/celular`,{celular})
     .pipe((res) => res)
   }
 }
