@@ -65,7 +65,6 @@ export class InputsComponent implements OnInit {
       debounceTime(1000),
       distinctUntilChanged()
     );
-
     this.searchObservable$.subscribe((text) => this.emit(text));
   }
 

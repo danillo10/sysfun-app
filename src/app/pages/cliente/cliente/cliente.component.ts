@@ -377,9 +377,11 @@ export class ClienteComponent implements OnInit {
 
   getCell(){
     this.clienteService.getCell(this.form.value.celular)
-    .subscribe((data:any) =>{
+    .subscribe((data:any) => {
       if(data.status == 1){
-        return alert(data.mensagem + ' ' + data.cliente[0].nome_fantasia)
+       alert(data.mensagem + ' ' + data.cliente[0].nome_fantasia)
+      this.form.patchValue({calular: ''})
+      return;
       }
     })
   }
