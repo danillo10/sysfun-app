@@ -66,7 +66,7 @@
     <p>CONTRATO: {{ contaRecebida.n_os }}</p>
     <p>MENSALIDADE: {{ contaRecebida.valor | currency: "BRL" }}</p>
     <p>VENCIMENTO: {{ contaRecebida.n_parcela }}</p>
-    <p>PRODUTO/SERVIÇO: {{ contaRecebida.produto }}</p>
+    <p>{{ contaRecebida.produto }}</p>
 
     <div class="separator"></div>
 

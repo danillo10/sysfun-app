@@ -56,7 +56,6 @@
               control="taxa_adesao"
               type="text"
               label="Adesão"
-              (searchEmitter)="adicionaTaxaAdesao($event)"
             ></app-input>
           </div>
 
@@ -219,7 +218,7 @@
       <app-button
         color="blue"
         type="normal"
-        (click)="get()"
+        (click)="create()"
         label="Salvar"
       ></app-button>
       <app-button color="gray" type="normal" label="Cancelar"></app-button>

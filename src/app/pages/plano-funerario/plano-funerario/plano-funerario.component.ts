@@ -213,16 +213,6 @@ export class PlanoFunerarioComponent implements OnInit {
     this.form.value.parcelas = parcelas;
   }
 
-  adicionaTaxaAdesao(e) {
-    const valorTaxaAdesao = e.target.value;
-    const valorTotal = (
-      Number(this.form.value.valor_bruto) + Number(valorTaxaAdesao)
-    ).toFixed(2);
-    this.form.value.valor_bruto = valorTotal;
-    this.form.value.taxa_adesao = Number(valorTaxaAdesao).toFixed(2);
-    this.form.patchValue(this.form.value);
-  }
-
   alteraPlanos(planosFunerarios: IPlanoFunerario[]) {
     this.planosFunerarios = planosFunerarios;
     this.calculaValorPlano();
