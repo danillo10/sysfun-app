@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
 import { SelectService } from 'src/app/shared/services/select.service';
@@ -14,6 +15,8 @@ export class BairroComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() control: string;
 
+  subscription: Subscription;
+
   bairros: SelectModel[];
 
   pesquisa = {} as PesquisaModel;
@@ -26,14 +29,21 @@ export class BairroComponent implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+  ionViewDidEnter(){
     this.get();
   }
 
+  ionViewDidLeave() {
+    this.subscription.unsubscribe();
+  }
+
   get() {
-    this.bairroService.bairros$
-      .subscribe((data: any) => {
-        this.bairros = this.selectService.handleSelect(data, 'bairro');
-      })
+    this.subscription = this.bairroService.bairros$.subscribe(((data: any) => {
+      this.bairros = this.selectService.handleSelect(data, 'bairro');
+    }));
   }
 
   pesquisaBairro(){
