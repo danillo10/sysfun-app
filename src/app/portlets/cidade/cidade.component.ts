@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
 import { SelectService } from 'src/app/shared/services/select.service';
@@ -15,6 +16,7 @@ export class CidadeComponent implements OnInit {
   @Input() control: string;
 
   cidades: SelectModel[];
+  subscription: Subscription;
 
   pesquisa = {} as PesquisaModel;
 
@@ -25,15 +27,20 @@ export class CidadeComponent implements OnInit {
     this.cidades = [];
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewDidEnter(){
     this.get();
   }
 
+  ionViewDidLeave(){
+    this.subscription.unsubscribe();
+  }
+
   get() {
-    this.cidadeService.cidades$
-      .subscribe((data: any) => {
-        this.cidades = this.selectService.handleSelect(data, 'cidade');
-      })
+    this.subscription = this.cidadeService.cidades$.subscribe(((data: any) => {
+      this.cidades = this.selectService.handleSelect(data, 'cidade');
+    }));
   }
 
   pesquisaCidade(){

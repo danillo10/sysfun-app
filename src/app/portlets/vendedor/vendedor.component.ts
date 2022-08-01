@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
 import { SelectService } from 'src/app/shared/services/select.service';
@@ -18,6 +19,7 @@ export class VendedorPortletComponent implements OnInit {
   tecnico: SelectModel[];
   profissional: SelectModel[];
   pesquisa = {} as PesquisaModel;
+  subscription: Subscription;
 
   constructor(
     private vendedorPortletService: VendedorPortletService,
@@ -26,13 +28,19 @@ export class VendedorPortletComponent implements OnInit {
     this.vendedor = [];
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewDisEnter(){
     this.get();
+  }
+
+  ionViewDidLeave(){
+    this.subscription.unsubscribe();
   }
 
   get() {
     if (this.control === 'tecnico') {
-      this.vendedorPortletService.tecnicos$.subscribe((data: any) => {
+     this.subscription = this.vendedorPortletService.tecnicos$.subscribe((data: any) => {
         this.vendedor = this.selectService.handleSelect(
           data,
           'id',
@@ -40,7 +48,7 @@ export class VendedorPortletComponent implements OnInit {
         );
       });
     } else {
-      this.vendedorPortletService.profissionais$.subscribe((data: any) => {
+     this.subscription = this.vendedorPortletService.profissionais$.subscribe((data: any) => {
         this.vendedor = this.selectService.handleSelect(
           data,
           'id',
