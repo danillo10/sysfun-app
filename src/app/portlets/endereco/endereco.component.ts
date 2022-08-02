@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { FormGroup } from '@angular/forms'
+import { Subscription } from 'rxjs';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
 import { SelectService } from 'src/app/shared/services/select.service';
@@ -14,6 +15,7 @@ export class EnderecoComponent implements OnInit {
   @Input() control: string;
 
   enderecos: SelectModel[];
+  subscription: Subscription;
 
   pesquisa = {} as PesquisaModel;
 
@@ -24,15 +26,21 @@ export class EnderecoComponent implements OnInit {
     this.enderecos = [];
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewDidEnter(){
     this.get();
   }
 
+  ionViewDidLeave(){
+    this.subscription.unsubscribe();
+  }
+
   get() {
-    this.enderecoService.enderecos$
-      .subscribe((data: any) => {
-        this.enderecos = this.selectService.handleSelect(data, 'endereco');
-      })
+    this.subscription = this.enderecoService.enderecos$
+    .subscribe((data: any) => {
+      this.enderecos = this.selectService.handleSelect(data, 'endereco');
+    })
   }
 
   pesquisaEndereco(){

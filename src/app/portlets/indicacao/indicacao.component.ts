@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { PesquisaModel } from 'src/app/pages/cliente/model/pesquisa.model';
 import { SelectService } from 'src/app/shared/services/select.service';
@@ -16,6 +17,7 @@ export class IndicacaoPortletComponent implements OnInit {
 
   indicacao: SelectModel[];
   pesquisa = {} as PesquisaModel;
+  subscription: Subscription;
 
   constructor(
     private indicacaoPortletService: IndicacaoPortletService,
@@ -24,12 +26,18 @@ export class IndicacaoPortletComponent implements OnInit {
     this.indicacao = [];
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewDidEnter(){
     this.get();
   }
 
+  ionViewDidLeave(){
+    this.subscription.unsubscribe();
+  }
+
   get() {
-    this.indicacaoPortletService.indicacao$.subscribe((data: any) => {
+    this.subscription = this.indicacaoPortletService.indicacao$.subscribe((data: any) => {
       this.indicacao = this.selectService.handleSelect(
         data,
         'id',
