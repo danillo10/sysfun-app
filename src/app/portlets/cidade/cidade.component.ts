@@ -27,10 +27,11 @@ export class CidadeComponent implements OnInit {
     this.cidades = [];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.get();
+  }
 
   ionViewDidEnter(){
-    this.get();
   }
 
   ionViewDidLeave(){

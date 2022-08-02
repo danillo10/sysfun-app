@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { StatusComponent } from '../status/status.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { StatusComponent } from '../status/status.component';
   ],
   imports: [
     CommonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    RouterModule
   ],exports: [
     TablesComponent
   ],

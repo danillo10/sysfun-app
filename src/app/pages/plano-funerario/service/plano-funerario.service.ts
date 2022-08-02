@@ -57,6 +57,28 @@ export class PlanoFunerarioService {
       .toPromise();
   }
 
+  async show(id: number | string, criado_em: string) {
+    // if (!navigator.onLine) {
+    //   let cliente: ClienteModel;
+
+    //   if (criado_em == 'aplicativo') {
+    //     const clientes = this.localStorageService.getParse('clientesNovos');
+    //     cliente = clientes.find(cliente => cliente.aplicativo_id == id);
+    //   } else {
+    //     let data = await this.nativeStorageService.getParse('clientes');
+    //     data = JSON.parse(data);
+    //     cliente = data.find(cliente => cliente.id == id);
+    //   }
+
+    //   return of({ cliente: [cliente] })
+    //     .toPromise();
+    // }
+
+    return this._http.get(`${environment.host}planos-funerarios/${id}`)
+      .pipe(res => res)
+      .toPromise();
+  }
+
   salvaClientesNovos(plano: IPlanoFunerario, criadoEm: string) {
     let planos = this.localStorageService.getParse('PlanoNovos');
 

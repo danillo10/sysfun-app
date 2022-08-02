@@ -107,6 +107,7 @@ export class PlanoFunerarioComponent implements OnInit {
       repetir_valor: [this.plano.repetir_valor],
     });
     this.setDependentes([]);
+    this.get();
   }
 
   ionViewDidEnter() {}
@@ -167,21 +168,31 @@ export class PlanoFunerarioComponent implements OnInit {
       this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
       if (id != 'plano-funerario') {
-        this.loadingService.showLoading('Salvando dados...').then(() => {
-          const id = data.aplicativo ? data.aplicativo : data.sistema;
-          this.planoFunerarioService
-            .salvaPlanos(id, this.criadoEm)
-            .then((data: any) => {
-              this.plano = new PlanoFunerarioModel(data.plano[0]);
-
-              if (navigator.onLine) this.plano.dependentes = data.dependentes;
-
-              this.form.patchValue(this.plano);
-
-              this.loadingService.hideLoading();
-            });
-        });
+        this.planoFunerarioService.show(id, this.criadoEm)
+          .then((data: any) => {
+            this.plano = data.planoFunerario;
+            this.plano.dependentes = data.planoFunerarioDependentes;
+            this.plano.parcelas = data.planoFunerarioParcelas;
+            this.plano.servicos = data.planoFunerarioServicos;
+          })
       }
+
+      // if (id != 'plano-funerario') {
+      //   this.loadingService.showLoading('Salvando dados...').then(() => {
+      //     const id = data.aplicativo ? data.aplicativo : data.sistema;
+      //     this.planoFunerarioService
+      //       .salvaPlanos(id, this.criadoEm)
+      //       .then((data: any) => {
+      //         this.plano = new PlanoFunerarioModel(data.plano[0]);
+
+      //         if (navigator.onLine) this.plano.dependentes = data.dependentes;
+
+      //         this.form.patchValue(this.plano);
+
+      //         this.loadingService.hideLoading();
+      //       });
+      //   });
+      // }
     });
   }
 

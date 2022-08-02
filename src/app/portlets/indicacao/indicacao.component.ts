@@ -26,10 +26,11 @@ export class IndicacaoPortletComponent implements OnInit {
     this.indicacao = [];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.get();
+  }
 
   ionViewDidEnter(){
-    this.get();
   }
 
   ionViewDidLeave(){

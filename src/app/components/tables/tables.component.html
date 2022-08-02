@@ -47,7 +47,11 @@
     <tbody>
       <tr *ngFor="let plano of data | paginate: { itemsPerPage: pesquisa.registros, currentPage: pagina, totalItems: total }">
         <td>{{plano.id}}</td>
-        <td><div class="nome">{{plano.nome_fantasia}}</div></td>
+        <td>
+          <a routerLink="/plano-funerario/{{plano.id}}">
+            <div class="nome">{{plano.nome_fantasia}}</div>
+          </a>
+        </td>
         <td class="d-flex">
           <app-status [status]="plano.situacao.situacao" tipo="planoFunerario"></app-status>
           <button>

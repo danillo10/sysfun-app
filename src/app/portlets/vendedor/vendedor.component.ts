@@ -28,10 +28,11 @@ export class VendedorPortletComponent implements OnInit {
     this.vendedor = [];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.get();
+  }
 
   ionViewDisEnter(){
-    this.get();
   }
 
   ionViewDidLeave(){

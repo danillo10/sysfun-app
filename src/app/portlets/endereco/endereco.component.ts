@@ -26,10 +26,12 @@ export class EnderecoComponent implements OnInit {
     this.enderecos = [];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.get();
+
+  }
 
   ionViewDidEnter(){
-    this.get();
   }
 
   ionViewDidLeave(){

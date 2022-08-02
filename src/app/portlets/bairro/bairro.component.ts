@@ -29,11 +29,10 @@ export class BairroComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.get();
   }
 
   ionViewDidEnter(){
-    this.get();
   }
 
   ionViewDidLeave() {

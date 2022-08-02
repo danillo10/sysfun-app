@@ -27,15 +27,11 @@ export class ClientePortletComponent implements OnInit {
   }
 
   ngOnInit() {
-   
-  }
-
-  ionViewDidEnter(){
     this.get();
   }
 
   ionViewDidLeave(){
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   get() {

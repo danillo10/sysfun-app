@@ -127,7 +127,7 @@ export class ClienteService {
 
     return this._http.post(`${environment.host}pesquisa/avancada/clientes`, pesquisa)
       .pipe(res => res)
-      .toPromise();
+      .toPromise()
   }
 
   sync(pesquisa: PesquisaModel): Promise<any> {
@@ -266,7 +266,7 @@ export class ClienteService {
     return this._http.get(`${environment.host}pesquisar/clientes/${cliente}`)
     .pipe(res => res)
   }
-  
+
   getCell(celular:ClienteModel): Observable<any>{
     if(!navigator.onLine){
       const cliente = this.localStorageService.getParse('cliente')
