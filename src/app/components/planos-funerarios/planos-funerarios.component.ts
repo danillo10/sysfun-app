@@ -76,6 +76,14 @@ export class PlanosFunerariosComponent implements OnInit {
     planoFunerario.id = planoFunerarioSelecionado.id;
     planoFunerario.nome = planoFunerarioSelecionado.nome;
     planoFunerario.valor_venda = planoFunerarioSelecionado.valor_venda;
+    planoFunerario.numero = planoFunerarioSelecionado.servico_plano;
+    planoFunerario.servico_id = planoFunerarioSelecionado.id;
+    planoFunerario.servico_plano = planoFunerarioSelecionado.servico_plano;
+    planoFunerario.servico_nome = planoFunerarioSelecionado.nome;
+    planoFunerario.servico_parcelas = planoFunerarioSelecionado.qtd_parcelas;
+    planoFunerario.servico_valor_unitario =
+      planoFunerarioSelecionado.valor_venda;
+    planoFunerario.servico_valor_total = planoFunerarioSelecionado.valor_venda;
 
     this.planosFunerarioPesquisado.next('');
     this.planoFunerarioSelecionado.emit(planoFunerarioSelecionado);
@@ -104,7 +112,7 @@ export class PlanosFunerariosComponent implements OnInit {
   onChange(novoValor, planoFunerarioId) {
     this.planosFunerarios.find(
       (plano) => plano.id === planoFunerarioId
-    ).valor_venda = novoValor;
+    ).servico_valor_total = novoValor;
     this.emit();
   }
 }

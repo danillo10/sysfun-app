@@ -112,40 +112,52 @@ export class PlanoFunerarioComponent implements OnInit {
   ionViewDidEnter() {}
 
   create() {
-    if (this.form.value.cliente == '') {
-      return alert('Campo Cliente Obrigatório!');
-    }
-    if (this.form.value.tecnico == '') {
-      return alert('Campo Técnico 1 Obrigatório!');
-    }
-    if (this.form.value.profissional == '') {
-      return alert('Campo Técnico 2 Obrigatório!');
-    }
-    if (this.form.value.id == '') {
-      return alert('Número do plano Obrigatório!');
-    }
-    // this.loadingService.showLoading("Salvando cadastro...")
-    //   .then(() => {
-    //     this.form.patchValue({ dependentes: this.plano.dependentes });
+    if (this.form.value.cliente == '') return alert('Informe um cliente');
 
-    //     const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (this.form.value.tecnico == '') return alert('Informe um Atendente');
 
-    //     if (id !== 'novo-cliente') {
-    //       this.planoFunerarioService.salvaPlanos(this.form.value,this.criadoEm)
-    //         .then((data: any) => {
-    //           this.loadingService.hideLoading();
-    //           if (data.status == 1) return alert(data.mensagem);
-    //           this.router.navigate(['plano-funerario']);
-    //         })
-    //     } else {
-    //       this.planoFunerarioService.create(this.form.value)
-    //         .then((data: any) => {
-    //           this.loadingService.hideLoading();
-    //           if (data.status == 1) return alert(data.mensagem);
-    //           this.router.navigate(['plano-funerario']);
-    //         })
-    //     }
-    //   })
+    if (this.form.value.servicos.length <= 0)
+      return alert('Informe um produto ou serviço');
+
+    if (this.form.value.parcelas <= 0) return alert('Gerar parcelas do plano');
+
+    if (
+      this.form.value.parcelas.some(
+        (parcela) => parcela.parcela_forma_pagamento === ''
+      )
+    )
+      return alert('Todas as parcelas devem possuir uma forma de pagamento');
+
+    if (this.form.value.taxa_adesao == '') {
+      if (!confirm('Deseja cadastrar o plano sem a taxa de adesão ?')) return;
+    }
+
+    if (this.form.value.carencia == '') {
+      if (!confirm('Deseja cadastrar o plano sem informar a carência ?'))
+        return;
+    }
+
+    this.loadingService.showLoading('Salvando cadastro...').then(() => {
+      const id = this.activatedRoute.snapshot.paramMap.get('id');
+
+      this.form.patchValue({ dependentes: this.plano.dependentes });
+
+      if (id === 'new') {
+        this.planoFunerarioService.create(this.form.value).then((data: any) => {
+          this.loadingService.hideLoading();
+          if (data.status == 1) return alert(data.mensagem);
+          this.router.navigate(['plano-funerario']);
+        });
+      } else {
+        this.planoFunerarioService
+          .salvaPlanos(this.form.value, this.criadoEm)
+          .then((data: any) => {
+            this.loadingService.hideLoading();
+            if (data.status == 1) return alert(data.mensagem);
+            this.router.navigate(['plano-funerario']);
+          });
+      }
+    });
   }
 
   get() {
@@ -204,6 +216,7 @@ export class PlanoFunerarioComponent implements OnInit {
       parcelas.push(
         new IParcela({
           id: Math.floor(Math.random() * Date.now()),
+          parcela_numero: i + 1,
           parcela_data: this.utilsService.formatDate(dataParcela),
           parcela_valor: valorParcelas,
           parcela_forma_pagamento: formaPagamento,
@@ -211,17 +224,19 @@ export class PlanoFunerarioComponent implements OnInit {
       );
     }
     this.form.value.parcelas = parcelas;
+    this.form.patchValue(this.form.value);
   }
 
   alteraPlanos(planosFunerarios: IPlanoFunerario[]) {
     this.planosFunerarios = planosFunerarios;
+    this.form.value.servicos = planosFunerarios;
     this.calculaValorPlano();
   }
 
   calculaValorPlano() {
     let valorTotal = 0;
     this.planosFunerarios.forEach((plano) => {
-      valorTotal += Number(plano.valor_venda);
+      valorTotal += Number(plano.servico_valor_total);
     });
     this.form.value.valor_bruto = valorTotal.toFixed(2);
     this.form.patchValue(this.form.value);

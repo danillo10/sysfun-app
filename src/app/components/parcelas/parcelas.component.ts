@@ -35,7 +35,7 @@ export class ParcelasComponent implements OnInit {
   ngOnInit() {}
 
   ngOnChanges(parcela: IParcela) {
-    if (!parcela.parcela_alterada) parcela.parcela_alterada = true;
+    if (!parcela.alterada) parcela.alterada = true;
 
     if (this.calculoTotal === 'Dividir') this.alteraValorParcelas();
   }
@@ -52,7 +52,7 @@ export class ParcelasComponent implements OnInit {
     let qtdParcelasAlteradas = 0;
 
     this.parcelas.forEach((parcela) => {
-      if (parcela.parcela_alterada) {
+      if (parcela.alterada) {
         valorParcelasAlteradas += parcela.parcela_valor;
         qtdParcelasAlteradas++;
       }
@@ -65,7 +65,7 @@ export class ParcelasComponent implements OnInit {
     }
 
     this.parcelas.forEach((parcela) => {
-      if (!parcela.parcela_alterada) parcela.parcela_valor = valorParcelas;
+      if (!parcela.alterada) parcela.parcela_valor = valorParcelas;
     });
   }
 }

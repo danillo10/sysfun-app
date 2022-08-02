@@ -35,21 +35,21 @@ export class PlanoFunerarioService {
     this.salvaClientesNovos(plano, 'sistema');
   }
   async create(plano: IPlanoFunerario): Promise<any> {
-    if (!navigator.onLine) {
-      let planosNovos = this.localStorageService.getParse('planosNovos');
-      let data = await this.nativeStorageService.getParse('planos');
+    // if (!navigator.onLine) {
+    //   let planosNovos = this.localStorageService.getParse('planosNovos');
+    //   let data = await this.nativeStorageService.getParse('planos');
 
-      data = JSON.parse(data);
+    //   data = JSON.parse(data);
 
-      planosNovos.push(plano);
+    //   planosNovos.push(plano);
 
-      data = [plano, ...data];
+    //   data = [plano, ...data];
 
-      this.localStorageService.setParse('clientesNovos', planosNovos);
-      this.nativeStorageService.setParse('clientes', data);
+    //   this.localStorageService.setParse('clientesNovos', planosNovos);
+    //   this.nativeStorageService.setParse('clientes', data);
 
-      return of(true).toPromise();
-    }
+    //   return of(true).toPromise();
+    // }
 
     return this._http
       .post(`${environment.host}planos-funerarios`, plano)

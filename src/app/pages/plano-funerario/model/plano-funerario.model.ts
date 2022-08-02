@@ -139,13 +139,22 @@ export class PlanoFunerarioModel {
 }
 
 export class IPlanoFunerario {
-  numero?: number;
   id?: number;
   nome?: string;
   valor_venda?: number;
-  pesquisados?: any[];
+  qtd_parcelas?: number;
   created_at?: Date;
   updated_at?: Date;
+  numero?: number;
+  servico_id?: number;
+  servico_plano?: number;
+  servico_nome?: string;
+  servico_quantidade?: number;
+  servico_parcelas?: number;
+  servico_valor_unitario?: number;
+  servico_valor_total?: number;
+  loading?: boolean;
+  pesquisados?: any[];
 
   constructor(data?) {
     data = data || {};
@@ -154,5 +163,12 @@ export class IPlanoFunerario {
     this.nome = null;
     this.valor_venda = null;
     this.pesquisados = [];
+    this.servico_id = data.servico_id || null;
+    this.servico_plano = data.servico_plano || null;
+    this.servico_quantidade = data.servico_quantidade + 1 || 1;
+    this.servico_parcelas = data.servico_parcelas || null;
+    this.servico_valor_unitario = data.servico_valor_unitario || '';
+    this.servico_valor_total = data.servico_valor_total || '';
+    this.loading = data.loading || false;
   }
 }

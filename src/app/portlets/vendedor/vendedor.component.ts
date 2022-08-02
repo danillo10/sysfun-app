@@ -73,11 +73,9 @@ export class VendedorPortletComponent implements OnInit {
 
   selecionaVendedor(vendedor) {
     const _control = this.control;
-    let formValues = {
-      _control: vendedor.value,
-    };
+    let formValues = {};
+    formValues[_control] = vendedor.value;
     formValues[this.getControlName()] = vendedor.description;
-
     this.form.patchValue(formValues);
     if (this.control === 'tecnico')
       this.vendedorPortletService.pesquisaTecnico.next('');
