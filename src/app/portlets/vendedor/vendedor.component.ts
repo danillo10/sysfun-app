@@ -32,10 +32,7 @@ export class VendedorPortletComponent implements OnInit {
     this.get();
   }
 
-  ionViewDisEnter(){
-  }
-
-  ionViewDidLeave(){
+  ngOnDestroy(){
     this.subscription.unsubscribe();
   }
 

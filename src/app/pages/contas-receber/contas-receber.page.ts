@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ActionsheetService } from 'src/app/shared/services/actionsheet.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
@@ -25,6 +26,7 @@ export class ContasReceberPage implements OnInit {
   filtro: boolean;
   viewLiquidar: boolean;
   viewRecibo: boolean;
+  subscription:Subscription;
 
   constructor(
     private _router: Router,
@@ -40,21 +42,24 @@ export class ContasReceberPage implements OnInit {
     this.pesquisa.pagina = 1;
   }
 
-  ngOnInit() { }
-
-  ionViewDidEnter() {
+  ngOnInit() {
     this.pesquisa.pagina = 1;
     this.pesquisar();
     this.getLiquidar();
     this.getImprimir();
+   }
+  
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
+
 
   add() {
     this._router.navigate(['contas-receber/receita']);
   }
 
   getLiquidar(){
-    this._actionSheetService.liquidar$
+    this.subscription = this._actionSheetService.liquidar$
       .subscribe((conta: IContasReceber) => {
         this._contasReceberService.dadosLiquidar(conta.id)
           .subscribe((data: any) => {
@@ -67,7 +72,7 @@ export class ContasReceberPage implements OnInit {
   }
 
   getImprimir(){
-    this._actionSheetService.imprimir$
+    this.subscription = this._actionSheetService.imprimir$
       .subscribe((conta: IContasReceber) => {
         this.contaReceber = conta;
         this.viewRecibo = true;

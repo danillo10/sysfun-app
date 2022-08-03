@@ -30,8 +30,8 @@ export class ClientePortletComponent implements OnInit {
     this.get();
   }
 
-  ionViewDidLeave(){
-    // this.subscription.unsubscribe();
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
   get() {

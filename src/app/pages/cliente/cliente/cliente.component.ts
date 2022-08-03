@@ -2,7 +2,7 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { CepModel } from 'src/app/shared/models/cep.model';
@@ -62,6 +62,7 @@ export class ClienteComponent implements OnInit {
   dependentesCopiados: string;
   enderecos: boolean;
   criadoEm: string;
+  subscription: Subscription;
 
   profissao$: Observable<any>;
   profissaoPesquisada = new Subject<any>();
@@ -195,15 +196,11 @@ export class ClienteComponent implements OnInit {
     this.getCategorias();
     this.copiarDependentes();
   }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
   
-  ionViewDidEnter() {
-    this.get();
-  }
-
-  ionViewDidLeave() {
-    this.unsubscribeAll.unsubscribe();
-  }
-
   create() {
 
     if (this.form.value.nome_fantasia == "") {
@@ -255,7 +252,7 @@ export class ClienteComponent implements OnInit {
   }
 
   getCategorias() {
-    this.categoriaClienteService.get()
+   this.subscription = this.categoriaClienteService.get()
       .subscribe((data: any[]) => {
         this.categorias = this.selectService.handleSelect(data, 'id', 'nome')
       })
@@ -322,7 +319,7 @@ export class ClienteComponent implements OnInit {
   }
 
   pesquisaCPF() {
-    this.clienteService.pesquisaCPF(this.form.value.cnpjcpf)
+   this.subscription = this.clienteService.pesquisaCPF(this.form.value.cnpjcpf)
       .subscribe((data: any) => {
         if (data.status == 1) {
           alert(data.mensagem + ' ' + data.cliente[0].nome_fantasia)
@@ -335,7 +332,7 @@ export class ClienteComponent implements OnInit {
   getCep(cliente: string) {
     const cep = cliente == 'primario' ? this.form.value.cep : this.form.value.eCep;
 
-    this.adressService.getCep(cep)
+   this.subscription = this.adressService.getCep(cep)
       .subscribe((data: CepModel) => {
         if (data.erro) return alert(messages.address.cep)
         if (cliente == 'primario')
@@ -376,7 +373,7 @@ export class ClienteComponent implements OnInit {
   }
 
   getCell(){
-    this.clienteService.getCell(this.form.value.celular)
+   this.subscription = this.clienteService.getCell(this.form.value.celular)
     .subscribe((data:any) => {
       if(data.status == 1){
        alert(data.mensagem + ' ' + data.cliente[0].nome_fantasia)

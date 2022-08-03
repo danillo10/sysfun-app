@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { IDependentes } from 'src/app/pages/cliente/model/cliente.model';
 import { DependentesService } from 'src/app/shared/services/dependentes.service';
@@ -15,6 +15,8 @@ import { DateService } from 'src/app/shared/services/date.service';
   styleUrls: ['./dependentes.component.scss'],
 })
 export class DependentesComponent implements OnInit {
+  subscription: Subscription;
+
   @Input() set data(dependentes: IDependentes[]) {
     if (dependentes.length > 0) {
       this.dependentes = dependentes;
@@ -40,6 +42,10 @@ export class DependentesComponent implements OnInit {
     this.getDependentes();
   }
 
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+
   ngOnChanges() {
     this.emit();
   }
@@ -56,7 +62,7 @@ export class DependentesComponent implements OnInit {
           'Deseja excluir o dependente selecionado ? Esta ação é irreversível.'
         )
       ) {
-        return this.dependenteService
+        return this.subscription = this.dependenteService
           .delete(dependente)
           .subscribe((data: any) => {
             this.dependentes = this.dependenteService.reorganizar(
@@ -93,7 +99,7 @@ export class DependentesComponent implements OnInit {
     dependente.idade = dependenteSelecionado.idade;
     dependente.pessoa = dependenteSelecionado.pessoa;
 
-    this.dependenteService
+    this.subscription = this.dependenteService
       .dependenteUsuario(dependente.id)
       .subscribe((data: any) => {
         if (data.cliente)
@@ -119,7 +125,7 @@ export class DependentesComponent implements OnInit {
       switchMap((data) => this.dependenteService.get(data))
     );
 
-    this.dependentes$.subscribe((data) => {
+    this.subscription = this.dependentes$.subscribe((data) => {
       this.dependente.pesquisados = data;
     });
   }

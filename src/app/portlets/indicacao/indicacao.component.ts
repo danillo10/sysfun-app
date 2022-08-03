@@ -30,10 +30,7 @@ export class IndicacaoPortletComponent implements OnInit {
     this.get();
   }
 
-  ionViewDidEnter(){
-  }
-
-  ionViewDidLeave(){
+  ngOnDestroy(){
     this.subscription.unsubscribe();
   }
 

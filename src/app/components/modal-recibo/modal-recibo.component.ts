@@ -10,6 +10,7 @@ import { IContasReceber } from 'src/app/pages/contas-receber/model/contas-recebe
 import { ModalReciboService } from './service/modal-recibo.service';
 
 import moment from 'moment';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class ModalReciboComponent implements OnInit {
   contaRecebida: any;
   contasRecebidas: any[];
   total: number;
-  fileTransfer: FileTransferObject
+  fileTransfer: FileTransferObject;
+  subscription: Subscription;
 
   @ViewChild('recibo', {static: false}) modalContent: ElementRef<any>;
 
@@ -55,9 +57,13 @@ export class ModalReciboComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+
   imprimir() {
     this.viewRecibo = true;
-    this.modalReciboService.imprimir(this.conta)
+    this.subscription = this.modalReciboService.imprimir(this.conta)
       .subscribe((data: any) => {
         this.dataHoje = this.form.value.data + " " + moment().format('HH:mm:ss');
         this.contaRecebida = data.conta;
@@ -71,7 +77,7 @@ export class ModalReciboComponent implements OnInit {
     this.contaRecebida.dataHoje = this.dataHoje;
     this.contaRecebida.total = this.form.value.valor;
     this.contaRecebida.contas = this.contasRecebidas;
-    this.modalReciboService.imprimirRecibo(this.contaRecebida)
+    this.subscription = this.modalReciboService.imprimirRecibo(this.contaRecebida)
     .subscribe((data: any) => {
       let path = this.file.dataDirectory;
 

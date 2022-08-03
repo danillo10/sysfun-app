@@ -14,6 +14,7 @@ import { PlanoFunerarioService } from '../service/plano-funerario.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
 import calculoTotalJson from '../../../pages/utils/calculo_total.json';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-plano-funerario',
@@ -26,6 +27,7 @@ export class PlanoFunerarioComponent implements OnInit {
   plano: PlanoFunerarioModel;
   planosFunerarios: IPlanoFunerario[];
   criadoEm: string;
+  subscription: Subscription;
 
   calculoTotal: SelectModel[];
 
@@ -110,7 +112,9 @@ export class PlanoFunerarioComponent implements OnInit {
     this.get();
   }
 
-  ionViewDidEnter() {}
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   create() {
     if (this.form.value.cliente == '') return alert('Informe um cliente');
@@ -164,7 +168,7 @@ export class PlanoFunerarioComponent implements OnInit {
   get() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.activatedRoute.queryParams.subscribe((data) => {
+    this.subscription =this.activatedRoute.queryParams.subscribe((data) => {
       this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
       if (id != 'plano-funerario') {

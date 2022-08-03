@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { ContaBancariaModel } from 'src/app/shared/models/conta-bancaria.model';
 import { CategoriasFinanceirasService } from 'src/app/shared/services/categorias-financeiras.service';
@@ -39,6 +40,7 @@ export class ContaReceberComponent implements OnInit {
   formaPagamento: SelectModel[];
   router: any;
   criadoEm: string;
+  subscription: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -89,34 +91,38 @@ export class ContaReceberComponent implements OnInit {
     this.getFormasPagamentos();
   }
 
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+
   getContasBancarias(){
-    this.contasBancariasService.getAll()
+    this.subscription = this.contasBancariasService.getAll()
       .subscribe((data: ContaBancariaModel[]) => this.contasBancarias = data);
   }
 
   getCategoriasFinanceiras(){
-    this.categoriasFinanceirasService.categorias$
+    this.subscription = this.categoriasFinanceirasService.categorias$
       .subscribe((categoriasFinaceiras: any) => {
         this.categoriasFinanceiras = this.selectService.handleSelect(categoriasFinaceiras, 'id', 'descricao');
       })
   }
 
   getClientes(){
-    this.clientesService.clientes$
+    this.subscription = this.clientesService.clientes$
       .subscribe((clientes: any) => {
         this.clientes = this.selectService.handleSelect(clientes, 'id', 'nome_fantasia');
       })
   }
 
   getCentroCustos(){
-    this.centroCustoService.centro_custos$
+    this.subscription = this.centroCustoService.centro_custos$
       .subscribe((centro_custos: any) => {
         this.centrosCusto = this.selectService.handleSelect(centro_custos, 'id', 'descricao');
       })
   }
 
   getFormasPagamentos(){
-    this.formaPagamentoService.get()
+    this.subscription = this.formaPagamentoService.get()
     .subscribe((formaPagamento: any)=>{
       this.formaPagamento = this.selectService.handleSelect(formaPagamento, 'id', 'descricao');
     })

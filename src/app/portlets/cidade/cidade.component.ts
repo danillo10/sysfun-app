@@ -31,10 +31,7 @@ export class CidadeComponent implements OnInit {
     this.get();
   }
 
-  ionViewDidEnter(){
-  }
-
-  ionViewDidLeave(){
+  ngOnDestroy(){
     this.subscription.unsubscribe();
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import moment from 'moment';
+import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 import { NativeStorageService } from 'src/app/shared/services/native-storage.service';
@@ -22,6 +23,7 @@ export class DashboardComponent implements OnInit {
   status: boolean;
   atualizado: boolean;
   buttons: any[];
+  subscription: Subscription;
 
   constructor(
     private router: Router,
@@ -36,13 +38,17 @@ export class DashboardComponent implements OnInit {
     this.buttons = dataButtons.buttons;
   }
 
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+
   async ionViewDidEnter() {
     if (!this.localStorageService.get('ultimaAtualizacao')) {
       this.nativeStorageService.setParse('clientes', []);
       this.localStorageService.setParse('clientesNovos', []);
     }
 
-    this.statusService.onNetworkChanged
+   this.statusService.onNetworkChanged
       .subscribe((data: boolean) => this.status = data)
 
     this.atualizado = this.localStorageService.getParse('clientesNovos') ? false : true;
@@ -92,7 +98,7 @@ export class DashboardComponent implements OnInit {
         let registros = 1000;
         let skip = 0;
 
-          this.clienteService.totalClientes()
+         this.subscription = this.clienteService.totalClientes()
             .subscribe(async (data) => {
               let contagem = data;
               while (skip <= contagem) {

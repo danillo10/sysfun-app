@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
@@ -13,7 +14,9 @@ import { LoginService } from './service/login.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
 export class LoginComponent implements OnInit {
+  subscription: Subscription;
   form: FormGroup;
 
   constructor(
@@ -36,10 +39,14 @@ export class LoginComponent implements OnInit {
     this.autoLogin();
   }
 
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+
   login() {
     this.loadingService.showLoading('Fazendo Login')
       .then(() => {
-        this.authService.login(this.form.value)
+        this.subscription = this.authService.login(this.form.value)
           .subscribe(
             (data: any) => {
 

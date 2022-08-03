@@ -28,13 +28,9 @@ export class EnderecoComponent implements OnInit {
 
   ngOnInit() {
     this.get();
-
   }
 
-  ionViewDidEnter(){
-  }
-
-  ionViewDidLeave(){
+  ngOnDestroy(){
     this.subscription.unsubscribe();
   }
 

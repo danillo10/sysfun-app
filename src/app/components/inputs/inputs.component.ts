@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { fromEvent, Observable, Subject } from 'rxjs';
+import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { CalculoTotalService } from 'src/app/shared/services/calculo-total.service';
 import { UtilsCalculosService } from 'src/app/shared/services/utils-calculos.service';
@@ -56,7 +56,7 @@ export class InputsComponent implements OnInit {
     private _utilsCalculosService: UtilsCalculosService,
     private _calculoTotalService: CalculoTotalService
   ) {}
-
+  
   ngOnInit() {
     this.searchObservable$ = this.searchEvent.pipe(
       map((event: any) => {
