@@ -15,7 +15,7 @@
 
         <app-portlet-cliente
           [form]="form"
-          control="cliente"
+          control="cliente_nome"
           type="text"
           label="Cliente"
         ></app-portlet-cliente>
@@ -36,7 +36,7 @@
 
         <app-portlet-indicacao
           [form]="form"
-          control="nome_indicacao"
+          control="indicacao_nome"
           type="text"
           label="Indicação"
         ></app-portlet-indicacao>
@@ -44,6 +44,7 @@
         <h2>Planos funarários</h2>
 
         <app-planos-funerarios
+          [data]="plano.servicos"
           (planosFunerariosSelecionados)="alteraPlanos($event)"
         ></app-planos-funerarios>
 
@@ -65,7 +66,6 @@
               control="valor_bruto"
               type="text"
               label="Valor Total"
-              icon="lupa.png"
               iconPosition="right"
             ></app-input>
           </div>

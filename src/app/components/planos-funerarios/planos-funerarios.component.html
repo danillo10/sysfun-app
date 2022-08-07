@@ -19,7 +19,7 @@
       <div class="form-group relative">
         <input
           (input)="pesquisaPlanosFunerario(planoFunerario, planoFunerario.nome)"
-          [(ngModel)]="planoFunerario.nome"
+          [(ngModel)]="planoFunerario.servico_nome"
           type="text"
           class="form-control"
           name="planoFunerario_servicos{{ i }}"
@@ -41,7 +41,7 @@
         <input
           currencyMask
           [options]="{ prefix: '', thousands: '.', decimal: ',' }"
-          [ngModel]="planoFunerario.valor_venda"
+          [ngModel]="planoFunerario.servico_valor_unitario"
           (ngModelChange)="onChange($event, planoFunerario.id)"
           type="text"
           class="form-control"

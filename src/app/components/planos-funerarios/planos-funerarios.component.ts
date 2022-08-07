@@ -36,11 +36,11 @@ export class PlanosFunerariosComponent implements OnInit {
   constructor(
     private planosFunerariosService: PlanosFunerariosService,
     private dateService: DateService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.parentescos = parentescos.parentescos;
-    this.planosFunerarios = [new IPlanoFunerario()];
     this.getPlanosFunerarios();
   }
 
@@ -106,7 +106,9 @@ export class PlanosFunerariosComponent implements OnInit {
   }
 
   emit() {
-    this.planosFunerariosSelecionados.emit(this.planosFunerarios);
+    if(this.planosFunerarios) {
+      this.planosFunerariosSelecionados.emit(this.planosFunerarios);
+    }
   }
 
   onChange(novoValor, planoFunerarioId) {

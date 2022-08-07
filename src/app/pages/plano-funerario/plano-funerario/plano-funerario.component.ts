@@ -48,15 +48,15 @@ export class PlanoFunerarioComponent implements OnInit {
       id: [this.plano.id],
       tipo: [this.plano.tipo],
       cliente: [this.plano.cliente],
-      nome_cliente: [this.plano.nome_cliente],
+      cliente_nome: [this.plano.cliente_nome],
       indicacao: [this.plano.indicacao],
-      nome_indicacao: [this.plano.nome_indicacao],
+      indicacao_nome: [this.plano.indicacao_nome],
       indicacao_parcelas: [this.plano.indicacao_parcelas],
       tipo_liberacao: [this.plano.tipo_liberacao],
       tecnico: [this.plano.tecnico],
-      nome_tecnico: [this.plano.nome_tecnico],
+      tecnico_nome: [this.plano.tecnico_nome],
       profissional: [this.plano.profissional],
-      nome_profissional: [this.plano.nome_profissional],
+      profissional_nome: [this.plano.profissional_nome],
       situacao: [this.plano.situacao],
       lista_preco: [this.plano.lista_preco],
       falecido: [this.plano.falecido],
@@ -174,10 +174,14 @@ export class PlanoFunerarioComponent implements OnInit {
       if (id != 'plano-funerario') {
         this.planoFunerarioService.show(id, this.criadoEm)
           .then((data: any) => {
-            this.plano = data.planoFunerario;
+            this.plano = data.planoFunerario[0];
             this.plano.dependentes = data.planoFunerarioDependentes;
             this.plano.parcelas = data.planoFunerarioParcelas;
             this.plano.servicos = data.planoFunerarioServicos;
+
+            this.form.patchValue(this.plano);
+
+            console.log(this.form.value)
           })
       }
 

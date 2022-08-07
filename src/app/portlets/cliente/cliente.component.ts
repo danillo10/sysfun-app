@@ -53,7 +53,7 @@ export class ClientePortletComponent implements OnInit {
   selecionaCliente(cliente) {
     this.form.patchValue({
       cliente: cliente.value,
-      nome_cliente: cliente.description,
+      cliente_nome: cliente.description,
     });
     this.clientePortletService.pesquisa.next('');
   }

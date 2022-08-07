@@ -57,7 +57,7 @@ export class VendedorPortletComponent implements OnInit {
   }
 
   getControlName() {
-    return `nome_${this.control}`;
+    return `${this.control}_nome`;
   }
 
   pesquisaVendedor() {

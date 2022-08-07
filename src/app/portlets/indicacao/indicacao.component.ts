@@ -53,7 +53,7 @@ export class IndicacaoPortletComponent implements OnInit {
   selecionaIndicacao(indicacao) {
     this.form.patchValue({
       indicacao: indicacao.value,
-      nome_indicacao: indicacao.description,
+      indicacao_nome: indicacao.description,
     });
     this.indicacaoPortletService.pesquisa.next('');
   }
