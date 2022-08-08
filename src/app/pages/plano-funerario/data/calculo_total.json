@@ -2,11 +2,11 @@
   "calculoTotal": [
     {
       "value": "repetir",
-      "description": "Repetir valor total<"
+      "description": "repetir valor total<"
     },
     {
       "value": "dividir",
-      "description": "Dividir valor total<"
+      "description": "dividir valor total<"
     }
   ]
 }

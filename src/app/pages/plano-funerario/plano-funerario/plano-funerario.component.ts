@@ -27,6 +27,7 @@ export class PlanoFunerarioComponent implements OnInit {
   plano: PlanoFunerarioModel;
   planosFunerarios: IPlanoFunerario[];
   criadoEm: string;
+  edit: boolean;
   subscription: Subscription;
 
   calculoTotal: SelectModel[];
@@ -41,6 +42,7 @@ export class PlanoFunerarioComponent implements OnInit {
     private router: Router
   ) {
     this.plano = new PlanoFunerarioModel();
+    this.edit = false;
   }
 
   ngOnInit() {
@@ -172,16 +174,15 @@ export class PlanoFunerarioComponent implements OnInit {
       this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
       if (id != 'plano-funerario') {
+        this.edit = true;
         this.planoFunerarioService.show(id, this.criadoEm)
           .then((data: any) => {
             this.plano = data.planoFunerario[0];
-            this.plano.dependentes = data.planoFunerarioDependentes;
-            this.plano.parcelas = data.planoFunerarioParcelas;
+            this.plano.dependentes = this.setDependentes(data.planoFunerarioDependentes);
+            this.plano.parcelas = this.setParcelas(data.planoFunerarioParcelas);
             this.plano.servicos = data.planoFunerarioServicos;
 
             this.form.patchValue(this.plano);
-
-            console.log(this.form.value)
           })
       }
 
@@ -205,45 +206,47 @@ export class PlanoFunerarioComponent implements OnInit {
   }
 
   setDependentes(dependentes: IDependentes[]) {
-    this.plano.dependentes =
+    return this.plano.dependentes =
       dependentes.length == 0
         ? this.dependentesService.reorganizar()
         : dependentes;
   }
 
   setParcelas(parcelas: IParcela[]) {
-    this.plano.parcelas = parcelas;
+    return this.plano.parcelas = parcelas;
   }
 
   alteraValorParcelas() {
-    const qtdParcelas = this.form.value.qtd_parcelas;
-    const calculoTotal = this.form.value.valor_liquido;
-    const valorTotal = this.form.value.valor_bruto;
-    const formaPagamento = this.form.value.forma_pagamento;
-    const dataAtual = new Date(
-      this.utilsService.stringToDate(this.form.value.data_inicial)
-    );
-    const parcelas = [];
-
-    let valorParcelas = 0;
-    if (calculoTotal === 'Repetir') valorParcelas = valorTotal;
-    else if (calculoTotal === 'Dividir')
-      valorParcelas = valorTotal / qtdParcelas;
-
-    for (let i = 0; i < qtdParcelas; i++) {
-      let dataParcela = new Date(dataAtual.setMonth(dataAtual.getMonth() + 1));
-      parcelas.push(
-        new IParcela({
-          id: Math.floor(Math.random() * Date.now()),
-          parcela_numero: i + 1,
-          parcela_data: this.utilsService.formatDate(dataParcela),
-          parcela_valor: valorParcelas,
-          parcela_forma_pagamento: formaPagamento,
-        })
+    if(!this.edit) {
+      const qtdParcelas = this.form.value.qtd_parcelas;
+      const calculoTotal = this.form.value.repetir_valor;
+      const valorTotal = this.form.value.valor_bruto;
+      const formaPagamento = this.form.value.forma_pagamento;
+      const dataAtual = new Date(
+        this.utilsService.stringToDate(this.form.value.data_inicial)
       );
+      const parcelas = [];
+
+      let valorParcelas = 0;
+      if (calculoTotal === 'repetir') valorParcelas = valorTotal;
+      else if (calculoTotal === 'dividir')
+        valorParcelas = valorTotal / qtdParcelas;
+
+      for (let i = 0; i < qtdParcelas; i++) {
+        let dataParcela = new Date(dataAtual.setMonth(dataAtual.getMonth() + 1));
+        parcelas.push(
+          new IParcela({
+            id: Math.floor(Math.random() * Date.now()),
+            parcela_numero: i + 1,
+            parcela_data: this.utilsService.formatDate(dataParcela),
+            parcela_valor: valorParcelas,
+            parcela_forma_pagamento: formaPagamento,
+          })
+        );
+      }
+      this.form.value.parcelas = parcelas;
+      this.form.patchValue(this.form.value);
     }
-    this.form.value.parcelas = parcelas;
-    this.form.patchValue(this.form.value);
   }
 
   alteraPlanos(planosFunerarios: IPlanoFunerario[]) {

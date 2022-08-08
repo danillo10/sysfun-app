@@ -93,7 +93,7 @@ export class PlanoFunerarioModel {
     this.valor_desconto_v = data.valor_desconto_v || '';
     this.valor_desconto_p = data.valor_desconto_p || '';
     this.valor_bruto = data.valor_bruto || '';
-    this.valor_liquido = data.valor_liquido || 'Dividir';
+    this.valor_liquido = data.valor_liquido || 'dividir';
     this.taxa_adesao = data.taxa_adesao || '';
     this.data_inicial = data.data_inicial || new Date(Date.now());
     this.forma_pagamento = data.forma_pagamento || '';

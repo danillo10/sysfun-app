@@ -18,6 +18,7 @@ export class ParcelasComponent implements OnInit {
       this.parcelas = parcelas;
     }
   }
+
   @Input() valorBruto: number;
   @Input() calculoTotal: string;
 
@@ -37,7 +38,7 @@ export class ParcelasComponent implements OnInit {
   ngOnChanges(parcela: IParcela) {
     if (!parcela.alterada) parcela.alterada = true;
 
-    if (this.calculoTotal === 'Dividir') this.alteraValorParcelas();
+    if (this.calculoTotal === 'dividir') this.alteraValorParcelas();
   }
 
   emit() {

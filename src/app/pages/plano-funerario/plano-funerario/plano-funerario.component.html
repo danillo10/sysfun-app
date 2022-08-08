@@ -57,6 +57,7 @@
               control="taxa_adesao"
               type="text"
               label="Adesão"
+              mask="MONEY"
             ></app-input>
           </div>
 
@@ -66,7 +67,7 @@
               control="valor_bruto"
               type="text"
               label="Valor Total"
-              iconPosition="right"
+              mask="MONEY"
             ></app-input>
           </div>
         </div>
@@ -99,7 +100,7 @@
         <div class="row">
           <app-portlet-calculo-total
             [form]="form"
-            control="valor_liquido"
+            control="repetir_valor"
             type="text"
             label="Calculo do total"
             (calculoSelecionado)="alteraValorParcelas()"
@@ -130,7 +131,7 @@
         <app-parcelas
           [data]="form.value.parcelas"
           [valorBruto]="form.value.valor_bruto"
-          [calculoTotal]="form.value.valor_liquido"
+          [calculoTotal]="form.value.repetir_valor"
         ></app-parcelas>
 
         <h2>documentos pendentes</h2>
