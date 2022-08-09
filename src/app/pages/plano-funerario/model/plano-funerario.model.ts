@@ -125,7 +125,7 @@ export class PlanoFunerarioModel {
     this.obs_recebimento = data.obs_recebimento || '';
     this.contas_lancadas = data.contas_lancadas || '';
     this.laudo = data.laudo || '';
-    this.servicos = data.servicos || '';
+    this.servicos = data.servicos || [new IPlanoFunerario()];
     this.produtos = data.produtos || '';
     this.dependentes = data.dependentes || [];
     this.parcelas = data.parcelas || '';

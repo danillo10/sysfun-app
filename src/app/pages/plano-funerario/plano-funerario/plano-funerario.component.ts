@@ -170,20 +170,21 @@ export class PlanoFunerarioComponent implements OnInit {
   get() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.subscription =this.activatedRoute.queryParams.subscribe((data) => {
+    this.subscription = this.activatedRoute.queryParams.subscribe((data) => {
       this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
       if (id != 'plano-funerario') {
         this.edit = true;
-        this.planoFunerarioService.show(id, this.criadoEm)
-          .then((data: any) => {
-            this.plano = data.planoFunerario[0];
-            this.plano.dependentes = this.setDependentes(data.planoFunerarioDependentes);
-            this.plano.parcelas = this.setParcelas(data.planoFunerarioParcelas);
-            this.plano.servicos = data.planoFunerarioServicos;
+        this.planoFunerarioService.show(id, this.criadoEm).then((data: any) => {
+          this.plano = data.planoFunerario[0];
+          this.plano.dependentes = this.setDependentes(
+            data.planoFunerarioDependentes
+          );
+          this.plano.parcelas = this.setParcelas(data.planoFunerarioParcelas);
+          this.plano.servicos = data.planoFunerarioServicos;
 
-            this.form.patchValue(this.plano);
-          })
+          this.form.patchValue(this.plano);
+        });
       }
 
       // if (id != 'plano-funerario') {
@@ -206,18 +207,61 @@ export class PlanoFunerarioComponent implements OnInit {
   }
 
   setDependentes(dependentes: IDependentes[]) {
-    return this.plano.dependentes =
+    return (this.plano.dependentes =
       dependentes.length == 0
         ? this.dependentesService.reorganizar()
-        : dependentes;
+        : dependentes);
   }
 
   setParcelas(parcelas: IParcela[]) {
-    return this.plano.parcelas = parcelas;
+    return (this.plano.parcelas = parcelas);
+  }
+
+  alteraParcela(parcela) {
+    let parcelas = this.form.value.parcelas;
+    const calculoTotal = this.form.value.repetir_valor;
+    const index = parcelas.findIndex((obj) => obj.id == parcela.id);
+    parcelas[index] = parcela;
+    parcelas[index].alterada = true;
+
+    this.form.value.parcelas = parcelas;
+    this.form.patchValue(this.form.value);
+
+    if (calculoTotal === 'dividir') this.alteraValorParcelas();
   }
 
   alteraValorParcelas() {
-    if(!this.edit) {
+    let parcelas = this.form.value.parcelas;
+    const valorTotal = this.form.value.valor_bruto;
+    const qtdParcelas = parcelas.length;
+
+    let valorParcelas = 0;
+    let valorParcelasAlteradas = 0;
+    let qtdParcelasAlteradas = 0;
+
+    parcelas.forEach((parcela) => {
+      if (parcela.alterada) {
+        valorParcelasAlteradas += parcela.parcela_valor;
+        qtdParcelasAlteradas++;
+      }
+    });
+
+    if (valorTotal > valorParcelasAlteradas) {
+      valorParcelas =
+        (valorTotal - valorParcelasAlteradas) /
+        (qtdParcelas - qtdParcelasAlteradas);
+    }
+
+    parcelas.forEach((parcela) => {
+      if (!parcela.alterada) parcela.parcela_valor = valorParcelas;
+    });
+
+    this.form.value.parcelas = parcelas;
+    this.form.patchValue(this.form.value);
+  }
+
+  geraParcelas() {
+    if (!this.edit) {
       const qtdParcelas = this.form.value.qtd_parcelas;
       const calculoTotal = this.form.value.repetir_valor;
       const valorTotal = this.form.value.valor_bruto;
@@ -233,7 +277,9 @@ export class PlanoFunerarioComponent implements OnInit {
         valorParcelas = valorTotal / qtdParcelas;
 
       for (let i = 0; i < qtdParcelas; i++) {
-        let dataParcela = new Date(dataAtual.setMonth(dataAtual.getMonth() + 1));
+        let dataParcela = new Date(
+          dataAtual.setMonth(dataAtual.getMonth() + 1)
+        );
         parcelas.push(
           new IParcela({
             id: Math.floor(Math.random() * Date.now()),
