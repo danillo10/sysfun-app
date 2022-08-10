@@ -154,6 +154,9 @@ export class PlanoFunerarioComponent implements OnInit {
           this.loadingService.hideLoading();
           if (data.status == 1) return alert(data.mensagem);
           this.router.navigate(['plano-funerario']);
+        }).catch(err => {
+          alert(JSON.stringify(err));
+          this.loadingService.hideLoading();
         });
       } else {
         this.planoFunerarioService
@@ -162,6 +165,9 @@ export class PlanoFunerarioComponent implements OnInit {
             this.loadingService.hideLoading();
             if (data.status == 1) return alert(data.mensagem);
             this.router.navigate(['plano-funerario']);
+          }).catch(err => {
+            alert(JSON.stringify(err))
+            this.loadingService.hideLoading();
           });
       }
     });
@@ -178,9 +184,13 @@ export class PlanoFunerarioComponent implements OnInit {
         this.planoFunerarioService.show(id, this.criadoEm)
           .then((data: any) => {
             this.plano = data.planoFunerario[0];
-            this.plano.dependentes = this.setDependentes(data.planoFunerarioDependentes);
-            this.plano.parcelas = this.setParcelas(data.planoFunerarioParcelas);
+            this.plano.dependentes = data.planoFunerarioDependentes;
+            this.plano.parcelas = data.planoFunerarioParcelas;
             this.plano.servicos = data.planoFunerarioServicos;
+
+            // Gambiarra pq n tem como corrigir o backend no momento
+            this.plano.data_inicial = this.utilsService.formatDate(new Date(this.plano.data_inicial));
+            this.plano.parcelas = this.plano.parcelas.map((p: IParcela) =>{ p.parcela_data = this.utilsService.formatDate(new Date(p.parcela_data)); return p});
 
             this.form.patchValue(this.plano);
           })
