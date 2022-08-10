@@ -54,6 +54,9 @@ export class PlanoFunerarioPage implements OnInit {
             this._filtroContaService.pesquisa = this.pesquisa;
             this._loadingService.hideLoading();
           });
+        }).catch(err =>{
+          alert(JSON.stringify(err));
+          this._loadingService.hideLoading();
         })
   }
 }
