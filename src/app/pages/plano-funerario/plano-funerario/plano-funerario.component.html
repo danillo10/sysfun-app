@@ -91,7 +91,7 @@
               control="forma_pagamento"
               type="text"
               label="forma de pagamento"
-              (pagamentoSelecionado)="alteraValorParcelas()"
+              (pagamentoSelecionado)="geraParcelas()"
             >
             </app-portlet-pagamento>
           </div>
@@ -103,7 +103,7 @@
             control="repetir_valor"
             type="text"
             label="Calculo do total"
-            (calculoSelecionado)="alteraValorParcelas()"
+            (calculoSelecionado)="geraParcelas()"
           ></app-portlet-calculo-total>
         </div>
 
@@ -123,7 +123,7 @@
               control="qtd_parcelas"
               type="number"
               label="Q.Parcelas"
-              (searchEmitter)="alteraValorParcelas()"
+              (searchEmitter)="geraParcelas()"
             ></app-input>
           </div>
         </div>
@@ -132,6 +132,7 @@
           [data]="form.value.parcelas"
           [valorBruto]="form.value.valor_bruto"
           [calculoTotal]="form.value.repetir_valor"
+          (parcelaAlterada)="alteraParcela($event)"
         ></app-parcelas>
 
         <h2>documentos pendentes</h2>

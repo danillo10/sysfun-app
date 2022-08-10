@@ -23,6 +23,7 @@ export class ParcelasComponent implements OnInit {
   @Input() calculoTotal: string;
 
   @Output() parcelasSelecionadas = new EventEmitter();
+  @Output() parcelaAlterada = new EventEmitter();
 
   parcelas$: Observable<any>;
   parcela: IParcela;
@@ -36,37 +37,10 @@ export class ParcelasComponent implements OnInit {
   ngOnInit() {}
 
   ngOnChanges(parcela: IParcela) {
-    if (!parcela.alterada) parcela.alterada = true;
-
-    if (this.calculoTotal === 'dividir') this.alteraValorParcelas();
+    this.parcelaAlterada.emit(parcela);
   }
 
   emit() {
     this.parcelasSelecionadas.emit(this.parcelas);
-  }
-
-  alteraValorParcelas() {
-    const qtdParcelas = this.parcelas.length;
-    const valorTotal = this.valorBruto;
-    let valorParcelas = 0;
-    let valorParcelasAlteradas = 0;
-    let qtdParcelasAlteradas = 0;
-
-    this.parcelas.forEach((parcela) => {
-      if (parcela.alterada) {
-        valorParcelasAlteradas += parcela.parcela_valor;
-        qtdParcelasAlteradas++;
-      }
-    });
-
-    if (valorTotal > valorParcelasAlteradas) {
-      valorParcelas =
-        (valorTotal - valorParcelasAlteradas) /
-        (qtdParcelas - qtdParcelasAlteradas);
-    }
-
-    this.parcelas.forEach((parcela) => {
-      if (!parcela.alterada) parcela.parcela_valor = valorParcelas;
-    });
   }
 }
