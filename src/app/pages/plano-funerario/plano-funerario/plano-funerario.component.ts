@@ -173,14 +173,12 @@ export class PlanoFunerarioComponent implements OnInit {
     this.subscription = this.activatedRoute.queryParams.subscribe((data) => {
       this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
-      if (id != 'plano-funerario') {
+      if (id != 'new') {
         this.edit = true;
         this.planoFunerarioService.show(id, this.criadoEm).then((data: any) => {
           this.plano = data.planoFunerario[0];
-          this.plano.dependentes = this.setDependentes(
-            data.planoFunerarioDependentes
-          );
-          this.plano.parcelas = this.setParcelas(data.planoFunerarioParcelas);
+          this.plano.dependentes = data.planoFunerarioDependentes;
+          this.plano.parcelas = data.planoFunerarioParcelas;
           this.plano.servicos = data.planoFunerarioServicos;
 
           this.form.patchValue(this.plano);
