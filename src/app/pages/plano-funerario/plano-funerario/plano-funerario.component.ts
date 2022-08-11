@@ -150,11 +150,17 @@ export class PlanoFunerarioComponent implements OnInit {
       this.form.patchValue({ dependentes: this.plano.dependentes });
 
       if (id === 'new') {
-        this.planoFunerarioService.create(this.form.value).then((data: any) => {
-          this.loadingService.hideLoading();
-          if (data.status == 1) return alert(data.mensagem);
-          this.router.navigate(['plano-funerario']);
-        });
+        this.planoFunerarioService
+          .create(this.form.value)
+          .then((data: any) => {
+            this.loadingService.hideLoading();
+            if (data.status == 1) return alert(data.mensagem);
+            this.router.navigate(['plano-funerario']);
+          })
+          .catch((err) => {
+            alert(JSON.stringify(err));
+            this.loadingService.hideLoading();
+          });
       } else {
         this.planoFunerarioService
           .salvaPlanos(this.form.value, this.criadoEm)
@@ -162,6 +168,10 @@ export class PlanoFunerarioComponent implements OnInit {
             this.loadingService.hideLoading();
             if (data.status == 1) return alert(data.mensagem);
             this.router.navigate(['plano-funerario']);
+          })
+          .catch((err) => {
+            alert(JSON.stringify(err));
+            this.loadingService.hideLoading();
           });
       }
     });
@@ -180,6 +190,17 @@ export class PlanoFunerarioComponent implements OnInit {
           this.plano.dependentes = data.planoFunerarioDependentes;
           this.plano.parcelas = data.planoFunerarioParcelas;
           this.plano.servicos = data.planoFunerarioServicos;
+
+          // Gambiarra pq n tem como corrigir o backend no momento
+          this.plano.data_inicial = this.utilsService.formatDate(
+            new Date(this.plano.data_inicial)
+          );
+          this.plano.parcelas = this.plano.parcelas.map((p: IParcela) => {
+            p.parcela_data = this.utilsService.formatDate(
+              new Date(p.parcela_data)
+            );
+            return p;
+          });
 
           this.form.patchValue(this.plano);
         });

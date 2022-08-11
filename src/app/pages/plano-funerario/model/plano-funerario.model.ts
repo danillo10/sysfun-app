@@ -25,7 +25,7 @@ export class PlanoFunerarioModel {
   valor_bruto?: any;
   valor_liquido?: any;
   taxa_adesao?: any;
-  data_inicial?: Date;
+  data_inicial?: any;
   forma_pagamento?: any;
   condicao_pagamento?: number;
   qtd_parcelas?: any;
