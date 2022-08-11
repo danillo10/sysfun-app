@@ -64,6 +64,7 @@ export class PlanoFunerarioModel {
   os_gerada?: any;
   repetir_valor?: string;
   pesquisados?: any[];
+  updated_at?: any;
 
   /**
    * Constructor

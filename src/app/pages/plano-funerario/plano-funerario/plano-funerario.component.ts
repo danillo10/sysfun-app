@@ -163,8 +163,12 @@ export class PlanoFunerarioComponent implements OnInit {
             this.loadingService.hideLoading();
           });
       } else {
+        this.form.value.updated_at = this.utilsService.formatDate(
+          new Date(Date.now())
+        );
+
         this.planoFunerarioService
-          .salvaPlanos(this.form.value, this.criadoEm)
+          .update(this.form.value)
           .then((data: any) => {
             this.loadingService.hideLoading();
             if (data.status == 1) return alert(data.mensagem);
@@ -202,6 +206,12 @@ export class PlanoFunerarioComponent implements OnInit {
             );
             return p;
           });
+          this.plano.servicos = this.plano.servicos.map(
+            (p: IPlanoFunerario) => {
+              p.nome = p.servico_nome;
+              return p;
+            }
+          );
 
           this.form.patchValue(this.plano);
         });

@@ -34,6 +34,7 @@ export class PlanoFunerarioService {
     this.salvaPlanos(plano, 'sistema');
     this.salvaClientesNovos(plano, 'sistema');
   }
+
   async create(plano: IPlanoFunerario): Promise<any> {
     // if (!navigator.onLine) {
     //   let planosNovos = this.localStorageService.getParse('planosNovos');
@@ -57,6 +58,13 @@ export class PlanoFunerarioService {
       .toPromise();
   }
 
+  async update(plano: IPlanoFunerario): Promise<any> {
+    return this._http
+      .put(`${environment.host}planos-funerarios/${plano.id}`, plano)
+      .pipe((res) => res)
+      .toPromise();
+  }
+
   async show(id: number | string, criado_em: string) {
     // if (!navigator.onLine) {
     //   let cliente: ClienteModel;
@@ -74,8 +82,9 @@ export class PlanoFunerarioService {
     //     .toPromise();
     // }
 
-    return this._http.get(`${environment.host}planos-funerarios/${id}`)
-      .pipe(res => res)
+    return this._http
+      .get(`${environment.host}planos-funerarios/${id}`)
+      .pipe((res) => res)
       .toPromise();
   }
 
