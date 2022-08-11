@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IParcela } from 'src/app/components/parcelas/model/parcelas.model';
 import { SelectModel } from 'src/app/components/select/model/select.model';
@@ -13,8 +13,8 @@ import {
 import { PlanoFunerarioService } from '../service/plano-funerario.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
-import calculoTotalJson from '../../../pages/utils/calculo_total.json';
 import { Subscription } from 'rxjs';
+import { ParcelasComponent } from 'src/app/components/parcelas/parcelas.component';
 
 @Component({
   selector: 'app-plano-funerario',
@@ -23,6 +23,7 @@ import { Subscription } from 'rxjs';
 })
 export class PlanoFunerarioComponent implements OnInit {
   @Input() form: FormGroup;
+  @ViewChild(ParcelasComponent) parcelasComponent!: any;
 
   plano: PlanoFunerarioModel;
   planosFunerarios: IPlanoFunerario[];
@@ -233,85 +234,8 @@ export class PlanoFunerarioComponent implements OnInit {
   }
 
   setParcelas(parcelas: IParcela[]) {
-    return (this.plano.parcelas = parcelas);
-  }
-
-  alteraParcela(parcela) {
-    let parcelas = this.form.value.parcelas;
-    const calculoTotal = this.form.value.repetir_valor;
-    const index = parcelas.findIndex((obj) => obj.id == parcela.id);
-    parcelas[index] = parcela;
-    parcelas[index].alterada = true;
-
     this.form.value.parcelas = parcelas;
     this.form.patchValue(this.form.value);
-
-    if (calculoTotal === 'dividir') this.alteraValorParcelas();
-  }
-
-  alteraValorParcelas() {
-    let parcelas = this.form.value.parcelas;
-    const valorTotal = this.form.value.valor_bruto;
-    const qtdParcelas = parcelas.length;
-
-    let valorParcelas = 0;
-    let valorParcelasAlteradas = 0;
-    let qtdParcelasAlteradas = 0;
-
-    parcelas.forEach((parcela) => {
-      if (parcela.alterada) {
-        valorParcelasAlteradas += parcela.parcela_valor;
-        qtdParcelasAlteradas++;
-      }
-    });
-
-    if (valorTotal > valorParcelasAlteradas) {
-      valorParcelas =
-        (valorTotal - valorParcelasAlteradas) /
-        (qtdParcelas - qtdParcelasAlteradas);
-    }
-
-    parcelas.forEach((parcela) => {
-      if (!parcela.alterada) parcela.parcela_valor = valorParcelas;
-    });
-
-    this.form.value.parcelas = parcelas;
-    this.form.patchValue(this.form.value);
-  }
-
-  geraParcelas() {
-    if (!this.edit) {
-      const qtdParcelas = this.form.value.qtd_parcelas;
-      const calculoTotal = this.form.value.repetir_valor;
-      const valorTotal = this.form.value.valor_bruto;
-      const formaPagamento = this.form.value.forma_pagamento;
-      const dataAtual = new Date(
-        this.utilsService.stringToDate(this.form.value.data_inicial)
-      );
-      const parcelas = [];
-
-      let valorParcelas = 0;
-      if (calculoTotal === 'repetir') valorParcelas = valorTotal;
-      else if (calculoTotal === 'dividir')
-        valorParcelas = valorTotal / qtdParcelas;
-
-      for (let i = 0; i < qtdParcelas; i++) {
-        let dataParcela = new Date(
-          dataAtual.setMonth(dataAtual.getMonth() + 1)
-        );
-        parcelas.push(
-          new IParcela({
-            id: Math.floor(Math.random() * Date.now()),
-            parcela_numero: i + 1,
-            parcela_data: this.utilsService.formatDate(dataParcela),
-            parcela_valor: valorParcelas,
-            parcela_forma_pagamento: formaPagamento,
-          })
-        );
-      }
-      this.form.value.parcelas = parcelas;
-      this.form.patchValue(this.form.value);
-    }
   }
 
   alteraPlanos(planosFunerarios: IPlanoFunerario[]) {
@@ -327,6 +251,5 @@ export class PlanoFunerarioComponent implements OnInit {
     });
     this.form.value.valor_bruto = valorTotal.toFixed(2);
     this.form.patchValue(this.form.value);
-    this.alteraValorParcelas();
   }
 }

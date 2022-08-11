@@ -96,7 +96,7 @@ export class PlanoFunerarioModel {
     this.valor_liquido = data.valor_liquido || 'dividir';
     this.taxa_adesao = data.taxa_adesao || '';
     this.data_inicial = data.data_inicial || new Date(Date.now());
-    this.forma_pagamento = data.forma_pagamento || '';
+    this.forma_pagamento = data.forma_pagamento || '11';
     this.condicao_pagamento = data.condicao_pagamento || '';
     this.qtd_parcelas = data.qtd_parcelas || '';
     this.carencia = data.carencia || '';
@@ -132,7 +132,7 @@ export class PlanoFunerarioModel {
     this.criado_por = data.criado_por || '';
     this.atualizado_por = data.atualizado_por || '';
     this.os_gerada = data.os_gerada || '';
-    this.repetir_valor = data.repetir_valor || '';
+    this.repetir_valor = data.repetir_valor || 'dividir';
     this.pesquisados = [];
     this.parcelas = data.parcelas || [];
   }
@@ -164,6 +164,7 @@ export class IPlanoFunerario {
     this.valor_venda = null;
     this.pesquisados = [];
     this.servico_id = data.servico_id || null;
+    this.servico_nome = data.servico_nome || null;
     this.servico_plano = data.servico_plano || null;
     this.servico_quantidade = data.servico_quantidade + 1 || 1;
     this.servico_parcelas = data.servico_parcelas || null;

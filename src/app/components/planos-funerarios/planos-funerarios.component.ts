@@ -36,8 +36,7 @@ export class PlanosFunerariosComponent implements OnInit {
   constructor(
     private planosFunerariosService: PlanosFunerariosService,
     private dateService: DateService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.parentescos = parentescos.parentescos;
@@ -106,7 +105,7 @@ export class PlanosFunerariosComponent implements OnInit {
   }
 
   emit() {
-    if(this.planosFunerarios) {
+    if (this.planosFunerarios) {
       this.planosFunerariosSelecionados.emit(this.planosFunerarios);
     }
   }
