@@ -31,4 +31,14 @@ export class UtilsService {
     var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
     return dateObject;
   }
+
+  removeDuplicates(arr, property) {
+    return arr.filter((element, index, array) => {
+      return (
+        array
+          .map((mapElement) => mapElement[property])
+          .indexOf(element[property]) === index
+      );
+    });
+  }
 }

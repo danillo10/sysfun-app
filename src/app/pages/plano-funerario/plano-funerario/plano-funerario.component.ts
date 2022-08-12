@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IParcela } from 'src/app/components/parcelas/model/parcelas.model';
 import { SelectModel } from 'src/app/components/select/model/select.model';
@@ -13,8 +13,8 @@ import {
 import { PlanoFunerarioService } from '../service/plano-funerario.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
-import calculoTotalJson from '../../../pages/utils/calculo_total.json';
 import { Subscription } from 'rxjs';
+import { ParcelasComponent } from 'src/app/components/parcelas/parcelas.component';
 
 @Component({
   selector: 'app-plano-funerario',
@@ -23,6 +23,7 @@ import { Subscription } from 'rxjs';
 })
 export class PlanoFunerarioComponent implements OnInit {
   @Input() form: FormGroup;
+  @ViewChild(ParcelasComponent) parcelasComponent!: any;
 
   plano: PlanoFunerarioModel;
   planosFunerarios: IPlanoFunerario[];
@@ -150,23 +151,31 @@ export class PlanoFunerarioComponent implements OnInit {
       this.form.patchValue({ dependentes: this.plano.dependentes });
 
       if (id === 'new') {
-        this.planoFunerarioService.create(this.form.value).then((data: any) => {
-          this.loadingService.hideLoading();
-          if (data.status == 1) return alert(data.mensagem);
-          this.router.navigate(['plano-funerario']);
-        }).catch(err => {
-          alert(JSON.stringify(err));
-          this.loadingService.hideLoading();
-        });
-      } else {
         this.planoFunerarioService
-          .salvaPlanos(this.form.value, this.criadoEm)
+          .create(this.form.value)
           .then((data: any) => {
             this.loadingService.hideLoading();
             if (data.status == 1) return alert(data.mensagem);
             this.router.navigate(['plano-funerario']);
-          }).catch(err => {
-            alert(JSON.stringify(err))
+          })
+          .catch((err) => {
+            alert(JSON.stringify(err));
+            this.loadingService.hideLoading();
+          });
+      } else {
+        this.form.value.updated_at = this.utilsService.formatDate(
+          new Date(Date.now())
+        );
+
+        this.planoFunerarioService
+          .update(this.form.value)
+          .then((data: any) => {
+            this.loadingService.hideLoading();
+            if (data.status == 1) return alert(data.mensagem);
+            this.router.navigate(['plano-funerario']);
+          })
+          .catch((err) => {
+            alert(JSON.stringify(err));
             this.loadingService.hideLoading();
           });
       }
@@ -179,21 +188,34 @@ export class PlanoFunerarioComponent implements OnInit {
     this.subscription = this.activatedRoute.queryParams.subscribe((data) => {
       this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
-      if (id != 'plano-funerario') {
+      if (id != 'new') {
         this.edit = true;
-        this.planoFunerarioService.show(id, this.criadoEm)
-          .then((data: any) => {
-            this.plano = data.planoFunerario[0];
-            this.plano.dependentes = data.planoFunerarioDependentes;
-            this.plano.parcelas = data.planoFunerarioParcelas;
-            this.plano.servicos = data.planoFunerarioServicos;
+        this.planoFunerarioService.show(id, this.criadoEm).then((data: any) => {
+          this.plano = data.planoFunerario[0];
+          this.plano.dependentes = data.planoFunerarioDependentes;
+          this.plano.parcelas = data.planoFunerarioParcelas;
+          this.plano.servicos = data.planoFunerarioServicos;
 
-            // Gambiarra pq n tem como corrigir o backend no momento
-            this.plano.data_inicial = this.utilsService.formatDate(new Date(this.plano.data_inicial));
-            this.plano.parcelas = this.plano.parcelas.map((p: IParcela) =>{ p.parcela_data = this.utilsService.formatDate(new Date(p.parcela_data)); return p});
+          // Gambiarra pq n tem como corrigir o backend no momento
+          this.plano.data_inicial = this.utilsService.formatDate(
+            new Date(this.plano.data_inicial)
+          );
+          this.plano.parcelas = this.plano.parcelas.map((p: IParcela) => {
+            p.parcela_data = this.utilsService.formatDate(
+              new Date(p.parcela_data)
+            );
+            return p;
+          });
+          this.plano.servicos = this.plano.servicos.map(
+            (p: IPlanoFunerario) => {
+              p.nome = p.servico_nome;
+              return p;
+            }
+          );
 
-            this.form.patchValue(this.plano);
-          })
+          this.form.controls['id'].disable();
+          this.form.patchValue({ ...this.plano });
+        });
       }
 
       // if (id != 'plano-funerario') {
@@ -223,85 +245,8 @@ export class PlanoFunerarioComponent implements OnInit {
   }
 
   setParcelas(parcelas: IParcela[]) {
-    return (this.plano.parcelas = parcelas);
-  }
-
-  alteraParcela(parcela) {
-    let parcelas = this.form.value.parcelas;
-    const calculoTotal = this.form.value.repetir_valor;
-    const index = parcelas.findIndex((obj) => obj.id == parcela.id);
-    parcelas[index] = parcela;
-    parcelas[index].alterada = true;
-
     this.form.value.parcelas = parcelas;
     this.form.patchValue(this.form.value);
-
-    if (calculoTotal === 'dividir') this.alteraValorParcelas();
-  }
-
-  alteraValorParcelas() {
-    let parcelas = this.form.value.parcelas;
-    const valorTotal = this.form.value.valor_bruto;
-    const qtdParcelas = parcelas.length;
-
-    let valorParcelas = 0;
-    let valorParcelasAlteradas = 0;
-    let qtdParcelasAlteradas = 0;
-
-    parcelas.forEach((parcela) => {
-      if (parcela.alterada) {
-        valorParcelasAlteradas += parcela.parcela_valor;
-        qtdParcelasAlteradas++;
-      }
-    });
-
-    if (valorTotal > valorParcelasAlteradas) {
-      valorParcelas =
-        (valorTotal - valorParcelasAlteradas) /
-        (qtdParcelas - qtdParcelasAlteradas);
-    }
-
-    parcelas.forEach((parcela) => {
-      if (!parcela.alterada) parcela.parcela_valor = valorParcelas;
-    });
-
-    this.form.value.parcelas = parcelas;
-    this.form.patchValue(this.form.value);
-  }
-
-  geraParcelas() {
-    if (!this.edit) {
-      const qtdParcelas = this.form.value.qtd_parcelas;
-      const calculoTotal = this.form.value.repetir_valor;
-      const valorTotal = this.form.value.valor_bruto;
-      const formaPagamento = this.form.value.forma_pagamento;
-      const dataAtual = new Date(
-        this.utilsService.stringToDate(this.form.value.data_inicial)
-      );
-      const parcelas = [];
-
-      let valorParcelas = 0;
-      if (calculoTotal === 'repetir') valorParcelas = valorTotal;
-      else if (calculoTotal === 'dividir')
-        valorParcelas = valorTotal / qtdParcelas;
-
-      for (let i = 0; i < qtdParcelas; i++) {
-        let dataParcela = new Date(
-          dataAtual.setMonth(dataAtual.getMonth() + 1)
-        );
-        parcelas.push(
-          new IParcela({
-            id: Math.floor(Math.random() * Date.now()),
-            parcela_numero: i + 1,
-            parcela_data: this.utilsService.formatDate(dataParcela),
-            parcela_valor: valorParcelas,
-            parcela_forma_pagamento: formaPagamento,
-          })
-        );
-      }
-      this.form.value.parcelas = parcelas;
-      this.form.patchValue(this.form.value);
-    }
   }
 
   alteraPlanos(planosFunerarios: IPlanoFunerario[]) {
@@ -317,6 +262,5 @@ export class PlanoFunerarioComponent implements OnInit {
     });
     this.form.value.valor_bruto = valorTotal.toFixed(2);
     this.form.patchValue(this.form.value);
-    this.alteraValorParcelas();
   }
 }

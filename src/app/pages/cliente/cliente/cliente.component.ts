@@ -239,13 +239,19 @@ export class ClienteComponent implements OnInit {
               this.loadingService.hideLoading();
               if (data.status == 1) return alert(data.mensagem);
               this.router.navigate(['clientes']);
-            })
+            }).catch(err => {
+              alert(JSON.stringify(err));
+              this.loadingService.hideLoading();
+            });
         } else {
           this.clienteService.create(this.form.value)
             .then((data: any) => {
               this.loadingService.hideLoading();
               if (data.status == 1) return alert(data.mensagem);
               this.router.navigate(['clientes']);
+            }).catch(err =>{
+              alert(JSON.stringify(err));
+              this.loadingService.hideLoading();
             })
         }
       })

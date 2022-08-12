@@ -14,7 +14,7 @@ export class IParcela {
     this.parcela_numero = data.parcela_numero || '';
     this.parcela_data = data.parcela_data || '';
     this.parcela_valor = data.parcela_valor || '';
-    this.parcela_forma_pagamento = data.parcela_forma_pagamento || '';
+    this.parcela_forma_pagamento = data.parcela_forma_pagamento || '11';
     this.parcela_pago = data.parcela_pago || '';
     this.parcela_obs = data.parcela_obs || '';
     this.alterada = data.alterada || false;

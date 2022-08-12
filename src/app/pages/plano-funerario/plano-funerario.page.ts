@@ -6,6 +6,7 @@ import { LocalstorageService } from 'src/app/shared/services/localstorage.servic
 import { IPlanoFunerario } from './model/plano-funerario.model';
 import { FiltroContaService } from '../contas-receber/filtro/service/filtro.conta.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
   selector: 'app-plano-funerario',
@@ -13,7 +14,7 @@ import { LoadingService } from 'src/app/shared/services/loading.service';
   styleUrls: ['./plano-funerario.page.scss'],
 })
 export class PlanoFunerarioPage implements OnInit {
-  addPlano= false;
+  addPlano = false;
   pesquisa = {} as PesquisaModel;
   planosFunerarios: any[];
   total: number;
@@ -24,6 +25,7 @@ export class PlanoFunerarioPage implements OnInit {
     private _planoFunerarioService: PlanoFunerarioService,
     private _localStorageService: LocalstorageService,
     private _filtroContaService: FiltroContaService,
+    private _utilsService: UtilsService,
     private _loadingService: LoadingService
   ) {
     this.pesquisa.skip = 0;
@@ -38,22 +40,29 @@ export class PlanoFunerarioPage implements OnInit {
     this.pesquisar();
   }
 
-  add(){
+  add() {
     this._router.navigate(['plano-funerario/new']);
   }
 
   pesquisar(skip: number = 0) {
-    this._loadingService.showLoading("Carregando...")
+    this._loadingService
+      .showLoading('Carregando...')
       .then(() => {
         this.pesquisa.skip = skip;
 
-        this._planoFunerarioService.get(this.pesquisa)
-          .then((data: any) => {
-            this.planosFunerarios = data.planos;
-            this.total = data.total;
-            this._filtroContaService.pesquisa = this.pesquisa;
-            this._loadingService.hideLoading();
-          });
-        })
+        this._planoFunerarioService.get(this.pesquisa).then((data: any) => {
+          this.planosFunerarios = this._utilsService.removeDuplicates(
+            data.planos,
+            'id'
+          );
+          this.total = data.total;
+          this._filtroContaService.pesquisa = this.pesquisa;
+          this._loadingService.hideLoading();
+        });
+      })
+      .catch((err) => {
+        alert(JSON.stringify(err));
+        this._loadingService.hideLoading();
+      });
   }
 }

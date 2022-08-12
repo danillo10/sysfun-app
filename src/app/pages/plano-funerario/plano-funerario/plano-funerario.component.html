@@ -44,7 +44,7 @@
         <h2>Planos funarários</h2>
 
         <app-planos-funerarios
-          [data]="plano.servicos"
+          [data]="form.value.servicos"
           (planosFunerariosSelecionados)="alteraPlanos($event)"
         ></app-planos-funerarios>
 
@@ -91,7 +91,9 @@
               control="forma_pagamento"
               type="text"
               label="forma de pagamento"
-              (pagamentoSelecionado)="geraParcelas()"
+              (pagamentoSelecionado)="
+                parcelasComponent.geraParcelas(form.value.qtd_parcelas)
+              "
             >
             </app-portlet-pagamento>
           </div>
@@ -103,7 +105,9 @@
             control="repetir_valor"
             type="text"
             label="Calculo do total"
-            (calculoSelecionado)="geraParcelas()"
+            (calculoSelecionado)="
+              parcelasComponent.geraParcelas(form.value.qtd_parcelas)
+            "
           ></app-portlet-calculo-total>
         </div>
 
@@ -123,7 +127,9 @@
               control="qtd_parcelas"
               type="number"
               label="Q.Parcelas"
-              (searchEmitter)="geraParcelas()"
+              (searchEmitter)="
+                parcelasComponent.geraParcelas(form.value.qtd_parcelas)
+              "
             ></app-input>
           </div>
         </div>
@@ -132,7 +138,9 @@
           [data]="form.value.parcelas"
           [valorBruto]="form.value.valor_bruto"
           [calculoTotal]="form.value.repetir_valor"
-          (parcelaAlterada)="alteraParcela($event)"
+          [formaPagamento]="form.value.forma_pagamento"
+          [dataInicial]="form.value.data_inicial"
+          (parcelasSelecionadas)="setParcelas($event)"
         ></app-parcelas>
 
         <h2>documentos pendentes</h2>
