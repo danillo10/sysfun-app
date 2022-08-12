@@ -88,6 +88,11 @@ export class PlanoFunerarioService {
       .toPromise();
   }
 
+  getDependentes(id){
+    return this._http.get(`${environment.host}pesquisar/dependentes/${id}`)
+      .pipe(res => res);
+  }
+
   salvaClientesNovos(plano: IPlanoFunerario, criadoEm: string) {
     let planos = this.localStorageService.getParse('PlanoNovos');
 

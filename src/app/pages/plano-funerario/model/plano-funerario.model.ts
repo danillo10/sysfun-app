@@ -117,7 +117,7 @@ export class PlanoFunerarioModel {
     this.data_entrega = data.data_entrega || '';
     this.garantia = data.garantia || '';
     this.data_realizacao = data.data_realizacao || '';
-    this.hora_realizacao = data.hora_realizacao || '';
+    this.hora_realizacao = data.hora_realizacao || new Date().getHours() + ":" + new Date().getMinutes();
     this.referencia = data.referencia || '';
     this.obs = data.obs || '';
     this.obs_internas = data.obs_internas || '';

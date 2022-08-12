@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { SelectModel } from 'src/app/components/select/model/select.model';
@@ -18,6 +18,8 @@ export class ClientePortletComponent implements OnInit {
   cliente: SelectModel[];
   pesquisa = {} as PesquisaModel;
   subscription: Subscription;
+
+  @Output() clienteSelecionado = new EventEmitter();
 
   constructor(
     private clientePortletService: ClientePortletService,
@@ -56,5 +58,6 @@ export class ClientePortletComponent implements OnInit {
       cliente_nome: cliente.description,
     });
     this.clientePortletService.pesquisa.next('');
+    this.clienteSelecionado.emit();
   }
 }

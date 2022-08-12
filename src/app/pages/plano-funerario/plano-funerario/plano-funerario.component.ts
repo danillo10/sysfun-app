@@ -15,6 +15,7 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 
 import { Subscription } from 'rxjs';
 import { ParcelasComponent } from 'src/app/components/parcelas/parcelas.component';
+import moment from 'moment';
 
 @Component({
   selector: 'app-plano-funerario',
@@ -197,15 +198,13 @@ export class PlanoFunerarioComponent implements OnInit {
           this.plano.servicos = data.planoFunerarioServicos;
 
           // Gambiarra pq n tem como corrigir o backend no momento
-          this.plano.data_inicial = this.utilsService.formatDate(
-            new Date(this.plano.data_inicial)
-          );
+          this.plano.data_inicial = moment(this.plano.data_inicial).format("DD/MM/YYYY");
+
           this.plano.parcelas = this.plano.parcelas.map((p: IParcela) => {
-            p.parcela_data = this.utilsService.formatDate(
-              new Date(p.parcela_data)
-            );
+            p.parcela_data = moment(p.parcela_data).format("DD/MM/YYYY");
             return p;
           });
+
           this.plano.servicos = this.plano.servicos.map(
             (p: IPlanoFunerario) => {
               p.nome = p.servico_nome;
@@ -213,8 +212,7 @@ export class PlanoFunerarioComponent implements OnInit {
             }
           );
 
-          this.form.controls['id'].disable();
-          this.form.patchValue({ ...this.plano });
+          this.form.patchValue(this.plano);
         });
       }
 
@@ -235,6 +233,17 @@ export class PlanoFunerarioComponent implements OnInit {
       //   });
       // }
     });
+  }
+
+  inserirDependentes() {
+    if (confirm("Deseja inserir os dependentes ?")) {
+      this.planoFunerarioService.getDependentes(this.form.value.cliente)
+        .subscribe((data: any) => {
+          if (data.length > 0) {
+            this.plano.dependentes = data;
+          }
+        })
+    }
   }
 
   setDependentes(dependentes: IDependentes[]) {

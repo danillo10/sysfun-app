@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import moment from 'moment';
 import { Observable } from 'rxjs';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
@@ -91,12 +92,12 @@ export class ParcelasComponent implements OnInit {
       valorParcelas = this.valorBruto / qtdParcelas;
 
     for (let i = 0; i < qtdParcelas; i++) {
-      let dataParcela = new Date(dataAtual.setMonth(dataAtual.getMonth() + 1));
+      let dataParcela = moment(dataAtual).add(i, 'M').format('DD/MM/YYYY');
       this.parcelas.push(
         new IParcela({
           id: Math.floor(Math.random() * Date.now()),
           parcela_numero: i + 1,
-          parcela_data: this.utilsService.formatDate(dataParcela),
+          parcela_data: dataParcela,
           parcela_valor: valorParcelas,
           parcela_forma_pagamento: this.formaPagamento,
         })

@@ -18,6 +18,7 @@
           control="cliente_nome"
           type="text"
           label="Cliente"
+          (clienteSelecionado)="inserirDependentes()"
         ></app-portlet-cliente>
 
         <app-portlet-vendedor
@@ -25,13 +26,6 @@
           control="tecnico"
           type="text"
           label="Vendedor 1"
-        ></app-portlet-vendedor>
-
-        <app-portlet-vendedor
-          [form]="form"
-          control="profissional"
-          type="text"
-          label="Vendedor 2"
         ></app-portlet-vendedor>
 
         <app-portlet-indicacao
