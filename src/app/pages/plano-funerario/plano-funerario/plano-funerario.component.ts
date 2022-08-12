@@ -213,7 +213,8 @@ export class PlanoFunerarioComponent implements OnInit {
             }
           );
 
-          this.form.patchValue(this.plano);
+          this.form.controls['id'].disable();
+          this.form.patchValue({ ...this.plano });
         });
       }
 
