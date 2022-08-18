@@ -104,6 +104,49 @@ export const createTableClientesDependentes = `CREATE TABLE clientes_dependentes
     FOREIGN KEY(cliente_id) REFERENCES clientes(id)
 )`;
 
+export const createTableContasReceber = `CREATE TABLE contas_receber (
+    id INTEGER NOT NULL AUTOINCREMENT,
+    descricao TEXT,
+    conta_bancaria INTEGER,
+    categoria INTEGER,
+    cliente INTEGER,
+    vendedor INTEGER,
+    atendente_l_comissao NUMERIC,
+    vendedor_2 INTEGER,
+    atendente_2_comissao NUMERIC,
+    vencimento DATE,
+    data_liquidacao DATE,
+    valor_liquidacao NUMERIC,
+    valor NUMERIC,
+    tipo_registro TEXT,
+    data_emissao DATE,
+    pago INTEGER,
+    parcial INTEGER,
+    situacao INTEGER,
+    status TEXT,
+    taxa_paga INTEGER,
+    protestar INTEGER,
+    n_doc TEXT,
+    forma_pagamento INTEGER,
+    centro_custos INTEGER,
+    ocorrencia TEXT,
+    obs TEXT,
+    referencia TEXT,
+    n_os INTEGER,
+    n_parcelas INTEGER,
+    n_carne INTEGER,
+    n_carne_boleto INTEGER, 
+    urlcarne TEXT,
+    urlboleto TEXT,
+    n_boleto INTEGER,
+    email_enviado INTEGER,
+    criado_por INTEGER,
+    atualizado_por INTEGER,
+    created_at DATE,
+    update_at DATE,
+    PRIMARY KEY(id)
+)`;
+
 export const createTableContasReceberBaixas = `CREATE TABLE contas_receber_baixas (
     id INTEGER NOT NULL AUTOINCREMENT,
     conta_id INTEGER,
@@ -137,4 +180,98 @@ export const createTableContasReceberParcelas = `CREATE TABLE contas_receber_par
     FOREIGN KEY(conta_receber_id) REFERENCES contas_receber(id)
 )`;
 
-export const createTablePlanosFunerarios = `CREATE TABLE planos_funerarios ()`;
+export const createTablePlanosFunerarios = `CREATE TABLE planos_funerarios (
+    id INTEGER NOT NULL AUTOINCREMENT,
+    cliente INTEGER,
+    indicacao INTEGER,
+    tecnico INTEGER,
+    profissional INTEGER,
+    taxa_adesao NUMERIC,
+    valor_bruto NUMERIC,
+    data_inicial DATE,
+    forma_pagamento INTEGER,
+    condicao_pagamento INTEGER,
+    qtd_parcelas INTEGER,
+    indicacao_parcelas INTEGER,
+    tipo_liberacao TEXT,
+    carencia INTEGER,
+    carencia_vencimento DATE,
+    rg_r_pedente TEXT,
+    cpf_r_pendente TEXT,
+    residencia_r_pendente TEXT,
+    casamento_r_pendente TEXT,
+    data_os DATE,
+    data_carne DATE,
+    data_entrega DATE,
+    hora_realizacao TEXT,
+    obs TEXT,
+    obs_internas TEXT,
+    contas_lancadas TEXT,
+    contas_pagar INTEGER,
+    situacao TEXT,
+    criado_por INTEGER,
+    atualizado_por INTEGER,
+    created_at DATE,
+    updated_at DATE,
+    repetir_valor TEXT,
+    PRIMARY KEY(id),
+    FOREIGN KEY(cliente) REFERENCES clientes(id)
+)`;
+
+export const createTablePlanosFunerariosDependentes = `CREATE TABLE planos_funerarios_dependentes (
+    id INTEGER NOT NULL AUTOINCREMENT,
+    plano_id INTEGER,
+    nome TEXT,
+    tipo TEXT,
+    telefone TEXT,
+    rg TEXT,
+    cpf TEXT,
+    data_nasc DATE,
+    created_at DATE,
+    updated_at DATE,
+    dependente_id INTEGER,
+    PRIMARY KEY(id),
+    FOREIGN KEY(plano_id) REFERENCES planos_funerarios(id)
+)`;
+
+export const createTablePlanosFunerariosParcelas = `CREATE TABLE planos_funerarios_parcelas (
+    id INTEGER NOT NULL AUTOINCREMENT,
+    plano_id INTEGER,
+    parcela_numero INTEGER,
+    parcela_data DATE,
+    parcela_valor NUMERIC,
+    parcela_forma_pagamento INTEGER,
+    parcela_pago INTEGER,
+    parcela_obs TEXT,
+    created_at DATE,
+    updated_at DATE,
+    PRIMARY KEY(id),
+    FOREIGN KEY(plano_id) REFERENCES planos_funerarios(id)
+)`;
+
+export const createTablePlanosFunerariosServicos = `CREATE TABLE planos_funerarios_service(
+    id INTEGER NOT NULL AUTOINCREMENT,
+    plano_id INTEGER,
+    servico_plano INTEGER,
+    servico_id INTEGER,
+    servico_quantidade INTEGER,
+    servico_parcelas INTEGER,
+    servico_valor_unitario NUMERIC,
+    servico_valor_total NUMERIC,
+    created_at DATE,
+    updated_at DATE,
+    PRIMARY KEY(id),
+    FOREIGN KEY(plano_id) REFERENCES planos_funerarios(id)
+)`;
+
+export const createTablePlanosFunerariosStatus = `CREATE TABLE planos_funerarios_status(
+    id INTEGER NOT NULL AUTOINCREMENT,
+    plano_id INTEGER,
+    data DATE,
+    obs TEXT,
+    situacao INTEGER,
+    created_at DATE,
+    updated_at DATE,
+    PRIMARY KEY(id),
+    FOREIGN KEY(plano_id) REFERENCES planos_funerarios(id)
+)`;
