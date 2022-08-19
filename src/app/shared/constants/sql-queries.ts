@@ -1,4 +1,4 @@
-export const createTableClientes = `CREATE TABLE clientes (
+export const createTableClientes = `CREATE TABLE IF NOT EXISTS  clientes(
     id INTEGER NOT NULL AUTOINCREMENT,
     id_dependente INTEGER,
     aplicativo TEXT,
@@ -85,7 +85,7 @@ export const createTableClientes = `CREATE TABLE clientes (
     FOREIGN KEY(id_dependente) REFERENCES clientes_dependentes(id)
 )`;
 
-export const createTableClientesDependentes = `CREATE TABLE clientes_dependentes (
+export const createTableClientesDependentes = `CREATE TABLE IF NOT EXISTS clientes_dependentes(
     id INTEGER NOT NULL AUTOINCREMENT,
     cliente INTEGER,
     cliente_id INTEGER,
@@ -104,7 +104,7 @@ export const createTableClientesDependentes = `CREATE TABLE clientes_dependentes
     FOREIGN KEY(cliente_id) REFERENCES clientes(id)
 )`;
 
-export const createTableContasReceber = `CREATE TABLE contas_receber (
+export const createTableContasReceber = `CREATE TABLE IF NOT EXISTS contas_receber(
     id INTEGER NOT NULL AUTOINCREMENT,
     descricao TEXT,
     conta_bancaria INTEGER,
@@ -147,7 +147,7 @@ export const createTableContasReceber = `CREATE TABLE contas_receber (
     PRIMARY KEY(id)
 )`;
 
-export const createTableContasReceberBaixas = `CREATE TABLE contas_receber_baixas (
+export const createTableContasReceberBaixas = `CREATE TABLE IF NOT EXISTS contas_receber_baixas(
     id INTEGER NOT NULL AUTOINCREMENT,
     conta_id INTEGER,
     referencia TEXT,
@@ -166,7 +166,7 @@ export const createTableContasReceberBaixas = `CREATE TABLE contas_receber_baixa
     FOREIGN KEY(conta_id) REFERENCES contas_receber(id)
 )`;
 
-export const createTableContasReceberParcelas = `CREATE TABLE contas_receber_parcelas (
+export const createTableContasReceberParcelas = `CREATE TABLE IF NOT EXISTS contas_receber_parcelas(
     id INTEGER NOT NULL AUTOINCREMENT,
     conta_receber_id INTEGER,
     parcela_numero INTEGER,
@@ -180,7 +180,7 @@ export const createTableContasReceberParcelas = `CREATE TABLE contas_receber_par
     FOREIGN KEY(conta_receber_id) REFERENCES contas_receber(id)
 )`;
 
-export const createTablePlanosFunerarios = `CREATE TABLE planos_funerarios (
+export const createTablePlanosFunerarios = `CREATE TABLE IF NOT EXISTS planos_funerarios(
     id INTEGER NOT NULL AUTOINCREMENT,
     cliente INTEGER,
     indicacao INTEGER,
@@ -218,7 +218,7 @@ export const createTablePlanosFunerarios = `CREATE TABLE planos_funerarios (
     FOREIGN KEY(cliente) REFERENCES clientes(id)
 )`;
 
-export const createTablePlanosFunerariosDependentes = `CREATE TABLE planos_funerarios_dependentes (
+export const createTablePlanosFunerariosDependentes = `CREATE TABLE IF NOT EXISTS planos_funerarios_dependentes(
     id INTEGER NOT NULL AUTOINCREMENT,
     plano_id INTEGER,
     nome TEXT,
@@ -234,7 +234,7 @@ export const createTablePlanosFunerariosDependentes = `CREATE TABLE planos_funer
     FOREIGN KEY(plano_id) REFERENCES planos_funerarios(id)
 )`;
 
-export const createTablePlanosFunerariosParcelas = `CREATE TABLE planos_funerarios_parcelas (
+export const createTablePlanosFunerariosParcelas = `CREATE TABLE IF NOT EXISTS planos_funerarios_parcelas(
     id INTEGER NOT NULL AUTOINCREMENT,
     plano_id INTEGER,
     parcela_numero INTEGER,
@@ -249,7 +249,7 @@ export const createTablePlanosFunerariosParcelas = `CREATE TABLE planos_funerari
     FOREIGN KEY(plano_id) REFERENCES planos_funerarios(id)
 )`;
 
-export const createTablePlanosFunerariosServicos = `CREATE TABLE planos_funerarios_service(
+export const createTablePlanosFunerariosServicos = `CREATE TABLE IF NOT EXISTS planos_funerarios_service(
     id INTEGER NOT NULL AUTOINCREMENT,
     plano_id INTEGER,
     servico_plano INTEGER,
@@ -264,7 +264,7 @@ export const createTablePlanosFunerariosServicos = `CREATE TABLE planos_funerari
     FOREIGN KEY(plano_id) REFERENCES planos_funerarios(id)
 )`;
 
-export const createTablePlanosFunerariosStatus = `CREATE TABLE planos_funerarios_status(
+export const createTablePlanosFunerariosStatus = `CREATE TABLE IF NOT EXISTS planos_funerarios_status(
     id INTEGER NOT NULL AUTOINCREMENT,
     plano_id INTEGER,
     data DATE,
