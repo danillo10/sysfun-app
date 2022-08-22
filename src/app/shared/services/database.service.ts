@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
-import * as SqlQueries from '../constants/sql-queries';
+import * as SqlQueries from '../constants/sql-create-queries';
 
 @Injectable({
   providedIn: 'root',
