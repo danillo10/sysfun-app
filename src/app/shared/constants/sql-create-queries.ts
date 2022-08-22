@@ -1,4 +1,4 @@
-export const createTableClientes = `CREATE TABLE IF NOT EXISTS  clientes(
+export const createTableClientes = `CREATE TABLE IF NOT EXISTS clientes(
     id INTEGER NOT NULL AUTOINCREMENT,
     id_dependente INTEGER,
     aplicativo TEXT,
