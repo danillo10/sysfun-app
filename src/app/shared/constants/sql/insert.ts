@@ -96,7 +96,7 @@ export const insertClientesDependentes = `INSERT INTO clientes_dependentes (id,
     created_at,
     updated_at,
     criado_por)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export const insertContasReceber = `INSERT INTO contas_receber (id,
     descricao,
@@ -166,4 +166,82 @@ export const insertContasReceberParcelas = `INSERT INTO contas_receber_parcelas 
     updated_at)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export const insertPlanosFunerarios = `INSERT INTO planos_funerarios (id) VALUES (?)`;
+export const insertPlanosFunerarios = `INSERT INTO planos_funerarios (id,
+    cliente,
+    indicacao,
+    tecnico,
+    profissional,
+    taxa_adesao,
+    valor_bruto,
+    data_inicial,
+    forma_pagamento,
+    condicao_pagamento,
+    qtd_parcelas,
+    indicacao_parcelas,
+    tipo_liberacao,
+    carencia,
+    carencia_vencimento,
+    rg_r_pedente,
+    cpf_r_pendente,
+    residencia_r_pendente,
+    casamento_r_pendente,
+    data_os,
+    data_carne,
+    data_entrega,
+    hora_realizacao,
+    obs,
+    obs_internas,
+    contas_lancadas,
+    contas_pagar,
+    situacao,
+    criado_por,
+    atualizado_por,
+    created_at,
+    updated_at,
+    repetir_valor)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+export const insertPlanosFunerariosDependentes = `INSERT INTO planos_funerarios_dependentes (id,
+    plano_id,
+    nome,
+    tipo,
+    telefone,
+    rg,
+    cpf,
+    data_nasc,
+    created_at,
+    updated_at,
+    dependente_id)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+export const insertPlanosFunerariosParcelas = `INSERT INTO planos_funerarios_parcelas (id,
+    plano_id,
+    parcela_numero,
+    parcela_data,
+    parcela_valor,
+    parcela_forma_pagamento,
+    parcela_obs,
+    created_at,
+    updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+export const insertPlanosFunerariosServicos = `INSERT INTO planos_funerarios_service (id,
+    plano_id,
+    servico_plano,
+    servico_id,
+    servico_quantidade,
+    servico_parcelas,
+    servico_valor_unitario,
+    servico_valor_total,
+    created_at,
+    updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+export const insertPlanosFunerariosStatus = `INSERT INTO planos_funerarios_status (id,
+    plano_id,
+    data,
+    obs,
+    situacao,
+    created_at,
+    updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?)`;

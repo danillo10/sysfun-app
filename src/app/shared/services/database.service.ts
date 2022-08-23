@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
-import * as SqlQueries from '../constants/sql-create-queries';
+import * as SqlCreateQueries from '../constants/sql/create';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +26,7 @@ export class DatabaseService {
           this.storage
             .transaction((tx) => {
               console.log('DATABASE STARTED TRANSACTIONS');
-              tx.executeSql(SqlQueries.createTableClientes);
+              tx.executeSql(SqlCreateQueries.createTableClientes);
               // Mais queries
             })
             .then((e) => {
