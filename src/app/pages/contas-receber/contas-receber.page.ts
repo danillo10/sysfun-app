@@ -26,7 +26,7 @@ export class ContasReceberPage implements OnInit {
   filtro: boolean;
   viewLiquidar: boolean;
   viewRecibo: boolean;
-  subscription:Subscription;
+  subscription: Subscription;
 
   constructor(
     private _router: Router,
@@ -47,61 +47,67 @@ export class ContasReceberPage implements OnInit {
     this.pesquisar();
     this.getLiquidar();
     this.getImprimir();
-   }
-  
-  ngOnDestroy(){
-    this.subscription.unsubscribe();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   add() {
     this._router.navigate(['contas-receber/receita']);
   }
 
-  getLiquidar(){
-    this.subscription = this._actionSheetService.liquidar$
-      .subscribe((conta: IContasReceber) => {
-        this._contasReceberService.dadosLiquidar(conta.id)
+  getLiquidar() {
+    this.subscription = this._actionSheetService.liquidar$.subscribe(
+      (conta: IContasReceber) => {
+        this._contasReceberService
+          .dadosLiquidar(conta.id)
           .subscribe((data: any) => {
             this._liquidarService.contaAtiva = conta;
-            this._liquidarService.contaReceber = new ContasReceberBaixaModel(data.conta);
+            this._liquidarService.contaReceber = new ContasReceberBaixaModel(
+              data.conta
+            );
             this._liquidarService.pagamentos = data.contas;
             this.viewLiquidar = true;
-          })
-      })
+          });
+      }
+    );
   }
 
-  getImprimir(){
-    this.subscription = this._actionSheetService.imprimir$
-      .subscribe((conta: IContasReceber) => {
+  getImprimir() {
+    this.subscription = this._actionSheetService.imprimir$.subscribe(
+      (conta: IContasReceber) => {
         this.contaReceber = conta;
         this.viewRecibo = true;
-      })
+      }
+    );
   }
 
   pesquisar(skip: number = 0) {
-    this._loadingService.showLoading("Carregando...")
+    this._loadingService
+      .showLoading('Carregando...')
       .then(() => {
         this.pesquisa.skip = skip;
 
-      this._contasReceberService.get(this.pesquisa)
-        .then((data: any) => {
+        this._contasReceberService.get(this.pesquisa).then((data: any) => {
           this.contasReceber = data.contasReceber;
           this.total = data.total;
           this._filtroContaService.pesquisa = this.pesquisa;
           this._loadingService.hideLoading();
+
+          // this._contasReceberService.createDb(this.contasReceber);
         });
-      }).catch(err =>{
-        alert (JSON.stringify(err));
-        this._loadingService.hideLoading();
       })
+      .catch((err) => {
+        alert(JSON.stringify(err));
+        this._loadingService.hideLoading();
+      });
   }
 
   closeFilter(v: boolean) {
-    if(v) {
+    if (v) {
       this.pesquisar();
     }
     this.viewLiquidar = false;
   }
-
 }

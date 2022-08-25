@@ -65,6 +65,11 @@ export class PlanoFunerarioModel {
   repetir_valor?: string;
   pesquisados?: any[];
   updated_at?: any;
+  carencia_vencimento?: any;
+  rg_r_pedente?: any;
+  data_carne?: any;
+  contas_pagar?: any;
+  created_at?: any;
 
   /**
    * Constructor
@@ -117,7 +122,9 @@ export class PlanoFunerarioModel {
     this.data_entrega = data.data_entrega || '';
     this.garantia = data.garantia || '';
     this.data_realizacao = data.data_realizacao || '';
-    this.hora_realizacao = data.hora_realizacao || new Date().getHours() + ":" + new Date().getMinutes();
+    this.hora_realizacao =
+      data.hora_realizacao ||
+      new Date().getHours() + ':' + new Date().getMinutes();
     this.referencia = data.referencia || '';
     this.obs = data.obs || '';
     this.obs_internas = data.obs_internas || '';
@@ -136,6 +143,48 @@ export class PlanoFunerarioModel {
     this.repetir_valor = data.repetir_valor || 'dividir';
     this.pesquisados = [];
     this.parcelas = data.parcelas || [];
+    this.carencia_vencimento = data.carencia_vencimento || '';
+    this.rg_r_pedente = data.rg_r_pedente || '';
+    this.data_carne = data.data_carne || '';
+    this.contas_pagar = data.contas_pagar || '';
+    this.created_at = data.created_at || '';
+  }
+
+  public formatDb() {
+    return [
+      this.cliente,
+      this.indicacao,
+      this.tecnico,
+      this.profissional,
+      this.taxa_adesao,
+      this.valor_bruto,
+      this.data_inicial,
+      this.forma_pagamento,
+      this.condicao_pagamento,
+      this.qtd_parcelas,
+      this.indicacao_parcelas,
+      this.tipo_liberacao,
+      this.carencia,
+      this.carencia_vencimento,
+      this.rg_r_pedente,
+      this.cpf_r_pendente,
+      this.residencia_r_pendente,
+      this.casamento_r_pendente,
+      this.data_os,
+      this.data_carne,
+      this.data_entrega,
+      this.hora_realizacao,
+      this.obs,
+      this.obs_internas,
+      this.contas_lancadas,
+      this.contas_pagar,
+      this.situacao,
+      this.criado_por,
+      this.atualizado_por,
+      this.created_at,
+      this.updated_at,
+      this.repetir_valor,
+    ];
   }
 }
 

@@ -58,6 +58,8 @@ export class PlanoFunerarioPage implements OnInit {
           this.total = data.total;
           this._filtroContaService.pesquisa = this.pesquisa;
           this._loadingService.hideLoading();
+
+          // this._planoFunerarioService.createDb(this.planosFunerarios);
         });
       })
       .catch((err) => {

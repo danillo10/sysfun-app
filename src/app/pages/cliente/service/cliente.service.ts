@@ -17,7 +17,7 @@ import * as _ from 'lodash';
 import { Observable, of, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
-import * as SqlInsertQueries from '../../../shared/constants/sql/insert';
+import { insertClientes } from '../../../shared/constants/sql/insert';
 
 @Injectable({
   providedIn: 'root',
@@ -321,106 +321,19 @@ export class ClienteService {
       .pipe((res) => res);
   }
 
-  createClientesDb(clientes: ClienteModel[]) {
+  createDb(clientes: ClienteModel[]) {
     this.databaseService.getDB().then((db: SQLiteObject) => {
-      const clientesInsert = clientes.map((cliente) => {
-        const data = this.formatClienteDb(cliente);
-        return [SqlInsertQueries.insertClientes, data];
+      const insertItems = clientes.map((cliente) => {
+        const data = cliente.formatDb();
+        return [insertClientes, data];
       });
 
-      db.sqlBatch([clientesInsert])
+      db.sqlBatch([insertItems])
         .then((e) => {
           console.log(e);
           console.log('Executed SQL');
         })
         .catch((e) => console.log(e));
     });
-  }
-
-  formatClienteDb(cliente: ClienteModel) {
-    return [
-      cliente.id_dependente,
-      cliente.aplicativo,
-      cliente.situacao,
-      cliente.pessoa,
-      cliente.cnpjcpf,
-      cliente.rg,
-      cliente.emissor,
-      cliente.razao_social,
-      cliente.nome_fantasia,
-      cliente.data_nascimento,
-      cliente.idade,
-      cliente.naturalidade,
-      cliente.sexo,
-      cliente.estado_civil,
-      cliente.nome_pai,
-      cliente.nome_mae,
-      cliente.inscricao_municipal,
-      cliente.inscricao_estadual,
-      cliente.cep,
-      cliente.endereco,
-      cliente.numero,
-      cliente.complemento,
-      cliente.bairro,
-      cliente.cidade,
-      cliente.ibge,
-      cliente.estado,
-      cliente.celular,
-      cliente.email,
-      cliente.obs,
-      cliente.tipo_cadastral,
-      cliente.local_obito,
-      cliente.motivo_obito,
-      cliente.data_obito,
-      cliente.data_atestado,
-      cliente.profissao,
-      cliente.cep_obito,
-      cliente.endereco_obito,
-      cliente.numero_obito,
-      cliente.complemento_obito,
-      cliente.bairro_obito,
-      cliente.cidade_obito,
-      cliente.estado_obito,
-      cliente.categoria,
-      cliente.cNome,
-      cliente.cNascimento,
-      cliente.cTelefone,
-      cliente.cRamal,
-      cliente.cFax,
-      cliente.cCelular,
-      cliente.cEmail,
-      cliente.cWebsite,
-      cliente.eTipo_endereco,
-      cliente.eTipo_pessoa,
-      cliente.eCnpjcpf,
-      cliente.eCep,
-      cliente.eEndereco,
-      cliente.eBairro,
-      cliente.eNumero,
-      cliente.eComplemento,
-      cliente.eCidade,
-      cliente.eEstado,
-      cliente.lista_preco,
-      cliente.condicao_pagamento,
-      cliente.conta_bancaria,
-      cliente.limite_credito,
-      cliente.limite_ultrapassar,
-      cliente.data_inicial,
-      cliente.data_final,
-      cliente.created_at,
-      cliente.updated_at,
-      cliente.data_cadastro,
-      cliente.hora_cadastro,
-      cliente.horario,
-      cliente.plano,
-      cliente.taxa_adesao,
-      cliente.dia_parcela,
-      cliente.deve_receber_sms,
-      cliente.deve_receber_torpedo_voz,
-      cliente.criado_por,
-      cliente.atualizado_por,
-      cliente.religiao,
-      cliente.indicacao,
-    ];
   }
 }

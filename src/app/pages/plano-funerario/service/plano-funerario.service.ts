@@ -2,11 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { PesquisaModel } from '../../cliente/model/pesquisa.model';
-import { IPlanoFunerario } from '../model/plano-funerario.model';
+import {
+  IPlanoFunerario,
+  PlanoFunerarioModel,
+} from '../model/plano-funerario.model';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 import { NativeStorageService } from 'src/app/shared/services/native-storage.service';
-import { of } from 'rxjs';
-import { ClienteModel } from '../../cliente/model/cliente.model';
+import { DatabaseService } from 'src/app/shared/services/database.service';
+import { insertPlanosFunerarios } from '../../../shared/constants/sql/insert';
+import { SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +19,7 @@ export class PlanoFunerarioService {
   constructor(
     private _http: HttpClient,
     private localStorageService: LocalstorageService,
+    private databaseService: DatabaseService,
     private nativeStorageService: NativeStorageService
   ) {}
 
@@ -88,9 +93,10 @@ export class PlanoFunerarioService {
       .toPromise();
   }
 
-  getDependentes(id){
-    return this._http.get(`${environment.host}pesquisar/dependentes/${id}`)
-      .pipe(res => res);
+  getDependentes(id) {
+    return this._http
+      .get(`${environment.host}pesquisar/dependentes/${id}`)
+      .pipe((res) => res);
   }
 
   salvaClientesNovos(plano: IPlanoFunerario, criadoEm: string) {
@@ -135,5 +141,21 @@ export class PlanoFunerarioService {
     }
 
     return planos;
+  }
+
+  createDb(planos: PlanoFunerarioModel[]) {
+    this.databaseService.getDB().then((db: SQLiteObject) => {
+      const insertItems = planos.map((plano) => {
+        const data = plano.formatDb();
+        return [insertPlanosFunerarios, data];
+      });
+
+      db.sqlBatch([insertItems])
+        .then((e) => {
+          console.log(e);
+          console.log('Executed SQL');
+        })
+        .catch((e) => console.log(e));
+    });
   }
 }
