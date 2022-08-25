@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Network } from '@awesome-cordova-plugins/network/ngx';
 import { Platform } from '@ionic/angular';
@@ -10,7 +10,7 @@ import { DatabaseService } from './shared/services/database.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   constructor(
     private network: Network,
     private statusService: StatusService,
@@ -30,10 +30,10 @@ export class AppComponent {
       this.network.onDisconnect().subscribe(() => {
         this.statusService.onNetworkChanged.next(false);
       });
-      // this.databaseService.dbState().subscribe((res) => {
-      //   console.log('DATABASE SUBSCRIBE');
-      //   console.log(res);
-      // });
+      this.databaseService.dbState().subscribe((res) => {
+        console.log('DATABASE SUBSCRIBE');
+        console.log(res);
+      });
     });
   }
 }

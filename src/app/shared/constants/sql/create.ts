@@ -1,5 +1,5 @@
 export const createTableClientes = `CREATE TABLE IF NOT EXISTS clientes(
-    id INTEGER NOT NULL AUTOINCREMENT,
+    id INTEGER NOT NULL,
     id_dependente INTEGER,
     aplicativo TEXT,
     situacao TEXT,
@@ -17,7 +17,7 @@ export const createTableClientes = `CREATE TABLE IF NOT EXISTS clientes(
     nome_pai TEXT,
     nome_mae TEXT,
     inscricao_municipal TEXT,
-    inscricao_mestadual TEXT,
+    inscricao_estadual TEXT,
     cep TEXT,
     endereco TEXT,
     numero TEXT,
@@ -44,6 +44,7 @@ export const createTableClientes = `CREATE TABLE IF NOT EXISTS clientes(
     estado_obito TEXT,
     categoria INTEGER,
     cNome TEXT,
+    cNascimento TEXT,
     cTelefone TEXT,
     cRamal TEXT,
     cFax TEXT,
@@ -86,7 +87,7 @@ export const createTableClientes = `CREATE TABLE IF NOT EXISTS clientes(
 )`;
 
 export const createTableClientesDependentes = `CREATE TABLE IF NOT EXISTS clientes_dependentes(
-    id INTEGER NOT NULL AUTOINCREMENT,
+    id INTEGER NOT NULL,
     cliente INTEGER,
     cliente_id INTEGER,
     id_dependente INTEGER,
@@ -105,7 +106,7 @@ export const createTableClientesDependentes = `CREATE TABLE IF NOT EXISTS client
 )`;
 
 export const createTableContasReceber = `CREATE TABLE IF NOT EXISTS contas_receber(
-    id INTEGER NOT NULL AUTOINCREMENT,
+    id INTEGER NOT NULL,
     descricao TEXT,
     conta_bancaria INTEGER,
     categoria INTEGER,
@@ -148,7 +149,7 @@ export const createTableContasReceber = `CREATE TABLE IF NOT EXISTS contas_receb
 )`;
 
 export const createTableContasReceberBaixas = `CREATE TABLE IF NOT EXISTS contas_receber_baixas(
-    id INTEGER NOT NULL AUTOINCREMENT,
+    id INTEGER NOT NULL,
     conta_id INTEGER,
     referencia TEXT,
     data_liquidacao DATE,
@@ -167,7 +168,7 @@ export const createTableContasReceberBaixas = `CREATE TABLE IF NOT EXISTS contas
 )`;
 
 export const createTableContasReceberParcelas = `CREATE TABLE IF NOT EXISTS contas_receber_parcelas(
-    id INTEGER NOT NULL AUTOINCREMENT,
+    id INTEGER NOT NULL,
     conta_receber_id INTEGER,
     parcela_numero INTEGER,
     parcela_data DATE,
@@ -181,7 +182,7 @@ export const createTableContasReceberParcelas = `CREATE TABLE IF NOT EXISTS cont
 )`;
 
 export const createTablePlanosFunerarios = `CREATE TABLE IF NOT EXISTS planos_funerarios(
-    id INTEGER NOT NULL AUTOINCREMENT,
+    id INTEGER NOT NULL,
     cliente INTEGER,
     indicacao INTEGER,
     tecnico INTEGER,
@@ -219,7 +220,7 @@ export const createTablePlanosFunerarios = `CREATE TABLE IF NOT EXISTS planos_fu
 )`;
 
 export const createTablePlanosFunerariosDependentes = `CREATE TABLE IF NOT EXISTS planos_funerarios_dependentes(
-    id INTEGER NOT NULL AUTOINCREMENT,
+    id INTEGER NOT NULL,
     plano_id INTEGER,
     nome TEXT,
     tipo TEXT,
@@ -235,7 +236,7 @@ export const createTablePlanosFunerariosDependentes = `CREATE TABLE IF NOT EXIST
 )`;
 
 export const createTablePlanosFunerariosParcelas = `CREATE TABLE IF NOT EXISTS planos_funerarios_parcelas(
-    id INTEGER NOT NULL AUTOINCREMENT,
+    id INTEGER NOT NULL,
     plano_id INTEGER,
     parcela_numero INTEGER,
     parcela_data DATE,
@@ -250,7 +251,7 @@ export const createTablePlanosFunerariosParcelas = `CREATE TABLE IF NOT EXISTS p
 )`;
 
 export const createTablePlanosFunerariosServicos = `CREATE TABLE IF NOT EXISTS planos_funerarios_service(
-    id INTEGER NOT NULL AUTOINCREMENT,
+    id INTEGER NOT NULL,
     plano_id INTEGER,
     servico_plano INTEGER,
     servico_id INTEGER,
@@ -265,7 +266,7 @@ export const createTablePlanosFunerariosServicos = `CREATE TABLE IF NOT EXISTS p
 )`;
 
 export const createTablePlanosFunerariosStatus = `CREATE TABLE IF NOT EXISTS planos_funerarios_status(
-    id INTEGER NOT NULL AUTOINCREMENT,
+    id INTEGER NOT NULL,
     plano_id INTEGER,
     data DATE,
     obs TEXT,

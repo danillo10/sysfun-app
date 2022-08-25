@@ -14,27 +14,36 @@ export class DatabaseService {
   constructor(private platform: Platform, private sqlite: SQLite) {
     console.log('DATABASE SERVICE');
     this.platform.ready().then(() => {
-      this.sqlite
-        .create({
-          name: 'funeraria-alianca.db',
-          location: 'default',
-        })
-        .then((db: SQLiteObject) => {
-          console.log('DATABASE CREATED');
-          this.storage = db;
+      this.getDB().then((db: SQLiteObject) => {
+        console.log('DATABASE CREATED');
+        this.storage = db;
 
-          this.storage
-            .transaction((tx) => {
-              console.log('DATABASE STARTED TRANSACTIONS');
-              tx.executeSql(SqlCreateQueries.createTableClientes);
-              // Mais queries
-            })
-            .then((e) => {
-              console.log(e);
-              console.log('Executed SQL');
-            })
-            .catch((e) => console.log(e));
-        });
+        console.log('DATABASE STARTED TRANSACTIONS');
+        db.sqlBatch([
+          SqlCreateQueries.createTableClientes,
+          SqlCreateQueries.createTableClientesDependentes,
+          SqlCreateQueries.createTableContasReceber,
+          SqlCreateQueries.createTableContasReceberBaixas,
+          SqlCreateQueries.createTableContasReceberParcelas,
+          SqlCreateQueries.createTablePlanosFunerarios,
+          SqlCreateQueries.createTablePlanosFunerariosDependentes,
+          SqlCreateQueries.createTablePlanosFunerariosParcelas,
+          SqlCreateQueries.createTablePlanosFunerariosServicos,
+          SqlCreateQueries.createTablePlanosFunerariosStatus,
+        ])
+          .then((e) => {
+            console.log(e);
+            console.log('Executed SQL');
+          })
+          .catch((e) => console.log(e));
+      });
+    });
+  }
+
+  public getDB() {
+    return this.sqlite.create({
+      name: 'funeraria-alianca.db',
+      location: 'default',
     });
   }
 

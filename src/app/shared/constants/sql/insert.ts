@@ -1,12 +1,11 @@
-export const insertClientes = `INSERT INTO clientes (id,
-    id_dependente,
+export const insertClientes = `INSERT INTO clientes (id_dependente,
     aplicativo,
     situacao,
     pessoa,
     cnpjcpf,
     rg,
     emissor,
-    raxao_social,
+    razao_social,
     nome_fantasia,
     data_nascimento,
     idade,
@@ -16,7 +15,7 @@ export const insertClientes = `INSERT INTO clientes (id,
     nome_pai,
     nome_mae,
     inscricao_municipal,
-    inscricao_mestadual,
+    inscricao_estadual,
     cep,
     endereco,
     numero,
@@ -43,6 +42,7 @@ export const insertClientes = `INSERT INTO clientes (id,
     estado_obito,
     categoria,
     cNome,
+    cNascimento,
     cTelefone,
     cRamal,
     cFax,
@@ -80,10 +80,10 @@ export const insertClientes = `INSERT INTO clientes (id,
     atualizado_por,
     religiao,
     indicacao)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export const insertClientesDependentes = `INSERT INTO clientes_dependentes (id,
-    cliente,
+export const insertClientesDependentes = `INSERT INTO clientes_dependentes (cliente,
     cliente_id,
     id_dependente,
     numero,
@@ -96,10 +96,9 @@ export const insertClientesDependentes = `INSERT INTO clientes_dependentes (id,
     created_at,
     updated_at,
     criado_por)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export const insertContasReceber = `INSERT INTO contas_receber (id,
-    descricao,
+export const insertContasReceber = `INSERT INTO contas_receber (descricao,
     conta_bancaria,
     categoria,
     cliente,
@@ -137,10 +136,9 @@ export const insertContasReceber = `INSERT INTO contas_receber (id,
     atualizado_por,
     created_at,
     update_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export const insertContasReceberBaixas = `INSERT INTO contas_receber_baixas (id,
-    conta_id,
+export const insertContasReceberBaixas = `INSERT INTO contas_receber_baixas (conta_id,
     referencia,
     data_liquidacao,
     valor,
@@ -155,8 +153,7 @@ export const insertContasReceberBaixas = `INSERT INTO contas_receber_baixas (id,
     baixa_por)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export const insertContasReceberParcelas = `INSERT INTO contas_receber_parcelas (id,
-    conta_receber_id,
+export const insertContasReceberParcelas = `INSERT INTO contas_receber_parcelas (conta_receber_id,
     parcela_numero,
     parcela_data,
     parcela_valor,
@@ -164,10 +161,9 @@ export const insertContasReceberParcelas = `INSERT INTO contas_receber_parcelas 
     parcela_obs,
     created_at,
     updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export const insertPlanosFunerarios = `INSERT INTO planos_funerarios (id,
-    cliente,
+export const insertPlanosFunerarios = `INSERT INTO planos_funerarios (cliente,
     indicacao,
     tecnico,
     profissional,
@@ -199,10 +195,9 @@ export const insertPlanosFunerarios = `INSERT INTO planos_funerarios (id,
     created_at,
     updated_at,
     repetir_valor)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export const insertPlanosFunerariosDependentes = `INSERT INTO planos_funerarios_dependentes (id,
-    plano_id,
+export const insertPlanosFunerariosDependentes = `INSERT INTO planos_funerarios_dependentes (plano_id,
     nome,
     tipo,
     telefone,
@@ -212,10 +207,9 @@ export const insertPlanosFunerariosDependentes = `INSERT INTO planos_funerarios_
     created_at,
     updated_at,
     dependente_id)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export const insertPlanosFunerariosParcelas = `INSERT INTO planos_funerarios_parcelas (id,
-    plano_id,
+export const insertPlanosFunerariosParcelas = `INSERT INTO planos_funerarios_parcelas (plano_id,
     parcela_numero,
     parcela_data,
     parcela_valor,
@@ -223,10 +217,9 @@ export const insertPlanosFunerariosParcelas = `INSERT INTO planos_funerarios_par
     parcela_obs,
     created_at,
     updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export const insertPlanosFunerariosServicos = `INSERT INTO planos_funerarios_service (id,
-    plano_id,
+export const insertPlanosFunerariosServicos = `INSERT INTO planos_funerarios_service (plano_id,
     servico_plano,
     servico_id,
     servico_quantidade,
@@ -235,13 +228,12 @@ export const insertPlanosFunerariosServicos = `INSERT INTO planos_funerarios_ser
     servico_valor_total,
     created_at,
     updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export const insertPlanosFunerariosStatus = `INSERT INTO planos_funerarios_status (id,
-    plano_id,
+export const insertPlanosFunerariosStatus = `INSERT INTO planos_funerarios_status (plano_id,
     data,
     obs,
     situacao,
     created_at,
     updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?)`;

@@ -1,21 +1,20 @@
 export class ClienteModel {
   id?: number;
+  id_dependente?: number;
   aplicativo?: string;
   aplicativo_id?: number;
-  responsavel?: string;
   situacao?: string;
-  categoria?: string;
   pessoa?: string;
   cnpjcpf?: string;
   cnpj?: string;
   cpf?: string;
   rg?: string;
   emissor?: string;
-  naturalidade?: string;
-  nome_fantasia?: string;
   razao_social?: string;
+  nome_fantasia?: string;
   data_nascimento?: any;
   idade?: string | number;
+  naturalidade?: string;
   sexo?: string;
   estado_civil?: string;
   nome_pai?: string;
@@ -30,11 +29,10 @@ export class ClienteModel {
   cidade?: string;
   ibge?: string;
   estado?: string;
-  telefone?: string;
   celular?: string;
-  whatsapp?: string;
   email?: string;
   obs?: string;
+  tipo_cadastral?: string;
   tipo_cadastro?: string;
   local_obito?: string;
   motivo_obito?: string;
@@ -48,6 +46,7 @@ export class ClienteModel {
   bairro_obito?: string;
   cidade_obito?: string;
   estado_obito?: any;
+  categoria?: string;
   cNome?: string;
   cNascimento?: string;
   cTelefone?: string;
@@ -70,22 +69,32 @@ export class ClienteModel {
   eEstado?: string;
   lista_preco?: any;
   condicao_pagamento?: any;
+  conta_bancaria?: any;
   limite_credito?: any;
   limite_ultrapassar?: any;
-  conta_bancaria?: any;
   data_inicial?: any;
   data_final?: any;
+  created_at?: any;
+  updated_at?: any;
   data_cadastro?: any;
   hora_cadastro?: any;
-  dependentes?: IDependentes[];
-  pesquisados?: IDependentes[];
-  subDependentes?: IDependentes[];
+  horario?: any;
+  plano?: any;
+  taxa_adesao?: any;
+  dia_parcela?: any;
   deve_receber_sms?: string;
   deve_receber_torpedo_voz?: string;
   criado_por: any;
   atualizado_por: any;
   religiao?: string;
   indicacao?: string;
+
+  responsavel?: string;
+  telefone?: string;
+  whatsapp?: string;
+  dependentes?: IDependentes[];
+  pesquisados?: IDependentes[];
+  subDependentes?: IDependentes[];
   indicacao_nome?: string;
 
   /**
@@ -96,9 +105,10 @@ export class ClienteModel {
   constructor(data?) {
     data = data || {};
     this.id = data.id || '';
+    this.id_dependente = data.id_dependente || '';
     this.aplicativo = data.aplicativo || 'S';
     this.aplicativo_id = data.aplicativo_id || '';
-    this.responsavel = data.responsavel  || '';
+    this.responsavel = data.responsavel || '';
     this.situacao = data.situacao || 'Ativo';
     this.categoria = data.categoria || '';
     this.pessoa = data.pessoa || 'PF';
@@ -131,6 +141,7 @@ export class ClienteModel {
     this.whatsapp = data.whatsapp || '';
     this.email = data.email || '';
     this.obs = data.obs || '';
+    this.tipo_cadastral = data.tipo_cadastral || '';
     this.tipo_cadastro = data.tipo_cadastro || 'Cliente';
     this.local_obito = data.local_obito || '';
     this.motivo_obito = data.motivo_obito || '';
@@ -143,7 +154,7 @@ export class ClienteModel {
     this.complemento_obito = data.complemento_obito || '';
     this.bairro_obito = data.bairro_obito || '';
     this.cidade_obito = data.cidade_obito || '';
-    this.estado_obito =  this.estado_obito || '';
+    this.estado_obito = this.estado_obito || '';
     this.cNome = data.cNome || '';
     this.cNascimento = data.cNascimento || '';
     this.cTelefone = data.cTelefone || '';
@@ -173,6 +184,8 @@ export class ClienteModel {
     this.data_final = data.data_final || '';
     this.data_cadastro = data.data_cadastro || '';
     this.hora_cadastro = data.hora_cadastro || '';
+    this.created_at = data.created_at || '';
+    this.updated_at = data.updated_at || '';
     this.dependentes = data.dependentes || [];
     this.pesquisados = [];
     this.subDependentes = data.subDependentes || [];
@@ -183,6 +196,10 @@ export class ClienteModel {
     this.religiao = data.religiao || '';
     this.indicacao = data.indicacao || '';
     this.indicacao_nome = data.indicacao_nome || '';
+    this.horario = data.horario || '';
+    this.plano = data.plano || '';
+    this.taxa_adesao = data.taxa_adesao || '';
+    this.dia_parcela = data.dia_parcela || '';
   }
 }
 

@@ -19,7 +19,7 @@ export class ClientesPage implements OnInit {
   total: number;
   pesquisado: string;
   formulario = false;
-  filtro : boolean;
+  filtro: boolean;
   pesquisa$: Observable<any>;
   clientePesquisado = new Subject<any>();
 
@@ -27,9 +27,9 @@ export class ClientesPage implements OnInit {
 
   constructor(
     private router: Router,
-    private _clienteService: ClienteService,
-    private _localStorageService: LocalstorageService,
-    private _loadingService: LoadingService
+    private clienteService: ClienteService,
+    private localStorageService: LocalstorageService,
+    private loadingService: LoadingService
   ) {
     this.pesquisa.skip = 0;
     this.pesquisa.registros = 10;
@@ -37,31 +37,28 @@ export class ClientesPage implements OnInit {
     this.pesquisa.cliente = '';
   }
 
-  ngOnInit(){
-
-  }
+  ngOnInit() {}
 
   ionViewDidEnter() {
     this.pesquisa.pagina = 1;
     this.pesquisar();
   }
 
-  add(){
+  add() {
     this.router.navigate(['clientes/novo-cliente/fornecedor']);
   }
 
   pesquisar(skip: number = 0) {
-    this._loadingService.showLoading("Carregando...")
-      .then(() => {
-        this.pesquisa.skip = skip;
+    this.loadingService.showLoading('Carregando...').then(() => {
+      this.pesquisa.skip = skip;
 
-        this._clienteService.get(this.pesquisa)
-          .then((data: any) => {
-            this.clientes = data.clientes;
-            this.total = data.total;
-            this._loadingService.hideLoading();
-          });
-      })
+      this.clienteService.get(this.pesquisa).then((data: any) => {
+        this.clientes = data.clientes;
+        this.total = data.total;
+        this.loadingService.hideLoading();
+
+        // this.clienteService.createClientesDb(this.clientes);
+      });
+    });
   }
-
 }

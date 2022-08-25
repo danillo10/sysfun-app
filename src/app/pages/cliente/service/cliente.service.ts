@@ -1,7 +1,13 @@
-import { Injectable, SimpleChanges} from '@angular/core';
-import { catchError, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Injectable, SimpleChanges } from '@angular/core';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+} from 'rxjs/operators';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 import { NativeStorageService } from 'src/app/shared/services/native-storage.service';
+import { DatabaseService } from 'src/app/shared/services/database.service';
 import { environment } from 'src/environments/environment';
 
 import { ClienteModel } from '../model/cliente.model';
@@ -10,9 +16,11 @@ import { PesquisaModel } from '../model/pesquisa.model';
 import * as _ from 'lodash';
 import { Observable, of, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
+import * as SqlInsertQueries from '../../../shared/constants/sql/insert';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClienteService {
   status: boolean;
@@ -26,6 +34,7 @@ export class ClienteService {
   constructor(
     private _http: HttpClient,
     private localStorageService: LocalstorageService,
+    private databaseService: DatabaseService,
     private nativeStorageService: NativeStorageService
   ) {
     this.observer;
@@ -38,7 +47,7 @@ export class ClienteService {
 
       data = JSON.parse(data);
 
-      cliente.aplicativo_id = (clientesNovos.length + 1);
+      cliente.aplicativo_id = clientesNovos.length + 1;
 
       clientesNovos.push(cliente);
 
@@ -47,33 +56,40 @@ export class ClienteService {
       this.localStorageService.setParse('clientesNovos', clientesNovos);
       this.nativeStorageService.setParse('clientes', data);
 
-      return of(true)
-        .toPromise();
+      return of(true).toPromise();
     }
 
-    return this._http.post(`${environment.host}clientes`, cliente)
-      .pipe(res => res)
-      .toPromise()
+    return this._http
+      .post(`${environment.host}clientes`, cliente)
+      .pipe((res) => res)
+      .toPromise();
   }
 
   createMultiples(clientes: ClienteModel[]) {
     return new Promise((resolve, reject) => {
-      clientes.map(cliente => {
-        alert(JSON.stringify(cliente))
-        this._http.post(`${environment.host}clientes`, cliente)
+      clientes.map((cliente) => {
+        alert(JSON.stringify(cliente));
+        this._http
+          .post(`${environment.host}clientes`, cliente)
           .pipe(
-            res => res,
-            catchError(err => { throw new Error('Erro ao salvar cliente!') }
-            ))
+            (res) => res,
+            catchError((err) => {
+              throw new Error('Erro ao salvar cliente!');
+            })
+          )
           .subscribe((data: any) => {
-            if (data.status != "1") {
-              const clientesStorage = this.localStorageService.getParse('clientesNovos');
-              this.localStorageService.setParse('clientesNovos', clientesStorage.filter(c => c.cnpjcpf != cliente.cnpjcpf));
+            if (data.status != '1') {
+              const clientesStorage =
+                this.localStorageService.getParse('clientesNovos');
+              this.localStorageService.setParse(
+                'clientesNovos',
+                clientesStorage.filter((c) => c.cnpjcpf != cliente.cnpjcpf)
+              );
             }
-          })
-      })
+          });
+      });
       resolve(true);
-    })
+    });
   }
 
   async show(id: number | string, criado_em: string) {
@@ -82,25 +98,24 @@ export class ClienteService {
 
       if (criado_em == 'aplicativo') {
         const clientes = this.localStorageService.getParse('clientesNovos');
-        cliente = clientes.find(cliente => cliente.aplicativo_id == id);
+        cliente = clientes.find((cliente) => cliente.aplicativo_id == id);
       } else {
         let data = await this.nativeStorageService.getParse('clientes');
         data = JSON.parse(data);
-        cliente = data.find(cliente => cliente.id == id);
+        cliente = data.find((cliente) => cliente.id == id);
       }
 
-      return of({ cliente: [cliente] })
-        .toPromise();
+      return of({ cliente: [cliente] }).toPromise();
     }
 
-    return this._http.get(`${environment.host}clientes/${id}`)
-      .pipe(res => res)
+    return this._http
+      .get(`${environment.host}clientes/${id}`)
+      .pipe((res) => res)
       .toPromise();
   }
 
   update(id: number | string, cliente: ClienteModel, criadoEm: string) {
     if (!navigator.onLine) {
-
       if (criadoEm == 'sistema') {
         this.salvaClienteSistema(cliente);
       }
@@ -109,36 +124,38 @@ export class ClienteService {
         this.salvaClienteAplicativo(cliente);
       }
 
-      return of(true)
-        .toPromise();
+      return of(true).toPromise();
     }
 
-    return this._http.put(`${environment.host}clientes/${id}`, cliente)
-      .pipe(res => res)
+    return this._http
+      .put(`${environment.host}clientes/${id}`, cliente)
+      .pipe((res) => res)
       .toPromise();
   }
 
   get(pesquisa: PesquisaModel): Promise<any> {
     if (!navigator.onLine) {
       const data = this.getOffline(pesquisa);
-      return of(data)
-        .toPromise();
+      return of(data).toPromise();
     }
 
-    return this._http.post(`${environment.host}pesquisa/avancada/clientes`, pesquisa)
-      .pipe(res => res)
-      .toPromise()
-  }
-
-  sync(pesquisa: PesquisaModel): Promise<any> {
-    return this._http.post(`${environment.host}clientes/sync`, pesquisa)
-      .pipe(res => res)
+    return this._http
+      .post(`${environment.host}pesquisa/avancada/clientes`, pesquisa)
+      .pipe((res) => res)
       .toPromise();
   }
 
-  totalClientes(){
-    return this._http.get(`${environment.host}clientes/total`)
-    .pipe(res => res);
+  sync(pesquisa: PesquisaModel): Promise<any> {
+    return this._http
+      .post(`${environment.host}clientes/sync`, pesquisa)
+      .pipe((res) => res)
+      .toPromise();
+  }
+
+  totalClientes() {
+    return this._http
+      .get(`${environment.host}clientes/total`)
+      .pipe((res) => res);
   }
 
   async getOffline(pesquisa: PesquisaModel) {
@@ -147,7 +164,7 @@ export class ClienteService {
     return this.getFilteredClientes(clientes, pesquisa);
   }
 
-  getFilteredClientes(data, pesquisa: PesquisaModel): any{
+  getFilteredClientes(data, pesquisa: PesquisaModel): any {
     let clientes = data;
     let total = 0;
 
@@ -155,17 +172,17 @@ export class ClienteService {
       clientes = _.filter(clientes, (cliente, index) => {
         const nome = cliente.nome_fantasia;
         return nome.includes(pesquisa.cliente);
-      })
+      });
     }
 
     clientes = _.filter(clientes, (cliente, index) => {
       total += 1;
-      return index >= pesquisa.skip * 10 && index <= (pesquisa.skip * 10) + 9;
+      return index >= pesquisa.skip * 10 && index <= pesquisa.skip * 10 + 9;
     });
 
-    clientes = clientes.sort((a,b) => (a.id - b.id));
+    clientes = clientes.sort((a, b) => a.id - b.id);
 
-    return {clientes, total};
+    return { clientes, total };
   }
 
   pesquisaCPF(cpf: string) {
@@ -173,24 +190,27 @@ export class ClienteService {
       const clientes = this.localStorageService.getParse('clientes');
       let nome_fantasia = '';
 
-      const cpfCadastrado = clientes.some(cliente => {
+      const cpfCadastrado = clientes.some((cliente) => {
         nome_fantasia = cliente.nome_fantasia;
-        return cliente.cnpjcpf == cpf
-      })
+        return cliente.cnpjcpf == cpf;
+      });
 
       if (cpfCadastrado) {
         return of({
           status: 1,
           mensagem: 'CPF já cadastrado no cliente: ',
-          cliente: [{
-            nome_fantasia
-          }]
-        })
+          cliente: [
+            {
+              nome_fantasia,
+            },
+          ],
+        });
       }
     }
 
-    return this._http.post(`${environment.host}pesquisar/cpf`, { cpf })
-      .pipe(res => res)
+    return this._http
+      .post(`${environment.host}pesquisar/cpf`, { cpf })
+      .pipe((res) => res);
   }
 
   getProfissao(profissao: string) {
@@ -198,8 +218,9 @@ export class ClienteService {
       return of([]);
     }
 
-    return this._http.get(`${environment.host}pesquisar/profissao/obito/${profissao}`)
-      .pipe(res => res);
+    return this._http
+      .get(`${environment.host}pesquisar/profissao/obito/${profissao}`)
+      .pipe((res) => res);
   }
 
   salvaClienteAplicativo(cliente: ClienteModel) {
@@ -217,7 +238,7 @@ export class ClienteService {
 
     const key = criadoEm == 'sistema' ? 'id' : 'aplicativo_id';
 
-    const clt = clientes.find(c => c[key] == cliente[key]);
+    const clt = clientes.find((c) => c[key] == cliente[key]);
 
     clientes = this.handleClientes(cliente, clientes, key, clt);
 
@@ -236,11 +257,16 @@ export class ClienteService {
     this.nativeStorageService.setParse('clientes', clientes);
   }
 
-  handleClientes(cliente: ClienteModel, clientes: ClienteModel[], key: string, clt?: any) {
+  handleClientes(
+    cliente: ClienteModel,
+    clientes: ClienteModel[],
+    key: string,
+    clt?: any
+  ) {
     if (clt) {
-      clientes = clientes.map(c => {
+      clientes = clientes.map((c) => {
         if (c[key] == cliente[key]) {
-          c = cliente
+          c = cliente;
         }
         return c;
       });
@@ -251,44 +277,150 @@ export class ClienteService {
     return clientes;
   }
 
-  get observer(){
-    return this.clientes$ = this.pesquisa.pipe(
+  get observer() {
+    return (this.clientes$ = this.pesquisa.pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      switchMap((descricao: string) => this.search(descricao)),
-    )
+      switchMap((descricao: string) => this.search(descricao))
+    ));
   }
 
-  search(cliente){
-    if(!cliente.trim()){
+  search(cliente) {
+    if (!cliente.trim()) {
       return of([]);
     }
-    return this._http.get(`${environment.host}pesquisar/clientes/${cliente}`)
-    .pipe(res => res)
+    return this._http
+      .get(`${environment.host}pesquisar/clientes/${cliente}`)
+      .pipe((res) => res);
   }
 
-  getCell(celular:ClienteModel): Observable<any>{
-    if(!navigator.onLine){
-      const cliente = this.localStorageService.getParse('cliente')
+  getCell(celular: ClienteModel): Observable<any> {
+    if (!navigator.onLine) {
+      const cliente = this.localStorageService.getParse('cliente');
       let nome_fantasia = '';
 
-      const celularCadastrado = cliente.some(cliente =>{
+      const celularCadastrado = cliente.some((cliente) => {
         nome_fantasia = cliente.nome_fantasia;
         return cliente.calular == celular;
-      })
+      });
 
       if (celularCadastrado) {
         return of({
           status: 1,
           mensagem: 'Número já cadastrado no cliente: ',
-          cliente: [{
-            nome_fantasia
-          }]
-        })
+          cliente: [
+            {
+              nome_fantasia,
+            },
+          ],
+        });
       }
     }
     return this._http
-    .post(`${environment.host}/pesquisar/celular`,{celular})
-    .pipe((res) => res)
+      .post(`${environment.host}/pesquisar/celular`, { celular })
+      .pipe((res) => res);
+  }
+
+  createClientesDb(clientes: ClienteModel[]) {
+    this.databaseService.getDB().then((db: SQLiteObject) => {
+      const clientesInsert = clientes.map((cliente) => {
+        const data = this.formatClienteDb(cliente);
+        return [SqlInsertQueries.insertClientes, data];
+      });
+
+      db.sqlBatch([clientesInsert])
+        .then((e) => {
+          console.log(e);
+          console.log('Executed SQL');
+        })
+        .catch((e) => console.log(e));
+    });
+  }
+
+  formatClienteDb(cliente: ClienteModel) {
+    return [
+      cliente.id_dependente,
+      cliente.aplicativo,
+      cliente.situacao,
+      cliente.pessoa,
+      cliente.cnpjcpf,
+      cliente.rg,
+      cliente.emissor,
+      cliente.razao_social,
+      cliente.nome_fantasia,
+      cliente.data_nascimento,
+      cliente.idade,
+      cliente.naturalidade,
+      cliente.sexo,
+      cliente.estado_civil,
+      cliente.nome_pai,
+      cliente.nome_mae,
+      cliente.inscricao_municipal,
+      cliente.inscricao_estadual,
+      cliente.cep,
+      cliente.endereco,
+      cliente.numero,
+      cliente.complemento,
+      cliente.bairro,
+      cliente.cidade,
+      cliente.ibge,
+      cliente.estado,
+      cliente.celular,
+      cliente.email,
+      cliente.obs,
+      cliente.tipo_cadastral,
+      cliente.local_obito,
+      cliente.motivo_obito,
+      cliente.data_obito,
+      cliente.data_atestado,
+      cliente.profissao,
+      cliente.cep_obito,
+      cliente.endereco_obito,
+      cliente.numero_obito,
+      cliente.complemento_obito,
+      cliente.bairro_obito,
+      cliente.cidade_obito,
+      cliente.estado_obito,
+      cliente.categoria,
+      cliente.cNome,
+      cliente.cNascimento,
+      cliente.cTelefone,
+      cliente.cRamal,
+      cliente.cFax,
+      cliente.cCelular,
+      cliente.cEmail,
+      cliente.cWebsite,
+      cliente.eTipo_endereco,
+      cliente.eTipo_pessoa,
+      cliente.eCnpjcpf,
+      cliente.eCep,
+      cliente.eEndereco,
+      cliente.eBairro,
+      cliente.eNumero,
+      cliente.eComplemento,
+      cliente.eCidade,
+      cliente.eEstado,
+      cliente.lista_preco,
+      cliente.condicao_pagamento,
+      cliente.conta_bancaria,
+      cliente.limite_credito,
+      cliente.limite_ultrapassar,
+      cliente.data_inicial,
+      cliente.data_final,
+      cliente.created_at,
+      cliente.updated_at,
+      cliente.data_cadastro,
+      cliente.hora_cadastro,
+      cliente.horario,
+      cliente.plano,
+      cliente.taxa_adesao,
+      cliente.dia_parcela,
+      cliente.deve_receber_sms,
+      cliente.deve_receber_torpedo_voz,
+      cliente.criado_por,
+      cliente.atualizado_por,
+      cliente.religiao,
+      cliente.indicacao,
+    ];
   }
 }
