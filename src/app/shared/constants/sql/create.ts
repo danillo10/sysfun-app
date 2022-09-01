@@ -7,7 +7,7 @@ export const createTableClientes = `CREATE TABLE IF NOT EXISTS clientes(
     cnpjcpf TEXT,
     rg TEXT,
     emissor TEXT,
-    raxao_social TEXT,
+    razao_social TEXT,
     nome_fantasia TEXT,
     data_nascimento DATE,
     idade TEXT,

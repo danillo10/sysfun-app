@@ -36,7 +36,7 @@ interface NavigatorClipboard {
   readonly clipboard?: Clipboard;
 }
 
-interface Navigator extends NavigatorClipboard { }
+interface Navigator extends NavigatorClipboard {}
 
 @Component({
   selector: 'app-cliente',
@@ -82,7 +82,7 @@ export class ClienteComponent implements OnInit {
     private utilsService: UtilsService,
     private localStorageService: LocalstorageService,
     private loadingService: LoadingService,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     this.cliente = new ClienteModel();
     this.pessoas = pessoas.pessoas;
@@ -188,8 +188,8 @@ export class ClienteComponent implements OnInit {
       indicacao: [this.cliente.indicacao],
       indicacao_nome: [this.cliente.indicacao_nome],
       dependentes: [this.cliente.dependentes],
-      subDependentes: [this.cliente.subDependentes]
-    })
+      subDependentes: [this.cliente.subDependentes],
+    });
 
     this.setDependentes([]);
     this.getProfissao();
@@ -197,92 +197,103 @@ export class ClienteComponent implements OnInit {
     this.copiarDependentes();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
   create() {
-
-    if (this.form.value.nome_fantasia == "") {
-      return alert("Campo Nome Obrigatório!");
+    if (this.form.value.nome_fantasia === '') {
+      return alert('Campo Nome Obrigatório!');
     }
 
-    if (this.form.value.pessoa == 'PF' || this.form.value.pessoa == 'PO') {
-      if (this.form.value.nome_mae == "" || this.form.value.nome_mae == null) {
-        return alert("Nome da Mãe Obrigatório!");
+    if (this.form.value.pessoa === 'PF' || this.form.value.pessoa === 'PO') {
+      if (this.form.value.nome_mae === '' || this.form.value.nome_mae === null) {
+        return alert('Nome da Mãe Obrigatório!');
       }
 
-      if (this.form.value.sexo == "" || this.form.value.sexo == null) {
-        return alert("Informar o sexo do cliente");
-      }
-    }
-
-    if (this.form.value.pessoa != 'PO' && this.form.value.celular == "") {
-      return alert("Número de celular Obrigatório!");
-    }
-
-    if (this.form.value.pessoa == 'PF') {
-      if (this.form.value.emissor == "" || this.form.value.emissor == null) {
-        return alert("Orgão emissor Obrigatório!");
+      if (this.form.value.sexo === '' || this.form.value.sexo === null) {
+        return alert('Informar o sexo do cliente');
       }
     }
 
-    this.loadingService.showLoading("Salvando cadastro...")
-      .then(() => {
-        this.form.patchValue({ dependentes: this.cliente.dependentes });
+    if (this.form.value.pessoa !== 'PO' && this.form.value.celular === '') {
+      return alert('Número de celular Obrigatório!');
+    }
 
-        const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (this.form.value.pessoa === 'PF') {
+      if (this.form.value.emissor === '' || this.form.value.emissor === null) {
+        return alert('Orgão emissor Obrigatório!');
+      }
+    }
 
-        if (id !== 'novo-cliente') {
-          this.clienteService.update(id, this.form.value, this.criadoEm)
-            .then((data: any) => {
-              this.loadingService.hideLoading();
-              if (data.status == 1) return alert(data.mensagem);
-              this.router.navigate(['clientes']);
-            }).catch(err => {
-              alert(JSON.stringify(err));
-              this.loadingService.hideLoading();
-            });
-        } else {
-          this.clienteService.create(this.form.value)
-            .then((data: any) => {
-              this.loadingService.hideLoading();
-              if (data.status == 1) return alert(data.mensagem);
-              this.router.navigate(['clientes']);
-            }).catch(err =>{
-              alert(JSON.stringify(err));
-              this.loadingService.hideLoading();
-            })
-        }
-      })
+    this.loadingService.showLoading('Salvando cadastro...').then(() => {
+      this.form.patchValue({ dependentes: this.cliente.dependentes });
+
+      const id = this.activatedRoute.snapshot.paramMap.get('id');
+
+      if (id !== 'novo-cliente') {
+        this.clienteService
+          .update(id, this.form.value, this.criadoEm)
+          .then((data: any) => {
+            this.loadingService.hideLoading();
+            if (data.status === 1) return alert(data.mensagem);
+            this.router.navigate(['clientes']);
+          })
+          .catch((err) => {
+            alert(JSON.stringify(err));
+            this.loadingService.hideLoading();
+          });
+      } else {
+        console.log('CADASTRO DE CLIENTE COM DB');
+        this.clienteService
+          .create([this.form.value])
+          .then((data: any) => {
+            this.loadingService.hideLoading();
+            // if (data.status === 1) return alert(data.mensagem);
+            // this.router.navigate(['clientes']);
+
+            console.log('RETORNO DO INSERT');
+            console.log(data);
+            console.log('SELECT NO BANCO');
+            console.log(this.clienteService.getFromDb());
+          })
+          .catch((err) => {
+            alert(JSON.stringify(err));
+            this.loadingService.hideLoading();
+          });
+      }
+    });
   }
 
   getCategorias() {
-   this.subscription = this.categoriaClienteService.get()
+    this.subscription = this.categoriaClienteService
+      .get()
       .subscribe((data: any[]) => {
-        this.categorias = this.selectService.handleSelect(data, 'id', 'nome')
-      })
+        this.categorias = this.selectService.handleSelect(data, 'id', 'nome');
+      });
   }
 
   /**
    * Observable para os profissões de óbitos
-  */
+   */
   getProfissao() {
     this.profissao$ = this.profissaoPesquisada.pipe(
       debounceTime(500),
-      switchMap((profissao: string) => this.clienteService.getProfissao(profissao)),
+      switchMap((profissao: string) =>
+        this.clienteService.getProfissao(profissao)
+      ),
       distinctUntilChanged()
-    )
+    );
 
     this.profissao$.subscribe((data) => {
       this.profissoes = this.selectService.handleSelect(data, 'profissao');
-    })
+    });
   }
 
   /**
    * Pesquisa profissões
    * @param profissao
-  */
+   */
   pesquisaProfissao(profissao) {
     this.profissaoPesquisada.next(profissao);
   }
@@ -295,78 +306,81 @@ export class ClienteComponent implements OnInit {
   get() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.activatedRoute.queryParams.subscribe(data => {
-
+    this.activatedRoute.queryParams.subscribe((data) => {
       this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
       if (id != 'novo-cliente') {
-        this.loadingService.showLoading("Carregando dados...")
-          .then(() => {
-            const id = data.aplicativo ? data.aplicativo : data.sistema;
-            this.clienteService.show(id, this.criadoEm)
-              .then((data: any) => {
-                this.cliente = new ClienteModel(data.cliente[0]);
+        this.loadingService.showLoading('Carregando dados...').then(() => {
+          const id = data.aplicativo ? data.aplicativo : data.sistema;
+          this.clienteService.show(id, this.criadoEm).then((data: any) => {
+            this.cliente = new ClienteModel(data.cliente[0]);
 
-                if (navigator.onLine && data.dependentes)
-                  this.cliente.dependentes = data.dependentes;
-                this.form.patchValue(this.cliente);
+            if (navigator.onLine && data.dependentes)
+              this.cliente.dependentes = data.dependentes;
+            this.form.patchValue(this.cliente);
 
-                this.loadingService.hideLoading();
-
-              });
-          })
+            this.loadingService.hideLoading();
+          });
+        });
       }
     });
-
   }
 
   setDependentes(dependentes: IDependentes[]) {
-    this.cliente.dependentes = dependentes.length == 0 ? this.dependentesService.reorganizar() : dependentes;
+    this.cliente.dependentes =
+      dependentes.length == 0
+        ? this.dependentesService.reorganizar()
+        : dependentes;
   }
 
   pesquisaCPF() {
-   this.subscription = this.clienteService.pesquisaCPF(this.form.value.cnpjcpf)
+    this.subscription = this.clienteService
+      .pesquisaCPF(this.form.value.cnpjcpf)
       .subscribe((data: any) => {
         if (data.status == 1) {
-          alert(data.mensagem + ' ' + data.cliente[0].nome_fantasia)
-          this.form.patchValue({ cnpjcpf: '' })
+          alert(data.mensagem + ' ' + data.cliente[0].nome_fantasia);
+          this.form.patchValue({ cnpjcpf: '' });
           return;
         }
-      })
+      });
   }
 
   getCep(cliente: string) {
-    const cep = cliente == 'primario' ? this.form.value.cep : this.form.value.eCep;
+    const cep =
+      cliente == 'primario' ? this.form.value.cep : this.form.value.eCep;
 
-   this.subscription = this.adressService.getCep(cep)
+    this.subscription = this.adressService
+      .getCep(cep)
       .subscribe((data: CepModel) => {
-        if (data.erro) return alert(messages.address.cep)
+        if (data.erro) return alert(messages.address.cep);
         if (cliente == 'primario')
           this.form.patchValue({
-            "endereco": data.logradouro,
-            "complemento": data.complemento,
-            "bairro": data.bairro,
-            "cidade": data.localidade,
-            "estado": data.uf
-          })
+            endereco: data.logradouro,
+            complemento: data.complemento,
+            bairro: data.bairro,
+            cidade: data.localidade,
+            estado: data.uf,
+          });
         else
           this.form.patchValue({
-            "eEndereco": data.logradouro,
-            "eComplemento": data.complemento,
-            "eBairro": data.bairro,
-            "eCidade": data.localidade,
-            "eEstado": data.uf
-          })
-      })
+            eEndereco: data.logradouro,
+            eComplemento: data.complemento,
+            eBairro: data.bairro,
+            eCidade: data.localidade,
+            eEstado: data.uf,
+          });
+      });
   }
 
   copiarDependentes() {
     this.dependentesCopiados = '';
     this.cliente.dependentes.map((dependente) => {
-      this.dependentesCopiados += (dependente.nome) ? dependente.nome + ' ' : '';
-      this.dependentesCopiados += (dependente.cpf) ? dependente.cpf + ' ' : '';
-      this.dependentesCopiados += (dependente.tipo) ? dependente.tipo + ' | ' : '';
-    })
+      this.dependentesCopiados += dependente.nome ? dependente.nome + ' ' : '';
+      this.dependentesCopiados += dependente.cpf ? dependente.cpf + ' ' : '';
+      this.dependentesCopiados += dependente.tipo
+        ? dependente.tipo + ' | '
+        : '';
+    });
   }
 
   sendWhatsapp() {
@@ -378,14 +392,15 @@ export class ClienteComponent implements OnInit {
     );
   }
 
-  getCell(){
-   this.subscription = this.clienteService.getCell(this.form.value.celular)
-    .subscribe((data:any) => {
-      if(data.status == 1){
-       alert(data.mensagem + ' ' + data.cliente[0].nome_fantasia)
-      this.form.patchValue({calular: ''})
-      return;
-      }
-    })
+  getCell() {
+    this.subscription = this.clienteService
+      .getCell(this.form.value.celular)
+      .subscribe((data: any) => {
+        if (data.status == 1) {
+          alert(data.mensagem + ' ' + data.cliente[0].nome_fantasia);
+          this.form.patchValue({ calular: '' });
+          return;
+        }
+      });
   }
 }

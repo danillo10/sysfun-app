@@ -57,7 +57,7 @@ export class ClientesPage implements OnInit {
         this.total = data.total;
         this.loadingService.hideLoading();
 
-        // this.clienteService.createClientesDb(this.clientes);
+        // this.clienteService.create(this.clientes);
       });
     });
   }

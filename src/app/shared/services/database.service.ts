@@ -14,37 +14,39 @@ export class DatabaseService {
   constructor(private platform: Platform, private sqlite: SQLite) {
     console.log('DATABASE SERVICE');
     this.platform.ready().then(() => {
-      this.getDB().then((db: SQLiteObject) => {
-        console.log('DATABASE CREATED');
-        this.storage = db;
+      this.sqlite
+        .create({
+          name: 'funeraria-alianca.db',
+          location: 'default',
+        })
+        .then((db: SQLiteObject) => {
+          console.log('DATABASE CREATED');
+          this.storage = db;
 
-        console.log('DATABASE STARTED TRANSACTIONS');
-        db.sqlBatch([
-          SqlCreateQueries.createTableClientes,
-          SqlCreateQueries.createTableClientesDependentes,
-          SqlCreateQueries.createTableContasReceber,
-          SqlCreateQueries.createTableContasReceberBaixas,
-          SqlCreateQueries.createTableContasReceberParcelas,
-          SqlCreateQueries.createTablePlanosFunerarios,
-          SqlCreateQueries.createTablePlanosFunerariosDependentes,
-          SqlCreateQueries.createTablePlanosFunerariosParcelas,
-          SqlCreateQueries.createTablePlanosFunerariosServicos,
-          SqlCreateQueries.createTablePlanosFunerariosStatus,
-        ])
-          .then((e) => {
-            console.log(e);
-            console.log('Executed SQL');
-          })
-          .catch((e) => console.log(e));
-      });
+          console.log('DATABASE STARTED TRANSACTIONS');
+          db.sqlBatch([
+            SqlCreateQueries.createTableClientes,
+            SqlCreateQueries.createTableClientesDependentes,
+            SqlCreateQueries.createTableContasReceber,
+            SqlCreateQueries.createTableContasReceberBaixas,
+            SqlCreateQueries.createTableContasReceberParcelas,
+            SqlCreateQueries.createTablePlanosFunerarios,
+            SqlCreateQueries.createTablePlanosFunerariosDependentes,
+            SqlCreateQueries.createTablePlanosFunerariosParcelas,
+            SqlCreateQueries.createTablePlanosFunerariosServicos,
+            SqlCreateQueries.createTablePlanosFunerariosStatus,
+          ])
+            .then((e) => {
+              console.log(e);
+              console.log('Executed SQL');
+            })
+            .catch((e) => console.log(e));
+        });
     });
   }
 
   public getDB() {
-    return this.sqlite.create({
-      name: 'funeraria-alianca.db',
-      location: 'default',
-    });
+    return this.storage;
   }
 
   dbState() {

@@ -144,18 +144,18 @@ export class PlanoFunerarioService {
   }
 
   createDb(planos: PlanoFunerarioModel[]) {
-    this.databaseService.getDB().then((db: SQLiteObject) => {
-      const insertItems = planos.map((plano) => {
-        const data = plano.formatDb();
-        return [insertPlanosFunerarios, data];
-      });
-
-      db.sqlBatch([insertItems])
-        .then((e) => {
-          console.log(e);
-          console.log('Executed SQL');
-        })
-        .catch((e) => console.log(e));
+    const insertItems = planos.map((plano) => {
+      const data = plano.formatDb();
+      return [insertPlanosFunerarios, data];
     });
+
+    this.databaseService
+      .getDB()
+      .sqlBatch([insertItems])
+      .then((e) => {
+        console.log(e);
+        console.log('Executed SQL');
+      })
+      .catch((e) => console.log(e));
   }
 }

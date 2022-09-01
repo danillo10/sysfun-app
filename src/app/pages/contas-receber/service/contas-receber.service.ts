@@ -37,18 +37,18 @@ export class ContasReceberService {
   }
 
   createDb(contas: IContasReceber[]) {
-    this.databaseService.getDB().then((db: SQLiteObject) => {
-      const insertItems = contas.map((conta) => {
-        const data = conta.formatDb();
-        return [insertContasReceber, data];
-      });
-
-      db.sqlBatch([insertItems])
-        .then((e) => {
-          console.log(e);
-          console.log('Executed SQL');
-        })
-        .catch((e) => console.log(e));
+    const insertItems = contas.map((conta) => {
+      const data = conta.formatDb();
+      return [insertContasReceber, data];
     });
+
+    this.databaseService
+      .getDB()
+      .sqlBatch([insertItems])
+      .then((e) => {
+        console.log(e);
+        console.log('Executed SQL');
+      })
+      .catch((e) => console.log(e));
   }
 }
