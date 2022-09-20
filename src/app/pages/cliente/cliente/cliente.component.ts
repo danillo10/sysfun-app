@@ -244,18 +244,12 @@ export class ClienteComponent implements OnInit {
             this.loadingService.hideLoading();
           });
       } else {
-        console.log('CADASTRO DE CLIENTE COM DB');
         this.clienteService
-          .create([this.form.value])
+          .create(this.form.value)
           .then((data: any) => {
             this.loadingService.hideLoading();
-            // if (data.status === 1) return alert(data.mensagem);
-            // this.router.navigate(['clientes']);
-
-            console.log('RETORNO DO INSERT');
-            console.log(data);
-            console.log('SELECT NO BANCO');
-            console.log(this.clienteService.getFromDb());
+            if (data.status === 1) return alert(data.mensagem);
+            this.router.navigate(['clientes']);
           })
           .catch((err) => {
             alert(JSON.stringify(err));

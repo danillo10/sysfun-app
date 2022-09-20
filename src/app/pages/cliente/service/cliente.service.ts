@@ -40,18 +40,18 @@ export class ClienteService {
     this.observer;
   }
 
-  create(clientes: ClienteModel[]) {
-    console.log('create');
-    const insertItems = clientes.map((cliente) => {
-      const data = this.formatArray(cliente);
-      console.log('clientes.map');
-      console.log(data);
-      return data;
-    });
-    console.log(insertItems);
+  // create(clientes: ClienteModel[]) {
+  //   console.log('create');
+  //   const insertItems = clientes.map((cliente) => {
+  //     const data = this.formatArray(cliente);
+  //     console.log('clientes.map');
+  //     console.log(data);
+  //     return data;
+  //   });
+  //   console.log(insertItems);
 
-    return this.databaseService.getDB().executeSql(insertClientes, insertItems);
-  }
+  //   return this.databaseService.getDB().executeSql(insertClientes, insertItems);
+  // }
 
   getFromDb() {
     this.databaseService.getDB().executeSql(selectClientes, []);
@@ -147,30 +147,30 @@ export class ClienteService {
     ];
   }
 
-  // async create(cliente: ClienteModel): Promise<any> {
-  //   if (!navigator.onLine) {
-  //     let clientesNovos = this.localStorageService.getParse('clientesNovos');
-  //     let data = await this.nativeStorageService.getParse('clientes');
+  async create(cliente: ClienteModel): Promise<any> {
+    if (!navigator.onLine) {
+      let clientesNovos = this.localStorageService.getParse('clientesNovos');
+      let data = await this.nativeStorageService.getParse('clientes');
 
-  //     data = JSON.parse(data);
+      data = JSON.parse(data);
 
-  //     cliente.aplicativo_id = clientesNovos.length + 1;
+      cliente.aplicativo_id = clientesNovos.length + 1;
 
-  //     clientesNovos.push(cliente);
+      clientesNovos.push(cliente);
 
-  //     data = [cliente, ...data];
+      data = [cliente, ...data];
 
-  //     this.localStorageService.setParse('clientesNovos', clientesNovos);
-  //     this.nativeStorageService.setParse('clientes', data);
+      this.localStorageService.setParse('clientesNovos', clientesNovos);
+      this.nativeStorageService.setParse('clientes', data);
 
-  //     return of(true).toPromise();
-  //   }
+      return of(true).toPromise();
+    }
 
-  //   return this._http
-  //     .post(`${environment.host}clientes`, cliente)
-  //     .pipe((res) => res)
-  //     .toPromise();
-  // }
+    return this._http
+      .post(`${environment.host}clientes`, cliente)
+      .pipe((res) => res)
+      .toPromise();
+  }
 
   createMultiples(clientes: ClienteModel[]) {
     return new Promise((resolve, reject) => {

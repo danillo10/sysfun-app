@@ -1,6 +1,7 @@
 export class PesquisaModel {
   descricao?: string;
   situacao?: string;
+  status?: string;
   tipo_pesquisa?: string;
   tipo_cadastro?: string;
   categoria?: string;
@@ -37,6 +38,7 @@ export class PesquisaModel {
     this.bairro = data.bairro || '';
     this.endereco = data.endereco || '';
     this.situacao = data.situacao || '';
+    this.status = data.status || '';
     this.skip = data.skip || 0;
     this.registros = data.registros || 10;
     this.forma_pagamento = data.forma_pagamento || '';
