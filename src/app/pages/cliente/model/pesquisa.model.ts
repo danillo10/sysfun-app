@@ -1,7 +1,8 @@
 export class PesquisaModel {
   descricao?: string;
   situacao?: string;
-  status?: string;
+  situacao_financeira?: string;
+  status?: number;
   tipo_pesquisa?: string;
   tipo_cadastro?: string;
   categoria?: string;

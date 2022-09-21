@@ -38,8 +38,8 @@ export class FiltroPlanoComponent implements OnInit {
       cidade: [this.filtrar.cidade],
       bairro: [this.filtrar.bairro],
       endereco: [this.filtrar.endereco],
+      situacao_financeira: [this.filtrar.situacao_financeira],
       situacao: [this.filtrar.situacao],
-      status: [this.filtrar.status],
       registros: [this.filtrar.registros]
     })
   }

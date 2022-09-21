@@ -31,6 +31,7 @@ export class PlanoFunerarioPage implements OnInit {
     this.pesquisa.skip = 0;
     this.pesquisa.registros = 10;
     this.pesquisa.pagina = 1;
+    this.pesquisa.status = 0;
   }
 
   ngOnInit() {}

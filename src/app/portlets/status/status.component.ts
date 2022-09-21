@@ -12,6 +12,7 @@ import status from '../../pages/utils/status.json';
 export class StatusComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() control: string;
+  @Input() tipo: 'status' | 'planoFunerarioStatus';
 
   status: SelectModel[];
 
@@ -19,7 +20,7 @@ export class StatusComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.status = status['status'];
+    this.status = status[this.tipo];
   }
 
 }

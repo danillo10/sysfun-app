@@ -12,7 +12,6 @@ import situacao from '../../pages/utils/situacao.json';
 export class SituacaoComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() control: string;
-  @Input() tipo: 'situacao' | 'planoFunerarioSituacao';
 
   situacao: SelectModel[];
 
@@ -20,7 +19,7 @@ export class SituacaoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.situacao = situacao[this.tipo];
+    this.situacao = situacao['situacao'];
   }
 
 }

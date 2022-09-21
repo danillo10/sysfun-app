@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnDestroy(){
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   async ionViewDidEnter() {
