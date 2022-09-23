@@ -12,6 +12,8 @@ import { ContasReceberService } from '../service/contas-receber.service';
 import { ContasReceberBaixaModel } from './model/conta-receber-baixa.model';
 import { LiquidarService } from './service/liquidar.service';
 
+import formaPagamento from '../../utils/forma_pagamento.json';
+
 @Component({
   selector: 'app-liquidar-conta',
   templateUrl: './liquidar-conta.component.html',
@@ -38,7 +40,7 @@ export class LiquidarContaComponent implements OnInit {
     private calculoTotalService: CalculoTotalService,
     private loadingService: LoadingService
   ) {
-      this.formaPagamento = [];
+      this.formaPagamento = formaPagamento.formaPagamento;
       this.pagamentos = this.liquidarService.pagamentos;
       this.receber = this.liquidarService.contaReceber;
       this.receber.status = (this.receber.pago === 1) ? true : false;
@@ -64,7 +66,6 @@ export class LiquidarContaComponent implements OnInit {
     })
 
     this.getContasBancarias();
-    this.getFormasPagamentos();
   }
 
   liquidar(){
@@ -84,13 +85,6 @@ export class LiquidarContaComponent implements OnInit {
   getContasBancarias(){
     this.contasBancariasService.getAll()
       .subscribe((data: ContaBancariaModel[]) => this.contasBancarias = data);
-  }
-
-  getFormasPagamentos(){
-    this.formaPagamentoService.get()
-    .subscribe((formaPagamento: any)=> {
-      this.formaPagamento = this.selectService.handleSelect(formaPagamento, 'id', 'descricao');
-    })
   }
 
   calculaTotal(){
