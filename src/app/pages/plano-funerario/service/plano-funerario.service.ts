@@ -40,28 +40,28 @@ export class PlanoFunerarioService {
     this.salvaClientesNovos(plano, 'sistema');
   }
 
-  async create(plano: IPlanoFunerario): Promise<any> {
-    // if (!navigator.onLine) {
-    //   let planosNovos = this.localStorageService.getParse('planosNovos');
-    //   let data = await this.nativeStorageService.getParse('planos');
+  // async create(plano: IPlanoFunerario): Promise<any> {
+  //   // if (!navigator.onLine) {
+  //   //   let planosNovos = this.localStorageService.getParse('planosNovos');
+  //   //   let data = await this.nativeStorageService.getParse('planos');
 
-    //   data = JSON.parse(data);
+  //   //   data = JSON.parse(data);
 
-    //   planosNovos.push(plano);
+  //   //   planosNovos.push(plano);
 
-    //   data = [plano, ...data];
+  //   //   data = [plano, ...data];
 
-    //   this.localStorageService.setParse('clientesNovos', planosNovos);
-    //   this.nativeStorageService.setParse('clientes', data);
+  //   //   this.localStorageService.setParse('clientesNovos', planosNovos);
+  //   //   this.nativeStorageService.setParse('clientes', data);
 
-    //   return of(true).toPromise();
-    // }
+  //   //   return of(true).toPromise();
+  //   // }
 
-    return this._http
-      .post(`${environment.host}planos-funerarios`, plano)
-      .pipe((res) => res)
-      .toPromise();
-  }
+  //   return this._http
+  //     .post(`${environment.host}planos-funerarios`, plano)
+  //     .pipe((res) => res)
+  //     .toPromise();
+  // }
 
   async update(plano: IPlanoFunerario): Promise<any> {
     return this._http
@@ -157,5 +157,93 @@ export class PlanoFunerarioService {
         console.log('Executed SQL');
       })
       .catch((e) => console.log(e));
+  }
+
+  create(planos: PlanoFunerarioModel[]){
+    console.log('create');
+    const insertItems = planos.map((plano) => {
+      const data = this.formatArray(plano);
+      console.log('planos.map');
+      console.log(data);
+      return data;
+    });
+    console.log(insertItems);
+    return this.databaseService.getDB().executeSql(insertPlanosFunerarios, insertItems);
+  }
+
+  formatArray(planos: PlanoFunerarioModel) {
+    console.log('formatArray');
+    console.log(planos);
+
+    return [
+      planos.id ?? '',
+      planos.tipo ?? '',
+      planos.cliente ?? '',
+      planos.cliente_nome ?? '',
+      planos.indicacao ?? '',
+      planos.indicacao_parcelas ?? '',
+      planos.tipo_liberacao ?? '',
+      planos.tecnico ?? '',
+      planos.tecnico_nome ?? '',
+      planos.profissional ?? '',
+      planos.profissional_nome ?? '',
+      planos.situacao ?? '',
+      planos.lista_preco ?? '',
+      planos.falecido ?? '',
+      planos.contato ?? '',
+      planos.valor_servicos ?? '',
+      planos.valor_produtos ?? '',
+      planos.valor_despesas ?? '',
+      planos.valor_desconto_v ?? '',
+      planos.valor_desconto_p ?? '',
+      planos.valor_bruto ?? '',
+      planos.valor_liquido ?? '',
+      planos.taxa_adesao ?? '',
+      planos.data_inicial ?? '',
+      planos.forma_pagamento ?? '',
+      planos.condicao_pagamento ?? '',
+      planos.qtd_parcelas ?? '',
+      planos.carencia ?? '',
+      planos.rg_f_pendente ?? '',
+      planos.cpf_f_pendente ?? '',
+      planos.declaracao_f_pendente ?? '',
+      planos.casamento_f_pendente ?? '',
+      planos.residencia_f_pendente ?? '',
+      planos.nascimento_f_pendente ?? '',
+      planos.cobito_f_pendente ?? '',
+      planos.auxilio_f_pendente ?? '',
+      planos.rg_r_pedente ?? '',
+      planos.cpf_r_pendente ?? '',
+      planos.residencia_r_pendente ?? '',
+      planos.casamento_r_pendente ?? '',
+      planos.data_os ?? '',
+      planos.data_entrega ?? '',
+      planos.garantia ?? '',
+      planos.data_realizacao ?? '',
+      planos.hora_realizacao ?? '',
+      planos.referencia ?? '',
+      planos.obs ?? '',
+      planos.obs_internas ?? '',
+      planos.equipamento ?? '',
+      planos.problema ?? '',
+      planos.obs_recebimento ?? '',
+      planos.contas_lancadas ?? '',
+      planos.laudo ?? '',
+      planos.servicos ?? '',
+      planos.produtos ?? '',
+      planos.dependentes ?? '',
+      planos.parcelas ?? '',
+      planos.criado_por ?? '',
+      planos.atualizado_por ?? '',
+      planos.os_gerada ?? '',
+      planos.repetir_valor ?? '',
+      planos.pesquisados ?? '',
+      planos.updated_at ?? '',
+      planos.carencia_vencimento ?? '',
+      planos.rg_r_pedente ?? '',
+      planos.data_carne ?? '',
+      planos.contas_pagar ?? '',
+      planos.created_at ?? '',
+    ];
   }
 }
