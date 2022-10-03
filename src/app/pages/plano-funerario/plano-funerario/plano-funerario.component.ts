@@ -153,7 +153,7 @@ export class PlanoFunerarioComponent implements OnInit {
 
       if (id === 'new') {
         this.planoFunerarioService
-          .create(this.form.value)
+          .create([this.form.value])
           .then((data: any) => {
             this.loadingService.hideLoading();
             if (data.status == 1) return alert(data.mensagem);
