@@ -195,6 +195,9 @@ export class ClienteComponent implements OnInit {
     this.getProfissao();
     this.getCategorias();
     this.copiarDependentes();
+
+    console.log('SELECT NO BANCO');
+    console.log(this.clienteService.getFromDb());
   }
 
   ngOnDestroy() {

@@ -54,7 +54,7 @@ export class ClienteService {
   }
 
   getFromDb() {
-    this.databaseService.getDB().executeSql(selectClientes, []);
+    return this.databaseService.getDB().executeSql(selectClientes, []);
   }
 
   formatArray(cliente: ClienteModel) {
