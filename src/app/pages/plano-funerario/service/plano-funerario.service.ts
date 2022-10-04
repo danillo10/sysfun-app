@@ -170,7 +170,7 @@ export class PlanoFunerarioService {
     console.log(insertItems);
     const savePlano = this.databaseService.getDB().executeSql(insertPlanosFunerarios, insertItems);
     console.log('save plano');
-    console.log(savePlano.lastrowid);
+    console.log(savePlano);
     return savePlano;
   }
 
