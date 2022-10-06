@@ -11,6 +11,7 @@ import { NativeStorageService } from 'src/app/shared/services/native-storage.ser
 import { DatabaseService } from 'src/app/shared/services/database.service';
 import { insertPlanosFunerarios } from '../../../shared/constants/sql/insert';
 import { SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
+import { selectPlanosFunerarios } from 'src/app/shared/constants/sql/select';
 
 @Injectable({
   providedIn: 'root',
@@ -159,19 +160,21 @@ export class PlanoFunerarioService {
       .catch((e) => console.log(e));
   }
 
-  create(planos: PlanoFunerarioModel[]){
+  async create(planos: PlanoFunerarioModel[]){
     console.log('create'); 
+    console.log(planos[0])
+    const db = this.databaseService.getDB();
     const insertItems = planos.map((plano) => {
       const data = this.formatArray(plano);
-      console.log('planos.map');
-      console.log(data);
       return data;
     });
     console.log(insertItems);
-    const savePlano = this.databaseService.getDB().executeSql(insertPlanosFunerarios, insertItems);
-    console.log('save plano');
+    const savePlano = await db.executeSql(insertPlanosFunerarios, planos);
     console.log(savePlano);
-    return savePlano;
+    let results = await db.executeSql(selectPlanosFunerarios,[]);
+    console.log("Results")
+    console.log(results.rows.item(0).cliente)
+    return results;
   }
 
   formatArray(planos: PlanoFunerarioModel) {
@@ -179,103 +182,66 @@ export class PlanoFunerarioService {
     console.log(planos);
 
     return [
-      planos.cliente ?? 0,
-      planos.indicacao ?? 0,
-      // planos.tecnico ?? '',
-      // planos.profissional ?? '',
-      // planos.taxa_adesao ?? '',
-      // planos.valor_bruto ?? '',
-      // planos.data_inicial ?? '',
-      // planos.forma_pagamento ?? '',
-      // planos.condicao_pagamento ?? '',
-      // planos.qtd_parcelas ?? '',
-      // planos.indicacao_parcelas ?? '',
-      // planos.tipo_liberacao ?? '',
-      // planos.carencia ?? '',
-      // planos.carencia_vencimento ?? '',
-      // planos.rg_r_pedente ?? '',
-      // planos.cpf_r_pendente ?? '',
-      // planos.residencia_r_pendente ?? '',
-      // planos.casamento_r_pendente ?? '',
-      // planos.data_os ?? '',
-      // planos.data_carne ?? '',
-      // planos.data_entrega ?? '',
-      // planos.hora_realizacao ?? '',
-      // planos.obs ?? '',
-      // planos.obs_internas ?? '',
-      // planos.contas_lancadas ?? '',
-      // planos.contas_pagar ?? '',
-      // planos.situacao ?? '',
-      // planos.criado_por ?? '',
-      // planos.atualizado_por ?? '',
-      // planos.created_at ?? '',
-      // planos.updated_at ?? '',
-      // planos.repetir_valor ?? '',
-
-      // planos.id ?? '',
-      // planos.tipo ?? '',
-      // planos.cliente ?? '',
-      // planos.cliente_nome ?? '',
-      // planos.indicacao ?? '',
-      // planos.indicacao_parcelas ?? '',
-      // planos.tipo_liberacao ?? '',
-      // planos.tecnico ?? '',
-      // planos.tecnico_nome ?? '',
-      // planos.profissional ?? '',
-      // planos.profissional_nome ?? '',
-      // planos.situacao ?? '',
-      // planos.lista_preco ?? '',
-      // planos.falecido ?? '',
-      // planos.contato ?? '',
-      // planos.valor_servicos ?? '',
-      // planos.valor_produtos ?? '',
-      // planos.valor_despesas ?? '',
-      // planos.valor_desconto_v ?? '',
-      // planos.valor_desconto_p ?? '',
-      // planos.valor_bruto ?? '',
-      // planos.valor_liquido ?? '',
-      // planos.taxa_adesao ?? '',
-      // planos.data_inicial ?? '',
-      // planos.forma_pagamento ?? '',
-      // planos.condicao_pagamento ?? '',
-      // planos.qtd_parcelas ?? '',
-      // planos.carencia ?? '',
-      // planos.rg_f_pendente ?? '',
-      // planos.cpf_f_pendente ?? '',
-      // planos.declaracao_f_pendente ?? '',
-      // planos.casamento_f_pendente ?? '',
-      // planos.residencia_f_pendente ?? '',
-      // planos.nascimento_f_pendente ?? '',
-      // planos.cobito_f_pendente ?? '',
-      // planos.auxilio_f_pendente ?? '',
-      // planos.rg_r_pedente ?? '',
-      // planos.cpf_r_pendente ?? '',
-      // planos.residencia_r_pendente ?? '',
-      // planos.casamento_r_pendente ?? '',
-      // planos.data_os ?? '',
-      // planos.data_entrega ?? '',
-      // planos.garantia ?? '',
-      // planos.data_realizacao ?? '',
-      // planos.hora_realizacao ?? '',
-      // planos.referencia ?? '',
-      // planos.obs ?? '',
-      // planos.obs_internas ?? '',
-      // planos.equipamento ?? '',
-      // planos.problema ?? '',
-      // planos.obs_recebimento ?? '',
-      // planos.contas_lancadas ?? '',
-      // planos.laudo ?? '',
-      // planos.criado_por ?? '',
-      // planos.atualizado_por ?? '',
-      // planos.os_gerada ?? '',
-      // planos.repetir_valor ?? '',
-      // planos.pesquisados ?? '',
-      // planos.updated_at ?? '',
-      // planos.carencia_vencimento ?? '',
-      // planos.rg_r_pedente ?? '',
-      // planos.data_carne ?? '',
-      // planos.contas_pagar ?? '',
-      // planos.created_at ?? '',
+      planos.cliente ?? '',
+      planos.cliente_nome ?? '',
+      planos.indicacao ?? '',
+      planos.indicacao_nome ?? '',
+      planos.tipo_liberacao ?? '',
+      planos.tecnico ?? '',
+      planos.tecnico_nome ?? '',
+      planos.profissional ?? '',
+      planos.profissional_nome ?? '',
+      planos.situacao ?? '',
+      planos.lista_preco ?? '',
+      planos.falecido ?? '',
+      planos.contato ?? '',
+      planos.valor_servicos ?? '',
+      planos.valor_produtos ?? '',
+      planos.valor_despesas ?? '',
+      planos.valor_desconto_v ?? '',
+      planos.valor_desconto_p ?? '',
+      planos.valor_bruto ?? '',
+      planos.valor_liquido ?? '',
+      planos.taxa_adesao ?? '',
+      planos.data_inicial ?? '',
+      planos.forma_pagamento ?? '',
+      planos.condicao_pagamento ?? '',
+      planos.qtd_parcelas ?? '',
+      planos.carencia ?? '',
+      planos.rg_f_pendente ?? '',
+      planos.cpf_f_pendente ?? '',
+      planos.declaracao_f_pendente ?? '',
+      planos.casamento_f_pendente ?? '',
+      planos.residencia_f_pendente ?? '',
+      planos.nascimento_f_pendente ?? '',
+      planos.cobito_f_pendente ?? '',
+      planos.auxilio_f_pendente ?? '',
+      planos.rg_r_pedente ?? '',
+      planos.cpf_r_pendente ?? '',
+      planos.residencia_r_pendente ?? '',
+      planos.casamento_r_pendente ?? '',
+      planos.data_os ?? '',
+      planos.data_entrega ?? '',
+      planos.garantia ?? '',
+      planos.data_realizacao ?? '',
+      planos.hora_realizacao ?? '',
+      planos.referencia ?? '',
+      planos.obs ?? '',
+      planos.obs_internas ?? '',
+      planos.equipamento ?? '',
+      planos.problema ?? '',
+      planos.contas_lancadas ?? '',
+      planos.laudo ?? '',
+      planos.criado_por ?? '',
+      planos.atualizado_por ?? '',
+      planos.os_gerada ?? '',
+      planos.repetir_valor ?? '',
+      planos.pesquisados ?? '',
+      planos.updated_at ?? '',
+      planos.carencia_vencimento ?? '',
+      planos.data_carne ?? '',
+      planos.contas_pagar ?? '',
+      planos.created_at ?? '',
     ];
   }
 }
