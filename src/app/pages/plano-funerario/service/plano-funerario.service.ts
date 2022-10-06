@@ -150,14 +150,14 @@ export class PlanoFunerarioService {
       return [insertPlanosFunerarios, data];
     });
 
-    this.databaseService
-      .getDB()
-      .sqlBatch([insertItems])
-      .then((e) => {
-        console.log(e);
-        console.log('Executed SQL');
-      })
-      .catch((e) => console.log(e));
+    // this.databaseService
+    //   .getDB()
+    //   .sqlBatch([insertItems])
+    //   .then((e) => {
+    //     console.log(e);
+    //     console.log('Executed SQL');
+    //   })
+    //   .catch((e) => console.log(e));
   }
 
   async create(planos: PlanoFunerarioModel[]){
@@ -169,7 +169,7 @@ export class PlanoFunerarioService {
       return data;
     });
     console.log(insertItems);
-    const savePlano = await db.executeSql(insertPlanosFunerarios, planos);
+    const savePlano = await db.executeSql(insertPlanosFunerarios, insertItems);
     console.log(savePlano);
     let results = await db.executeSql(selectPlanosFunerarios,[]);
     console.log("Results")

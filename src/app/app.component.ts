@@ -30,10 +30,7 @@ export class AppComponent implements OnInit{
       this.network.onDisconnect().subscribe(() => {
         this.statusService.onNetworkChanged.next(false);
       });
-      this.databaseService.dbState().subscribe((res) => {
-        console.log('DATABASE SUBSCRIBE');
-        console.log(res);
-      });
+      this.databaseService.openDatabase();
     });
   }
 }
