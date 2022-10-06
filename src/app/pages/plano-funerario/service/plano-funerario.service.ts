@@ -149,14 +149,14 @@ export class PlanoFunerarioService {
       return [insertPlanosFunerarios, data];
     });
 
-    this.databaseService
-      .getDB()
-      .sqlBatch([insertItems])
-      .then((e) => {
-        console.log(e);
-        console.log('Executed SQL');
-      })
-      .catch((e) => console.log(e));
+    // this.databaseService
+    //   .getDB()
+    //   .sqlBatch([insertItems])
+    //   .then((e) => {
+    //     console.log(e);
+    //     console.log('Executed SQL');
+    //   })
+    //   .catch((e) => console.log(e));
   }
 
   create(planos: PlanoFunerarioModel[]){
@@ -168,7 +168,7 @@ export class PlanoFunerarioService {
       return data;
     });
     console.log(insertItems);
-    const savePlano = this.databaseService.getDB().executeSql(insertPlanosFunerarios, insertItems);
+    const savePlano = this.databaseService.executeSQL(insertPlanosFunerarios, insertItems);
     console.log('save plano');
     console.log(savePlano);
     return savePlano;

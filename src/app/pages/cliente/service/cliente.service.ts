@@ -40,7 +40,7 @@ export class ClienteService {
     this.observer;
   }
 
-  create(clientes: ClienteModel[]) {
+  async create(clientes: ClienteModel[]) {
     console.log('create');
     const insertItems = clientes.map((cliente) => {
       const data = this.formatArray(cliente);
@@ -50,11 +50,30 @@ export class ClienteService {
     });
     console.log(insertItems);
 
-    return this.databaseService.getDB().executeSql(insertClientes, insertItems);
+    return await this.databaseService.executeSQL(insertClientes, insertItems);
   }
 
-  getFromDb() {
-    return this.databaseService.getDB().executeSql(selectClientes, []);
+  async getFromDb() {
+    const result = await this.databaseService.executeSQL(selectClientes);
+    const clientes = this.fillClientes(result.rows);
+    return clientes;
+  }
+
+  private fillClientes(rows: any) {
+    const clientes: ClienteModel[] = [];
+    console.log("fillClientes");
+
+    for (let i = 0; i < rows.length; i++) {
+      const item = rows.item(i);
+      console.log(item);
+      const cliente = new ClienteModel();
+      cliente.id = item.id;
+      cliente.id_dependente = item.id_dependente;
+      cliente.situacao = item.situacao;
+      clientes.push(cliente);
+    }
+
+    return clientes;
   }
 
   formatArray(cliente: ClienteModel) {
@@ -143,7 +162,7 @@ export class ClienteService {
       cliente.criado_por ?? '',
       cliente.atualizado_por ?? '',
       cliente.religiao ?? '',
-      cliente.indicacao ?? '',
+      cliente.indicacao ?? ''
     ];
   }
 

@@ -42,13 +42,13 @@ export class ContasReceberService {
       return [insertContasReceber, data];
     });
 
-    this.databaseService
-      .getDB()
-      .sqlBatch([insertItems])
-      .then((e) => {
-        console.log(e);
-        console.log('Executed SQL');
-      })
-      .catch((e) => console.log(e));
+    // this.databaseService
+    //   .getDB()
+    //   .sqlBatch([insertItems])
+    //   .then((e) => {
+    //     console.log(e);
+    //     console.log('Executed SQL');
+    //   })
+    //   .catch((e) => console.log(e));
   }
 }

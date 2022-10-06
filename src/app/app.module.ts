@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 import { Network } from '@awesome-cordova-plugins/network/ngx';
 import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
+import { SQLitePorter } from '@awesome-cordova-plugins/sqlite-porter/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import { SharedModule } from './shared/modules/shared/shared.module';
     Network,
     NativeStorage,
     SQLite,
+    SQLitePorter,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
   ],
