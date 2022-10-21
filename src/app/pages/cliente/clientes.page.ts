@@ -52,13 +52,19 @@ export class ClientesPage implements OnInit {
     this.loadingService.showLoading('Carregando...').then(() => {
       this.pesquisa.skip = skip;
 
-      this.clienteService.get(this.pesquisa).then((data: any) => {
-        this.clientes = data.clientes;
-        this.total = data.total;
-        this.loadingService.hideLoading();
+      // this.clienteService.get(this.pesquisa).then((data: any) => {
+      //   this.clientes = data.clientes;
+      //   this.total = data.total;
+      //   this.loadingService.hideLoading();
 
-        // this.clienteService.create(this.clientes);
-      });
+      this.clienteService.getFromDb()
+        .then((data) => {
+          this.clientes = data;
+          this.loadingService.hideLoading();
+        },
+        (err) => {
+          this.loadingService.hideLoading();
+        })
     });
   }
 }

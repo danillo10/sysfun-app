@@ -1,5 +1,3 @@
-export const selectClientes = `SELECT * FROM clientes`;
-
 export const selectClientesDependentes = `SELECT * FROM clientes_dependentes`;
 
 export const selectContasReceber = `SELECT * FROM contas_receber`;

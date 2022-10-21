@@ -5,7 +5,7 @@ import { IParcela } from 'src/app/components/parcelas/model/parcelas.model';
 import { SelectModel } from 'src/app/components/select/model/select.model';
 import { DependentesService } from 'src/app/shared/services/dependentes.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
-import { IDependentes } from '../../cliente/model/cliente.model';
+// import { IDependentes } from '../../cliente/model/cliente.model';
 import {
   IPlanoFunerario,
   PlanoFunerarioModel,
@@ -246,7 +246,7 @@ export class PlanoFunerarioComponent implements OnInit {
     }
   }
 
-  setDependentes(dependentes: IDependentes[]) {
+  setDependentes(dependentes: any[]) {
     return (this.plano.dependentes =
       dependentes.length == 0
         ? this.dependentesService.reorganizar()

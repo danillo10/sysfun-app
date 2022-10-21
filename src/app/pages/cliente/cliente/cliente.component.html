@@ -28,6 +28,7 @@
           length="14"
           NumberInput
         ></app-input>
+        
         <app-input
           *ngIf="form.value.pessoa == 'PJ'"
           [form]="form"
@@ -234,7 +235,7 @@
           type="text"
         ></app-input>
 
-        <div class="d-flex flex-row align-items-center justify-content-between">
+        <!-- <div class="d-flex flex-row align-items-center justify-content-between">
           <h2>Endereços</h2>
           <ion-icon
             name="play"
@@ -248,9 +249,9 @@
             *ngIf="enderecos"
             (click)="enderecos = !enderecos"
           ></ion-icon>
-        </div>
+        </div> -->
 
-        <div *ngIf="enderecos">
+        <!-- <div *ngIf="enderecos">
           <app-select
             [form]="form"
             control="eTipo_endereco"
@@ -321,7 +322,7 @@
             label="estado"
             type="select"
           ></app-select>
-        </div>
+        </div> -->
 
         <app-input
           [form]="form"
@@ -359,13 +360,13 @@
           </button>
         </h2>
 
-        <app-dependentes
+        <!-- <app-dependentes
           [data]="cliente.dependentes"
           (dependentesSelecionados)="setDependentes($event)"
-        ></app-dependentes>
+        ></app-dependentes> -->
 
         <app-button
-          (click)="create()"
+          (click)="save()"
           [disabled]="form.invalid"
           type="normal"
           color="blue"

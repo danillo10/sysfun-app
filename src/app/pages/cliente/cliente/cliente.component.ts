@@ -21,7 +21,7 @@ import situacao from '../../utils/situacao.json';
 import cadastros from '../../utils/tipo_cadastro.json';
 import tipoendereco from '../../utils/tipo_endereco.json';
 
-import { ClienteModel, IDependentes } from '../model/cliente.model';
+import { ClienteModel } from '../model/cliente.model';
 import { ClienteService } from '../service/cliente.service';
 import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
 import { DependentesService } from 'src/app/shared/services/dependentes.service';
@@ -85,6 +85,7 @@ export class ClienteComponent implements OnInit {
     private authService: AuthService
   ) {
     this.cliente = new ClienteModel();
+
     this.pessoas = pessoas.pessoas;
     this.estados = estados.estados;
     this.cadastros = cadastros.tipocadastro;
@@ -97,114 +98,58 @@ export class ClienteComponent implements OnInit {
     this.categorias = [];
     this.enderecos = false;
 
-    this.get();
   }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      id: [this.cliente.id],
-      aplicativo: [this.cliente.aplicativo],
-      aplicativo_id: [this.cliente.aplicativo],
-      responsavel: [this.cliente.responsavel],
-      situacao: [this.cliente.situacao],
-      categoria: [this.cliente.categoria],
       pessoa: [this.cliente.pessoa],
-      cnpjcpf: [this.cliente.cnpjcpf, Validators.required],
-      cnpj: [this.cliente.cnpj],
-      cpf: [this.cliente.cpf],
+      cnpjcpf: [this.cliente.cnpjcpf],
       rg: [this.cliente.rg],
       emissor: [this.cliente.emissor],
-      naturalidade: [this.cliente.naturalidade],
       nome_fantasia: [this.cliente.nome_fantasia, Validators.required],
-      razao_social: [this.cliente.razao_social],
       data_nascimento: [this.cliente.data_nascimento],
-      idade: [this.cliente.idade],
-      sexo: [this.cliente.sexo],
-      estado_civil: [this.cliente.estado_civil],
-      nome_pai: [this.cliente.nome_pai],
-      nome_mae: [this.cliente.nome_mae],
-      inscricao_municipal: [this.cliente.inscricao_municipal],
-      inscricao_estadual: [this.cliente.inscricao_estadual],
+      naturalidade: [this.cliente.naturalidade],
       cep: [this.cliente.cep],
       endereco: [this.cliente.endereco],
       numero: [this.cliente.numero],
       complemento: [this.cliente.complemento],
       bairro: [this.cliente.bairro],
       cidade: [this.cliente.cidade],
-      ibge: [this.cliente.ibge],
       estado: [this.cliente.estado],
-      telefone: [this.cliente.telefone],
       celular: [this.cliente.celular],
-      whatsapp: [this.cliente.whatsapp],
-      email: [this.cliente.email],
-      obs: [this.cliente.obs],
+      telefone: [this.cliente.telefone],
       tipo_cadastro: [this.cliente.tipo_cadastro],
-      local_obito: [this.cliente.local_obito],
-      motivo_obito: [this.cliente.motivo_obito],
-      data_obito: [this.cliente.data_obito],
-      data_atestado: [this.cliente.data_atestado],
+      sexo: [this.cliente.sexo],
+      estado_civil: [this.cliente.estado_civil],
       profissao: [this.cliente.profissao],
-      cep_obito: [this.cliente.cep_obito],
-      endereco_obito: [this.cliente.endereco_obito],
-      numero_obito: [this.cliente.numero_obito],
-      complemento_obito: [this.cliente.complemento_obito],
-      bairro_obito: [this.cliente.bairro_obito],
-      cidade_obito: [this.cliente.cidade_obito],
-      estado_obito: [this.cliente.estado_obito],
-      cNome: [this.cliente.cNome],
-      cNascimento: [this.cliente.cNascimento],
-      cTelefone: [this.cliente.cTelefone],
-      cRamal: [this.cliente.cRamal],
-      cFax: [this.cliente.cFax],
-      cCelular: [this.cliente.cCelular],
-      cEmail: [this.cliente.cEmail],
-      cWebsite: [this.cliente.cWebsite],
-      eTipo_endereco: [this.cliente.eTipo_endereco],
-      eTipo_pessoa: [this.cliente.eTipo_pessoa],
-      eCnpjcpf: [this.cliente.eCnpjcpf],
-      eCnpj: [this.cliente.eCnpj],
-      eCpf: [this.cliente.eCpf],
-      eCep: [this.cliente.eCep],
-      eEndereco: [this.cliente.eEndereco],
-      eBairro: [this.cliente.eBairro],
-      eNumero: [this.cliente.eNumero],
-      eComplemento: [this.cliente.eComplemento],
-      eCidade: [this.cliente.eCidade],
-      eEstado: [this.cliente.eEstado],
-      lista_preco: [this.cliente.lista_preco],
-      condicao_pagamento: [this.cliente.condicao_pagamento],
-      limite_credito: [this.cliente.limite_credito],
-      limite_ultrapassar: [this.cliente.limite_ultrapassar],
-      conta_bancaria: [this.cliente.conta_bancaria],
-      data_inicial: [this.cliente.data_inicial],
-      data_final: [this.cliente.data_final],
-      data_cadastro: [this.cliente.data_cadastro],
-      hora_cadastro: [this.cliente.hora_cadastro],
+      email: [this.cliente.email],
       deve_receber_sms: [this.cliente.deve_receber_sms],
       deve_receber_torpedo_voz: [this.cliente.deve_receber_torpedo_voz],
-      criado_por: [this.cliente.criado_por],
-      atualizado_por: [this.cliente.atualizado_por],
+      nome_mae: [this.cliente.nome_mae],
+      nome_pai: [this.cliente.nome_pai],
       religiao: [this.cliente.religiao],
-      indicacao: [this.cliente.indicacao],
-      indicacao_nome: [this.cliente.indicacao_nome],
-      dependentes: [this.cliente.dependentes],
-      subDependentes: [this.cliente.subDependentes],
+      categoria: [this.cliente.categoria],
+      situacao: [this.cliente.situacao]
     });
 
     this.setDependentes([]);
     this.getProfissao();
     this.getCategorias();
     this.copiarDependentes();
+    
+    const param = this.activatedRoute.snapshot.paramMap.get('id');
 
-    console.log('SELECT NO BANCO');
-    this.clienteService.getFromDb();
+    if(param != 'novo-cliente') {
+      this.findById(param);
+    }
+
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  create() {
+  save() {
     if (this.form.value.nome_fantasia === '') {
       return alert('Campo Nome Obrigatório!');
     }
@@ -230,41 +175,49 @@ export class ClienteComponent implements OnInit {
     }
 
     this.loadingService.showLoading('Salvando cadastro...').then(() => {
-      this.form.patchValue({ dependentes: this.cliente.dependentes });
+      const param = this.activatedRoute.snapshot.paramMap.get('id');
 
-      const id = this.activatedRoute.snapshot.paramMap.get('id');
-
-      if (id !== 'novo-cliente') {
-        this.clienteService
-          .update(id, this.form.value, this.criadoEm)
-          .then((data: any) => {
-            this.loadingService.hideLoading();
-            if (data.status === 1) return alert(data.mensagem);
-            this.router.navigate(['clientes']);
-          })
-          .catch((err) => {
-            alert(JSON.stringify(err));
-            this.loadingService.hideLoading();
-          });
+      if (param !== 'novo-cliente') {
+        this.update(param)
       } else {
-        console.log('CADASTRO DE CLIENTE COM DB');
-        this.clienteService
-          .create([this.form.value])
-          .then((data: any) => {
-            this.loadingService.hideLoading();
-            // if (data.status === 1) return alert(data.mensagem);
-            // this.router.navigate(['clientes']);
-
-            console.log('RETORNO DO INSERT');
-            console.log(data);
-            console.log('SELECT NO BANCO');
-            console.log(this.clienteService.getFromDb());
-          })
-          .catch((err) => {
-            alert(JSON.stringify(err));
-            this.loadingService.hideLoading();
-          });
+        this.create();
       }
+    });
+  }
+
+  create() {
+    this.clienteService
+    .create(this.form.value)
+    .then((data: any) => {
+      this.loadingService.hideLoading();
+      this.router.navigate(['clientes']);
+    })
+    .catch((err) => {
+      this.loadingService.hideLoading();
+      throw new Error("Erro ao inserir cliente");
+    });
+  }
+
+  findById(id) {
+    this.clienteService.findById(parseInt(id))
+    .then((data: ClienteModel[]) => {
+      this.cliente = new ClienteModel(data[0]);
+    })
+    .catch((err) => { 
+      throw new Error("Erro ao buscar cliente") 
+    });
+  }
+
+  update(id) {
+    this.clienteService
+    .update(parseInt(id), this.form.value)
+    .then((data: any) => {
+      this.loadingService.hideLoading();
+      this.router.navigate(['clientes']);
+    })
+    .catch((err) => {
+      this.loadingService.hideLoading();
+      throw new Error("Erro ao atualizar cliente");
     });
   }
 
@@ -306,34 +259,34 @@ export class ClienteComponent implements OnInit {
     this.profissoes = [];
   }
 
-  get() {
-    let id = this.activatedRoute.snapshot.paramMap.get('id');
+  // get() {
+  //   let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.activatedRoute.queryParams.subscribe((data) => {
-      this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
+  //   this.activatedRoute.queryParams.subscribe((data) => {
+  //     this.criadoEm = data.aplicativo ? 'aplicativo' : 'sistema';
 
-      if (id != 'novo-cliente') {
-        this.loadingService.showLoading('Carregando dados...').then(() => {
-          const id = data.aplicativo ? data.aplicativo : data.sistema;
-          this.clienteService.show(id, this.criadoEm).then((data: any) => {
-            this.cliente = new ClienteModel(data.cliente[0]);
+  //     if (id != 'novo-cliente') {
+  //       this.loadingService.showLoading('Carregando dados...').then(() => {
+  //         const id = data.aplicativo ? data.aplicativo : data.sistema;
+  //         this.clienteService.show(id, this.criadoEm).then((data: any) => {
+  //           this.cliente = new ClienteModel(data.cliente[0]);
 
-            if (navigator.onLine && data.dependentes)
-              this.cliente.dependentes = data.dependentes;
-            this.form.patchValue(this.cliente);
+  //           // if (navigator.onLine && data.dependentes)
+  //             // this.cliente.dependentes = data.dependentes;
+  //           this.form.patchValue(this.cliente);
 
-            this.loadingService.hideLoading();
-          });
-        });
-      }
-    });
-  }
+  //           this.loadingService.hideLoading();
+  //         });
+  //       });
+  //     }
+  //   });
+  // }
 
-  setDependentes(dependentes: IDependentes[]) {
-    this.cliente.dependentes =
-      dependentes.length == 0
-        ? this.dependentesService.reorganizar()
-        : dependentes;
+  setDependentes(dependentes: any[]) {
+    // this.cliente.dependentes =
+    //   dependentes.length == 0
+    //     ? this.dependentesService.reorganizar()
+    //     : dependentes;
   }
 
   pesquisaCPF() {
@@ -377,13 +330,13 @@ export class ClienteComponent implements OnInit {
 
   copiarDependentes() {
     this.dependentesCopiados = '';
-    this.cliente.dependentes.map((dependente) => {
-      this.dependentesCopiados += dependente.nome ? dependente.nome + ' ' : '';
-      this.dependentesCopiados += dependente.cpf ? dependente.cpf + ' ' : '';
-      this.dependentesCopiados += dependente.tipo
-        ? dependente.tipo + ' | '
-        : '';
-    });
+    // this.cliente.dependentes.map((dependente) => {
+    //   this.dependentesCopiados += dependente.nome ? dependente.nome + ' ' : '';
+    //   this.dependentesCopiados += dependente.cpf ? dependente.cpf + ' ' : '';
+    //   this.dependentesCopiados += dependente.tipo
+    //     ? dependente.tipo + ' | '
+    //     : '';
+    // });
   }
 
   sendWhatsapp() {

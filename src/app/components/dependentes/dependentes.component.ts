@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { IDependentes } from 'src/app/pages/cliente/model/cliente.model';
+// import { IDependentes } from 'src/app/pages/cliente/model/cliente.model';
 import { DependentesService } from 'src/app/shared/services/dependentes.service';
 
 import { SelectModel } from '../select/model/select.model';
@@ -17,7 +17,7 @@ import { DateService } from 'src/app/shared/services/date.service';
 export class DependentesComponent implements OnInit {
   subscription: Subscription;
 
-  @Input() set data(dependentes: IDependentes[]) {
+  @Input() set data(dependentes: any[]) {
     if (dependentes.length > 0) {
       this.dependentes = dependentes;
     }
@@ -27,8 +27,8 @@ export class DependentesComponent implements OnInit {
 
   dependentes$: Observable<any>;
   dependentePesquisado = new Subject<any>();
-  dependente: IDependentes;
-  dependentes: IDependentes[];
+  dependente: any;
+  dependentes: any[];
 
   parentescos: SelectModel[];
 

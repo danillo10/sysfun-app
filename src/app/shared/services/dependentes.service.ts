@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { IDependentes } from 'src/app/pages/cliente/model/cliente.model';
+// import { any } from 'src/app/pages/cliente/model/cliente.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class DependentesService {
     private _http: HttpClient
   ) { }
 
-  first(): IDependentes{
+  first(): any{
     return {
       numero: 1,
       id: null,
@@ -33,7 +33,7 @@ export class DependentesService {
     }
   }
 
-  add(dependentes: IDependentes[]): IDependentes{
+  add(dependentes: any[]): any{
     let ultimoCampo = dependentes.length;
     let ultimoNumero = dependentes[ultimoCampo - 1].numero;
 
@@ -43,7 +43,7 @@ export class DependentesService {
     return dependente;
   }
 
-  delete(dependente: IDependentes): Observable<any> {
+  delete(dependente: any): Observable<any> {
     return this._http.get(`${environment.host}dependentes/remover/${dependente.id}`)
       .pipe(res => res);
   }
@@ -64,7 +64,7 @@ export class DependentesService {
       .pipe(res => res)
   }
 
-  reorganizar(dependente?: IDependentes, dependentes?: IDependentes[]): IDependentes[]{
+  reorganizar(dependente?: any, dependentes?: any[]): any[]{
     if(!dependente){
       return [this.first()];
     }

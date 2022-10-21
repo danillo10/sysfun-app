@@ -16,8 +16,7 @@ import { PesquisaModel } from '../model/pesquisa.model';
 import * as _ from 'lodash';
 import { Observable, of, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { insertClientes } from '../../../shared/constants/sql/insert';
-import { selectClientes } from '../../../shared/constants/sql/select';
+import { SELECT_CLIENTES, SELECT_CLIENTE, INSERT_CLIENTE, UPDATE_CLIENTE } from '../../../shared/constants/sql/clientes/commands';
 
 @Injectable({
   providedIn: 'root',
@@ -40,130 +39,36 @@ export class ClienteService {
     this.observer;
   }
 
-  async create(clientes: ClienteModel[]) {
-    console.log('create');
-    const insertItems = clientes.map((cliente) => {
-      const data = this.formatArray(cliente);
-      console.log('clientes.map');
-      console.log(data);
-      return data;
-    });
-    console.log(insertItems);
+  async create(cliente: ClienteModel) {
+    var clienteData = Object.values(cliente);
+    return await this.databaseService.executeSQL(INSERT_CLIENTE, clienteData);
+  }
 
-    return await this.databaseService.executeSQL(insertClientes, insertItems);
+  async update(id: number | number, cliente: ClienteModel) {
+    var clienteData = Object.values(cliente);
+    clienteData = [...clienteData, id];
+    return await this.databaseService.executeSQL(UPDATE_CLIENTE, clienteData);
+  }
+
+  async findById(id: number){
+    const result = await this.databaseService.executeSQL(SELECT_CLIENTE, [id]);
+    return this.fillClientes(result.rows);
   }
 
   async getFromDb() {
-    const result = await this.databaseService.executeSQL(selectClientes);
-    const clientes = this.fillClientes(result.rows);
-    return clientes;
+    const result = await this.databaseService.executeSQL(SELECT_CLIENTES);
+    return this.fillClientes(result.rows);
   }
 
-  private fillClientes(rows: any) {
+  private fillClientes(rows: any): ClienteModel[] {
     const clientes: ClienteModel[] = [];
-    console.log("fillClientes");
 
     for (let i = 0; i < rows.length; i++) {
-      const item = rows.item(i);
-      console.log(item);
-      const cliente = new ClienteModel();
-      cliente.id = item.id;
-      cliente.id_dependente = item.id_dependente;
-      cliente.situacao = item.situacao;
+      const cliente: ClienteModel = rows.item(i);
       clientes.push(cliente);
     }
 
     return clientes;
-  }
-
-  formatArray(cliente: ClienteModel) {
-    console.log('formatArray');
-    console.log(cliente);
-
-    return [
-      cliente.id_dependente ?? '',
-      cliente.aplicativo ?? '',
-      cliente.situacao ?? '',
-      cliente.pessoa ?? '',
-      cliente.cnpjcpf ?? '',
-      cliente.rg ?? '',
-      cliente.emissor ?? '',
-      cliente.razao_social ?? '',
-      cliente.nome_fantasia ?? '',
-      cliente.data_nascimento ?? '',
-      cliente.idade ?? '',
-      cliente.naturalidade ?? '',
-      cliente.sexo ?? '',
-      cliente.estado_civil ?? '',
-      cliente.nome_pai ?? '',
-      cliente.nome_mae ?? '',
-      cliente.inscricao_municipal ?? '',
-      cliente.inscricao_estadual ?? '',
-      cliente.cep ?? '',
-      cliente.endereco ?? '',
-      cliente.numero ?? '',
-      cliente.complemento ?? '',
-      cliente.bairro ?? '',
-      cliente.cidade ?? '',
-      cliente.ibge ?? '',
-      cliente.estado ?? '',
-      cliente.celular ?? '',
-      cliente.email ?? '',
-      cliente.obs ?? '',
-      cliente.tipo_cadastral ?? '',
-      cliente.local_obito ?? '',
-      cliente.motivo_obito ?? '',
-      cliente.data_obito ?? '',
-      cliente.data_atestado ?? '',
-      cliente.profissao ?? '',
-      cliente.cep_obito ?? '',
-      cliente.endereco_obito ?? '',
-      cliente.numero_obito ?? '',
-      cliente.complemento_obito ?? '',
-      cliente.bairro_obito ?? '',
-      cliente.cidade_obito ?? '',
-      cliente.estado_obito ?? '',
-      cliente.categoria ?? '',
-      cliente.cNome ?? '',
-      cliente.cNascimento ?? '',
-      cliente.cTelefone ?? '',
-      cliente.cRamal ?? '',
-      cliente.cFax ?? '',
-      cliente.cCelular ?? '',
-      cliente.cEmail ?? '',
-      cliente.cWebsite ?? '',
-      cliente.eTipo_endereco ?? '',
-      cliente.eTipo_pessoa ?? '',
-      cliente.eCnpjcpf ?? '',
-      cliente.eCep ?? '',
-      cliente.eEndereco ?? '',
-      cliente.eBairro ?? '',
-      cliente.eNumero ?? '',
-      cliente.eComplemento ?? '',
-      cliente.eCidade ?? '',
-      cliente.eEstado ?? '',
-      cliente.lista_preco ?? '',
-      cliente.condicao_pagamento ?? '',
-      cliente.conta_bancaria ?? '',
-      cliente.limite_credito ?? '',
-      cliente.limite_ultrapassar ?? '',
-      cliente.data_inicial ?? '',
-      cliente.data_final ?? '',
-      cliente.created_at ?? '',
-      cliente.updated_at ?? '',
-      cliente.data_cadastro ?? '',
-      cliente.hora_cadastro ?? '',
-      cliente.horario ?? '',
-      cliente.plano ?? '',
-      cliente.taxa_adesao ?? '',
-      cliente.dia_parcela ?? '',
-      cliente.deve_receber_sms ?? '',
-      cliente.deve_receber_torpedo_voz ?? '',
-      cliente.criado_por ?? '',
-      cliente.atualizado_por ?? '',
-      cliente.religiao ?? '',
-      cliente.indicacao ?? ''
-    ];
   }
 
   // async create(cliente: ClienteModel): Promise<any> {
@@ -224,7 +129,7 @@ export class ClienteService {
 
       if (criado_em == 'aplicativo') {
         const clientes = this.localStorageService.getParse('clientesNovos');
-        cliente = clientes.find((cliente) => cliente.aplicativo_id == id);
+        // cliente = clientes.find((cliente) => cliente.aplicativo_id == id);
       } else {
         let data = await this.nativeStorageService.getParse('clientes');
         data = JSON.parse(data);
@@ -240,24 +145,25 @@ export class ClienteService {
       .toPromise();
   }
 
-  update(id: number | string, cliente: ClienteModel, criadoEm: string) {
-    if (!navigator.onLine) {
-      if (criadoEm == 'sistema') {
-        this.salvaClienteSistema(cliente);
-      }
+  // update(id: number | string, cliente: ClienteModel, criadoEm: string) {
 
-      if (criadoEm == 'aplicativo') {
-        this.salvaClienteAplicativo(cliente);
-      }
+    // if (!navigator.onLine) {
+    //   if (criadoEm == 'sistema') {
+    //     this.salvaClienteSistema(cliente);
+    //   }
 
-      return of(true).toPromise();
-    }
+    //   if (criadoEm == 'aplicativo') {
+    //     this.salvaClienteAplicativo(cliente);
+    //   }
 
-    return this._http
-      .put(`${environment.host}clientes/${id}`, cliente)
-      .pipe((res) => res)
-      .toPromise();
-  }
+    //   return of(true).toPromise();
+    // }
+
+    // return this._http
+    //   .put(`${environment.host}clientes/${id}`, cliente)
+    //   .pipe((res) => res)
+    //   .toPromise();
+  // }
 
   get(pesquisa: PesquisaModel): Promise<any> {
     if (!navigator.onLine) {

@@ -24,12 +24,6 @@ export class AppComponent implements OnInit{
 
   intializeApp() {
     this.platform.ready().then(() => {
-      this.network.onConnect().subscribe(() => {
-        this.statusService.onNetworkChanged.next(true);
-      });
-      this.network.onDisconnect().subscribe(() => {
-        this.statusService.onNetworkChanged.next(false);
-      });
       this.databaseService.openDatabase();
     });
   }
